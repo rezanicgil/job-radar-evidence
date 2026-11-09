@@ -1,0 +1,692 @@
+{
+  "min_accepted": 3,
+  "target_dev_precision": 0.8,
+  "split_sha256": {
+    "validation": "49da97b44bf3481186d23837b950a9df9c5558dcbebdd41dffb93ce3f010bbcf",
+    "source_validation": "63c7e8c11f8924892e40537fd89c24f5503d4b8f50c94eac1ff5e91b019fe08f"
+  },
+  "models": {
+    "pair-mentions-v3": {
+      "cutoffs": {
+        "supported": 0.6883652210235596,
+        "partial": null,
+        "unverified": null
+      },
+      "splits": {
+        "validation": {
+          "unfiltered": {
+            "total": 18,
+            "accepted": 18,
+            "abstained": 0,
+            "correct": 9,
+            "suggested_full": 6,
+            "false_full": 2,
+            "partial_found": 0
+          },
+          "selective": {
+            "total": 18,
+            "accepted": 5,
+            "abstained": 13,
+            "correct": 4,
+            "suggested_full": 5,
+            "false_full": 1,
+            "partial_found": 0
+          },
+          "predictions": [
+            {
+              "family": "ios-native",
+              "actual": "supported",
+              "predicted": "unverified",
+              "margin": 0.10805957019329071
+            },
+            {
+              "family": "ios-native",
+              "actual": "partial",
+              "predicted": "unverified",
+              "margin": 0.44828978180885315
+            },
+            {
+              "family": "ios-native",
+              "actual": "unverified",
+              "predicted": "unverified",
+              "margin": 0.47782981395721436
+            },
+            {
+              "family": "android-ui",
+              "actual": "supported",
+              "predicted": "supported",
+              "margin": 0.719312846660614
+            },
+            {
+              "family": "android-ui",
+              "actual": "partial",
+              "predicted": "unverified",
+              "margin": 0.4858216643333435
+            },
+            {
+              "family": "android-ui",
+              "actual": "unverified",
+              "predicted": "unverified",
+              "margin": 0.48609378933906555
+            },
+            {
+              "family": "firmware-debug",
+              "actual": "supported",
+              "predicted": "unverified",
+              "margin": 0.10820219665765762
+            },
+            {
+              "family": "firmware-debug",
+              "actual": "partial",
+              "predicted": "supported",
+              "margin": 0.27968060970306396
+            },
+            {
+              "family": "firmware-debug",
+              "actual": "unverified",
+              "predicted": "unverified",
+              "margin": 0.05553346127271652
+            },
+            {
+              "family": "container-service",
+              "actual": "supported",
+              "predicted": "supported",
+              "margin": 0.7452008724212646
+            },
+            {
+              "family": "container-service",
+              "actual": "partial",
+              "predicted": "unverified",
+              "margin": 0.187773197889328
+            },
+            {
+              "family": "container-service",
+              "actual": "unverified",
+              "predicted": "supported",
+              "margin": 0.6883652210235596
+            },
+            {
+              "family": "infra-module",
+              "actual": "supported",
+              "predicted": "supported",
+              "margin": 0.7265111207962036
+            },
+            {
+              "family": "infra-module",
+              "actual": "partial",
+              "predicted": "unverified",
+              "margin": 0.293937087059021
+            },
+            {
+              "family": "infra-module",
+              "actual": "unverified",
+              "predicted": "unverified",
+              "margin": 0.3156031668186188
+            },
+            {
+              "family": "metrics-alert",
+              "actual": "supported",
+              "predicted": "supported",
+              "margin": 0.7450879812240601
+            },
+            {
+              "family": "metrics-alert",
+              "actual": "partial",
+              "predicted": "unverified",
+              "margin": 0.49596190452575684
+            },
+            {
+              "family": "metrics-alert",
+              "actual": "unverified",
+              "predicted": "unverified",
+              "margin": 0.5012997984886169
+            }
+          ]
+        },
+        "source_validation": {
+          "unfiltered": {
+            "total": 30,
+            "accepted": 30,
+            "abstained": 0,
+            "correct": 14,
+            "suggested_full": 16,
+            "false_full": 9,
+            "partial_found": 0
+          },
+          "selective": {
+            "total": 30,
+            "accepted": 5,
+            "abstained": 25,
+            "correct": 1,
+            "suggested_full": 5,
+            "false_full": 4,
+            "partial_found": 0
+          },
+          "predictions": [
+            {
+              "family": "cloud-runtime",
+              "actual": "supported",
+              "predicted": "supported",
+              "margin": 0.4762269854545593
+            },
+            {
+              "family": "cloud-runtime",
+              "actual": "partial",
+              "predicted": "supported",
+              "margin": 0.26521652936935425
+            },
+            {
+              "family": "cloud-runtime",
+              "actual": "unverified",
+              "predicted": "unverified",
+              "margin": 0.46875572204589844
+            },
+            {
+              "family": "database-stores",
+              "actual": "supported",
+              "predicted": "unverified",
+              "margin": 0.4414065182209015
+            },
+            {
+              "family": "database-stores",
+              "actual": "partial",
+              "predicted": "unverified",
+              "margin": 0.4268355965614319
+            },
+            {
+              "family": "database-stores",
+              "actual": "unverified",
+              "predicted": "unverified",
+              "margin": 0.3235520124435425
+            },
+            {
+              "family": "kafka-use",
+              "actual": "supported",
+              "predicted": "supported",
+              "margin": 0.5688371658325195
+            },
+            {
+              "family": "kafka-use",
+              "actual": "partial",
+              "predicted": "supported",
+              "margin": 0.7359744310379028
+            },
+            {
+              "family": "kafka-use",
+              "actual": "unverified",
+              "predicted": "supported",
+              "margin": 0.7133646607398987
+            },
+            {
+              "family": "mobile-game",
+              "actual": "supported",
+              "predicted": "supported",
+              "margin": 0.7251121401786804
+            },
+            {
+              "family": "mobile-game",
+              "actual": "partial",
+              "predicted": "unverified",
+              "margin": 0.015354543924331665
+            },
+            {
+              "family": "mobile-game",
+              "actual": "unverified",
+              "predicted": "supported",
+              "margin": 0.23333700001239777
+            },
+            {
+              "family": "engine-duration",
+              "actual": "supported",
+              "predicted": "supported",
+              "margin": 0.5346165895462036
+            },
+            {
+              "family": "engine-duration",
+              "actual": "partial",
+              "predicted": "unverified",
+              "margin": 0.1666536033153534
+            },
+            {
+              "family": "engine-duration",
+              "actual": "unverified",
+              "predicted": "unverified",
+              "margin": 0.04089171439409256
+            },
+            {
+              "family": "small-project",
+              "actual": "supported",
+              "predicted": "supported",
+              "margin": 0.6866470575332642
+            },
+            {
+              "family": "small-project",
+              "actual": "partial",
+              "predicted": "supported",
+              "margin": 0.5349134206771851
+            },
+            {
+              "family": "small-project",
+              "actual": "unverified",
+              "predicted": "supported",
+              "margin": 0.49255263805389404
+            },
+            {
+              "family": "contract-operations",
+              "actual": "supported",
+              "predicted": "unverified",
+              "margin": 0.05316852033138275
+            },
+            {
+              "family": "contract-operations",
+              "actual": "partial",
+              "predicted": "supported",
+              "margin": 0.6204167008399963
+            },
+            {
+              "family": "contract-operations",
+              "actual": "unverified",
+              "predicted": "unverified",
+              "margin": 0.4146633744239807
+            },
+            {
+              "family": "engine-years",
+              "actual": "supported",
+              "predicted": "unverified",
+              "margin": 0.3542841970920563
+            },
+            {
+              "family": "engine-years",
+              "actual": "partial",
+              "predicted": "supported",
+              "margin": 0.7451995611190796
+            },
+            {
+              "family": "engine-years",
+              "actual": "unverified",
+              "predicted": "unverified",
+              "margin": 0.2960437536239624
+            },
+            {
+              "family": "batch-pipelines",
+              "actual": "supported",
+              "predicted": "supported",
+              "margin": 0.3588176369667053
+            },
+            {
+              "family": "batch-pipelines",
+              "actual": "partial",
+              "predicted": "unverified",
+              "margin": 0.47760048508644104
+            },
+            {
+              "family": "batch-pipelines",
+              "actual": "unverified",
+              "predicted": "unverified",
+              "margin": 0.3864820599555969
+            },
+            {
+              "family": "outbox-pattern",
+              "actual": "supported",
+              "predicted": "supported",
+              "margin": 0.3984558582305908
+            },
+            {
+              "family": "outbox-pattern",
+              "actual": "partial",
+              "predicted": "supported",
+              "margin": 0.7173645496368408
+            },
+            {
+              "family": "outbox-pattern",
+              "actual": "unverified",
+              "predicted": "unverified",
+              "margin": 0.4784528613090515
+            }
+          ]
+        }
+      }
+    },
+    "pair-duration-weak": {
+      "cutoffs": {
+        "supported": 0.03598320484161377,
+        "partial": 0.2665366530418396,
+        "unverified": null
+      },
+      "splits": {
+        "validation": {
+          "unfiltered": {
+            "total": 18,
+            "accepted": 18,
+            "abstained": 0,
+            "correct": 13,
+            "suggested_full": 5,
+            "false_full": 1,
+            "partial_found": 5
+          },
+          "selective": {
+            "total": 18,
+            "accepted": 10,
+            "abstained": 8,
+            "correct": 8,
+            "suggested_full": 5,
+            "false_full": 1,
+            "partial_found": 4
+          },
+          "predictions": [
+            {
+              "family": "ios-native",
+              "actual": "supported",
+              "predicted": "partial",
+              "margin": 0.19564032554626465
+            },
+            {
+              "family": "ios-native",
+              "actual": "partial",
+              "predicted": "partial",
+              "margin": 0.30276280641555786
+            },
+            {
+              "family": "ios-native",
+              "actual": "unverified",
+              "predicted": "unverified",
+              "margin": 3.646000385284424
+            },
+            {
+              "family": "android-ui",
+              "actual": "supported",
+              "predicted": "supported",
+              "margin": 0.057338595390319824
+            },
+            {
+              "family": "android-ui",
+              "actual": "partial",
+              "predicted": "partial",
+              "margin": 0.288165420293808
+            },
+            {
+              "family": "android-ui",
+              "actual": "unverified",
+              "predicted": "unverified",
+              "margin": 2.304875135421753
+            },
+            {
+              "family": "firmware-debug",
+              "actual": "supported",
+              "predicted": "unverified",
+              "margin": 1.217533826828003
+            },
+            {
+              "family": "firmware-debug",
+              "actual": "partial",
+              "predicted": "partial",
+              "margin": 0.1471407413482666
+            },
+            {
+              "family": "firmware-debug",
+              "actual": "unverified",
+              "predicted": "partial",
+              "margin": 0.2665366530418396
+            },
+            {
+              "family": "container-service",
+              "actual": "supported",
+              "predicted": "supported",
+              "margin": 0.09019112586975098
+            },
+            {
+              "family": "container-service",
+              "actual": "partial",
+              "predicted": "partial",
+              "margin": 0.31757277250289917
+            },
+            {
+              "family": "container-service",
+              "actual": "unverified",
+              "predicted": "supported",
+              "margin": 0.03598320484161377
+            },
+            {
+              "family": "infra-module",
+              "actual": "supported",
+              "predicted": "supported",
+              "margin": 0.14718639850616455
+            },
+            {
+              "family": "infra-module",
+              "actual": "partial",
+              "predicted": "partial",
+              "margin": 0.3179323077201843
+            },
+            {
+              "family": "infra-module",
+              "actual": "unverified",
+              "predicted": "unverified",
+              "margin": 0.10807321965694427
+            },
+            {
+              "family": "metrics-alert",
+              "actual": "supported",
+              "predicted": "supported",
+              "margin": 0.04094564914703369
+            },
+            {
+              "family": "metrics-alert",
+              "actual": "partial",
+              "predicted": "unverified",
+              "margin": 0.4758398234844208
+            },
+            {
+              "family": "metrics-alert",
+              "actual": "unverified",
+              "predicted": "unverified",
+              "margin": 0.509960949420929
+            }
+          ]
+        },
+        "source_validation": {
+          "unfiltered": {
+            "total": 30,
+            "accepted": 30,
+            "abstained": 0,
+            "correct": 12,
+            "suggested_full": 6,
+            "false_full": 4,
+            "partial_found": 5
+          },
+          "selective": {
+            "total": 30,
+            "accepted": 9,
+            "abstained": 21,
+            "correct": 4,
+            "suggested_full": 5,
+            "false_full": 3,
+            "partial_found": 2
+          },
+          "predictions": [
+            {
+              "family": "cloud-runtime",
+              "actual": "supported",
+              "predicted": "partial",
+              "margin": 0.07811236381530762
+            },
+            {
+              "family": "cloud-runtime",
+              "actual": "partial",
+              "predicted": "partial",
+              "margin": 0.1307286024093628
+            },
+            {
+              "family": "cloud-runtime",
+              "actual": "unverified",
+              "predicted": "unverified",
+              "margin": 3.0021514892578125
+            },
+            {
+              "family": "database-stores",
+              "actual": "supported",
+              "predicted": "unverified",
+              "margin": 1.7539198398590088
+            },
+            {
+              "family": "database-stores",
+              "actual": "partial",
+              "predicted": "unverified",
+              "margin": 1.430861234664917
+            },
+            {
+              "family": "database-stores",
+              "actual": "unverified",
+              "predicted": "partial",
+              "margin": 0.3773594796657562
+            },
+            {
+              "family": "kafka-use",
+              "actual": "supported",
+              "predicted": "partial",
+              "margin": 0.04942929744720459
+            },
+            {
+              "family": "kafka-use",
+              "actual": "partial",
+              "predicted": "supported",
+              "margin": 0.0716714859008789
+            },
+            {
+              "family": "kafka-use",
+              "actual": "unverified",
+              "predicted": "supported",
+              "margin": 0.07775306701660156
+            },
+            {
+              "family": "mobile-game",
+              "actual": "supported",
+              "predicted": "supported",
+              "margin": 0.04646658897399902
+            },
+            {
+              "family": "mobile-game",
+              "actual": "partial",
+              "predicted": "partial",
+              "margin": 0.26958370208740234
+            },
+            {
+              "family": "mobile-game",
+              "actual": "unverified",
+              "predicted": "partial",
+              "margin": 0.10920453071594238
+            },
+            {
+              "family": "engine-duration",
+              "actual": "supported",
+              "predicted": "partial",
+              "margin": 0.06427264213562012
+            },
+            {
+              "family": "engine-duration",
+              "actual": "partial",
+              "predicted": "partial",
+              "margin": 0.16720914840698242
+            },
+            {
+              "family": "engine-duration",
+              "actual": "unverified",
+              "predicted": "unverified",
+              "margin": 2.790945529937744
+            },
+            {
+              "family": "small-project",
+              "actual": "supported",
+              "predicted": "supported",
+              "margin": 0.13393688201904297
+            },
+            {
+              "family": "small-project",
+              "actual": "partial",
+              "predicted": "unverified",
+              "margin": 2.4225716590881348
+            },
+            {
+              "family": "small-project",
+              "actual": "unverified",
+              "predicted": "partial",
+              "margin": 0.07223302125930786
+            },
+            {
+              "family": "contract-operations",
+              "actual": "supported",
+              "predicted": "partial",
+              "margin": 0.2678581476211548
+            },
+            {
+              "family": "contract-operations",
+              "actual": "partial",
+              "predicted": "partial",
+              "margin": 0.0425572395324707
+            },
+            {
+              "family": "contract-operations",
+              "actual": "unverified",
+              "predicted": "unverified",
+              "margin": 3.821613311767578
+            },
+            {
+              "family": "engine-years",
+              "actual": "supported",
+              "predicted": "unverified",
+              "margin": 1.6199657917022705
+            },
+            {
+              "family": "engine-years",
+              "actual": "partial",
+              "predicted": "supported",
+              "margin": 0.1528087854385376
+            },
+            {
+              "family": "engine-years",
+              "actual": "unverified",
+              "predicted": "unverified",
+              "margin": 2.010517120361328
+            },
+            {
+              "family": "batch-pipelines",
+              "actual": "supported",
+              "predicted": "partial",
+              "margin": 0.20689067244529724
+            },
+            {
+              "family": "batch-pipelines",
+              "actual": "partial",
+              "predicted": "partial",
+              "margin": 0.36419618129730225
+            },
+            {
+              "family": "batch-pipelines",
+              "actual": "unverified",
+              "predicted": "unverified",
+              "margin": 1.4216147661209106
+            },
+            {
+              "family": "outbox-pattern",
+              "actual": "supported",
+              "predicted": "partial",
+              "margin": 0.0706934928894043
+            },
+            {
+              "family": "outbox-pattern",
+              "actual": "partial",
+              "predicted": "supported",
+              "margin": 0.029818058013916016
+            },
+            {
+              "family": "outbox-pattern",
+              "actual": "unverified",
+              "predicted": "partial",
+              "margin": 0.13822364807128906
+            }
+          ]
+        }
+      }
+    }
+  }
+}
