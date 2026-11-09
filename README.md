@@ -1,5 +1,7 @@
 # Job Radar · CV-to-Job Match
 
+[Try the public Hugging Face Space](https://huggingface.co/spaces/rezanicgil/job-radar-evidence) · [Browse the published dataset](https://huggingface.co/datasets/rezanicgil/job-radar-match-pilot)
+
 Job Radar is being designed for applicants who want to compare their CV with a Turkish, English or mixed-language software job posting. Each assessment will show the original requirement, the supporting CV passage and an English explanation. The first score measures the share of required technical conditions fully supported by the submitted CV.
 
 ## Example
@@ -42,7 +44,7 @@ Count each grouped requirement once. Only fully supported required conditions en
 
 [The pilot](data/pilot.jsonl) contains original, hand-authored examples for reviewing the labeling rules. Each record stores the posting language, the original text and a list of claims. A claim identifies the skills, their role in the posting and a verbatim evidence span. Grouped requirements distinguish `any_of` from `all_of`. An empty list means the sample contains no supported skill claims.
 
-Small fine-tuning runs and a development challenge are available under `scripts/` and `reports/`. Independent evaluation and a public Hugging Face demo remain planned.
+Small fine-tuning runs and a development challenge are available under `scripts/` and `reports/`. The public Static Space processes CVs in the browser and shows reviewer-confirmed coverage. Independent evaluation of the experimental classifier remains open.
 
 ## Review evidence in a local CV
 
