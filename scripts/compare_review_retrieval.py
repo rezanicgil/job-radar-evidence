@@ -35,7 +35,23 @@ def evidence_rows(report):
     return rows
 
 
-def compare(cv,report,candidate):
+def rerank_shortlist(requirement,passages,order,model,tokenizer):
+    from train_clause_attribution import clauses,encode
+    candidates=order[:10]
+    pairs=[(i,dict(requirement=requirement,cv_passage=part)) for i in candidates
+           for part in clauses(passages[i][1])]
+    scores={i:float("-inf") for i in candidates}
+    with torch.inference_mode():
+        for start in range(0,len(pairs),24):
+            batch=pairs[start:start+24]
+            logits=model(**encode([row for _,row in batch],tokenizer)).logits
+            values=logits.softmax(-1)[:,model.config.label2id["applicant"]].tolist()
+            for (i,_),value in zip(batch,values,strict=True):
+                scores[i]=max(scores[i],value)
+    return sorted(candidates,key=scores.get,reverse=True)+order[len(candidates):]
+
+
+def compare(cv,report,candidate,attribution=None):
     rows=evidence_rows(report)
     passages=list(dict.fromkeys(read_passages(cv)))
     texts=[r[0] for r in rows]+[text for _,text in passages]
@@ -46,10 +62,23 @@ def compare(cv,report,candidate):
         tokenizer=AutoTokenizer.from_pretrained(checkpoint,revision=revision,local_files_only=True)
         vectors=torch.cat([embeddings(model,tokenizer,texts[i:i+24]) for i in range(0,len(texts),24)])
         orders=(vectors[:len(rows)]@vectors[len(rows):].T).argsort(descending=True).tolist()
+        if name=="adapted":
+            adapted_orders=orders
         for record,order,(_,_,quotes) in zip(results,orders,rows,strict=True):
             ranks=[order.index(passages.index(q))+1 for q in quotes if q in passages]
             record[name+"_best_rank"]=min(ranks,default=None)
             record[name+"_all_ranks"]=ranks
+    methods=["base","adapted"]
+    if attribution:
+        from transformers import AutoModelForSequenceClassification
+        model=AutoModelForSequenceClassification.from_pretrained(attribution,local_files_only=True).eval()
+        tokenizer=AutoTokenizer.from_pretrained(attribution,local_files_only=True)
+        for record,order,(q,_,quotes) in zip(results,adapted_orders,rows,strict=True):
+            ranked=rerank_shortlist(q,passages,order,model,tokenizer)
+            ranks=[ranked.index(passages.index(p))+1 for p in quotes if p in passages]
+            record["reranked_best_rank"]=min(ranks,default=None)
+            record["reranked_all_ranks"]=ranks
+        methods.append("reranked")
     eligible=[r for r in results if r["selected_quotes"] and not r["unmatched_quotes"]]
     current_hash=hashlib.sha256(cv.read_bytes()).hexdigest()
     if report.lstrip().startswith("{"):
@@ -61,7 +90,7 @@ def compare(cv,report,candidate):
                 same_cv_input=current_hash==prior_hash if prior_hash else None,passages=len(passages),
                 conditions=len(rows),fully_reproducible_conditions=len(eligible),
                 summary={name:{f"top{k}":sum(r[name+"_best_rank"]<=k for r in eligible) for k in (1,3)}
-                         for name in ("base","adapted")},results=results)
+                         for name in methods},results=results)
 
 
 def main():
@@ -70,9 +99,10 @@ def main():
     parser.add_argument("review",type=Path)
     parser.add_argument("candidate",type=Path,help="Local encoder checkpoint")
     parser.add_argument("output",type=Path,help="Private JSON report destination")
+    parser.add_argument("--attribution",type=Path,help="Local clause classifier to rerank the adapted encoder's first ten passages")
     args=parser.parse_args()
     torch.set_num_threads(4)
-    result=compare(args.cv,args.review.read_text(encoding="utf-8"),args.candidate)
+    result=compare(args.cv,args.review.read_text(encoding="utf-8"),args.candidate,args.attribution)
     args.output.write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print(result["fully_reproducible_conditions"],result["summary"])
 
