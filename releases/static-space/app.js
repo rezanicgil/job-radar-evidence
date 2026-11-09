@@ -1,5 +1,6 @@
 import {counts} from "./review-counts.js";
 import {sourceUrl} from "./job-source.js";
+import {technologyWording} from "./technology-wording.js";
 const el=id=>document.getElementById(id);
 const add=(parent,tag,text)=>{const node=document.createElement(tag);node.textContent=text;parent.append(node);return node};
 const words=text=>new Set(text.toLocaleLowerCase().match(/[\p{L}\p{N}+#]+/gu)||[]);
@@ -607,6 +608,9 @@ el("form").onsubmit=async event=>{
       })
         .filter(x=>semantic||x.score>0).sort((a,b)=>b.score-a.score).slice(0,3);
       const card=add(el("results"),"article","");add(card,"h3",condition);
+      const wording=technologyWording(condition,vocabulary||[]);
+      if(wording)add(card,"small",(wording.mode==="any"?"Alternative technologies · evidence for one listed option can meet this part: ":
+        "Combined technologies · look for evidence covering each listed item: ")+wording.items.join(", ")+".");
       if(selectedPreferences.has(condition))add(card,"small","Optional condition · excluded from required coverage by default");
       const visible=ranked.map(item=>item.line);
       for(const {line,matches,excerpt} of ranked){

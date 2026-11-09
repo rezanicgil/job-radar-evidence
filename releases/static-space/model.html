@@ -11,6 +11,7 @@
 <label>Job requirement <select id="family"></select></label>
 <section id="examples" aria-live="polite"></section>
 <p><a id="model" href="https://huggingface.co/rezanicgil/job-radar-evidence-mentions-v3">Download the research classifier</a> · <a href="https://huggingface.co/datasets/rezanicgil/job-radar-match-pilot">Inspect the dataset</a></p>
+<p>In a separate bilingual diagnostic, twelve fictional passages demonstrate exactly one of two named technologies. Changing the condition from AND to OR changes the reference label from partial to supported. The classifier got both versions right for 0/12 passages. <a href="https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/technology-connectives.json">Inspect the paired predictions</a></p>
 <section><h2>Bilingual passage retrieval</h2>
 <p>A separate encoder was fine-tuned on 1,027 English–Turkish Python documentation pairs. On ten other documents, English queries retrieved the correct Turkish translation first in 674 of 721 cases, up from 669 with the base model. On ten job conditions searched against 30 fictional CV passages, all ten target passages kept their original rank.</p>
 <div id="retrieval"><p>Compare the first three results among 30 fictional CV passages. Each requirement has one passage that the authors marked as supporting it. Relevance of other families’ passages has not been judged.</p>

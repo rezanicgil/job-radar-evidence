@@ -1,0 +1,347 @@
+{
+  "source_sha256": "e7f0d6bbf661396e223aa8fc88158db71b2e7dcab7b8c4482c9171e0c72d52bb",
+  "model": "rezanicgil/job-radar-evidence-mentions-v3",
+  "revision": "790d07e85db18780d60e2d1a7ba4a968463fe257",
+  "families": 6,
+  "passages": 24,
+  "comparisons": 48,
+  "correct": {
+    "all": 11,
+    "any": 20
+  },
+  "should_switch": 12,
+  "switched": 4,
+  "switched_both_correct": 0,
+  "cases": [
+    {
+      "family": "broker-connective",
+      "evidenced": [
+        "Kafka",
+        "RabbitMQ"
+      ],
+      "all": {
+        "expected": "supported",
+        "predicted": "supported"
+      },
+      "any": {
+        "expected": "supported",
+        "predicted": "supported"
+      }
+    },
+    {
+      "family": "broker-connective",
+      "evidenced": [
+        "Kafka"
+      ],
+      "all": {
+        "expected": "partial",
+        "predicted": "unverified"
+      },
+      "any": {
+        "expected": "supported",
+        "predicted": "unverified"
+      }
+    },
+    {
+      "family": "broker-connective",
+      "evidenced": [
+        "RabbitMQ"
+      ],
+      "all": {
+        "expected": "partial",
+        "predicted": "unverified"
+      },
+      "any": {
+        "expected": "supported",
+        "predicted": "unverified"
+      }
+    },
+    {
+      "family": "broker-connective",
+      "evidenced": [],
+      "all": {
+        "expected": "unverified",
+        "predicted": "unverified"
+      },
+      "any": {
+        "expected": "unverified",
+        "predicted": "unverified"
+      }
+    },
+    {
+      "family": "interface-connective",
+      "evidenced": [
+        "SPI",
+        "I2C"
+      ],
+      "all": {
+        "expected": "supported",
+        "predicted": "supported"
+      },
+      "any": {
+        "expected": "supported",
+        "predicted": "supported"
+      }
+    },
+    {
+      "family": "interface-connective",
+      "evidenced": [
+        "SPI"
+      ],
+      "all": {
+        "expected": "partial",
+        "predicted": "unverified"
+      },
+      "any": {
+        "expected": "supported",
+        "predicted": "supported"
+      }
+    },
+    {
+      "family": "interface-connective",
+      "evidenced": [
+        "I2C"
+      ],
+      "all": {
+        "expected": "partial",
+        "predicted": "supported"
+      },
+      "any": {
+        "expected": "supported",
+        "predicted": "supported"
+      }
+    },
+    {
+      "family": "interface-connective",
+      "evidenced": [],
+      "all": {
+        "expected": "unverified",
+        "predicted": "unverified"
+      },
+      "any": {
+        "expected": "unverified",
+        "predicted": "unverified"
+      }
+    },
+    {
+      "family": "mobile-connective",
+      "evidenced": [
+        "Java",
+        "Kotlin"
+      ],
+      "all": {
+        "expected": "supported",
+        "predicted": "supported"
+      },
+      "any": {
+        "expected": "supported",
+        "predicted": "supported"
+      }
+    },
+    {
+      "family": "mobile-connective",
+      "evidenced": [
+        "Java"
+      ],
+      "all": {
+        "expected": "partial",
+        "predicted": "unverified"
+      },
+      "any": {
+        "expected": "supported",
+        "predicted": "supported"
+      }
+    },
+    {
+      "family": "mobile-connective",
+      "evidenced": [
+        "Kotlin"
+      ],
+      "all": {
+        "expected": "partial",
+        "predicted": "supported"
+      },
+      "any": {
+        "expected": "supported",
+        "predicted": "supported"
+      }
+    },
+    {
+      "family": "mobile-connective",
+      "evidenced": [],
+      "all": {
+        "expected": "unverified",
+        "predicted": "unverified"
+      },
+      "any": {
+        "expected": "unverified",
+        "predicted": "unverified"
+      }
+    },
+    {
+      "family": "cloud-connective",
+      "evidenced": [
+        "AWS",
+        "Azure"
+      ],
+      "all": {
+        "expected": "supported",
+        "predicted": "supported"
+      },
+      "any": {
+        "expected": "supported",
+        "predicted": "supported"
+      }
+    },
+    {
+      "family": "cloud-connective",
+      "evidenced": [
+        "AWS"
+      ],
+      "all": {
+        "expected": "partial",
+        "predicted": "supported"
+      },
+      "any": {
+        "expected": "supported",
+        "predicted": "supported"
+      }
+    },
+    {
+      "family": "cloud-connective",
+      "evidenced": [
+        "Azure"
+      ],
+      "all": {
+        "expected": "partial",
+        "predicted": "supported"
+      },
+      "any": {
+        "expected": "supported",
+        "predicted": "supported"
+      }
+    },
+    {
+      "family": "cloud-connective",
+      "evidenced": [],
+      "all": {
+        "expected": "unverified",
+        "predicted": "unverified"
+      },
+      "any": {
+        "expected": "unverified",
+        "predicted": "unverified"
+      }
+    },
+    {
+      "family": "ui-connective",
+      "evidenced": [
+        "SwiftUI",
+        "UIKit"
+      ],
+      "all": {
+        "expected": "supported",
+        "predicted": "unverified"
+      },
+      "any": {
+        "expected": "supported",
+        "predicted": "unverified"
+      }
+    },
+    {
+      "family": "ui-connective",
+      "evidenced": [
+        "SwiftUI"
+      ],
+      "all": {
+        "expected": "partial",
+        "predicted": "supported"
+      },
+      "any": {
+        "expected": "supported",
+        "predicted": "supported"
+      }
+    },
+    {
+      "family": "ui-connective",
+      "evidenced": [
+        "UIKit"
+      ],
+      "all": {
+        "expected": "partial",
+        "predicted": "unverified"
+      },
+      "any": {
+        "expected": "supported",
+        "predicted": "supported"
+      }
+    },
+    {
+      "family": "ui-connective",
+      "evidenced": [],
+      "all": {
+        "expected": "unverified",
+        "predicted": "unverified"
+      },
+      "any": {
+        "expected": "unverified",
+        "predicted": "unverified"
+      }
+    },
+    {
+      "family": "model-library-connective",
+      "evidenced": [
+        "PyTorch",
+        "TensorFlow"
+      ],
+      "all": {
+        "expected": "supported",
+        "predicted": "supported"
+      },
+      "any": {
+        "expected": "supported",
+        "predicted": "supported"
+      }
+    },
+    {
+      "family": "model-library-connective",
+      "evidenced": [
+        "PyTorch"
+      ],
+      "all": {
+        "expected": "partial",
+        "predicted": "unverified"
+      },
+      "any": {
+        "expected": "supported",
+        "predicted": "supported"
+      }
+    },
+    {
+      "family": "model-library-connective",
+      "evidenced": [
+        "TensorFlow"
+      ],
+      "all": {
+        "expected": "partial",
+        "predicted": "unverified"
+      },
+      "any": {
+        "expected": "supported",
+        "predicted": "unverified"
+      }
+    },
+    {
+      "family": "model-library-connective",
+      "evidenced": [],
+      "all": {
+        "expected": "unverified",
+        "predicted": "unverified"
+      },
+      "any": {
+        "expected": "unverified",
+        "predicted": "unverified"
+      }
+    }
+  ]
+}

@@ -28,6 +28,10 @@ configs:
     data_files:
       - split: validation
         path: turkish_section_index.jsonl
+  - config_name: technology_connectives
+    data_files:
+      - split: validation
+        path: technology_connectives.jsonl
   - config_name: python_translation_index
     data_files:
       - split: train
@@ -75,6 +79,8 @@ The default configuration contains 69 training pairs from 23 families and 18 dev
 The validation file begins with nine general challenge examples and ends with nine examples about Docker, Terraform and Prometheus. A passage can name the right technology while describing event logistics rather than engineering work. The [experiment predictions](https://github.com/rezanicgil/job-radar-evidence/blob/dba6189/reports/pair-mentions-v3.json) show where the model confused the two. The [original 54-row release](https://huggingface.co/datasets/rezanicgil/job-radar-match-pilot/tree/cb96ff522186ae77a3b9f1bada3ee32842d91b15) remains available for earlier experiments.
 
 ## How to read a row
+
+In `technology_connectives`, each of 24 fictional passages has two versions of the same requirement. One asks for both named technologies and one accepts either. The six families cover messaging, embedded drivers, Android, cloud deployment, iOS and model training. Twelve passages demonstrate exactly one option. The reference label changes from partial to supported when the requirement changes from AND to OR in these cases. The published classifier produced the correct change on 0/12. The references are project-authored. [Predictions per pair](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/technology-connectives.json)
 
 The `turkish_section_index` configuration contains 96 source pointers from five technical postings on one employer's board. Section headings distinguish qualifications, communication skills and teamwork expectations. Two bullets begin with “Tercihen” and are labelled as preferences. Each row contains its source URL, line number, document fingerprint and whitespace-normalized line fingerprint. Several postings repeat the same wording. These examples were used to develop the parsing rules and represent section-based references rather than independent human judgments. [Before and after counts](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/turkish-board-sections.json)
 

@@ -179,6 +179,20 @@ def check(page, origin):
     page.locator("#job").fill("İkili arama ağacı kullanarak arama geliştirmek.")
     page.locator("#find").click()
     expect(cards.first.get_by_role("link",name="binary search tree / İkili arama ağacı")).to_be_visible()
+    grouped=Path(__file__).resolve().parents[1]/"releases/match-pilot/technology_connectives.jsonl"
+    cases={r["family"]:r for line in grouped.read_text(encoding="utf-8").splitlines() if (r:=json.loads(line))}
+    ambiguous=["Use Kafka and RabbitMQ or a managed alternative.","Experience with Java, Kotlin or another language."]
+    conditions=[row[key] for row in cases.values() for key in ("all","any")]+ambiguous
+    page.locator("#job").fill("\n".join(conditions))
+    page.locator("#find").click()
+    expect(cards).to_have_count(len(conditions))
+    for i,_ in enumerate(cases):
+        expect(cards.nth(i*2)).to_contain_text("Combined technologies")
+        expect(cards.nth(i*2+1)).to_contain_text("Alternative technologies")
+        expect(cards.nth(i*2+1).locator(".assessment")).to_have_value("")
+    for i in range(len(conditions)-len(ambiguous),len(conditions)):
+        expect(cards.nth(i)).not_to_contain_text("look for evidence covering each")
+        expect(cards.nth(i)).not_to_contain_text("Alternative technologies")
     page.locator("#cv").fill("Veritabanı sorgularını iyileştirdim.\nMobil uygulama geliştirdim.")
     page.locator("#job").fill("Improve database query performance")
     page.locator("#find").click()
