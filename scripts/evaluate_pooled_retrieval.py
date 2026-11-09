@@ -43,6 +43,16 @@ def order(scores):
     return sorted(range(len(scores)),key=lambda i:-scores[i])
 
 
+def fuse_ranks(dense_order, lexical_scores):
+    scores=[0.0]*len(dense_order)
+    for rank,i in enumerate(dense_order,1):
+        scores[i]+=1/(60+rank)
+    for rank,i in enumerate(order(lexical_scores),1):
+        if lexical_scores[i]>0:
+            scores[i]+=1/(60+rank)
+    return scores
+
+
 def main():
     torch.set_num_threads(4)
     path=ROOT/"data/match_source_dev.jsonl"
@@ -63,12 +73,7 @@ def main():
         rankings[name]=(vectors[:len(queries)]@vectors[len(queries):].T).tolist()
         fused=[]
         for dense,lexical in zip(rankings[name],rankings["bm25"],strict=True):
-            scores=[0.0]*len(rows)
-            for rank,i in enumerate(order(dense),1):
-                scores[i]+=1/(60+rank)
-            for rank,i in enumerate(order(lexical),1):
-                if lexical[i]>0:scores[i]+=1/(60+rank)
-            fused.append(scores)
+            fused.append(fuse_ranks(order(dense),lexical))
         rankings[name+"_bm25"]=fused
     result={}
     for name,queries_scores in rankings.items():
