@@ -12,6 +12,8 @@ Choose **Try a bilingual example** in the public Space. The fictional CV documen
 
 Shared-word search includes 24 reviewed English and Turkish algorithm and data structure labels from [Wikidata](https://www.wikidata.org/wiki/Wikidata:Licensing). For example, “random forest” can retrieve a passage containing “rastgele orman.” The app links each matched pair to its concept and leaves the assessment to the reviewer. Matching uses whole phrases and does not cover every Turkish inflection. [Inspect the glossary](releases/static-space/bilingual-concepts.json)
 
+For a minimum experience requirement, select a CV passage about the same work under **Compare stated durations**. For example, “3+ years” covers a two-year minimum, while a four-year minimum needs more specific evidence. The comparison is saved with the review and the applicant decides the assessment.
+
 For a preferred skill, choose an **Optional** assessment to record supporting passages and a CV edit. The review keeps optional evidence separate from required coverage. Both exports and the comparison page preserve that distinction.
 
 Open **Inspect and select CV evidence** to review passages before choosing an assessment. The first three search results appear on the condition card. Under **Browse other CV passages**, lower-ranked candidates appear in search order, followed by passages without a term match. The JSON and text exports preserve the search rank of selected passages when they have one.

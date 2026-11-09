@@ -261,6 +261,33 @@ def check(page, origin):
     page.locator("#find").click()
     expect(cards.first).to_contain_text("The condition mentions 24 months.")
     expect(cards.first.locator(".assessment")).to_have_value("")
+    page.locator("#cv").fill("I used Flutter for 3+ years.\nFlutter ile üç yılı aşkın çalıştım.\nI tested Flutter 3 years ago.")
+    page.locator("#job").fill("Flutter için en az 2 yıl deneyim.\nAt least 4 years with Flutter.\nMore than 3 years with Flutter.")
+    page.locator("#find").click()
+    expect(cards).to_have_count(3)
+    for card in cards.all():
+        card.get_by_text("Compare stated durations").click()
+        expect(card.locator(".duration-result").locator("..").locator("option")).to_have_count(3)
+        card.get_by_label("CV passage",exact=True).select_option("0")
+        expect(card.locator(".assessment")).to_have_value("")
+    expect(cards.first.locator(".duration-result")).to_contain_text("at least 36 months · minimum: 24 months · the stated lower bound meets")
+    expect(cards.nth(1).locator(".duration-result")).to_contain_text("does not establish whether")
+    expect(cards.last.locator(".duration-result")).to_contain_text("does not establish whether")
+    cards.last.get_by_label("CV passage",exact=True).select_option("1")
+    expect(cards.last.locator(".duration-result")).to_contain_text("more than 36 months · minimum: more than 36 months · the stated lower bound meets")
+    cards.first.locator(".assessment").select_option("supported")
+    cards.first.locator(".evidence").first.check()
+    for card in cards.all()[1:]:
+        card.locator(".assessment").select_option("skip")
+    with page.expect_download() as event:
+        data_button.click()
+    bound_report=json.loads(event.value.path().read_text(encoding="utf8"))
+    assert "at least 36 months" in bound_report["conditions"][0]["duration"]
+    page.locator("#cv").fill("I used Flutter for exactly three years.")
+    page.locator("#find").click()
+    cards.last.get_by_text("Compare stated durations").click()
+    cards.last.get_by_label("CV passage",exact=True).select_option("0")
+    expect(cards.last.locator(".duration-result")).to_contain_text("equals the boundary and does not exceed it")
     grouped=Path(__file__).resolve().parents[1]/"releases/match-pilot/technology_connectives.jsonl"
     cases={r["family"]:r for line in grouped.read_text(encoding="utf-8").splitlines() if (r:=json.loads(line))}
     ambiguous=["Use Kafka and RabbitMQ or a managed alternative.","Experience with Java, Kotlin or another language."]

@@ -425,8 +425,8 @@ const numberWords=new Map(Object.entries({
 }));
 function statedDuration(text){
   // Skip ranges, approximations and compound amounts rather than picking one endpoint.
-  if(/\d\s*[-–]\s*\d|\b(?:about|nearly|almost|roughly|approximately|between|less than|up to)\b|yaklaşık|yaklasik|arasında|en fazla/i.test(text))return null;
-  const pattern=/(?<![\p{L}\p{N}.,])([\p{L}]+|\d+(?:[.,]\d+)?)(\s+(?:buçuk|and a half))?\s*\+?\s+(years?|months?|yıl(?:lık)?|sene(?:lik)?|ay(?:lık)?)(?!\p{L})/giu;
+  if(/\d\s*[-–]\s*\d|\b(?:about|nearly|almost|roughly|approximately|between|less than|fewer than|at most|up to)\b|yaklaşık|yaklasik|arasında|en fazla|yıldan az|aydan az/i.test(text))return null;
+  const pattern=/(?<![\p{L}\p{N}.,])([\p{L}]+|\d+(?:[.,]\d+)?)(\s+(?:buçuk|and a half))?\s*\+?\s+(years?|months?|yıl(?:lık|dan|ı)?|sene(?:lik|den|yi)?|ay(?:lık|dan|ı)?)(?!\p{L})/giu;
   const matches=[...text.matchAll(pattern)];
   if(matches.length!==1)return null;
   const [match]=matches;
@@ -435,22 +435,33 @@ function statedDuration(text){
   if(numberWords.has(preceding)||/(?:[-–]|\b(?:twenty|thirty|forty|fifty|sixty|yirmi|kırk|elli)|\d+\s+to)\s*$/iu.test(text.slice(0,match.index)))return null;
   const value=numberWords.get(word)??Number(word.replace(",","."));
   if(!Number.isFinite(value)||value<=0)return null;
+  const before=text.slice(0,match.index);
+  const after=text.slice(match.index+match[0].length);
+  if(/(?:[<≤]=?|\bunder|\bwithin)\s*$/iu.test(before))return null;
+  const rangeStart=before.match(/([\p{L}\d]+)\s+(?:to|or|veya|ile)\s*$/iu);
+  if(rangeStart&&(numberWords.has(rangeStart[1].toLowerCase())||/^\d+$/u.test(rangeStart[1])))return null;
+  if(/^\s*(?:ago\b|or less|or fewer|at most|önce|içinde|civarında|kadar|to\s+\d|[-–]\s*\d)/iu.test(after))return null;
+  const strict=/(?:\bmore than|\bover|>)\s*$/iu.test(before)||/^\s*(?:aşkın|fazla(?:sı)?)(?!\p{L})/iu.test(after);
+  const inclusive=match[0].includes("+")||/(?:\bat least|\bminimum(?: of)?|en az|asgari|>=|≥)\s*$/iu.test(before)||
+    /^\s*(?:or more|(?:ve )?üzeri|veya daha fazla|(?:ve )?üstü)(?!\p{L})/iu.test(after);
+  if(/^(?:yıldan|yılı|seneden|seneyi|aydan|ayı)$/iu.test(match[3])&&!strict)return null;
+  const bound=strict?"more than":inclusive?"at least":"exact";
   const years=/^(year|yıl|sene)/iu.test(match[3]);
-  return {phrase:match[0],months:Math.round((value+(match[2]?0.5:0))*(years?12:1)*100)/100};
+  return {phrase:match[0],bound,months:Math.round((value+(match[2]?0.5:0))*(years?12:1)*100)/100};
 }
 function durationComparison(card,condition,lines){
   const target=statedDuration(condition);
   if(!target)return;
-  const matches=lines.filter(line=>!/(?:\d\s*\+|\bat least\b|\bmore than\b|en az|üzeri(?!\p{L})|yılı aşkın)/iu.test(line.text))
-    .map(line=>({line,duration:statedDuration(line.text)})).filter(x=>x.duration);
+  const matches=lines.map(line=>({line,duration:statedDuration(line.text)})).filter(x=>x.duration);
   if(!matches.length){
-    add(card,"small","The condition mentions "+target.months+" months. The CV has no exact duration this tool can compare. Check dates and experience for the specific work.");
+    add(card,"small","The condition mentions "+target.months+" months. No comparable duration was found in the CV. Check dates and experience for the specific work.");
     return;
   }
   const panel=add(card,"details","");
   add(panel,"summary","Compare stated durations");
   add(panel,"p","Use this comparison when the condition specifies a minimum. Choose a CV passage about the same work.");
   const picker=add(add(panel,"label","CV passage "),"select","");
+  picker.setAttribute("aria-label","CV passage");
   picker.add(new Option("Select a passage",""));
   matches.forEach(({line},i)=>picker.add(new Option("Page "+line.page+" · "+line.text,String(i))));
   const output=add(panel,"p","");output.className="duration-result";output.setAttribute("aria-live","polite");
@@ -458,8 +469,19 @@ function durationComparison(card,condition,lines){
     if(!picker.value){output.textContent="";return}
     const {line,duration}=matches[Number(picker.value)];
     const gap=Math.round((duration.months-target.months)*100)/100;
-    output.textContent="Page "+line.page+" · "+line.text+" | CV: "+duration.months+" months · minimum: "+target.months+" months · "+
-      (gap===0?"equal duration":Math.abs(gap)+" months "+(gap<0?"below":"above")+" the minimum")+".";
+    const targetStrict=target.bound==="more than";
+    const measured=(duration.bound==="exact"?"":duration.bound+" ")+duration.months+" months";
+    const minimum=(targetStrict?"more than ":"")+target.months+" months";
+    let finding;
+    if(duration.bound==="exact"){
+      if(targetStrict&&gap===0)finding="the stated duration equals the boundary and does not exceed it";
+      else finding=gap===0?"equal duration":Math.abs(gap)+" months "+(gap<0?"below":"above")+" the minimum";
+    }else{
+      const sufficient=gap>0||(gap===0&&(!targetStrict||duration.bound==="more than"));
+      finding=sufficient?"the stated lower bound meets the minimum":
+        "the stated lower bound does not establish whether the minimum is met";
+    }
+    output.textContent="Page "+line.page+" · "+line.text+" | CV: "+measured+" · minimum: "+minimum+" · "+finding+".";
   };
 }
 function addEvidencePicker(card,lines,suggestions,ranks){
