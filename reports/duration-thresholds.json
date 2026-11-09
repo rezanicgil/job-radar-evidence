@@ -1,0 +1,72 @@
+{
+  "pair-mentions-v3": {
+    "both_correct": 0,
+    "predictions": [
+      {
+        "skill": "C++",
+        "met": "supported",
+        "short": "supported"
+      },
+      {
+        "skill": "Scala",
+        "met": "supported",
+        "short": "supported"
+      },
+      {
+        "skill": "Clojure",
+        "met": "supported",
+        "short": "supported"
+      },
+      {
+        "skill": "Fortran",
+        "met": "supported",
+        "short": "supported"
+      },
+      {
+        "skill": "Lua",
+        "met": "supported",
+        "short": "supported"
+      },
+      {
+        "skill": "Go",
+        "met": "supported",
+        "short": "supported"
+      }
+    ]
+  },
+  "pair-duration-weak": {
+    "both_correct": 0,
+    "predictions": [
+      {
+        "skill": "C++",
+        "met": "partial",
+        "short": "partial"
+      },
+      {
+        "skill": "Scala",
+        "met": "unverified",
+        "short": "unverified"
+      },
+      {
+        "skill": "Clojure",
+        "met": "partial",
+        "short": "partial"
+      },
+      {
+        "skill": "Fortran",
+        "met": "supported",
+        "short": "supported"
+      },
+      {
+        "skill": "Lua",
+        "met": "partial",
+        "short": "supported"
+      },
+      {
+        "skill": "Go",
+        "met": "partial",
+        "short": "partial"
+      }
+    ]
+  }
+}

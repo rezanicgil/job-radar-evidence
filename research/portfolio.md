@@ -8,7 +8,7 @@ The project combines Turkish and English evidence retrieval, PDF and TXT parsing
 
 The [public Hugging Face demo](https://huggingface.co/spaces/rezanicgil/job-radar-evidence) uses a Static Space. It processes documents in the visitor's browser and offers shared-term retrieval or optional multilingual semantic search. The server-based Docker build remains available for local deployments.
 
-The synthetic training release contains 54 examples from 18 scenario families. The first broader technology snapshot includes 61 readable descriptions from title-tagged postings. Readers can inspect source links and employer counts. The snapshot reflects the tracked sources on November 9, 2026.
+The published research classifier trained on 69 synthetic pairs. A separate English job-sentence selector trained on 3,943 deduplicated SkillSpan sentences and reached 75.0% F1 on its 2,404-sentence test split. The November 9 snapshot includes 69 readable descriptions among 72 title-tagged postings. Readers can inspect source links, employer counts and collection coverage.
 
 ## A decision based on evaluation
 
@@ -16,12 +16,14 @@ On nine synthetic development examples, the calibrated similarity baseline retur
 
 ## CV project entry
 
-Built an open-source bilingual CV evidence-review prototype, fine-tuned multilingual encoders on 54 synthetic requirement–CV pairs, and shipped a Docker-tested interface with source-linked technology counts for a Türkiye software-jobs snapshot.
+Built and published a bilingual CV evidence-review tool on Hugging Face. Fine-tuned a multilingual evidence classifier, evaluated it on requirements from ten employers, and shipped a local English job-sentence selector with 75.0% test F1 on SkillSpan.
 
 ## Reproduce and inspect
 
 - [Training release](../releases/match-pilot/README.md)
 - [Pair-encoder development results](../reports/pair-v2.json)
 - [Similarity baseline](../reports/similarity-challenge.json)
-- [Market sources and counts](../reports/skill-mentions-2026-11-09T142802Z.md)
+- [Published classifier](https://huggingface.co/rezanicgil/job-radar-evidence-mentions-v3)
+- [Employer-sourced evaluation](../reports/source-pairs-dev.json)
+- [Market sources and counts](../reports/skill-mentions-2026-11-09T153754Z.md)
 - [Container verification](https://github.com/rezanicgil/job-radar-evidence/actions/runs/42635859051)

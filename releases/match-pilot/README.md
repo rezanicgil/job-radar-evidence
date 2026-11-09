@@ -16,6 +16,10 @@ configs:
     data_files:
       - split: validation
         path: source_validation.jsonl
+  - config_name: duration_weak
+    data_files:
+      - split: train
+        path: duration_weak.jsonl
 ---
 
 # Job Radar · Bilingual CV evidence pilot
@@ -46,6 +50,10 @@ Keep related CVs, translations, rephrasings and templates together when creating
 The mentions-v3 checkpoint recovered 4/6 supported examples (66.7%), 0/6 partial examples (0%) and 5/6 unverified examples (83.3%). Overall accuracy was 9/18 (50%). Each class percentage measures recall against the synthetic author labels. [Per-example predictions](https://github.com/rezanicgil/job-radar-evidence/blob/dba6189/reports/pair-mentions-v3.json)
 
 The next collection batch contains 12 unlabeled fictional passages paired with requirements adapted from three source postings. They are available for review outside these splits. Further collection should sample independent employers and requirements across software specialties, include all four Turkish/English language directions, and prioritize passages that share a technology name while differing in responsibility or deployment experience. [Review candidates](https://github.com/rezanicgil/job-radar-evidence/blob/a7f1a6d/research/source_grounded_candidates.jsonl)
+
+### Duration augmentation
+
+The separate `duration_weak` training configuration contains 768 programmatically labeled pairs derived from eight technology names, three thresholds, four durations, technical versus administrative work, and four language directions. The same passage can support a two-year requirement and partially support a five-year requirement. These are 128 distinct CV strings and 48 distinct requirements with substantial template reuse. Treat the 768 rows as controlled augmentation, not independent observations. Administrative examples account for half of the rows.
 
 ### Source-grounded development configuration
 

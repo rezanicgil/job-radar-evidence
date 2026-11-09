@@ -1,0 +1,81 @@
+{
+  "base": "MoritzLaurer/multilingual-MiniLMv2-L6-mnli-xnli",
+  "revision": "0a71e92a985b6e1ad1828cf67ce9c459639c1dca",
+  "seed": 17,
+  "epochs": 6,
+  "batch_size": 6,
+  "generated_pairs": 768,
+  "training_pairs": 837,
+  "generated_sha256": "b7f24ef5399e6dab86db53b76594d954edf0f60b28655cbbbda2748c9b72c6bc",
+  "file_hashes": {
+    "train": "0e896bbd591a0285d8950e67dbdfb73a27010af6fd3e0e78d65715f2b1541359",
+    "validation": "49da97b44bf3481186d23837b950a9df9c5558dcbebdd41dffb93ce3f010bbcf",
+    "source_validation": "63c7e8c11f8924892e40537fd89c24f5503d4b8f50c94eac1ff5e91b019fe08f"
+  },
+  "splits": {
+    "validation": {
+      "correct": 13,
+      "total": 18,
+      "partial_found": 5,
+      "false_support": 1,
+      "predictions": [
+        "partial",
+        "partial",
+        "unverified",
+        "supported",
+        "partial",
+        "unverified",
+        "unverified",
+        "partial",
+        "partial",
+        "supported",
+        "partial",
+        "supported",
+        "supported",
+        "partial",
+        "unverified",
+        "supported",
+        "unverified",
+        "unverified"
+      ]
+    },
+    "source_validation": {
+      "correct": 12,
+      "total": 30,
+      "partial_found": 5,
+      "false_support": 4,
+      "predictions": [
+        "partial",
+        "partial",
+        "unverified",
+        "unverified",
+        "unverified",
+        "partial",
+        "partial",
+        "supported",
+        "supported",
+        "supported",
+        "partial",
+        "partial",
+        "partial",
+        "partial",
+        "unverified",
+        "supported",
+        "unverified",
+        "partial",
+        "partial",
+        "partial",
+        "unverified",
+        "unverified",
+        "supported",
+        "unverified",
+        "partial",
+        "partial",
+        "unverified",
+        "partial",
+        "supported",
+        "partial"
+      ]
+    }
+  }
+}
