@@ -68,6 +68,11 @@ def read_passages(path, *, posting=False):
 
 
 def rank_passages(passages, requirements):
+    # Rank each distinct passage once and cite the page where it first appears.
+    first_by_text = {}
+    for page, text in passages:
+        first_by_text.setdefault(" ".join(text.split()), (page, text))
+    passages = list(first_by_text.values())
     with _MODEL_LOAD_LOCK:
         tokenizer, model = load_encoder()
     texts = requirements + [line for _, line in passages]
