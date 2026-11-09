@@ -2,6 +2,8 @@
 
 [Try the public Hugging Face Space](https://huggingface.co/spaces/rezanicgil/job-radar-evidence) · [Browse the published dataset](https://huggingface.co/datasets/rezanicgil/job-radar-match-pilot)
 
+[Download the fine-tuned research layers and run the bilingual classifier locally](https://huggingface.co/rezanicgil/job-radar-evidence-mentions-v3). The research model reproduced nine of 18 development labels and incorrectly credited full support twice. The public Space uses reviewer-confirmed coverage.
+
 Job Radar is being designed for applicants who want to compare their CV with a Turkish, English or mixed-language software job posting. Each assessment will show the original requirement, the supporting CV passage and an English explanation. The first score measures the share of required technical conditions fully supported by the submitted CV.
 
 ## Example
