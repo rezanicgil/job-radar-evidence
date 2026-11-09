@@ -5,6 +5,7 @@ import hashlib
 import json
 from pathlib import Path
 import shutil
+from check_language_switch import language_views
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCES = {
@@ -46,6 +47,8 @@ def main():
     shutil.copyfile(ROOT/"data/compound_evidence_dev.jsonl",destination/"compound_evidence.jsonl")
     shutil.copyfile(ROOT/"data/actor_evidence_dev.jsonl",destination/"actor_evidence.jsonl")
     shutil.copyfile(ROOT/"data/actor_evidence_train.jsonl",destination/"actor_evidence_train.jsonl")
+    (destination/"language_switch.jsonl").write_bytes(
+        "".join(json.dumps(r,ensure_ascii=False)+"\n" for r in language_views()).encode("utf-8"))
     switches = [dict(family=c["family"],cv_passage=c["cv_passage"],requirement=requirement,label=label)
                 for c in cases for label,requirement in c["requirements"].items()]
     (destination/"requirement_switch.jsonl").write_bytes(
