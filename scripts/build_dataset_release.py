@@ -49,6 +49,7 @@ def main():
     shutil.copyfile(ROOT/"data/actor_evidence_train.jsonl",destination/"actor_evidence_train.jsonl")
     (destination/"language_switch.jsonl").write_bytes(
         "".join(json.dumps(r,ensure_ascii=False)+"\n" for r in language_views()).encode("utf-8"))
+    shutil.copyfile(ROOT/"data/language_switch_train.jsonl",destination/"language_switch_train.jsonl")
     switches = [dict(family=c["family"],cv_passage=c["cv_passage"],requirement=requirement,label=label)
                 for c in cases for label,requirement in c["requirements"].items()]
     (destination/"requirement_switch.jsonl").write_bytes(

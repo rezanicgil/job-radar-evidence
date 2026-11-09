@@ -42,6 +42,8 @@ configs:
         path: actor_evidence.jsonl
   - config_name: language_switch
     data_files:
+      - split: train
+        path: language_switch_train.jsonl
       - split: validation
         path: language_switch.jsonl
 ---
@@ -55,6 +57,8 @@ The validation file begins with nine general challenge examples and ends with ni
 ## How to read a row
 
 The `language_switch` diagnostic renders each of the same 30 source-grounded pairs in four language combinations (job/CV). These 120 views contain 30 distinct underlying cases. Translations are project-authored and lack independent review. Across the four views the released model changed its prediction for 17/30 cases. Accuracy was 13/30 for Turkish/Turkish, 16/30 for Turkish/English, 13/30 for English/Turkish and 11/30 for English/English. Keep translations in one partition whenever training or evaluating. [Results per pair](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/language-switch.json)
+
+The training split of this configuration contains four language views for each of 15 original default-training cases. All 60 views belong to training families, separate from the 30 evaluation cases. Training source links refer to the original synthetic data; evaluation links refer to the employers that inspired the requirements. [Equal-step augmentation experiment](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/language-training.json)
 
 The `actor_evidence` view annotates the same 18 compound cases at component level. Its 36 rows identify who performed the required action: `applicant`, `other`, or `not_stated`. These are project-authored judgments. Nonempty quotes come directly from the fictional passage, with zero-based Unicode character offsets and an exclusive end. When no one is described performing the required action, the quote and offsets are null. Do not pool these rows with the compound cases as independent observations. The released classifier marked five of six actions attributed to someone else as fully supported for the applicant. [Error breakdown](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/actor-evidence.json)
 
