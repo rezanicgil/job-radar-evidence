@@ -10,6 +10,8 @@ Start with original fictional examples and document their provenance. Maintain a
 
 Two reviewers independently label a sample before adjudication. Record class counts, agreement, Cohen's kappa, disputed examples and guideline revisions. Reserve reviewed, naturalistic evaluation cases with documented permission. Keep all variants sharing a CV, posting or template family in one split, including translations and paraphrases. Check near duplicates before freezing splits. Treat all previously inspected pilot cases as development data.
 
+Reviewers each save private JSONL rows with an `id`, `label` and verbatim `evidence` from the supplied CV passage. Use null evidence for an unverified case when no relevant passage exists. Compare the completed files locally using `python scripts/reviewer_agreement.py packet.jsonl first.jsonl second.jsonl`. The script reports raw agreement, Cohen's kappa and disagreements for adjudication. A null kappa indicates that the expected chance agreement is one. Place private review outputs under the ignored `runs/` directory.
+
 ## Comparisons and selection
 
 Run the skill-presence baseline, an untuned multilingual instruction model with a fixed prompt, then the same checkpoint with a supervised adapter. Record immutable model and data revisions, environment, prompt, seeds, hyperparameters, training time, memory and hardware. Inspect the upstream license and measure a short local run before selecting a checkpoint. [LoRA](https://arxiv.org/abs/2106.09685) is a candidate for efficient adaptation. Check feasibility on the available GPU.
