@@ -11,31 +11,20 @@ This research checkpoint predicts how well a single CV passage supports a single
 
 ## Run locally
 
-Install PyTorch, Transformers, safetensors and huggingface_hub. Pass the CV passage first and the job requirement second.
+Download [predict.py](https://huggingface.co/rezanicgil/job-radar-evidence-mentions-v3/resolve/main/predict.py) and [requirements.txt](https://huggingface.co/rezanicgil/job-radar-evidence-mentions-v3/resolve/main/requirements.txt) into one folder. From that folder, using a Python environment with the listed dependencies, run:
 
-```python
-import torch
-from huggingface_hub import hf_hub_download
-from safetensors.torch import load_file
-from transformers import AutoModelForSequenceClassification, AutoTokenizer
-
-base = "MoritzLaurer/multilingual-MiniLMv2-L6-mnli-xnli"
-revision = "0a71e92a985b6e1ad1828cf67ce9c459639c1dca"
-model = AutoModelForSequenceClassification.from_pretrained(base, revision=revision).eval()
-tokenizer = AutoTokenizer.from_pretrained(base, revision=revision)
-path = hf_hub_download("rezanicgil/job-radar-evidence-mentions-v3", "trained_layers.safetensors")
-state = model.state_dict()
-state.update(load_file(path))
-model.load_state_dict(state, strict=True)
-labels = ["partial", "supported", "unverified"]
-model.config.id2label = dict(enumerate(labels))
-model.config.label2id = {v: k for k, v in enumerate(labels)}
-inputs = tokenizer("Docker ile sipariş servisini konteynerde çalıştırdım.",
-                   "Run a backend service with Docker.", truncation=True, max_length=128,
-                   return_tensors="pt")
-with torch.inference_mode():
-    print(labels[model(**inputs).logits.argmax(-1).item()])
+```console
+python -m pip install -r requirements.txt
+python predict.py --example
 ```
+
+The first prediction fetches a pinned base model, tokenizer and verified research weights. To enter your own Turkish or English pair interactively, run `python predict.py`. With the files cached, `python predict.py --offline` also accepts your pair without fetching weights. In a pipeline, supply one UTF-8 JSON object on standard input:
+
+```json
+{"cv_passage":"I monitored the deployment while a colleague released the app.","requirement":"Release a mobile app to production."}
+```
+
+Output contains the predicted research label, immutable model revision, input token count and a truncation flag. The pair is processed on your computer. Use short passages: the model sees at most 128 tokens including special tokens. [Browse 30 recorded predictions](https://rezanicgil-job-radar-evidence.static.hf.space/model.html).
 
 ## Training and limitations
 
