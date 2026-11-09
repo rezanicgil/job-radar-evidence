@@ -194,8 +194,8 @@ function englishCandidates(text,model){
   const candidates=new Map();
   let section="unknown";
   const preferred=/^(?:preferred (?:skills|qualifications|experience)|nice[- ]to[- ]haves?|bonus (?:points(?: if you)?|skills)|it['’]s a plus if you)$/i;
-  const required=/^(?:(?:(?:minimum|required|basic|essential|technical|expected|job) )?(?:skills|qualifications(?: & experience)?|requirements)|must[- ]haves?|what you(?:['’]ll| will) (?:need|bring)|what we['’]re looking for|the profile we['’]re looking for)$/i;
-  const other=/^(?:benefits(?: and perks)?|compensation & benefits|perks(?: and benefits)?|more about perks of working with us|what we offer|about (?:us|the company)|how (?:to apply|we work)|position overview)$/i;
+  const required=/^(?:(?:(?:minimum|required|basic|essential|technical|expected|job) )?(?:skills|qualifications(?: & experience)?|requirements)|must[- ]haves?|about your experience|what you(?:['’]ll| will) (?:need|bring)|what we['’]re looking for|the profile we['’]re looking for)$/i;
+  const other=/^(?:benefits(?: and perks)?|compensation & benefits|perks(?: and benefits)?|more about perks of working with us|what we offer|why (?:you should )?join(?: [^:?!]+)?|about (?:us|the company)|how (?:to apply|we work)|position overview)$/i;
   const duties=/^(?:(?:key |job )?responsibilities|what you(?:['’]ll| will) do)$/i;
   for(const raw of text.split(/\r?\n/)){
     let line=raw.trim().replace(/^[•*–-]\s*/,"");

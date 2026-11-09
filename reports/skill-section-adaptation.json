@@ -1,0 +1,17 @@
+{
+  "training_index_sha256": "7d7afa3b823b828800470464d00f5e290aca07f5e0c20863f797cfddf6569df5",
+  "seed": 31,
+  "epochs": 1,
+  "training_class_counts": [
+    29,
+    361
+  ],
+  "skillspan_test": {
+    "tp": 374,
+    "fp": 418,
+    "fn": 508,
+    "precision": 0.4722222222222222,
+    "recall": 0.42403628117913833,
+    "f1": 0.44683393070489846
+  }
+}

@@ -20,6 +20,10 @@ configs:
     data_files:
       - split: validation
         path: posting_modality.jsonl
+  - config_name: mobile_section_index
+    data_files:
+      - split: validation
+        path: mobile_section_index.jsonl
   - config_name: section_training_index
     data_files:
       - split: train
@@ -96,6 +100,8 @@ In `connective_actors`, each of 18 project-authored fictional CV passages mentio
 
 
 The `turkish_section_index` configuration contains 96 source pointers from five technical postings on one employer's board. Section headings distinguish qualifications, communication skills and teamwork expectations. Two bullets begin with “Tercihen” and are labelled as preferences. Each row contains its source URL, line number, document fingerprint and whitespace-normalized line fingerprint. Several postings repeat the same wording. These examples were used to develop the parsing rules and represent section-based references rather than independent human judgments. [Before and after counts](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/turkish-board-sections.json)
+
+The `mobile_section_index` contains 40 distinct English bullets referenced by 114 pointers to seven Yassir and Lucida AI mobile job URLs. Each row records the normalized-text digest, original heading, one-based list position and source URL. It excludes exact text present in the section training index or SkillSpan and external reference data. Employer headings provide weak labels, not human annotation. The same Flutter copy occurs on several URLs. The source pages may change. [Held-out evaluation](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/mobile-section-transfer.json)
 
 The `section_training_index` links 390 deduplicated English job bullets to their sources in 33 Türkiye-location postings from nine employer boards. Each record identifies a bullet by its one-based position, heading and normalized text fingerprint. Qualification and preference headings supplied 361 weak positives. Benefits and employer-offer headings supplied 29 weak negatives. These labels describe the section and have no independent human skill annotations. The sample is employer-selected and weighted toward positive examples. [Aggregate word counts](https://github.com/rezanicgil/job-radar-evidence/blob/main/data/section-training-counts.json) · [Comparison with SkillSpan-only training](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/section-training.json)
 
