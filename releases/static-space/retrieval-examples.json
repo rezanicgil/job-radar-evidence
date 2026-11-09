@@ -1,0 +1,862 @@
+{
+  "kafka-use": {
+    "tr-tr": {
+      "requirement": "Kafka ile çalışma deneyimi göstermek.",
+      "target": "Kafka consumer'larının bakımını yaptım ve bir broker yeniden başlatıldıktan sonra atlanan offset'lerin izini sürdüm.",
+      "source": "https://jobs.lever.co/dataroid/465b481e-26df-47e5-965e-bd622761c789",
+      "before": {
+        "rank": 4,
+        "top3": [
+          "Kafka ekibinin ofis taşınmasını planladım.",
+          "Kafka üzerine eğitim aldım, ilk consumer uygulamam henüz tasarım aşamasında.",
+          "Kafka ile sipariş mesajları gönderdim. Outbox veya saga uygulamadım."
+        ]
+      },
+      "after": {
+        "rank": 4,
+        "top3": [
+          "Kafka ekibinin ofis taşınmasını planladım.",
+          "Kafka üzerine eğitim aldım, ilk consumer uygulamam henüz tasarım aşamasında.",
+          "Kafka ile sipariş mesajları gönderdim. Outbox veya saga uygulamadım."
+        ]
+      }
+    },
+    "tr-en": {
+      "requirement": "Kafka ile çalışma deneyimi göstermek.",
+      "target": "I maintained Kafka consumers and traced missed offsets after a broker restart.",
+      "source": "https://jobs.lever.co/dataroid/465b481e-26df-47e5-965e-bd622761c789",
+      "before": {
+        "rank": 4,
+        "top3": [
+          "I planned the Kafka team's office move.",
+          "I took a Kafka course; my first consumer application is still at the design stage.",
+          "I sent order messages through Kafka. I did not implement outbox or saga."
+        ]
+      },
+      "after": {
+        "rank": 4,
+        "top3": [
+          "I planned the Kafka team's office move.",
+          "I sent order messages through Kafka. I did not implement outbox or saga.",
+          "I took a Kafka course; my first consumer application is still at the design stage."
+        ]
+      }
+    },
+    "en-tr": {
+      "requirement": "Demonstrate experience working with Kafka.",
+      "target": "Kafka consumer'larının bakımını yaptım ve bir broker yeniden başlatıldıktan sonra atlanan offset'lerin izini sürdüm.",
+      "source": "https://jobs.lever.co/dataroid/465b481e-26df-47e5-965e-bd622761c789",
+      "before": {
+        "rank": 4,
+        "top3": [
+          "Kafka ekibinin ofis taşınmasını planladım.",
+          "Kafka üzerine eğitim aldım, ilk consumer uygulamam henüz tasarım aşamasında.",
+          "Kafka ile sipariş mesajları gönderdim. Outbox veya saga uygulamadım."
+        ]
+      },
+      "after": {
+        "rank": 4,
+        "top3": [
+          "Kafka ekibinin ofis taşınmasını planladım.",
+          "Kafka üzerine eğitim aldım, ilk consumer uygulamam henüz tasarım aşamasında.",
+          "Kafka ile sipariş mesajları gönderdim. Outbox veya saga uygulamadım."
+        ]
+      }
+    },
+    "en-en": {
+      "requirement": "Demonstrate experience working with Kafka.",
+      "target": "I maintained Kafka consumers and traced missed offsets after a broker restart.",
+      "source": "https://jobs.lever.co/dataroid/465b481e-26df-47e5-965e-bd622761c789",
+      "before": {
+        "rank": 4,
+        "top3": [
+          "I planned the Kafka team's office move.",
+          "I took a Kafka course; my first consumer application is still at the design stage.",
+          "I sent order messages through Kafka. I did not implement outbox or saga."
+        ]
+      },
+      "after": {
+        "rank": 4,
+        "top3": [
+          "I planned the Kafka team's office move.",
+          "I took a Kafka course; my first consumer application is still at the design stage.",
+          "I sent order messages through Kafka. I did not implement outbox or saga."
+        ]
+      }
+    }
+  },
+  "engine-years": {
+    "tr-tr": {
+      "requirement": "Bir oyun motoruyla en az dört yıllık deneyim göstermek.",
+      "target": "Godot'ta dört buçuk yıl boyunca savaş sistemleri geliştirdim.",
+      "source": "https://jobs.lever.co/spyke-games/2b9ed21c-b392-4d09-916d-fd8ecacc05b7",
+      "before": {
+        "rank": 4,
+        "top3": [
+          "Beş yıl boyunca bir oyun festivali düzenledim.",
+          "Unity ile üç yıl mobil oyun geliştirdim.",
+          "Unity'de nesne yönelimli C# ile 26 ay boyunca oynanış sistemleri geliştirdim."
+        ]
+      },
+      "after": {
+        "rank": 4,
+        "top3": [
+          "Beş yıl boyunca bir oyun festivali düzenledim.",
+          "Unity ile üç yıl mobil oyun geliştirdim.",
+          "Unity'de nesne yönelimli C# ile 26 ay boyunca oynanış sistemleri geliştirdim."
+        ]
+      }
+    },
+    "tr-en": {
+      "requirement": "Bir oyun motoruyla en az dört yıllık deneyim göstermek.",
+      "target": "I spent four and a half years implementing combat systems in Godot.",
+      "source": "https://jobs.lever.co/spyke-games/2b9ed21c-b392-4d09-916d-fd8ecacc05b7",
+      "before": {
+        "rank": 2,
+        "top3": [
+          "I organized a games festival for five years.",
+          "I spent four and a half years implementing combat systems in Godot.",
+          "I developed mobile games using Unity for three years."
+        ]
+      },
+      "after": {
+        "rank": 2,
+        "top3": [
+          "I organized a games festival for five years.",
+          "I spent four and a half years implementing combat systems in Godot.",
+          "I developed mobile games using Unity for three years."
+        ]
+      }
+    },
+    "en-tr": {
+      "requirement": "Demonstrate at least four years of experience with a game engine.",
+      "target": "Godot'ta dört buçuk yıl boyunca savaş sistemleri geliştirdim.",
+      "source": "https://jobs.lever.co/spyke-games/2b9ed21c-b392-4d09-916d-fd8ecacc05b7",
+      "before": {
+        "rank": 10,
+        "top3": [
+          "Unity'de nesne yönelimli C# ile 26 ay boyunca oynanış sistemleri geliştirdim.",
+          "Unity ile geliştirilmiş bir mobil oyunun pazarlama metnini yerelleştirdim.",
+          "Unity ile üç yıl mobil oyun geliştirdim."
+        ]
+      },
+      "after": {
+        "rank": 10,
+        "top3": [
+          "Unity'de nesne yönelimli C# ile 26 ay boyunca oynanış sistemleri geliştirdim.",
+          "Unity ile üç yıl mobil oyun geliştirdim.",
+          "Unity ile geliştirilmiş bir mobil oyunun pazarlama metnini yerelleştirdim."
+        ]
+      }
+    },
+    "en-en": {
+      "requirement": "Demonstrate at least four years of experience with a game engine.",
+      "target": "I spent four and a half years implementing combat systems in Godot.",
+      "source": "https://jobs.lever.co/spyke-games/2b9ed21c-b392-4d09-916d-fd8ecacc05b7",
+      "before": {
+        "rank": 8,
+        "top3": [
+          "I implemented gameplay systems using object-oriented C# in Unity for 26 months.",
+          "I organized a games festival for five years.",
+          "I developed mobile games using Unity for three years."
+        ]
+      },
+      "after": {
+        "rank": 8,
+        "top3": [
+          "I implemented gameplay systems using object-oriented C# in Unity for 26 months.",
+          "I organized a games festival for five years.",
+          "I developed mobile games using Unity for three years."
+        ]
+      }
+    }
+  },
+  "cloud-runtime": {
+    "tr-tr": {
+      "requirement": "Docker kullanmak ve konteynerleri Cloud Run veya GKE üzerinde çalıştırmak.",
+      "target": "Docker ile paketlediğim ödeme servisini Cloud Run'a dağıttım.",
+      "source": "https://jobs.lever.co/appnation/5b136345-11cd-475f-b512-b691ed9de8a3",
+      "before": {
+        "rank": 1,
+        "top3": [
+          "Docker ile paketlediğim ödeme servisini Cloud Run'a dağıttım.",
+          "Docker imajlarını hazırladım. Buluta dağıtımı platform ekibi yönetti.",
+          "Bir Cloud Run atölyesinin bütçesini yönettim."
+        ]
+      },
+      "after": {
+        "rank": 1,
+        "top3": [
+          "Docker ile paketlediğim ödeme servisini Cloud Run'a dağıttım.",
+          "Docker imajlarını hazırladım. Buluta dağıtımı platform ekibi yönetti.",
+          "Bir Cloud Run atölyesinin bütçesini yönettim."
+        ]
+      }
+    },
+    "tr-en": {
+      "requirement": "Docker kullanmak ve konteynerleri Cloud Run veya GKE üzerinde çalıştırmak.",
+      "target": "I deployed the payment service I packaged with Docker to Cloud Run.",
+      "source": "https://jobs.lever.co/appnation/5b136345-11cd-475f-b512-b691ed9de8a3",
+      "before": {
+        "rank": 1,
+        "top3": [
+          "I deployed the payment service I packaged with Docker to Cloud Run.",
+          "I prepared the Docker images. The platform team managed the cloud deployment.",
+          "I managed the budget for a Cloud Run workshop."
+        ]
+      },
+      "after": {
+        "rank": 1,
+        "top3": [
+          "I deployed the payment service I packaged with Docker to Cloud Run.",
+          "I prepared the Docker images. The platform team managed the cloud deployment.",
+          "I managed the budget for a Cloud Run workshop."
+        ]
+      }
+    },
+    "en-tr": {
+      "requirement": "Use Docker and run containers on Cloud Run or GKE.",
+      "target": "Docker ile paketlediğim ödeme servisini Cloud Run'a dağıttım.",
+      "source": "https://jobs.lever.co/appnation/5b136345-11cd-475f-b512-b691ed9de8a3",
+      "before": {
+        "rank": 1,
+        "top3": [
+          "Docker ile paketlediğim ödeme servisini Cloud Run'a dağıttım.",
+          "Docker imajlarını hazırladım. Buluta dağıtımı platform ekibi yönetti.",
+          "Bir Cloud Run atölyesinin bütçesini yönettim."
+        ]
+      },
+      "after": {
+        "rank": 1,
+        "top3": [
+          "Docker ile paketlediğim ödeme servisini Cloud Run'a dağıttım.",
+          "Docker imajlarını hazırladım. Buluta dağıtımı platform ekibi yönetti.",
+          "Bir Cloud Run atölyesinin bütçesini yönettim."
+        ]
+      }
+    },
+    "en-en": {
+      "requirement": "Use Docker and run containers on Cloud Run or GKE.",
+      "target": "I deployed the payment service I packaged with Docker to Cloud Run.",
+      "source": "https://jobs.lever.co/appnation/5b136345-11cd-475f-b512-b691ed9de8a3",
+      "before": {
+        "rank": 1,
+        "top3": [
+          "I deployed the payment service I packaged with Docker to Cloud Run.",
+          "I prepared the Docker images. The platform team managed the cloud deployment.",
+          "I managed the budget for a Cloud Run workshop."
+        ]
+      },
+      "after": {
+        "rank": 1,
+        "top3": [
+          "I deployed the payment service I packaged with Docker to Cloud Run.",
+          "I prepared the Docker images. The platform team managed the cloud deployment.",
+          "I managed the budget for a Cloud Run workshop."
+        ]
+      }
+    }
+  },
+  "database-stores": {
+    "tr-tr": {
+      "requirement": "Hem ilişkisel hem de ilişkisel olmayan veritabanlarıyla doğrudan çalışmak.",
+      "target": "PostgreSQL'de ödeme işlemlerini uyguladım ve ürün belgelerini MongoDB'de sakladım.",
+      "source": "https://jobs.lever.co/commencis/138e71e4-2c35-451b-9c7e-967a609e100d",
+      "before": {
+        "rank": 4,
+        "top3": [
+          "Müşteri verisini PostgreSQL'de modelledim. MongoDB ekibin başka bir servisindeydi.",
+          "Veritabanı ekibimiz için görüşmeleri koordine ettim.",
+          "Spark veri mühendisliği kursu için tercüman ayarladım."
+        ]
+      },
+      "after": {
+        "rank": 3,
+        "top3": [
+          "Veritabanı ekibimiz için görüşmeleri koordine ettim.",
+          "Müşteri verisini PostgreSQL'de modelledim. MongoDB ekibin başka bir servisindeydi.",
+          "PostgreSQL'de ödeme işlemlerini uyguladım ve ürün belgelerini MongoDB'de sakladım."
+        ]
+      }
+    },
+    "tr-en": {
+      "requirement": "Hem ilişkisel hem de ilişkisel olmayan veritabanlarıyla doğrudan çalışmak.",
+      "target": "Implemented checkout transactions in PostgreSQL and stored product documents in MongoDB.",
+      "source": "https://jobs.lever.co/commencis/138e71e4-2c35-451b-9c7e-967a609e100d",
+      "before": {
+        "rank": 5,
+        "top3": [
+          "I coordinated interviews for our database team.",
+          "I modeled customer data in PostgreSQL. MongoDB was in another service belonging to the team.",
+          "I booked interpreters for a Spark data engineering course."
+        ]
+      },
+      "after": {
+        "rank": 6,
+        "top3": [
+          "I coordinated interviews for our database team.",
+          "I modeled customer data in PostgreSQL. MongoDB was in another service belonging to the team.",
+          "I booked interpreters for a Spark data engineering course."
+        ]
+      }
+    },
+    "en-tr": {
+      "requirement": "Work directly with both relational and nonrelational databases.",
+      "target": "PostgreSQL'de ödeme işlemlerini uyguladım ve ürün belgelerini MongoDB'de sakladım.",
+      "source": "https://jobs.lever.co/commencis/138e71e4-2c35-451b-9c7e-967a609e100d",
+      "before": {
+        "rank": 2,
+        "top3": [
+          "Müşteri verisini PostgreSQL'de modelledim. MongoDB ekibin başka bir servisindeydi.",
+          "PostgreSQL'de ödeme işlemlerini uyguladım ve ürün belgelerini MongoDB'de sakladım.",
+          "Spark veri mühendisliği kursu için tercüman ayarladım."
+        ]
+      },
+      "after": {
+        "rank": 2,
+        "top3": [
+          "Müşteri verisini PostgreSQL'de modelledim. MongoDB ekibin başka bir servisindeydi.",
+          "PostgreSQL'de ödeme işlemlerini uyguladım ve ürün belgelerini MongoDB'de sakladım.",
+          "Sipariş olaylarını RabbitMQ'ya yayımlayan bir transactional outbox uyguladım."
+        ]
+      }
+    },
+    "en-en": {
+      "requirement": "Work directly with both relational and nonrelational databases.",
+      "target": "Implemented checkout transactions in PostgreSQL and stored product documents in MongoDB.",
+      "source": "https://jobs.lever.co/commencis/138e71e4-2c35-451b-9c7e-967a609e100d",
+      "before": {
+        "rank": 3,
+        "top3": [
+          "I coordinated interviews for our database team.",
+          "I modeled customer data in PostgreSQL. MongoDB was in another service belonging to the team.",
+          "Implemented checkout transactions in PostgreSQL and stored product documents in MongoDB."
+        ]
+      },
+      "after": {
+        "rank": 3,
+        "top3": [
+          "I coordinated interviews for our database team.",
+          "I modeled customer data in PostgreSQL. MongoDB was in another service belonging to the team.",
+          "Implemented checkout transactions in PostgreSQL and stored product documents in MongoDB."
+        ]
+      }
+    }
+  },
+  "mobile-game": {
+    "tr-tr": {
+      "requirement": "C# ve Unity ile mobil oyun geliştirmek.",
+      "target": "Android için Unity'de C# ile bulmaca oyunu geliştirdim.",
+      "source": "https://jobs.lever.co/dreamgames/2a650ecb-c187-4e06-a50a-ee23866a952e",
+      "before": {
+        "rank": 1,
+        "top3": [
+          "Android için Unity'de C# ile bulmaca oyunu geliştirdim.",
+          "Unity ve C# kullanarak masaüstü için bir bulmaca oyunu geliştirdim.",
+          "Unity ile geliştirilmiş bir mobil oyunun pazarlama metnini yerelleştirdim."
+        ]
+      },
+      "after": {
+        "rank": 1,
+        "top3": [
+          "Android için Unity'de C# ile bulmaca oyunu geliştirdim.",
+          "Unity ile geliştirilmiş bir mobil oyunun pazarlama metnini yerelleştirdim.",
+          "Unity ve C# kullanarak masaüstü için bir bulmaca oyunu geliştirdim."
+        ]
+      }
+    },
+    "tr-en": {
+      "requirement": "C# ve Unity ile mobil oyun geliştirmek.",
+      "target": "I built an Android puzzle game in Unity using C#.",
+      "source": "https://jobs.lever.co/dreamgames/2a650ecb-c187-4e06-a50a-ee23866a952e",
+      "before": {
+        "rank": 1,
+        "top3": [
+          "I built an Android puzzle game in Unity using C#.",
+          "I built a desktop puzzle game using Unity and C#.",
+          "I developed mobile games using Unity for three years."
+        ]
+      },
+      "after": {
+        "rank": 1,
+        "top3": [
+          "I built an Android puzzle game in Unity using C#.",
+          "I developed mobile games using Unity for three years.",
+          "I built a desktop puzzle game using Unity and C#."
+        ]
+      }
+    },
+    "en-tr": {
+      "requirement": "Build mobile games using C# and Unity.",
+      "target": "Android için Unity'de C# ile bulmaca oyunu geliştirdim.",
+      "source": "https://jobs.lever.co/dreamgames/2a650ecb-c187-4e06-a50a-ee23866a952e",
+      "before": {
+        "rank": 1,
+        "top3": [
+          "Android için Unity'de C# ile bulmaca oyunu geliştirdim.",
+          "Unity ve C# kullanarak masaüstü için bir bulmaca oyunu geliştirdim.",
+          "Unity ile geliştirilmiş bir mobil oyunun pazarlama metnini yerelleştirdim."
+        ]
+      },
+      "after": {
+        "rank": 1,
+        "top3": [
+          "Android için Unity'de C# ile bulmaca oyunu geliştirdim.",
+          "Unity ve C# kullanarak masaüstü için bir bulmaca oyunu geliştirdim.",
+          "Unity ile üç yıl mobil oyun geliştirdim."
+        ]
+      }
+    },
+    "en-en": {
+      "requirement": "Build mobile games using C# and Unity.",
+      "target": "I built an Android puzzle game in Unity using C#.",
+      "source": "https://jobs.lever.co/dreamgames/2a650ecb-c187-4e06-a50a-ee23866a952e",
+      "before": {
+        "rank": 1,
+        "top3": [
+          "I built an Android puzzle game in Unity using C#.",
+          "I developed mobile games using Unity for three years.",
+          "I built a desktop puzzle game using Unity and C#."
+        ]
+      },
+      "after": {
+        "rank": 1,
+        "top3": [
+          "I built an Android puzzle game in Unity using C#.",
+          "I developed mobile games using Unity for three years.",
+          "I built a desktop puzzle game using Unity and C#."
+        ]
+      }
+    }
+  },
+  "outbox-pattern": {
+    "tr-tr": {
+      "requirement": "Bir mesaj aracısıyla outbox gibi dağıtık mesajlaşma kalıplarını uygulamak.",
+      "target": "Sipariş olaylarını RabbitMQ'ya yayımlayan bir transactional outbox uyguladım.",
+      "source": "https://jobs.lever.co/trendyol-go/cc14ebf0-e169-4f5b-a7ac-3441b76457b1",
+      "before": {
+        "rank": 1,
+        "top3": [
+          "Sipariş olaylarını RabbitMQ'ya yayımlayan bir transactional outbox uyguladım.",
+          "Kafka ile sipariş mesajları gönderdim. Outbox veya saga uygulamadım.",
+          "Flink ile günlük sipariş verisini dönüştürüp veri ambarına yükleyen hattı kurdum."
+        ]
+      },
+      "after": {
+        "rank": 1,
+        "top3": [
+          "Sipariş olaylarını RabbitMQ'ya yayımlayan bir transactional outbox uyguladım.",
+          "Kafka ile sipariş mesajları gönderdim. Outbox veya saga uygulamadım.",
+          "Unity ile geliştirilmiş bir mobil oyunun pazarlama metnini yerelleştirdim."
+        ]
+      }
+    },
+    "tr-en": {
+      "requirement": "Bir mesaj aracısıyla outbox gibi dağıtık mesajlaşma kalıplarını uygulamak.",
+      "target": "I implemented a transactional outbox that published order events to RabbitMQ.",
+      "source": "https://jobs.lever.co/trendyol-go/cc14ebf0-e169-4f5b-a7ac-3441b76457b1",
+      "before": {
+        "rank": 1,
+        "top3": [
+          "I implemented a transactional outbox that published order events to RabbitMQ.",
+          "I sent order messages through Kafka. I did not implement outbox or saga.",
+          "I built an Android puzzle game in Unity using C#."
+        ]
+      },
+      "after": {
+        "rank": 1,
+        "top3": [
+          "I implemented a transactional outbox that published order events to RabbitMQ.",
+          "I sent order messages through Kafka. I did not implement outbox or saga.",
+          "I built an Android puzzle game in Unity using C#."
+        ]
+      }
+    },
+    "en-tr": {
+      "requirement": "Implement distributed messaging patterns such as outbox using a message broker.",
+      "target": "Sipariş olaylarını RabbitMQ'ya yayımlayan bir transactional outbox uyguladım.",
+      "source": "https://jobs.lever.co/trendyol-go/cc14ebf0-e169-4f5b-a7ac-3441b76457b1",
+      "before": {
+        "rank": 1,
+        "top3": [
+          "Sipariş olaylarını RabbitMQ'ya yayımlayan bir transactional outbox uyguladım.",
+          "Müşteri verisini PostgreSQL'de modelledim. MongoDB ekibin başka bir servisindeydi.",
+          "Flink ile günlük sipariş verisini dönüştürüp veri ambarına yükleyen hattı kurdum."
+        ]
+      },
+      "after": {
+        "rank": 1,
+        "top3": [
+          "Sipariş olaylarını RabbitMQ'ya yayımlayan bir transactional outbox uyguladım.",
+          "Kafka ile sipariş mesajları gönderdim. Outbox veya saga uygulamadım.",
+          "Müşteri verisini PostgreSQL'de modelledim. MongoDB ekibin başka bir servisindeydi."
+        ]
+      }
+    },
+    "en-en": {
+      "requirement": "Implement distributed messaging patterns such as outbox using a message broker.",
+      "target": "I implemented a transactional outbox that published order events to RabbitMQ.",
+      "source": "https://jobs.lever.co/trendyol-go/cc14ebf0-e169-4f5b-a7ac-3441b76457b1",
+      "before": {
+        "rank": 1,
+        "top3": [
+          "I implemented a transactional outbox that published order events to RabbitMQ.",
+          "I sent order messages through Kafka. I did not implement outbox or saga.",
+          "Implemented checkout transactions in PostgreSQL and stored product documents in MongoDB."
+        ]
+      },
+      "after": {
+        "rank": 1,
+        "top3": [
+          "I implemented a transactional outbox that published order events to RabbitMQ.",
+          "I sent order messages through Kafka. I did not implement outbox or saga.",
+          "I modeled customer data in PostgreSQL. MongoDB was in another service belonging to the team."
+        ]
+      }
+    }
+  },
+  "small-project": {
+    "tr-tr": {
+      "requirement": "Go veya Python ile en az bir proje geliştirmek.",
+      "target": "Python ile tren seferlerini bildiren küçük bir uygulama yazdım.",
+      "source": "https://jobs.lever.co/insiderone/176f6234-e706-492e-a984-9eee80d28d22",
+      "before": {
+        "rank": 1,
+        "top3": [
+          "Python ile tren seferlerini bildiren küçük bir uygulama yazdım.",
+          "Python uygulamalarının tanıtım videolarını seslendirdim.",
+          "Bir atölyede ekip arkadaşımın Python uygulamasındaki bir fonksiyonun hatasını giderdim."
+        ]
+      },
+      "after": {
+        "rank": 1,
+        "top3": [
+          "Python ile tren seferlerini bildiren küçük bir uygulama yazdım.",
+          "Python uygulamalarının tanıtım videolarını seslendirdim.",
+          "Bir Cloud Run atölyesinin bütçesini yönettim."
+        ]
+      }
+    },
+    "tr-en": {
+      "requirement": "Go veya Python ile en az bir proje geliştirmek.",
+      "target": "I wrote a small Python application that announces train services.",
+      "source": "https://jobs.lever.co/insiderone/176f6234-e706-492e-a984-9eee80d28d22",
+      "before": {
+        "rank": 1,
+        "top3": [
+          "I wrote a small Python application that announces train services.",
+          "I debugged one function in a colleague's Python app during a workshop.",
+          "I narrated promotional videos for Python applications."
+        ]
+      },
+      "after": {
+        "rank": 1,
+        "top3": [
+          "I wrote a small Python application that announces train services.",
+          "I narrated promotional videos for Python applications.",
+          "I debugged one function in a colleague's Python app during a workshop."
+        ]
+      }
+    },
+    "en-tr": {
+      "requirement": "Build at least one project using either Go or Python.",
+      "target": "Python ile tren seferlerini bildiren küçük bir uygulama yazdım.",
+      "source": "https://jobs.lever.co/insiderone/176f6234-e706-492e-a984-9eee80d28d22",
+      "before": {
+        "rank": 1,
+        "top3": [
+          "Python ile tren seferlerini bildiren küçük bir uygulama yazdım.",
+          "Python uygulamalarının tanıtım videolarını seslendirdim.",
+          "Bir atölyede ekip arkadaşımın Python uygulamasındaki bir fonksiyonun hatasını giderdim."
+        ]
+      },
+      "after": {
+        "rank": 1,
+        "top3": [
+          "Python ile tren seferlerini bildiren küçük bir uygulama yazdım.",
+          "Python uygulamalarının tanıtım videolarını seslendirdim.",
+          "Bir Cloud Run atölyesinin bütçesini yönettim."
+        ]
+      }
+    },
+    "en-en": {
+      "requirement": "Build at least one project using either Go or Python.",
+      "target": "I wrote a small Python application that announces train services.",
+      "source": "https://jobs.lever.co/insiderone/176f6234-e706-492e-a984-9eee80d28d22",
+      "before": {
+        "rank": 1,
+        "top3": [
+          "I wrote a small Python application that announces train services.",
+          "I debugged one function in a colleague's Python app during a workshop.",
+          "I narrated promotional videos for Python applications."
+        ]
+      },
+      "after": {
+        "rank": 1,
+        "top3": [
+          "I wrote a small Python application that announces train services.",
+          "I debugged one function in a colleague's Python app during a workshop.",
+          "I managed the budget for a Cloud Run workshop."
+        ]
+      }
+    }
+  },
+  "batch-pipelines": {
+    "tr-tr": {
+      "requirement": "Flink veya Spark gibi dağıtık bir çerçeve ile ETL ya da ELT hatları geliştirmek.",
+      "target": "Flink ile günlük sipariş verisini dönüştürüp veri ambarına yükleyen hattı kurdum.",
+      "source": "https://jobs.lever.co/trendyol/eaa523a4-5e9e-4b4a-b674-ee7906be309c",
+      "before": {
+        "rank": 3,
+        "top3": [
+          "Spark veri mühendisliği kursu için tercüman ayarladım.",
+          "Tek bir makinede pandas kullanarak bir ETL hattı geliştirdim.",
+          "Flink ile günlük sipariş verisini dönüştürüp veri ambarına yükleyen hattı kurdum."
+        ]
+      },
+      "after": {
+        "rank": 3,
+        "top3": [
+          "Tek bir makinede pandas kullanarak bir ETL hattı geliştirdim.",
+          "Spark veri mühendisliği kursu için tercüman ayarladım.",
+          "Flink ile günlük sipariş verisini dönüştürüp veri ambarına yükleyen hattı kurdum."
+        ]
+      }
+    },
+    "tr-en": {
+      "requirement": "Flink veya Spark gibi dağıtık bir çerçeve ile ETL ya da ELT hatları geliştirmek.",
+      "target": "I built a Flink pipeline that transforms daily order data and loads it into the warehouse.",
+      "source": "https://jobs.lever.co/trendyol/eaa523a4-5e9e-4b4a-b674-ee7906be309c",
+      "before": {
+        "rank": 1,
+        "top3": [
+          "I built a Flink pipeline that transforms daily order data and loads it into the warehouse.",
+          "I implemented an ETL pipeline in pandas on a single machine.",
+          "I booked interpreters for a Spark data engineering course."
+        ]
+      },
+      "after": {
+        "rank": 1,
+        "top3": [
+          "I built a Flink pipeline that transforms daily order data and loads it into the warehouse.",
+          "I implemented an ETL pipeline in pandas on a single machine.",
+          "I booked interpreters for a Spark data engineering course."
+        ]
+      }
+    },
+    "en-tr": {
+      "requirement": "Build ETL or ELT pipelines using a distributed framework such as Flink or Spark.",
+      "target": "Flink ile günlük sipariş verisini dönüştürüp veri ambarına yükleyen hattı kurdum.",
+      "source": "https://jobs.lever.co/trendyol/eaa523a4-5e9e-4b4a-b674-ee7906be309c",
+      "before": {
+        "rank": 2,
+        "top3": [
+          "Spark veri mühendisliği kursu için tercüman ayarladım.",
+          "Flink ile günlük sipariş verisini dönüştürüp veri ambarına yükleyen hattı kurdum.",
+          "Tek bir makinede pandas kullanarak bir ETL hattı geliştirdim."
+        ]
+      },
+      "after": {
+        "rank": 2,
+        "top3": [
+          "Spark veri mühendisliği kursu için tercüman ayarladım.",
+          "Flink ile günlük sipariş verisini dönüştürüp veri ambarına yükleyen hattı kurdum.",
+          "Tek bir makinede pandas kullanarak bir ETL hattı geliştirdim."
+        ]
+      }
+    },
+    "en-en": {
+      "requirement": "Build ETL or ELT pipelines using a distributed framework such as Flink or Spark.",
+      "target": "I built a Flink pipeline that transforms daily order data and loads it into the warehouse.",
+      "source": "https://jobs.lever.co/trendyol/eaa523a4-5e9e-4b4a-b674-ee7906be309c",
+      "before": {
+        "rank": 1,
+        "top3": [
+          "I built a Flink pipeline that transforms daily order data and loads it into the warehouse.",
+          "I implemented an ETL pipeline in pandas on a single machine.",
+          "I booked interpreters for a Spark data engineering course."
+        ]
+      },
+      "after": {
+        "rank": 1,
+        "top3": [
+          "I built a Flink pipeline that transforms daily order data and loads it into the warehouse.",
+          "I implemented an ETL pipeline in pandas on a single machine.",
+          "I booked interpreters for a Spark data engineering course."
+        ]
+      }
+    }
+  },
+  "contract-operations": {
+    "tr-tr": {
+      "requirement": "Solidity kullanarak akıllı sözleşmeler geliştirmek ve işletmek.",
+      "target": "Solidity ile bir emanet sözleşmesi yazdım, dağıttım ve yayımlandıktan sonra olaylarını izledim.",
+      "source": "https://jobs.lever.co/getmidas/0f746779-a756-49b0-94f4-d1c5232ee94c",
+      "before": {
+        "rank": 1,
+        "top3": [
+          "Solidity ile bir emanet sözleşmesi yazdım, dağıttım ve yayımlandıktan sonra olaylarını izledim.",
+          "Solidity ile yerel bir sözleşme yazdım. Dağıtım ve işletim aşamalarında görev almadım.",
+          "Harici bir Solidity denetimi için faturaları hazırladım."
+        ]
+      },
+      "after": {
+        "rank": 1,
+        "top3": [
+          "Solidity ile bir emanet sözleşmesi yazdım, dağıttım ve yayımlandıktan sonra olaylarını izledim.",
+          "Solidity ile yerel bir sözleşme yazdım. Dağıtım ve işletim aşamalarında görev almadım.",
+          "Harici bir Solidity denetimi için faturaları hazırladım."
+        ]
+      }
+    },
+    "tr-en": {
+      "requirement": "Solidity kullanarak akıllı sözleşmeler geliştirmek ve işletmek.",
+      "target": "I wrote a Solidity escrow contract, deployed it and monitored its events after release.",
+      "source": "https://jobs.lever.co/getmidas/0f746779-a756-49b0-94f4-d1c5232ee94c",
+      "before": {
+        "rank": 1,
+        "top3": [
+          "I wrote a Solidity escrow contract, deployed it and monitored its events after release.",
+          "I prepared invoices for an external Solidity audit.",
+          "I wrote a local contract in Solidity. I did not take part in deployment or operations."
+        ]
+      },
+      "after": {
+        "rank": 1,
+        "top3": [
+          "I wrote a Solidity escrow contract, deployed it and monitored its events after release.",
+          "I prepared invoices for an external Solidity audit.",
+          "I wrote a local contract in Solidity. I did not take part in deployment or operations."
+        ]
+      }
+    },
+    "en-tr": {
+      "requirement": "Develop and operate smart contracts using Solidity.",
+      "target": "Solidity ile bir emanet sözleşmesi yazdım, dağıttım ve yayımlandıktan sonra olaylarını izledim.",
+      "source": "https://jobs.lever.co/getmidas/0f746779-a756-49b0-94f4-d1c5232ee94c",
+      "before": {
+        "rank": 2,
+        "top3": [
+          "Solidity ile yerel bir sözleşme yazdım. Dağıtım ve işletim aşamalarında görev almadım.",
+          "Solidity ile bir emanet sözleşmesi yazdım, dağıttım ve yayımlandıktan sonra olaylarını izledim.",
+          "Harici bir Solidity denetimi için faturaları hazırladım."
+        ]
+      },
+      "after": {
+        "rank": 2,
+        "top3": [
+          "Solidity ile yerel bir sözleşme yazdım. Dağıtım ve işletim aşamalarında görev almadım.",
+          "Solidity ile bir emanet sözleşmesi yazdım, dağıttım ve yayımlandıktan sonra olaylarını izledim.",
+          "Harici bir Solidity denetimi için faturaları hazırladım."
+        ]
+      }
+    },
+    "en-en": {
+      "requirement": "Develop and operate smart contracts using Solidity.",
+      "target": "I wrote a Solidity escrow contract, deployed it and monitored its events after release.",
+      "source": "https://jobs.lever.co/getmidas/0f746779-a756-49b0-94f4-d1c5232ee94c",
+      "before": {
+        "rank": 1,
+        "top3": [
+          "I wrote a Solidity escrow contract, deployed it and monitored its events after release.",
+          "I prepared invoices for an external Solidity audit.",
+          "I wrote a local contract in Solidity. I did not take part in deployment or operations."
+        ]
+      },
+      "after": {
+        "rank": 1,
+        "top3": [
+          "I wrote a Solidity escrow contract, deployed it and monitored its events after release.",
+          "I prepared invoices for an external Solidity audit.",
+          "I wrote a local contract in Solidity. I did not take part in deployment or operations."
+        ]
+      }
+    }
+  },
+  "engine-duration": {
+    "tr-tr": {
+      "requirement": "Unity ve nesne yönelimli programlama ile en az iki yıl çalışmak.",
+      "target": "Unity'de nesne yönelimli C# ile 26 ay boyunca oynanış sistemleri geliştirdim.",
+      "source": "https://jobs.lever.co/grand/800e31c8-10af-40eb-9026-701cce7b8c8a",
+      "before": {
+        "rank": 1,
+        "top3": [
+          "Unity'de nesne yönelimli C# ile 26 ay boyunca oynanış sistemleri geliştirdim.",
+          "Unity ile üç yıl mobil oyun geliştirdim.",
+          "On ay boyunca Unity'de nesne yönelimli C# oyun bileşenleri geliştirdim."
+        ]
+      },
+      "after": {
+        "rank": 2,
+        "top3": [
+          "Unity ile üç yıl mobil oyun geliştirdim.",
+          "Unity'de nesne yönelimli C# ile 26 ay boyunca oynanış sistemleri geliştirdim.",
+          "On ay boyunca Unity'de nesne yönelimli C# oyun bileşenleri geliştirdim."
+        ]
+      }
+    },
+    "tr-en": {
+      "requirement": "Unity ve nesne yönelimli programlama ile en az iki yıl çalışmak.",
+      "target": "I implemented gameplay systems using object-oriented C# in Unity for 26 months.",
+      "source": "https://jobs.lever.co/grand/800e31c8-10af-40eb-9026-701cce7b8c8a",
+      "before": {
+        "rank": 3,
+        "top3": [
+          "I developed mobile games using Unity for three years.",
+          "I developed object-oriented C# game components in Unity for ten months.",
+          "I implemented gameplay systems using object-oriented C# in Unity for 26 months."
+        ]
+      },
+      "after": {
+        "rank": 3,
+        "top3": [
+          "I developed mobile games using Unity for three years.",
+          "I developed object-oriented C# game components in Unity for ten months.",
+          "I implemented gameplay systems using object-oriented C# in Unity for 26 months."
+        ]
+      }
+    },
+    "en-tr": {
+      "requirement": "Work with Unity and object-oriented programming for at least two years.",
+      "target": "Unity'de nesne yönelimli C# ile 26 ay boyunca oynanış sistemleri geliştirdim.",
+      "source": "https://jobs.lever.co/grand/800e31c8-10af-40eb-9026-701cce7b8c8a",
+      "before": {
+        "rank": 1,
+        "top3": [
+          "Unity'de nesne yönelimli C# ile 26 ay boyunca oynanış sistemleri geliştirdim.",
+          "Unity ile üç yıl mobil oyun geliştirdim.",
+          "On ay boyunca Unity'de nesne yönelimli C# oyun bileşenleri geliştirdim."
+        ]
+      },
+      "after": {
+        "rank": 1,
+        "top3": [
+          "Unity'de nesne yönelimli C# ile 26 ay boyunca oynanış sistemleri geliştirdim.",
+          "Unity ile üç yıl mobil oyun geliştirdim.",
+          "On ay boyunca Unity'de nesne yönelimli C# oyun bileşenleri geliştirdim."
+        ]
+      }
+    },
+    "en-en": {
+      "requirement": "Work with Unity and object-oriented programming for at least two years.",
+      "target": "I implemented gameplay systems using object-oriented C# in Unity for 26 months.",
+      "source": "https://jobs.lever.co/grand/800e31c8-10af-40eb-9026-701cce7b8c8a",
+      "before": {
+        "rank": 1,
+        "top3": [
+          "I implemented gameplay systems using object-oriented C# in Unity for 26 months.",
+          "I developed object-oriented C# game components in Unity for ten months.",
+          "I developed mobile games using Unity for three years."
+        ]
+      },
+      "after": {
+        "rank": 1,
+        "top3": [
+          "I implemented gameplay systems using object-oriented C# in Unity for 26 months.",
+          "I developed mobile games using Unity for three years.",
+          "I developed object-oriented C# game components in Unity for ten months."
+        ]
+      }
+    }
+  }
+}

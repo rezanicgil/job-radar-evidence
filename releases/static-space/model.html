@@ -2,6 +2,7 @@
 <title>Model results · Job Radar</title>
 <style>
 *{box-sizing:border-box}body{background:#f5f4ed;color:#17382f;font:1rem/1.55 system-ui;margin:0}main{max-width:50rem;margin:auto;padding:1.25rem}a{color:#135b48}article{background:white;border:1px solid #bccdc4;border-radius:.65rem;padding:1.2rem;margin:1rem 0}h1{line-height:1.1}h2{font-size:1.15rem}p{overflow-wrap:anywhere}label{display:block;margin:.75rem 0}select{max-width:100%;font:inherit;padding:.4rem}strong{font-variant-numeric:tabular-nums}
+#retrieval select{width:auto;max-width:100%}.rank-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr));gap:.75rem}.rank-grid article{margin:.25rem 0}.rank-grid h3{margin-top:0}.rank-grid ol{padding-left:1.4rem}.rank-grid li{margin:.65rem 0;overflow-wrap:anywhere}.rank-grid li strong{display:block;color:#155640;font-size:.85rem}
 </style><main><a href="index.html">← Job Radar</a><h1>Model results</h1>
 <p>Inspect recorded predictions from the fine-tuned research classifier. Each job requirement has three fictional CV passages with project-authored labels.</p>
 <p id="score" role="status">Loading results…</p>
@@ -12,8 +13,11 @@
 <p><a id="model" href="https://huggingface.co/rezanicgil/job-radar-evidence-mentions-v3">Download the research classifier</a> · <a href="https://huggingface.co/datasets/rezanicgil/job-radar-match-pilot">Inspect the dataset</a></p>
 <section><h2>Bilingual passage retrieval</h2>
 <p>A separate encoder was fine-tuned on 1,027 English–Turkish Python documentation pairs. On ten other documents, English queries retrieved the correct Turkish translation first in 674 of 721 cases, up from 669 with the base model. On ten job conditions searched against 30 fictional CV passages, all ten target passages kept their original rank.</p>
+<div id="retrieval"><p>Compare the first three results among 30 fictional CV passages. Each requirement has one passage that the authors marked as supporting it. Relevance of other families’ passages has not been judged.</p>
+<label>Job condition <select id="retrievalFamily"></select></label><label>Job and CV language <select id="retrievalLanguage"><option value="tr-tr">Turkish job · Turkish CV</option><option value="en-tr">English job · Turkish CV</option><option value="tr-en">Turkish job · English CV</option><option value="en-en">English job · English CV</option></select></label>
+<div id="retrievalResult" aria-live="polite">Loading recorded rankings…</div></div>
 <p><a href="https://huggingface.co/rezanicgil/python-tr-en-retriever">Download the retriever and try the example</a> · <a href="https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/translation-retrieval.json">Inspect the evaluation results</a></p></section>
 <section><h2>External evaluation</h2>
 <p>On 1,759 external CV/job pairs, the fine-tuned encoder agreed with the ordering of differently labelled jobs for the same applicant 64.58% of the time, averaged over 275 CVs. The base encoder reached 63.25%. The source labels refer to whole documents and their reviewer provenance is undocumented. <a href="https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/external-fit-ranking.json">Inspect both ranking directions</a></p>
 <p>In a separate TECHWOLF test, the English sentence selector found 252 of 325 skill-bearing sentences outside its training and development texts. This positive-only test measures recall. <a href="https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/external-skill-recall.json">Inspect the skill extraction check</a></p></section>
-</main><script type="module" src="model.js"></script></html>
+</main><script type="module" src="model.js"></script><script type="module" src="retrieval.js"></script></html>
