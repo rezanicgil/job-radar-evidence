@@ -3,6 +3,19 @@ const add=(parent,tag,text)=>{const node=document.createElement(tag);node.textCo
 const words=text=>new Set(text.toLocaleLowerCase().match(/[\p{L}\p{N}+#]+/gu)||[]);
 let encoder;
 let vocabulary;
+let concepts;
+function phraseText(text,language){
+  return " "+(text.normalize("NFC").toLocaleLowerCase(language).match(/[\p{L}\p{N}+#]+/gu)||[]).join(" ")+" ";
+}
+function translatedTerms(text){
+  const en=phraseText(text,"en"),tr=phraseText(text,"tr");
+  const matches=[];
+  for(const concept of concepts||[]){
+    if(en.includes(phraseText(concept.en,"en")))matches.push({concept,target:concept.tr,language:"tr"});
+    if(tr.includes(phraseText(concept.tr,"tr")))matches.push({concept,target:concept.en,language:"en"});
+  }
+  return matches;
+}
 let sentenceModel;
 const selectedPreferences=new Set();
 function conditionsFrom(text){
@@ -426,6 +439,12 @@ el("form").onsubmit=async event=>{
     el("status").textContent="Finding passages…";
     const semantic=el("method").value==="semantic";
     const vec=semantic?await vectors([...job,...lines.map(x=>x.text)]):null;
+    if(!semantic&&!concepts){
+      try{
+        const response=await fetch("bilingual-concepts.json");
+        if(response.ok)concepts=await response.json();
+      }catch{/* Shared-word retrieval also works offline. */}
+    }
     if(!vocabulary){
       try{
         const response=await fetch("technologies.json");
@@ -436,12 +455,24 @@ el("form").onsubmit=async event=>{
     el("source").textContent=(file?file.name:"Pasted CV")+" · "+job.length+" job condition"+(job.length===1?"":"s")+" · "+(semantic?"Semantic search":"Shared terms");
     job.forEach((condition,i)=>{
       const terms=words(condition);
-      const ranked=lines.map((line,j)=>({line,score:semantic?vec[i].reduce((s,v,k)=>s+v*vec[job.length+j][k],0):[...words(line.text)].filter(t=>terms.has(t)).length}))
+      const translations=semantic?[]:translatedTerms(condition);
+      const ranked=lines.map((line,j)=>{
+        const matches=translations.filter(m=>phraseText(line.text,m.language).includes(phraseText(m.target,m.language)));
+        const score=semantic?vec[i].reduce((s,v,k)=>s+v*vec[job.length+j][k],0):
+          [...words(line.text)].filter(t=>terms.has(t)).length+matches.length;
+        return {line,score,matches};
+      })
         .filter(x=>semantic||x.score>0).sort((a,b)=>b.score-a.score).slice(0,3);
       const card=add(el("results"),"article","");add(card,"h3",condition);
       if(selectedPreferences.has(condition))add(card,"small","Optional condition · excluded from required coverage by default");
       const visible=ranked.map(item=>item.line);
-      for(const {line} of ranked)add(card,"p","Page "+line.page+" · "+line.text);
+      for(const {line,matches} of ranked){
+        add(card,"p","Page "+line.page+" · "+line.text);
+        for(const {concept} of matches){
+          const link=add(add(card,"small","Matched terminology · "),"a",concept.en+" / "+concept.tr);
+          link.href="https://www.wikidata.org/wiki/"+concept.id;
+        }
+      }
       if(!ranked.length)add(card,"p","No shared terms found. Review the CV directly.");
       const requested=(vocabulary||[]).filter(name=>hasTechnology(condition,name));
       const mentions=lines.filter(line=>!visible.includes(line) && requested.some(name=>hasTechnology(line.text,name)));

@@ -100,6 +100,16 @@ def check(page, origin):
         for key,flag in [("required","false"),("preferred","true")]:
             items=page.locator(f'#candidates input[data-preference="{flag}"]')
             assert items.evaluate_all("(items)=>items.map(i=>i.value)")==case[key], case["posting"]
+    page.locator("#cv").fill("Tahmin için rastgele orman kullandım.")
+    page.locator("#job").fill("Train a random forest classifier.")
+    page.locator("#find").click()
+    expect(cards.first.get_by_role("link",name="random forest / rastgele orman")).to_have_attribute(
+        "href","https://www.wikidata.org/wiki/Q245748")
+    expect(cards.first.locator(".assessment")).to_have_value("")
+    page.locator("#cv").fill("My documentation describes a binary search tree.")
+    page.locator("#job").fill("İkili arama ağacı kullanarak arama geliştirmek.")
+    page.locator("#find").click()
+    expect(cards.first.get_by_role("link",name="binary search tree / İkili arama ağacı")).to_be_visible()
     assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
 
 

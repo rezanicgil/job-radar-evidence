@@ -1,0 +1,122 @@
+[
+  {
+    "id": "Q134164",
+    "en": "simplex algorithm",
+    "tr": "Simpleks algoritması"
+  },
+  {
+    "id": "Q1417920",
+    "en": "exponential backoff",
+    "tr": "Üstel geri çekilme"
+  },
+  {
+    "id": "Q1550629",
+    "en": "summed-area table",
+    "tr": "Toplanmış alan tablosu"
+  },
+  {
+    "id": "Q1557243",
+    "en": "Gutmann method",
+    "tr": "Gutmann metodu"
+  },
+  {
+    "id": "Q166066",
+    "en": "Time-based One-time Password Algorithm",
+    "tr": "Zaman tabanlı tek seferlik parola algoritması"
+  },
+  {
+    "id": "Q1937058",
+    "en": "Tomasulo algorithm",
+    "tr": "Tomasulo algoritması"
+  },
+  {
+    "id": "Q22079944",
+    "en": "Double Ratchet Algorithm",
+    "tr": "Double Ratchet Algoritması"
+  },
+  {
+    "id": "Q230848",
+    "en": "Euclidean algorithm",
+    "tr": "Öklid algoritması"
+  },
+  {
+    "id": "Q2345824",
+    "en": "Johnson's algorithm",
+    "tr": "Johnson algoritması"
+  },
+  {
+    "id": "Q245748",
+    "en": "random forest",
+    "tr": "rastgele orman"
+  },
+  {
+    "id": "Q300159",
+    "en": "AVL tree",
+    "tr": "AVL ağacı"
+  },
+  {
+    "id": "Q3539534",
+    "en": "semantic triple",
+    "tr": "anlamsal üçlü"
+  },
+  {
+    "id": "Q4040283",
+    "en": "HMAC-based One-time Password Algorithm",
+    "tr": "HMAC tabanlı tek seferlik parola algoritması"
+  },
+  {
+    "id": "Q470813",
+    "en": "Prim's algorithm",
+    "tr": "Prim algoritması"
+  },
+  {
+    "id": "Q506496",
+    "en": "red–black tree",
+    "tr": "Kırmızı-siyah ağaç"
+  },
+  {
+    "id": "Q623818",
+    "en": "binary search tree",
+    "tr": "İkili arama ağacı"
+  },
+  {
+    "id": "Q631518",
+    "en": "Phong shading",
+    "tr": "Phong gölgelendirmesi"
+  },
+  {
+    "id": "Q757267",
+    "en": "Voronoi diagram",
+    "tr": "Voronoi diagramı"
+  },
+  {
+    "id": "Q812530",
+    "en": "naive Bayes classifier",
+    "tr": "naive Bayes sınıflandırıcı"
+  },
+  {
+    "id": "Q821007",
+    "en": "Berlekamp–Massey algorithm",
+    "tr": "Berlekamp-Massey algoritması"
+  },
+  {
+    "id": "Q846780",
+    "en": "Kalman filter",
+    "tr": "Kalman Filtresi"
+  },
+  {
+    "id": "Q94702",
+    "en": "collaborative filtering",
+    "tr": "İşbirlikçi filtreleme"
+  },
+  {
+    "id": "Q14746",
+    "en": "hash tree",
+    "tr": "Merkle ağacı"
+  },
+  {
+    "id": "Q8548",
+    "en": "Dijkstra's algorithm",
+    "tr": "Dijkstra algoritması"
+  }
+]
