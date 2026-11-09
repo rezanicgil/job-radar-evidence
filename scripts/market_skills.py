@@ -25,6 +25,15 @@ def ashby_descriptions(board):
     return {row["jobUrl"]:row.get("descriptionPlain") or "" for row in jobs}
 
 
+@lru_cache(maxsize=64)
+def workable_descriptions(board):
+    request = Request(f"https://www.workable.com/api/accounts/{board}?details=true",
+                      headers={"User-Agent":"JobRadar/1.0 (+https://github.com/rezanicgil/job-radar-evidence)", "Accept":"application/json"})
+    with urlopen(request, timeout=15) as response:
+        jobs = json.load(response)["jobs"]
+    return {row["shortcode"]:row.get("description") or "" for row in jobs}
+
+
 def inspect(job):
     url = urlsplit(job["url"])
     board, *rest = url.path.strip("/").split("/")
@@ -35,10 +44,12 @@ def inspect(job):
         api = f"https://boards-api.greenhouse.io/v1/boards/{board}/jobs/{key}"
     elif url.hostname == "jobs.smartrecruiters.com":
         api = f"https://api.smartrecruiters.com/v1/companies/{board}/postings/{key}"
-    elif url.hostname != "jobs.ashbyhq.com":
+    elif url.hostname not in {"jobs.ashbyhq.com","apply.workable.com"}:
         return dict(**job,status="unsupported source")
     try:
-        if url.hostname == "jobs.ashbyhq.com":
+        if url.hostname == "apply.workable.com":
+            body = workable_descriptions(board)[key]
+        elif url.hostname == "jobs.ashbyhq.com":
             body = ashby_descriptions(board)[job["url"]]
         else:
             with urlopen(api, timeout=15) as response:

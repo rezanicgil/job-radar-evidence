@@ -177,5 +177,10 @@
   {"name":"Bosch Group","ats":"smartrecruiters","slug":"BoschGroup"},
   {"name":"Renesas Electronics","ats":"smartrecruiters","slug":"RenesasElectronics"},
   {"name":"Delivery Hero","ats":"smartrecruiters","slug":"DeliveryHero"},
-  {"name":"Brandefense","ats":"smartrecruiters","slug":"BRANDEFENSE"}
+  {"name":"Brandefense","ats":"smartrecruiters","slug":"BRANDEFENSE"},
+  {"name":"Complead","ats":"workable","slug":"complead"},
+  {"name":"Datasurgery","ats":"workable","slug":"datasurgery-yazilim-ve-danismanlik-1"},
+  {"name":"Homa","ats":"workable","slug":"homa-games"},
+  {"name":"Ace Games","ats":"workable","slug":"ace-games"},
+  {"name":"Roof Stacks","ats":"lever","slug":"roofstacks"}
 ]

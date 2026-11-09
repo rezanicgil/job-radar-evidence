@@ -17,11 +17,11 @@ PATTERNS = {
     "Backend": r"back.?end|arka uç",
     "Frontend": r"front.?end|ön yüz",
     "Full stack": r"full.?stack",
-    "Software engineering (general)": r"software (?:developer|engineer)|yazılım (?:geliştirici|mühendis)",
-    "Data and AI": r"data (?:engineer|scien)|machine learning|yapay zeka|veri mühendis|\bml engineer|\bai engineer",
-    "Platform and reliability": r"devops|platform engineer|cloud engineer|infrastructure engineer|(?:site|database) reliability|\bsre\b",
+    "Software engineering (general)": r"software (?:developer|engineer|architect)|yazılım (?:geliştirici|mühendis|mimarı)|uygulama entegrasyon mühendisi",
+    "Data and AI": r"data (?:engineer|scien|analyst|architect)|machine learning|yapay zeka|veri mühendis|\bml engineer|\bai (?:engineer|researcher)",
+    "Platform and reliability": r"devops|platform engineer|cloud engineer|infrastructure engineer|(?:site|database) reliability|\bsre\b|bt altyapı mühendisi|veritabanı yöneticisi",
     "Financial software": r"quantitative developer|payments engineer|blockchain engineer",
-    "Security": r"security engineer|penetration test|siber güvenlik|security analyst",
+    "Security": r"security engineer|penetration test|siber güvenlik|bilgi güvenliği mühendisi|security analyst",
     "QA and testing": r"\bqa\b|test (?:automation|engineer)|quality assurance",
     "Games": r"(?:game|gameplay(?: & UI)?|unity|unreal) (?:software )?(?:engineer|developer|programmer)|oyun geliştirici",
     "Robotics and controls": r"robotics|robotik|control systems",
@@ -41,10 +41,11 @@ def fetch(source):
     url = {"lever": f"https://api.lever.co/v0/postings/{slug}?mode=json",
            "ashby": f"https://api.ashbyhq.com/posting-api/job-board/{slug}",
            "greenhouse": f"https://boards-api.greenhouse.io/v1/boards/{slug}/jobs",
+           "workable": f"https://www.workable.com/api/accounts/{slug}?details=true",
            "smartrecruiters": f"https://api.smartrecruiters.com/v1/companies/{slug}/postings?country=tr&limit=100"}[ats]
     try:
         request = Request(url, headers={"User-Agent":"JobRadar/1.0 (+https://github.com/rezanicgil/job-radar-evidence)", "Accept":"application/json"})
-        with urlopen(request if ats == "ashby" else url, timeout=15) as response:
+        with urlopen(request if ats in {"ashby","workable"} else url, timeout=15) as response:
             payload = json.load(response)
         if ats == "smartrecruiters":
             rows = payload["content"]
@@ -58,7 +59,18 @@ def fetch(source):
             rows = payload if ats == "lever" else payload["jobs"]
         jobs = []
         for row in rows:
-            if ats == "lever":
+            if ats == "workable":
+                title = row["title"]
+                link = f"https://apply.workable.com/{slug}/j/{row['shortcode']}/"
+                locations = row.get("locations") or [row]
+                place = next((p for p in locations if not p.get("hidden") and in_turkiye(
+                    p.get("countryCode") or p.get("country"), p.get("city"))), None)
+                if place is None:
+                    continue
+                country = place.get("countryCode") or place.get("country")
+                location = ", ".join(dict.fromkeys(filter(None,[place.get("city"),
+                    place.get("region") or place.get("state"), place.get("country") or country])))
+            elif ats == "lever":
                 title, link = row["text"], row["hostedUrl"]
                 country, location = row.get("country"), row["categories"].get("location", "")
             elif ats == "ashby":
