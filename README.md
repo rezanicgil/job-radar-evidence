@@ -16,7 +16,7 @@ The [downloadable research classifier](https://huggingface.co/rezanicgil/job-rad
 
 On November 9, 2026, 44 employer boards returned 348 Türkiye-location postings. The title filter selected 86 postings across 21 employers, including data analysts, software architects and Turkish-language infrastructure and security roles. All 86 descriptions were readable. Python appeared in 35 of 86 postings across 14 employers. All 12 postings mentioning React Native came from one employer. The panel tracks 50 technology names and counts each posting URL once. Location-unconfirmed employer listings appear separately. [Inspect the dated counts](reports/skill-mentions-2026-11-09T172254Z.md)
 
-Daily history uses the last collection on each Türkiye calendar day. To refresh, run `python scripts/market_inventory.py` followed by `python scripts/market_skills.py`. Publish the dated report files to GitHub before running `python scripts/publish_market.py` with Space write access. The publisher updates the snapshot and history in one commit.
+Daily history uses the last collection on each Türkiye calendar day. To refresh, run `python scripts/market_inventory.py` followed by `python scripts/market_skills.py`. Publish the dated report files to GitHub before running `python scripts/publish_market.py` with Space write access. The publisher updates the snapshot and history in one commit. Run `python scripts/publish_market_dataset.py` to publish the same dated observations and technology denominators to the [Hugging Face market dataset](https://huggingface.co/datasets/rezanicgil/turkiye-software-job-market).
 
 ### Select conditions from a posting
 
