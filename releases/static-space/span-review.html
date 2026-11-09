@@ -1,0 +1,20 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Review Turkish knowledge phrases · Job Radar</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f5f4ed;color:#17382f;font:1rem/1.5 system-ui}main{max-width:48rem;margin:auto;padding:1.2rem}a{color:#135b48}article{background:white;padding:1rem;border:1px solid #bccdc4;border-radius:.65rem}label{display:block;margin:.7rem 0}textarea,select,button{font:inherit;max-width:100%}textarea,select{width:100%;padding:.5rem}button{padding:.4rem .8rem;margin:.25rem 0}li button{margin-left:.6rem}textarea{min-height:6rem}small{display:block}#status{min-height:1.5em}#save{background:#18513d;color:white;border:0}[hidden]{display:none!important}
+</style><main><a href="model.html#knowledge">← Knowledge model results</a><h1>Review Turkish knowledge phrases</h1>
+<p>Mark every phrase naming a technical tool, system, protocol or area of technical knowledge. Select the complete name, including all words in a multiword term. Keep adjacent names separate. Exclude action verbs, general job duties and benefits.</p>
+<p>For example, in “SQL ve veri modelleme bilgisi” mark “SQL” and “veri modelleme”. Review each phrase independently of whether it is required or preferred.</p>
+<label>Employer posting<select id="posting" disabled></select></label>
+<a id="source" hidden>Open employer posting</a> <button id="load" disabled>Load indexed bullets</button>
+<p id="status" role="status">Loading source index…</p>
+<article id="review" hidden>
+<label>Bullet<select id="bullet"></select></label>
+<label>Select the exact words in the source text<textarea id="text" readonly lang="tr"></textarea></label>
+<button id="add">Mark selection</button><ul id="marks"></ul>
+<label><input type="checkbox" id="none"> I reviewed the entire bullet and found no technical knowledge phrase.</label>
+<button id="save">Save completed bullet</button>
+</article>
+<p id="progress"></p><button id="download" disabled>Download saved decisions</button>
+<small>Opening a posting retrieves its public text from the employer’s service. Saved decisions stay in this browser. The export contains fingerprints and character offsets. Share the file yourself through the <a href="https://huggingface.co/datasets/rezanicgil/job-radar-match-pilot/discussions">dataset community</a>.</small>
+</main><script type="module" src="span-review.js"></script></html>

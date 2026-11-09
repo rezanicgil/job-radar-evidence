@@ -493,6 +493,35 @@ def check(page, origin):
     page.goto(urljoin(origin,"annotate.html"))
     expect(page.locator("#progress")).to_contain_text("of 12 · 1 saved")
 
+    review=page.context.browser.new_page(viewport={"width":390,"height":820})
+    sentence="📱 Kotlin ve SQL deneyimi"
+    empty="Ekip arkadaşları ile çalışmak."
+    samples=[sentence,empty]
+    url="https://jobs.smartrecruiters.com/CRENNO/744000109926925"
+    fixture=[dict(id=sha256(text.encode()).hexdigest(),length=len(text),sources=[url]) for text in samples]
+    raw=json.dumps(fixture).encode()
+    review.route("**/span-review-packet.json",lambda route:route.fulfill(body=raw,content_type="application/json"))
+    review.route("https://api.smartrecruiters.com/**",lambda route:route.fulfill(json=dict(jobAd=dict(
+        sections=dict(qualifications=dict(text="<ul>"+"".join("<li>"+text+"</li>" for text in samples)+"</ul>")))),
+        headers={"Access-Control-Allow-Origin":"*"}))
+    review.goto(urljoin(origin,"span-review.html"))
+    review.locator("#load").click()
+    expect(review.locator("#status")).to_contain_text("2 of 2")
+    review.locator("#text").evaluate("(el)=>el.setSelectionRange(3,9)")
+    review.locator("#add").click()
+    expect(review.locator("#marks li")).to_contain_text("Kotlin")
+    review.locator("#save").click()
+    review.locator("#bullet").select_option("1")
+    expect(review.locator("#save")).to_be_disabled()
+    review.locator("#none").check()
+    review.locator("#save").click()
+    with review.expect_download() as event:
+        review.locator("#download").click()
+    result=[json.loads(s) for s in event.value.path().read_text("utf8").splitlines()]
+    assert [r["spans"] for r in result]==[[[2,8]],[]]
+    assert all(r["packet_sha256"]==sha256(raw).hexdigest() and "text" not in r for r in result)
+    review.close()
+
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
