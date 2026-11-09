@@ -1,0 +1,39 @@
+name: Evidence or market feedback
+description: Share a reproducible example or a correction to a dated market snapshot.
+title: "[Feedback] "
+body:
+  - type: markdown
+    attributes:
+      value: "This report will be public. Use a fictional CV passage. Include only information you intend to publish."
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which result needs review?
+      options:
+        - CV evidence retrieval
+        - Dataset annotation
+        - Market role or skill count
+        - Source coverage
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version or snapshot date
+      description: Enter the commit, dataset family or date shown in the report.
+    validations:
+      required: true
+  - type: textarea
+    id: example
+    attributes:
+      label: Reproduction example
+      description: Provide a fictional requirement and CV excerpt, or a public posting URL and role filter.
+    validations:
+      required: true
+  - type: textarea
+    id: difference
+    attributes:
+      label: Observed and expected result
+      description: Identify the phrase that supports your correction.
+    validations:
+      required: true

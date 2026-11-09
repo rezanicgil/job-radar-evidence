@@ -43,3 +43,5 @@ For an interactive whole-posting review, run `python scripts/review_cv.py my-cv.
 Run `python scripts/evaluate_keywords.py` from the project root. The script uses the Python standard library. Its development examples illustrate errors in a vocabulary-based rule. See the [experiment protocol](research/methodology.md) for the planned held-out comparison.
 
 Original project code is licensed under [Apache-2.0](LICENSE). This code license does not grant rights to CV uploads, third-party postings or upstream model weights. Dataset and model licenses will be documented per release.
+
+Read the [portfolio case study](research/portfolio.md) or [report an evidence or market-data correction](https://github.com/rezanicgil/job-radar-evidence/issues/new?template=evidence_feedback.yml).
