@@ -14,9 +14,9 @@ def main():
     for name in ("README.md","Dockerfile","requirements.txt"):
         shutil.copyfile(ROOT / "releases/evidence-space" / name,dest / name)
     snapshot = max((ROOT / "reports").glob("skill-mentions-*.json")).relative_to(ROOT)
-    for name in ("scripts/demo.py","scripts/review_cv.py","scripts/train_smoke.py","scripts/market_inventory.py","templates/review.html","templates/market.html",snapshot,"LICENSE"):
+    for name in ("scripts/demo.py","scripts/review_cv.py","scripts/train_smoke.py","scripts/market_inventory.py","scripts/market_skills.py","releases/static-space/technologies.json","templates/review.html","templates/market.html",snapshot,"LICENSE"):
         target = dest / name
-        target.parent.mkdir(exist_ok=True)
+        target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(ROOT / name,target)
     print(dest)
 

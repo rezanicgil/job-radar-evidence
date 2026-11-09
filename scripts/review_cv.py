@@ -8,6 +8,7 @@ import sys
 from threading import Lock
 
 import torch
+from market_skills import PATTERNS
 from transformers import AutoModel, AutoTokenizer
 from train_smoke import BASE, REVISION
 
@@ -85,7 +86,21 @@ def rank_passages(passages, requirements):
             vectors.extend((model(**batch).last_hidden_state * mask).sum(1) / mask.sum(1))
         normalized = torch.nn.functional.normalize(torch.stack(vectors))
         scores = normalized[:len(requirements)] @ normalized[len(requirements):].T
-    return [[passages[i] for i in row.argsort(descending=True).tolist()[:3]] for row in scores]
+    results = []
+    for requirement, row in zip(requirements, scores, strict=True):
+        ranked = [passages[i] for i in row.argsort(descending=True).tolist()]
+        selected = ranked[:3]
+        # Reserve one suggestion for a full CV sentence naming the requested technology.
+        # This surfaces negative statements too; reviewers still decide support.
+        terms = [pattern for pattern in PATTERNS.values() if pattern.search(requirement)]
+        if terms and selected:
+            sentence = next((item for item in ranked if len(item[1].split()) >= 6
+                             and item[1].endswith((".", "!", "?"))
+                             and any(pattern.search(item[1]) for pattern in terms)), None)
+            if sentence is not None and sentence not in selected:
+                selected[-1] = sentence
+        results.append(selected)
+    return results
 
 
 def review_posting(passages, path):
