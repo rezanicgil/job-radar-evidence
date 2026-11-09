@@ -10,4 +10,7 @@
 <label>Job requirement <select id="family"></select></label>
 <section id="examples" aria-live="polite"></section>
 <p><a id="model" href="https://huggingface.co/rezanicgil/job-radar-evidence-mentions-v3">Download the research classifier</a> · <a href="https://huggingface.co/datasets/rezanicgil/job-radar-match-pilot">Inspect the dataset</a></p>
+<section><h2>Bilingual passage retrieval</h2>
+<p>A separate encoder was fine-tuned on 1,027 English–Turkish Python documentation pairs. On ten other documents, English queries retrieved the correct Turkish translation first in 674 of 721 cases, up from 669 with the base model. On ten job conditions searched against 30 fictional CV passages, all ten target passages kept their original rank.</p>
+<p><a href="https://huggingface.co/rezanicgil/python-tr-en-retriever">Download the retriever and try the example</a> · <a href="https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/translation-retrieval.json">Inspect the evaluation results</a></p></section>
 </main><script type="module" src="model.js"></script></html>

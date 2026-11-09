@@ -75,6 +75,72 @@
       "batch-pipelines": 2,
       "contract-operations": 1,
       "engine-duration": 3
+    },
+    "cv_language_views": {
+      "tr-tr": {
+        "top1": 6,
+        "top3": 7,
+        "ranks": {
+          "kafka-use": 4,
+          "engine-years": 4,
+          "cloud-runtime": 1,
+          "database-stores": 4,
+          "mobile-game": 1,
+          "outbox-pattern": 1,
+          "small-project": 1,
+          "batch-pipelines": 3,
+          "contract-operations": 1,
+          "engine-duration": 1
+        }
+      },
+      "tr-en": {
+        "top1": 6,
+        "top3": 8,
+        "ranks": {
+          "batch-pipelines": 1,
+          "engine-years": 2,
+          "mobile-game": 1,
+          "small-project": 1,
+          "database-stores": 5,
+          "kafka-use": 4,
+          "cloud-runtime": 1,
+          "outbox-pattern": 1,
+          "contract-operations": 1,
+          "engine-duration": 3
+        }
+      },
+      "en-tr": {
+        "top1": 5,
+        "top3": 8,
+        "ranks": {
+          "kafka-use": 4,
+          "engine-years": 10,
+          "cloud-runtime": 1,
+          "database-stores": 2,
+          "mobile-game": 1,
+          "outbox-pattern": 1,
+          "small-project": 1,
+          "batch-pipelines": 2,
+          "contract-operations": 2,
+          "engine-duration": 1
+        }
+      },
+      "en-en": {
+        "top1": 7,
+        "top3": 8,
+        "ranks": {
+          "batch-pipelines": 1,
+          "engine-years": 8,
+          "mobile-game": 1,
+          "small-project": 1,
+          "database-stores": 3,
+          "kafka-use": 4,
+          "cloud-runtime": 1,
+          "outbox-pattern": 1,
+          "contract-operations": 1,
+          "engine-duration": 1
+        }
+      }
     }
   },
   "after": {
@@ -93,6 +159,72 @@
       "batch-pipelines": 2,
       "contract-operations": 1,
       "engine-duration": 3
+    },
+    "cv_language_views": {
+      "tr-tr": {
+        "top1": 5,
+        "top3": 8,
+        "ranks": {
+          "kafka-use": 4,
+          "engine-years": 4,
+          "cloud-runtime": 1,
+          "database-stores": 3,
+          "mobile-game": 1,
+          "outbox-pattern": 1,
+          "small-project": 1,
+          "batch-pipelines": 3,
+          "contract-operations": 1,
+          "engine-duration": 2
+        }
+      },
+      "tr-en": {
+        "top1": 6,
+        "top3": 8,
+        "ranks": {
+          "batch-pipelines": 1,
+          "engine-years": 2,
+          "mobile-game": 1,
+          "small-project": 1,
+          "database-stores": 6,
+          "kafka-use": 4,
+          "cloud-runtime": 1,
+          "outbox-pattern": 1,
+          "contract-operations": 1,
+          "engine-duration": 3
+        }
+      },
+      "en-tr": {
+        "top1": 5,
+        "top3": 8,
+        "ranks": {
+          "kafka-use": 4,
+          "engine-years": 10,
+          "cloud-runtime": 1,
+          "database-stores": 2,
+          "mobile-game": 1,
+          "outbox-pattern": 1,
+          "small-project": 1,
+          "batch-pipelines": 2,
+          "contract-operations": 2,
+          "engine-duration": 1
+        }
+      },
+      "en-en": {
+        "top1": 7,
+        "top3": 8,
+        "ranks": {
+          "batch-pipelines": 1,
+          "engine-years": 8,
+          "mobile-game": 1,
+          "small-project": 1,
+          "database-stores": 3,
+          "kafka-use": 4,
+          "cloud-runtime": 1,
+          "outbox-pattern": 1,
+          "contract-operations": 1,
+          "engine-duration": 1
+        }
+      }
     }
   }
 }

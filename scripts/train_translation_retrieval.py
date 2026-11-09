@@ -52,6 +52,14 @@ def vectorize(model,tokenizer,texts):
     return torch.cat([embeddings(model,tokenizer,texts[i:i+24]) for i in range(0,len(texts),24)])
 
 
+def cv_ranks(model,tokenizer,rows):
+    rows.sort(key=lambda r:sha256(r["cv_passage"].encode()).digest())
+    targets=[i for i,r in enumerate(rows) if r["label"]=="supported"]
+    jobs=vectorize(model,tokenizer,[rows[i]["requirement"] for i in targets])
+    cvs=vectorize(model,tokenizer,[r["cv_passage"] for r in rows])
+    return {rows[i]["family"]:ranking.index(i)+1 for i,ranking in zip(targets,(jobs@cvs.T).argsort(descending=True).tolist(),strict=True)}
+
+
 def evaluate(model,tokenizer,heldout):
     model.eval()
     en=vectorize(model,tokenizer,[en for _,en,_ in heldout])
@@ -59,13 +67,19 @@ def evaluate(model,tokenizer,heldout):
     scores=en@tr.T
     expected=torch.arange(len(heldout))
     rows=[json.loads(s) for s in (ROOT/"data/match_source_dev.jsonl").read_text(encoding="utf-8").splitlines()]
-    rows.sort(key=lambda r:sha256(r["cv_passage"].encode()).digest())
-    targets=[i for i,r in enumerate(rows) if r["label"]=="supported"]
-    jobs=vectorize(model,tokenizer,[rows[i]["requirement"] for i in targets])
-    cvs=vectorize(model,tokenizer,[r["cv_passage"] for r in rows])
-    ranks={rows[i]["family"]:ranking.index(i)+1 for i,ranking in zip(targets,(jobs@cvs.T).argsort(descending=True).tolist(),strict=True)}
+    ranks=cv_ranks(model,tokenizer,rows)
+    translated=[json.loads(s) for s in (ROOT/"releases/match-pilot/language_switch.jsonl").read_text(encoding="utf-8").splitlines()]
+    views={}
+    for job_lang in ("tr","en"):
+        for cv_lang in ("tr","en"):
+            subset=[r for r in translated if r["job_language"]==job_lang and r["cv_language"]==cv_lang]
+            assert len(subset)==30 and len({r["cv_passage"] for r in subset})==30
+            positions=cv_ranks(model,tokenizer,subset)
+            views[f"{job_lang}-{cv_lang}"]=dict(top1=sum(v==1 for v in positions.values()),
+                                              top3=sum(v<=3 for v in positions.values()),ranks=positions)
     return dict(en_to_tr_top1=int((scores.argmax(1)==expected).sum()),tr_to_en_top1=int((scores.argmax(0)==expected).sum()),
-                cv_top1=sum(i==1 for i in ranks.values()),cv_top3=sum(i<=3 for i in ranks.values()),cv_ranks=ranks)
+                cv_top1=sum(i==1 for i in ranks.values()),cv_top3=sum(i<=3 for i in ranks.values()),cv_ranks=ranks,
+                cv_language_views=views)
 
 
 def main():
