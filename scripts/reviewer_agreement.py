@@ -10,7 +10,11 @@ LABELS = ("supported", "partial", "unverified")
 
 def indexed(path):
     rows = {}
-    for number, line in enumerate(path.read_text(encoding="utf-8-sig").splitlines(), 1):
+    if path.is_dir():
+        lines = [p.read_text(encoding="utf-8") for p in sorted(path.glob("*.json"))]
+    else:
+        lines = path.read_text(encoding="utf-8-sig").splitlines()
+    for number, line in enumerate(lines, 1):
         row = json.loads(line)
         key = row.get("id")
         if not isinstance(key,str) or not key or key in rows:

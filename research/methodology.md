@@ -14,6 +14,8 @@ Reviewers each save private JSONL rows with an `id`, `label` and verbatim `evide
 
 ## Comparisons and selection
 
+To collect decisions interactively, run `python scripts/label_packet.py packet.jsonl runs/reviewer-a`. Each completed answer is saved immediately. The same command resumes an interrupted review. Give the second reviewer a separate directory. The agreement script accepts these directories in place of JSONL files.
+
 Run the skill-presence baseline, an untuned multilingual instruction model with a fixed prompt, then the same checkpoint with a supervised adapter. Record immutable model and data revisions, environment, prompt, seeds, hyperparameters, training time, memory and hardware. Inspect the upstream license and measure a short local run before selecting a checkpoint. [LoRA](https://arxiv.org/abs/2106.09685) is a candidate for efficient adaptation. Check feasibility on the available GPU.
 
 Tune on development families only. Select by development macro-F1 with supported-class precision reported alongside it. Freeze the candidate, comparator and evaluation rules before opening the test set. Report per-class precision, recall and F1, and the fraction of unsupported or partial cases incorrectly promoted to supported. Report family-bootstrap intervals for paired metric differences when there are enough independent families. Show counts for every slice, including Turkish, English, mixed passages and cross-language pairs.
