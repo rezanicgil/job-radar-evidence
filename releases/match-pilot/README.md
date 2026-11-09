@@ -20,6 +20,12 @@ configs:
     data_files:
       - split: validation
         path: posting_modality.jsonl
+  - config_name: python_translation_index
+    data_files:
+      - split: train
+        path: python-translation-index-train.jsonl
+      - split: validation
+        path: python-translation-index-validation.jsonl
   - config_name: duration_weak
     data_files:
       - split: train
@@ -61,6 +67,10 @@ The default configuration contains 69 training pairs from 23 families and 18 dev
 The validation file begins with nine general challenge examples and ends with nine examples about Docker, Terraform and Prometheus. A passage can name the right technology while describing event logistics rather than engineering work. The [experiment predictions](https://github.com/rezanicgil/job-radar-evidence/blob/dba6189/reports/pair-mentions-v3.json) show where the model confused the two. The [original 54-row release](https://huggingface.co/datasets/rezanicgil/job-radar-match-pilot/tree/cb96ff522186ae77a3b9f1bada3ee32842d91b15) remains available for earlier experiments.
 
 ## How to read a row
+
+The `python_translation_index` configuration indexes 1,748 English–Turkish documentation pairs from the [Python Turkish translation project](https://github.com/python/python-docs-tr/tree/caa8b1e08b8534a1e1344a82889fc6c820768a91). Each row links to a pinned source file and fingerprints both normalized texts. These are translation pairs for training a passage retriever. The CV evidence labels belong to the other configurations. The 1,027 training pairs come from 34 documents. The 721 validation pairs come from ten other documents. Translations marked fuzzy or obsolete, identical bilingual strings, and repeated texts on either side were excluded. Python documentation and translations retain their upstream terms.
+
+To reconstruct the text pairs from the project checkout, install `polib==1.2.0` alongside the training dependencies and run `python scripts/train_translation_retrieval.py --export`. The resulting JSONL files under `runs/python-translations-*.jsonl` include both texts. Running the same script without `--export` trains and evaluates the retriever. [Training and evaluation script](https://github.com/rezanicgil/job-radar-evidence/blob/main/scripts/train_translation_retrieval.py)
 
 The `posting_modality` view contains twelve project-authored diagnostic inputs in English and Turkish. Each row records the expected required and optional wording from the posting. The examples cover reversed clause order, groups of languages, alternatives and explicit exemption from a requirement. The paired examples in the two languages represent six constructions. These examples were written alongside the extraction rules and serve as regression checks. They do not estimate accuracy on employer postings.
 
