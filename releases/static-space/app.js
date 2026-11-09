@@ -260,13 +260,24 @@ function hasTechnology(text,name){
   return (" "+tokens.join(" ")+" ").includes(" "+name.toLowerCase()+" ");
 }
 async function vectors(texts,method){
-  const {pipeline,env}=await import("https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2/dist/transformers.min.js");
+  const {pipeline,env,AutoModel,AutoTokenizer,FeatureExtractionPipeline}=await import("https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2/dist/transformers.min.js");
   env.allowLocalModels=false;
   const {repo,revision}=retrievalModels[method];
-  if(!encoders.has(method))encoders.set(method,pipeline("feature-extraction",repo,{revision,quantized:true}));
+  if(!encoders.has(method)){
+    // The v2-compatible base tokenizer preserves SentencePiece word starts in the browser.
+    const base=retrievalModels.semantic;
+    const promise=method==="research"?Promise.all([
+      AutoModel.from_pretrained(repo,{revision,quantized:true}),
+      AutoTokenizer.from_pretrained(base.repo,{revision:base.revision})
+    ]).then(async ([model,tokenizer])=>{
+      const {researchTokenizer}=await import("./research-tokenizer.js");
+      return new FeatureExtractionPipeline({task:"feature-extraction",model,tokenizer:researchTokenizer(tokenizer)});
+    }):
+      pipeline("feature-extraction",repo,{revision,quantized:true});
+    encoders.set(method,promise);
+  }
   let encoder;
   try{encoder=await encoders.get(method)}catch(error){encoders.delete(method);throw error}
-  if(method==="research")encoder.tokenizer.model_max_length=128;
   const all=[];
   for(let i=0;i<texts.length;i+=8)all.push(...(await encoder(texts.slice(i,i+8),{pooling:"mean",normalize:true})).tolist());
   return all;
