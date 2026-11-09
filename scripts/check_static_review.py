@@ -7,7 +7,7 @@ from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from threading import Thread
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlsplit, parse_qs
 
 from playwright.sync_api import expect, sync_playwright
 
@@ -231,9 +231,21 @@ def check(page, origin):
     result=json.loads(event.value.path().read_text(encoding="utf-8"))
     quote=result["conditions"][0]["quotes"][0]
     assert quote["search_rank"]==12 and quote["passage"]==passages[-1]
+    page.get_by_text("Preview passage search feedback").click()
+    draft=page.get_by_role("link",name="Open GitHub feedback form")
+    query=parse_qs(urlsplit(draft.get_attribute("href")).query)
+    assert set(query)=={"template","summary"} and query["template"]==["passage_search.yml"]
+    summary=query["summary"][0]
+    assert "Best selected passage ranked 4 or lower: 1" in summary
+    assert all(value not in summary for value in [passages[-1],"Diagnostics",result["cv"]["sha256"]])
+    assert summary==page.locator("details pre").inner_text()
     with page.expect_download() as event:
         report.click()
     assert "Search rank: 12" in event.value.path().read_text(encoding="utf-8")
+    card.locator(".evidence[data-rank='1']").check()
+    updated=parse_qs(urlsplit(draft.get_attribute("href")).query)["summary"][0]
+    assert "Conditions with selected evidence: 1" in updated and "Best selected passage ranked 1–3: 1" in updated
+    assert "Best selected passage ranked 4 or lower: 0" in updated
     page.locator("#cv").fill("Veritabanı sorgularını iyileştirdim.\nMobil uygulama geliştirdim.")
     page.locator("#job").fill("Improve database query performance")
     page.locator("#find").click()
@@ -246,6 +258,8 @@ def check(page, origin):
     search.fill("absent")
     expect(cards.first.locator(".evidence:visible:checked")).to_have_count(1)
     expect(page.locator("#status")).to_contain_text("0% coverage")
+    page.get_by_text("Preview passage search feedback").click()
+    assert "Only unranked passages selected: 1" in page.locator("details pre").inner_text()
     assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
     page.locator("#area").select_option("")
     snapshot=page.request.get(urljoin(origin,"market.json")).json()

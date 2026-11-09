@@ -1,0 +1,29 @@
+name: Passage search feedback
+description: Share the ranking summary from a completed CV review.
+title: "[Retrieval] Passage search feedback"
+body:
+  - type: markdown
+    attributes:
+      value: "Submitting creates a public issue under your GitHub account. The Space prefills the search method and counts."
+  - type: textarea
+    id: summary
+    attributes:
+      label: Passage search summary
+      description: Counts use the best rank among selected passages for each condition.
+    validations:
+      required: true
+  - type: textarea
+    id: observation
+    attributes:
+      label: What could the search improve?
+      description: If you include an example, use fictional wording.
+  - type: dropdown
+    id: languages
+    attributes:
+      label: Job and CV languages (optional)
+      options:
+        - English job and Turkish CV
+        - Turkish job and English CV
+        - English job and English CV
+        - Turkish job and Turkish CV
+        - Mixed or another language

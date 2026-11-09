@@ -14,6 +14,8 @@ Shared-word search includes 24 reviewed English and Turkish algorithm and data s
 
 Open **Inspect and select CV evidence** to review passages before choosing an assessment. The first three search results appear on the condition card. Under **Browse other CV passages**, lower-ranked candidates appear in search order, followed by passages without a term match. The JSON and text exports preserve the search rank of selected passages when they have one.
 
+After a completed review, **Preview passage search feedback** shows the search method and counts of conditions by the best rank of a passage you selected. Open the GitHub form to share those counts and optionally identify the job and CV languages. The preview excludes the CV, job wording, document fingerprint and coverage score. Each condition contributes at most once. These counts describe volunteer selections and cannot measure retrieval accuracy across all applicants.
+
 ### What the fine-tuning experiments established
 
 To run the project's own encoder on a CV in the public Space, select **Fine-tuned research encoder (118 MB)**. The first run downloads quantized weights and a tokenizer. The browser then computes the passage vectors locally. In the live ten-condition retrieval check, both the base and research encoders surfaced the designated passage in the first three for nine conditions and in first place for four. The applicant confirms the evidence. [Live retrieval results](reports/live-pooled-retrieval.json)

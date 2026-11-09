@@ -36,6 +36,13 @@ downloadReview.type="button";
 const downloadData=add(downloadControls,"button","Download review (.json)");
 downloadData.type="button";
 add(downloadControls,"a","Compare two saved reviews").href="compare.html";
+const feedback=add(downloadControls,"details","");
+add(feedback,"summary","Preview passage search feedback");
+add(feedback,"p","Only the summary below is prefilled. You can edit it on GitHub before submitting a public issue.");
+const feedbackText=add(feedback,"pre","");
+feedbackText.style.whiteSpace="pre-wrap";
+const feedbackLink=add(feedback,"a","Open GitHub feedback form");
+feedbackLink.target="_blank";feedbackLink.rel="noopener noreferrer";
 downloadControls.hidden=true;
 el("status").after(downloadControls);
 let reviewedSource;
@@ -542,10 +549,36 @@ function exportReview(format){
 }
 downloadReview.onclick=()=>exportReview("txt");
 downloadData.onclick=()=>exportReview("json");
+function updateFeedback(rows){
+  const method=el("method").value;
+  const encoder=retrievalModels[method];
+  const counts={top3:0,later:0,unranked:0};
+  for(const row of rows){
+    if(row.label!=="supported"&&row.label!=="partial")continue;
+    const ranks=row.quotes.map(q=>q.search_rank).filter(rank=>rank!==null);
+    if(!ranks.length)counts.unranked++;
+    else if(Math.min(...ranks)<=3)counts.top3++;
+    else counts.later++;
+  }
+  const summary=[
+    "Search method: "+(encoder?encoder.label+" ("+encoder.revision+")":"Shared words and bilingual terms"),
+    "Conditions with selected evidence: "+(counts.top3+counts.later+counts.unranked),
+    "Best selected passage ranked 1–3: "+counts.top3,
+    "Best selected passage ranked 4 or lower: "+counts.later,
+    "Only unranked passages selected: "+counts.unranked
+  ].join("\n");
+  feedbackText.textContent=summary;
+  const url=new URL("https://github.com/rezanicgil/job-radar-evidence/issues/new");
+  url.searchParams.set("template","passage_search.yml");
+  url.searchParams.set("summary",summary);
+  feedbackLink.href=url.href;
+}
 function coverage(){
   const rows=assessmentRows();
   const values=rows.map(row=>row.complete?row.label:"");
   downloadControls.hidden=!values.length||values.includes("");
+  if(!downloadControls.hidden)updateFeedback(rows);
+  else {feedback.open=false;feedbackLink.removeAttribute("href");feedbackText.textContent=""}
   const status=el("status");
   status.replaceChildren();
   if(values.includes("")){
