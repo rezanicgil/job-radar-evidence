@@ -7,7 +7,6 @@ from pathlib import Path
 import re
 
 import requests
-from playwright.sync_api import sync_playwright
 
 ROOT=Path(__file__).resolve().parents[1]
 IDS=["744000127863239","744000127843364","744000127842769","744000109940251","744000109926925","744000109920915","744000096398625"]
@@ -49,6 +48,7 @@ def extract(job):
 
 
 def main():
+    from playwright.sync_api import sync_playwright
     cli=argparse.ArgumentParser(description=__doc__)
     cli.add_argument("url")
     cli.add_argument("output",type=Path)

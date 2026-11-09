@@ -251,10 +251,21 @@ el("suggest").onclick=async()=>{
     if(el("posting").value.trim()!==text||el("postingLanguage").value!==language)return;
     const suggestions=language==="tr"?turkishCandidates(text):englishCandidates(text,sentenceModel);
     for(const [sentence,optional] of suggestions){
-      const label=add(output,"label","");
+      const row=add(output,"div","");
+      const label=add(row,"label","");
       const input=add(label,"input","");input.type="checkbox";input.value=sentence;
       input.dataset.preference=String(optional);
-      label.append((optional?" Optional · ":" ")+sentence);
+      const wording=add(label,"span",(optional?" Optional · ":" Required · ")+sentence);
+      const typeLabel=add(row,"label","Count as ");
+      typeLabel.hidden=true;
+      const type=add(typeLabel,"select","");
+      type.add(new Option("Required","required"));type.add(new Option("Optional","optional"));
+      type.value=optional?"optional":"required";
+      input.onchange=()=>{typeLabel.hidden=!input.checked};
+      type.onchange=()=>{
+        input.dataset.preference=String(type.value==="optional");
+        wording.textContent=(type.value==="optional"?" Optional · ":" Required · ")+sentence;
+      };
     }
     el("append").hidden=!output.children.length;
     if(!output.children.length)output.textContent="No suggestions found. Highlight a condition in the posting to add it.";
@@ -287,7 +298,7 @@ function appendConditions(entries){
   message.textContent=changes.length+" condition"+(changes.length===1?"":"s")+" added or updated.";
 }
 el("append").onclick=()=>{
-  const checked=[...el("candidates").querySelectorAll(":checked")];
+  const checked=[...el("candidates").querySelectorAll("input:checked")];
   appendConditions(checked.map(input=>[input.value,input.dataset.preference==="true"]));
 };
 function addHighlighted(optional){
