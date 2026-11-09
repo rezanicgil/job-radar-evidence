@@ -73,7 +73,10 @@ function showConditionComparison(first,second){
         add(item,"small",name+" review · "+labels[row.label]);
         if(Array.isArray(row.quotes))for(const quote of row.quotes){
           const passage=quote?.excerpt||quote?.passage;
-          if(typeof passage==="string"&&passage.trim())add(item,"blockquote",passage);
+          if(typeof passage==="string"&&passage.trim()){
+            if(Number.isInteger(quote.search_rank)&&quote.search_rank>0)add(item,"small","Search rank "+quote.search_rank);
+            add(item,"blockquote",passage);
+          }
         }
       }
     }

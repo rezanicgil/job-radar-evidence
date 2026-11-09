@@ -91,6 +91,7 @@ def check(page, origin):
     expect(changed).to_contain_text("First review · Partially supported")
     expect(changed).to_contain_text("Second review · Excluded")
     expect(changed.locator("blockquote")).to_have_text("30 ay")
+    expect(changed).to_contain_text("Search rank 1")
     rewritten=[dict(r,condition="Develop a C++ device driver") if i==0 else r for i,r in enumerate(second["conditions"])]
     select_report("#second","another-role.json",dict(second,conditions=rewritten))
     expect(alignment).to_contain_text("1 condition with matching wording · 0 assessed differently")
@@ -212,6 +213,27 @@ def check(page, origin):
     for i in range(len(conditions)-len(ambiguous),len(conditions)):
         expect(cards.nth(i)).not_to_contain_text("look for evidence covering each")
         expect(cards.nth(i)).not_to_contain_text("Alternative technologies")
+    passages=[f"Diagnostics project {i} produced a distinct result." for i in range(1,13)]
+    page.locator("#cv").fill("\n".join(passages))
+    page.locator("#job").fill("Diagnostics")
+    page.locator("#find").click()
+    card=cards.first
+    card.get_by_text("Inspect and select CV evidence").click()
+    card.get_by_text("Browse 9 other CV passages").click()
+    evidence=card.locator(".evidence[data-rank='12']")
+    evidence.check()
+    expect(card.locator(".assessment")).to_have_value("")
+    expect(page.locator("#status")).to_contain_text("0% reviewed")
+    card.locator(".assessment").select_option("supported")
+    expect(evidence).to_be_checked()
+    with page.expect_download() as event:
+        data_button.click()
+    result=json.loads(event.value.path().read_text(encoding="utf-8"))
+    quote=result["conditions"][0]["quotes"][0]
+    assert quote["search_rank"]==12 and quote["passage"]==passages[-1]
+    with page.expect_download() as event:
+        report.click()
+    assert "Search rank: 12" in event.value.path().read_text(encoding="utf-8")
     page.locator("#cv").fill("Veritabanı sorgularını iyileştirdim.\nMobil uygulama geliştirdim.")
     page.locator("#job").fill("Improve database query performance")
     page.locator("#find").click()

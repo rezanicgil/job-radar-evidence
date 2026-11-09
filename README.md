@@ -12,6 +12,8 @@ Choose **Try a bilingual example** in the public Space. The fictional CV documen
 
 Shared-word search includes 24 reviewed English and Turkish algorithm and data structure labels from [Wikidata](https://www.wikidata.org/wiki/Wikidata:Licensing). For example, “random forest” can retrieve a passage containing “rastgele orman.” The app links each matched pair to its concept and leaves the assessment to the reviewer. Matching uses whole phrases and does not cover every Turkish inflection. [Inspect the glossary](releases/static-space/bilingual-concepts.json)
 
+Open **Inspect and select CV evidence** to review passages before choosing an assessment. The first three search results appear on the condition card. Under **Browse other CV passages**, lower-ranked candidates appear in search order, followed by passages without a term match. The JSON and text exports preserve the search rank of selected passages when they have one.
+
 ### What the fine-tuning experiments established
 
 To run the project's own encoder on a CV in the public Space, select **Fine-tuned research encoder (118 MB)**. The first run downloads quantized weights and a tokenizer. The browser then computes the passage vectors locally. In the live ten-condition retrieval check, both the base and research encoders surfaced the designated passage in the first three for nine conditions and in first place for four. The applicant confirms the evidence. [Live retrieval results](reports/live-pooled-retrieval.json)

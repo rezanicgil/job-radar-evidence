@@ -420,10 +420,10 @@ function durationComparison(card,condition,lines){
       (gap===0?"equal duration":Math.abs(gap)+" months "+(gap<0?"below":"above")+" the minimum")+".";
   };
 }
-function addEvidencePicker(card,lines,suggestions){
-  const panel=add(card,"div","");
-  panel.hidden=true;
-  add(panel,"p","Select the CV passage or passages that support this assessment.");
+function addEvidencePicker(card,lines,suggestions,ranks){
+  const panel=add(card,"details","");
+  add(panel,"summary","Inspect and select CV evidence");
+  add(panel,"p","Search rank shows where a passage appeared for this condition. Select your evidence, then choose an assessment.");
   function addChoice(parent,line){
     const choice=add(parent,"div","");
     const label=add(choice,"label","");
@@ -433,7 +433,9 @@ function addEvidencePicker(card,lines,suggestions){
     input.value="Page "+line.page+" · "+line.text;
     input.dataset.page=line.page;
     input.dataset.passage=line.text;
-    label.append(" "+input.value);
+    const rank=ranks.get(line);
+    if(rank)input.dataset.rank=rank;
+    label.append(" "+(rank?"Search rank "+rank+" · ":"")+input.value);
     input.onchange=()=>{
       choice.querySelector(".quote-editor")?.remove();
       if(input.checked){
@@ -456,7 +458,8 @@ function addEvidencePicker(card,lines,suggestions){
     return choice;
   }
   for(const line of suggestions)addChoice(panel,line);
-  const others=lines.filter(line=>!suggestions.includes(line));
+  const others=lines.filter(line=>!suggestions.includes(line)).sort((a,b)=>
+    (ranks.get(a)??Infinity)-(ranks.get(b)??Infinity));
   if(others.length){
     const details=add(panel,"details","");
     add(details,"summary","Browse "+others.length+" other CV passages");
@@ -495,7 +498,7 @@ function assessmentRows(){
     const quotes=chosen.map(input=>{
       const field=input.closest("div").querySelector(".excerpt");
       const excerpt=field?.value.trim();
-      return {page:Number(input.dataset.page),passage:input.dataset.passage,excerpt:excerpt||null};
+      return {page:Number(input.dataset.page),passage:input.dataset.passage,excerpt:excerpt||null,search_rank:Number(input.dataset.rank)||null};
     });
     const validQuotes=chosen.every(input=>input.closest("div").querySelector(".excerpt")?.validity.valid!==false);
     const needsQuote=label==="partial"||label==="supported";
@@ -529,7 +532,7 @@ function exportReview(format){
     coverage:counts(rows.map(row=>row.label)),conditions:rows.map(({complete,...row})=>({...row,next_edit:nextEdit(row)||null}))};
   const body=format==="json"?JSON.stringify(data,null,2):["Job Radar Evidence",el("source").textContent,context,heading,...rows.map(row=>
     [row.condition,"Assessment: "+row.label,...row.quotes.map(q=>"Page "+q.page+" · "+q.passage+
-      (q.excerpt?"\nHighlighted wording: "+q.excerpt:"")),row.duration,
+      (q.search_rank?"\nSearch rank: "+q.search_rank:"")+(q.excerpt?"\nHighlighted wording: "+q.excerpt:"")),row.duration,
      row.missing?"Requirement still to demonstrate: "+row.missing:"",
      nextEdit(row)?"Next CV edit: "+nextEdit(row):""].filter(Boolean).join("\n"))].join("\n\n");
   const url=URL.createObjectURL(new Blob([body+"\n"],{type:format==="json"?"application/json":"text/plain;charset=utf-8"}));
@@ -611,13 +614,15 @@ el("form").onsubmit=async event=>{
     job.forEach((condition,i)=>{
       const terms=words(condition);
       const translations=semantic?[]:translatedTerms(condition);
-      const ranked=lines.map((line,j)=>{
+      const ordered=lines.map((line,j)=>{
         const matches=translations.filter(m=>phraseText(line.text,m.language).includes(phraseText(m.target,m.language)));
         const match=semantic?semanticMatch(vec[i],vec[job.length+j]):
           {score:[...words(line.text)].filter(t=>terms.has(t)).length+matches.length};
         return {line,...match,matches};
       })
-        .filter(x=>semantic||x.score>0).sort((a,b)=>b.score-a.score).slice(0,3);
+        .filter(x=>semantic||x.score>0).sort((a,b)=>b.score-a.score);
+      const ranks=new Map(ordered.map(({line},index)=>[line,index+1]));
+      const ranked=ordered.slice(0,3);
       const card=add(el("results"),"article","");add(card,"h3",condition);
       const wording=technologyWording(condition,vocabulary||[]);
       if(wording)add(card,"small",(wording.mode==="any"?"Alternative technologies · evidence for one listed option can meet this part: ":
@@ -652,7 +657,8 @@ el("form").onsubmit=async event=>{
       select.className="assessment";
       for(const [value,label] of [["","Choose"],["supported","Required · supported"],["partial","Required · partial"],["unverified","Required · unverified"],["skip","Exclude from required coverage"]])select.add(new Option(label,value));
       if(selectedPreferences.has(condition))select.value="skip";
-      const picker=addEvidencePicker(card,lines,visible);
+      const picker=addEvidencePicker(card,lines,visible,ranks);
+      picker.hidden=select.value==="skip";
       const advice=add(card,"small","");
       const gapLabel=add(card,"label","Which words in this requirement still lack evidence? (optional)");
       const gap=add(gapLabel,"input","");gap.className="job-gap";
@@ -672,7 +678,8 @@ el("form").onsubmit=async event=>{
         gapLabel.hidden=select.value!=="partial";
         gap.disabled=gapLabel.hidden;
         if(gap.disabled){gap.value="";gapError.textContent="";gap.setCustomValidity("")}
-        picker.hidden=!(select.value==="supported"||select.value==="partial");
+        picker.hidden=select.value==="unverified"||select.value==="skip";
+        picker.open=!picker.hidden;
         if(picker.hidden){
           for(const input of picker.querySelectorAll(".evidence:checked"))input.checked=false;
           for(const editor of picker.querySelectorAll(".quote-editor"))editor.remove();
