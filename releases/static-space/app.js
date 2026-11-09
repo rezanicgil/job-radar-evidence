@@ -406,6 +406,9 @@ el("form").onsubmit=async event=>{
 };
 try{
   const market=await (await fetch("market.json")).json();
+  let employerBoard;
+  const boardListings=add(el("direct").parentElement,"section","");
+  el("direct").after(boardListings);
   if(market.boards){
     const boards=market.boards;
     const details=document.createElement("details");
@@ -448,6 +451,16 @@ try{
         if(row.minimum_technical?.length)offerReviewedConditions(card,row,row.minimum_technical);
       }
     }
+    boardListings.replaceChildren();
+    if(employerBoard){
+      const positions=employerBoard.postings.filter(row=>!el("area").value||row.areas.includes(el("area").value));
+      if(positions.length){
+        const panel=add(boardListings,"details","");
+        add(panel,"summary",employerBoard.employer+" · "+positions.length+" employment listings · location unconfirmed");
+        add(panel,"p","Listed on "+employerBoard.collected_at.slice(0,10)+". The board omits job locations. These listings are outside the Türkiye technology percentages.");
+        for(const p of positions)add(add(panel,"p",""),"a",p.title).href=p.url;
+      }
+    }
     el("scope").textContent=market.collected_at.slice(0,10)+" · "+records.length+" readable descriptions of "+group.length+" selected postings. Counts include mentions in preferences and company context.";
     const skills=new Map();
     for(const p of records)for(const s of new Set(p.skills)){if(!skills.has(s))skills.set(s,[]);skills.get(s).push(p)}
@@ -471,6 +484,10 @@ try{
     }
     if(!skills.size)add(el("counts"),"p","No tracked mentions in this selection.");
   }el("area").onchange=render;el("basis").onchange=render;render();
+  try{
+    const feed=await fetch("employer-board.json");
+    if(feed.ok){employerBoard=await feed.json();render()}
+  }catch{/* The location-confirmed market snapshot remains available. */}
 }catch{el("scope").textContent="Market snapshot unavailable."}
 try{
   const history=await (await fetch("market-history.json")).json();

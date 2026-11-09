@@ -36,6 +36,8 @@ def main():
                                {a for row in snapshot["direct"] for a in row["areas"]})
     (dest / "market.json").write_text(json.dumps(snapshot,ensure_ascii=False),encoding="utf-8")
     (dest / "market-history.json").write_text(json.dumps(daily_history(ROOT / "reports"),ensure_ascii=False),encoding="utf-8")
+    boards=sorted((ROOT/"reports").glob("baykar-roles-*.json"))
+    if boards:shutil.copyfile(boards[-1],dest/"employer-board.json")
     print(dest)
 
 
