@@ -627,7 +627,8 @@ try{
         link.href=review.source_url;
         add(card,"p",review.required_skills.join(review.skill_relation==="all_of"?" + ":" or "));
         add(card,"blockquote",review.requirement_evidence);
-        offerReviewedConditions(card,review,[review.requirement_evidence]);
+        if(review.preferred_technical?.length)add(card,"p","Selected preferences: "+review.preferred_technical.join(" "));
+        offerReviewedConditions(card,review,[review.requirement_evidence],review.preferred_technical);
       }
     }
     const direct=el("direct");

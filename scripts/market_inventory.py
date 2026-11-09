@@ -7,6 +7,7 @@ from pathlib import Path
 import re
 from urllib.error import URLError
 from urllib.request import Request, urlopen
+import workday_board
 
 ROOT = Path(__file__).resolve().parents[1]
 PATTERNS = {
@@ -38,12 +39,19 @@ def in_turkiye(country, location):
 
 def fetch(source):
     ats, slug = source["ats"], source["slug"]
-    url = {"lever": f"https://api.lever.co/v0/postings/{slug}?mode=json",
+    url = {"workday": f"https://{slug.split('/')[0]}.myworkdayjobs.com/en-US/{slug.split('/')[-1]}",
+           "lever": f"https://api.lever.co/v0/postings/{slug}?mode=json",
            "ashby": f"https://api.ashbyhq.com/posting-api/job-board/{slug}",
            "greenhouse": f"https://boards-api.greenhouse.io/v1/boards/{slug}/jobs",
            "workable": f"https://www.workable.com/api/accounts/{slug}?details=true",
            "smartrecruiters": f"https://api.smartrecruiters.com/v1/companies/{slug}/postings?country=tr&limit=100"}[ats]
     try:
+        if ats=="workday":
+            jobs=workday_board.listing_rows(slug,in_turkiye)
+            for job in jobs:
+                job["employer"]=source["name"]
+                job["areas"]=[area for area,pattern in PATTERNS.items() if re.search(pattern,job["title"],re.I)]
+            return dict(source=source["name"],url=url,status="ok",scanned=len(jobs)),jobs
         request = Request(url, headers={"User-Agent":"JobRadar/1.0 (+https://github.com/rezanicgil/job-radar-evidence)", "Accept":"application/json"})
         with urlopen(request if ats in {"ashby","workable"} else url, timeout=15) as response:
             payload = json.load(response)

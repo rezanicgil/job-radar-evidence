@@ -1,0 +1,1773 @@
+{
+  "inventory": "inventory-2026-11-09T182150451639Z.json",
+  "collected_at": "2026-11-09T18:24:08.493600+00:00",
+  "vocabulary": [
+    "Python",
+    "Java",
+    "JavaScript",
+    "TypeScript",
+    "SQL",
+    "PostgreSQL",
+    "C++",
+    "C#",
+    "Kotlin",
+    "Swift",
+    "SwiftUI",
+    "Jetpack Compose",
+    "Flutter",
+    "React",
+    "Unity",
+    "Docker",
+    "Kubernetes",
+    "Terraform",
+    "Kafka",
+    "Spark",
+    "Simulink",
+    "FreeRTOS",
+    "STM32",
+    "PyTorch",
+    "AWS",
+    "Azure",
+    "Redis",
+    "Linux",
+    "Rust",
+    "Git",
+    "React Native",
+    "Dart",
+    "UIKit",
+    "Xcode",
+    "Android SDK",
+    "Gradle",
+    "RTOS",
+    "Zephyr",
+    "ARM Cortex",
+    "CAN bus",
+    "CAN FD",
+    "I2C",
+    "SPI",
+    "UART",
+    "FPGA",
+    "MATLAB",
+    "ROS 2",
+    "QML",
+    "Unreal Engine",
+    "OpenCV"
+  ],
+  "postings": [
+    {
+      "employer": "Agave Games",
+      "title": "Game Developer",
+      "url": "https://jobs.ashbyhq.com/agavegames/f96db32e-0bf9-454a-841a-80f81da4c9ac",
+      "location": "İstanbul",
+      "areas": [
+        "Games"
+      ],
+      "status": "readable",
+      "skills": [
+        "C#",
+        "Unity"
+      ]
+    },
+    {
+      "employer": "AppNation",
+      "title": "Senior Android Developer / Platform",
+      "url": "https://jobs.lever.co/appnation/e24358a9-7a8c-4494-bd3e-0cd902bb65a6",
+      "location": "İstanbul",
+      "areas": [
+        "Android"
+      ],
+      "status": "readable",
+      "skills": [
+        "Java",
+        "Kotlin",
+        "Swift",
+        "Jetpack Compose",
+        "Flutter",
+        "Gradle"
+      ]
+    },
+    {
+      "employer": "AppNation",
+      "title": "Senior DevOps Engineer",
+      "url": "https://jobs.lever.co/appnation/5b136345-11cd-475f-b512-b691ed9de8a3",
+      "location": "İstanbul",
+      "areas": [
+        "Platform and reliability"
+      ],
+      "status": "readable",
+      "skills": [
+        "Python",
+        "SQL",
+        "Docker",
+        "Kubernetes",
+        "Terraform",
+        "Linux"
+      ]
+    },
+    {
+      "employer": "AppNation",
+      "title": "Senior iOS Developer / Platform",
+      "url": "https://jobs.lever.co/appnation/b4105254-2ae5-47a3-b87c-d48800e2c319",
+      "location": "İstanbul",
+      "areas": [
+        "iOS"
+      ],
+      "status": "readable",
+      "skills": [
+        "Kotlin",
+        "Swift",
+        "SwiftUI",
+        "Flutter",
+        "Xcode"
+      ]
+    },
+    {
+      "employer": "AppNation",
+      "title": "Senior Software Engineer (Backend)",
+      "url": "https://jobs.lever.co/appnation/ff11e33e-b92b-4c3c-810c-f3219b8b4bd5",
+      "location": "İstanbul",
+      "areas": [
+        "Backend",
+        "Software engineering (general)"
+      ],
+      "status": "readable",
+      "skills": [
+        "TypeScript",
+        "PostgreSQL",
+        "Docker",
+        "Kubernetes",
+        "Kafka",
+        "Redis"
+      ]
+    },
+    {
+      "employer": "AppNation",
+      "title": "Software Engineer (Backend)",
+      "url": "https://jobs.lever.co/appnation/090895b2-15dd-4c50-a3ff-a5f0362a3a76",
+      "location": "İstanbul",
+      "areas": [
+        "Backend",
+        "Software engineering (general)"
+      ],
+      "status": "readable",
+      "skills": [
+        "TypeScript",
+        "PostgreSQL",
+        "Docker",
+        "Kubernetes",
+        "Kafka",
+        "Redis",
+        "Git"
+      ]
+    },
+    {
+      "employer": "Bigger Games",
+      "title": "Game Developer",
+      "url": "https://jobs.ashbyhq.com/biggergames/107a1702-01e9-405e-9e32-fdd62c87d891",
+      "location": "Istanbul",
+      "areas": [
+        "Games"
+      ],
+      "status": "readable",
+      "skills": [
+        "C#",
+        "Git",
+        "Gradle"
+      ]
+    },
+    {
+      "employer": "Bigger Games",
+      "title": "Software Engineer",
+      "url": "https://jobs.ashbyhq.com/biggergames/0ce9aa65-7475-4359-9485-64e773d19ffa",
+      "location": "Istanbul",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "status": "readable",
+      "skills": [
+        "Java",
+        "AWS",
+        "Redis"
+      ]
+    },
+    {
+      "employer": "Bigger Games",
+      "title": "Senior Software Engineer",
+      "url": "https://jobs.ashbyhq.com/biggergames/e4dc9337-cd10-469f-8683-fe880d74615e",
+      "location": "Istanbul",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "status": "readable",
+      "skills": [
+        "Java",
+        "AWS",
+        "Redis"
+      ]
+    },
+    {
+      "employer": "Bigger Games",
+      "title": "Senior Game Developer",
+      "url": "https://jobs.ashbyhq.com/biggergames/28bcafc9-3e56-4c8e-8e5d-cc41b99a15f8",
+      "location": "Istanbul",
+      "areas": [
+        "Games"
+      ],
+      "status": "readable",
+      "skills": [
+        "Java",
+        "C#"
+      ]
+    },
+    {
+      "employer": "Bigger Games",
+      "title": "Data Scientist",
+      "url": "https://jobs.ashbyhq.com/biggergames/81b0689f-3607-49b9-bb68-c561103ef34e",
+      "location": "Istanbul",
+      "areas": [
+        "Data and AI"
+      ],
+      "status": "readable",
+      "skills": [
+        "Python"
+      ]
+    },
+    {
+      "employer": "Bigger Games",
+      "title": "Software Engineer, Performance Marketing",
+      "url": "https://jobs.ashbyhq.com/biggergames/14511bd4-b8eb-4a5d-9b88-44fa9a48ada8",
+      "location": "Istanbul",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "status": "readable",
+      "skills": [
+        "C#",
+        "Unity"
+      ]
+    },
+    {
+      "employer": "Bold Games",
+      "title": "Data Analyst",
+      "url": "https://jobs.ashbyhq.com/boldgames/8ad65476-a623-4033-80dc-a20614af39c6",
+      "location": "Istanbul, Turkey",
+      "areas": [
+        "Data and AI"
+      ],
+      "status": "readable",
+      "skills": [
+        "Python",
+        "SQL"
+      ]
+    },
+    {
+      "employer": "Commencis",
+      "title": "Senior Backend Engineer",
+      "url": "https://jobs.lever.co/commencis/138e71e4-2c35-451b-9c7e-967a609e100d",
+      "location": "Istanbul, Turkey",
+      "areas": [
+        "Backend"
+      ],
+      "status": "readable",
+      "skills": [
+        "Java",
+        "JavaScript",
+        "PostgreSQL",
+        "Kafka",
+        "Redis",
+        "Git"
+      ]
+    },
+    {
+      "employer": "Dataroid",
+      "title": "Senior Backend Engineer",
+      "url": "https://jobs.lever.co/dataroid/465b481e-26df-47e5-965e-bd622761c789",
+      "location": "Istanbul",
+      "areas": [
+        "Backend"
+      ],
+      "status": "readable",
+      "skills": [
+        "Java",
+        "Docker",
+        "Kubernetes",
+        "Kafka",
+        "Azure",
+        "Redis",
+        "Linux",
+        "Git"
+      ]
+    },
+    {
+      "employer": "Dream Games",
+      "title": "AI Engineer, Performance Marketing",
+      "url": "https://jobs.lever.co/dreamgames/2a2c64d7-cc33-49a0-bf41-807b28933ca7",
+      "location": "Istanbul",
+      "areas": [
+        "Data and AI"
+      ],
+      "status": "readable",
+      "skills": [
+        "Python"
+      ]
+    },
+    {
+      "employer": "Dream Games",
+      "title": "Game Developer",
+      "url": "https://jobs.lever.co/dreamgames/f16a1f7b-03e4-493a-b5bc-851f66e105cd",
+      "location": "Istanbul",
+      "areas": [
+        "Games"
+      ],
+      "status": "readable",
+      "skills": [
+        "Java",
+        "C++",
+        "C#",
+        "Unity"
+      ]
+    },
+    {
+      "employer": "Dream Games",
+      "title": "Senior Software Engineer",
+      "url": "https://jobs.lever.co/dreamgames/82f56330-c6c7-42d5-a438-731cda77dbd5",
+      "location": "Istanbul",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "status": "readable",
+      "skills": [
+        "Java",
+        "C++",
+        "C#",
+        "Unity"
+      ]
+    },
+    {
+      "employer": "Dream Games",
+      "title": "Software Engineer",
+      "url": "https://jobs.lever.co/dreamgames/ddd317b1-11f6-4477-9ca0-d35dd0a279fe",
+      "location": "Istanbul",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "status": "readable",
+      "skills": [
+        "Java",
+        "C++",
+        "C#",
+        "Unity"
+      ]
+    },
+    {
+      "employer": "Dream Games",
+      "title": "Software Engineer (New Grad)",
+      "url": "https://jobs.lever.co/dreamgames/0714caf0-4077-44f3-a1d4-8985b9baf1bc",
+      "location": "Istanbul",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "status": "readable",
+      "skills": [
+        "C#",
+        "Unity"
+      ]
+    },
+    {
+      "employer": "Dream Games",
+      "title": "Software Engineer (Part-time)",
+      "url": "https://jobs.lever.co/dreamgames/4c024afb-7daa-45ee-8d26-4d1212e2ad73",
+      "location": "Istanbul",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "status": "readable",
+      "skills": [
+        "C#",
+        "Unity"
+      ]
+    },
+    {
+      "employer": "Dream Games",
+      "title": "Software Engineer, Performance Marketing",
+      "url": "https://jobs.lever.co/dreamgames/2a650ecb-c187-4e06-a50a-ee23866a952e",
+      "location": "Istanbul",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "status": "readable",
+      "skills": [
+        "C#",
+        "Unity"
+      ]
+    },
+    {
+      "employer": "Good Job Games",
+      "title": "AI Engineer ",
+      "url": "https://job-boards.greenhouse.io/goodjobgames/jobs/7489383003",
+      "location": "Sarıyer, Istanbul",
+      "areas": [
+        "Data and AI"
+      ],
+      "status": "readable",
+      "skills": [
+        "Python",
+        "PyTorch"
+      ]
+    },
+    {
+      "employer": "Good Job Games",
+      "title": "Game Developer ",
+      "url": "https://job-boards.greenhouse.io/goodjobgames/jobs/4221785003",
+      "location": "Sarıyer, Istanbul",
+      "areas": [
+        "Games"
+      ],
+      "status": "readable",
+      "skills": [
+        "C#",
+        "Unity",
+        "Git"
+      ]
+    },
+    {
+      "employer": "Good Job Games",
+      "title": "Game Developer, New Games",
+      "url": "https://job-boards.greenhouse.io/goodjobgames/jobs/7972910003",
+      "location": "Sarıyer, Istanbul",
+      "areas": [
+        "Games"
+      ],
+      "status": "readable",
+      "skills": [
+        "C#",
+        "Unity"
+      ]
+    },
+    {
+      "employer": "Good Job Games",
+      "title": "Junior Game Developer",
+      "url": "https://job-boards.greenhouse.io/goodjobgames/jobs/5332845003",
+      "location": "Sarıyer, Istanbul",
+      "areas": [
+        "Games"
+      ],
+      "status": "readable",
+      "skills": [
+        "C#",
+        "Unity",
+        "Git"
+      ]
+    },
+    {
+      "employer": "Good Job Games",
+      "title": "Senior Game Developer",
+      "url": "https://job-boards.greenhouse.io/goodjobgames/jobs/4668446003",
+      "location": "Sarıyer, Istanbul",
+      "areas": [
+        "Games"
+      ],
+      "status": "readable",
+      "skills": [
+        "C++",
+        "C#",
+        "Unity",
+        "Git"
+      ]
+    },
+    {
+      "employer": "Good Job Games",
+      "title": "Senior Software Engineer",
+      "url": "https://job-boards.greenhouse.io/goodjobgames/jobs/6284775003",
+      "location": "Sarıyer, Istanbul",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "status": "readable",
+      "skills": [
+        "AWS"
+      ]
+    },
+    {
+      "employer": "Good Job Games",
+      "title": "Software Engineer",
+      "url": "https://job-boards.greenhouse.io/goodjobgames/jobs/6284774003",
+      "location": "Sarıyer, Istanbul",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "status": "readable",
+      "skills": [
+        "AWS"
+      ]
+    },
+    {
+      "employer": "Good Job Games",
+      "title": "Software Engineer - New Grad",
+      "url": "https://job-boards.greenhouse.io/goodjobgames/jobs/7574002003",
+      "location": "Sarıyer, Istanbul",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "status": "readable",
+      "skills": [
+        "AWS"
+      ]
+    },
+    {
+      "employer": "Grand Games",
+      "title": "Game Developer",
+      "url": "https://jobs.lever.co/grand/800e31c8-10af-40eb-9026-701cce7b8c8a",
+      "location": "Istanbul",
+      "areas": [
+        "Games"
+      ],
+      "status": "readable",
+      "skills": [
+        "Unity"
+      ]
+    },
+    {
+      "employer": "Insider One",
+      "title": "Backend Software Developer (PHP/Laravel) – Remote",
+      "url": "https://jobs.lever.co/insiderone/97e2350d-5abc-4869-9337-07d3831e7841",
+      "location": "Turkey",
+      "areas": [
+        "Backend",
+        "Software engineering (general)"
+      ],
+      "status": "readable",
+      "skills": [
+        "Docker",
+        "AWS",
+        "Redis",
+        "Git"
+      ]
+    },
+    {
+      "employer": "Insider One",
+      "title": "Front-End Developer (Remote)",
+      "url": "https://jobs.lever.co/insiderone/11c5f0af-ed68-4ede-8c4e-9fc0dd56c517",
+      "location": "Istanbul, Turkiye",
+      "areas": [
+        "Frontend"
+      ],
+      "status": "readable",
+      "skills": [
+        "JavaScript",
+        "TypeScript",
+        "Git"
+      ]
+    },
+    {
+      "employer": "Insider One",
+      "title": "Information Security Engineer  - (Remote)",
+      "url": "https://jobs.lever.co/insiderone/48999122-ba47-4d41-9934-647b826cafa4",
+      "location": "Turkey",
+      "areas": [
+        "Security"
+      ],
+      "status": "readable",
+      "skills": [
+        "AWS"
+      ]
+    },
+    {
+      "employer": "Insider One",
+      "title": "Junior Software Engineer (AI-Enabled) — Remote",
+      "url": "https://jobs.lever.co/insiderone/176f6234-e706-492e-a984-9eee80d28d22",
+      "location": "Turkey",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "status": "readable",
+      "skills": [
+        "Python",
+        "SQL",
+        "React",
+        "Docker",
+        "Git"
+      ]
+    },
+    {
+      "employer": "Insider One",
+      "title": "Senior Security Engineer - Red Team (Remote)",
+      "url": "https://jobs.lever.co/insiderone/1838777d-1223-4a02-97cb-468886673d1c",
+      "location": "Istanbul, Turkiye",
+      "areas": [
+        "Security"
+      ],
+      "status": "readable",
+      "skills": [
+        "Python",
+        "JavaScript",
+        "AWS"
+      ]
+    },
+    {
+      "employer": "Insider One",
+      "title": "Software Engineer - (AI Native)",
+      "url": "https://jobs.lever.co/insiderone/ee932b8c-0e12-45c1-8c1a-1ec95c4e623c",
+      "location": "Turkey",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "status": "readable",
+      "skills": [
+        "Python",
+        "TypeScript"
+      ]
+    },
+    {
+      "employer": "iyzico",
+      "title": "Senior Data Scientist",
+      "url": "https://jobs.lever.co/iyzico/dee3fbac-5a60-446b-89db-a7339d358409",
+      "location": "Istanbul",
+      "areas": [
+        "Data and AI"
+      ],
+      "status": "readable",
+      "skills": [
+        "Python",
+        "SQL",
+        "PyTorch"
+      ]
+    },
+    {
+      "employer": "Medsien",
+      "title": "Back-End Developer",
+      "url": "https://job-boards.greenhouse.io/medsien/jobs/4557294007",
+      "location": "Istanbul, Turkey",
+      "areas": [
+        "Backend"
+      ],
+      "status": "readable",
+      "skills": [
+        "Python"
+      ]
+    },
+    {
+      "employer": "Medsien",
+      "title": "Senior QA Engineer / Senior Software Test Engineer",
+      "url": "https://job-boards.greenhouse.io/medsien/jobs/5233269007",
+      "location": "Istanbul, Turkey",
+      "areas": [
+        "QA and testing"
+      ],
+      "status": "readable",
+      "skills": [
+        "Java",
+        "Docker",
+        "Git"
+      ]
+    },
+    {
+      "employer": "Medsien",
+      "title": "Senior Software Developer",
+      "url": "https://job-boards.greenhouse.io/medsien/jobs/5280032007",
+      "location": "Istanbul, Turkey",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "status": "readable",
+      "skills": [
+        "Python"
+      ]
+    },
+    {
+      "employer": "Medsien",
+      "title": "Software Engineering Manager",
+      "url": "https://job-boards.greenhouse.io/medsien/jobs/5202723007",
+      "location": "Istanbul, Turkey",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "status": "readable",
+      "skills": [
+        "Python"
+      ]
+    },
+    {
+      "employer": "Midas",
+      "title": "Data Analyst, Performance Marketing",
+      "url": "https://jobs.lever.co/getmidas/00e534d8-5ed1-4de0-8f9b-43e9149523ec",
+      "location": "İstanbul, Turkey",
+      "areas": [
+        "Data and AI"
+      ],
+      "status": "readable",
+      "skills": [
+        "Python",
+        "SQL"
+      ]
+    },
+    {
+      "employer": "Midas",
+      "title": "Quantitative Developer",
+      "url": "https://jobs.lever.co/getmidas/06b3a906-b139-41b7-b3a2-b794992af3f2",
+      "location": "İstanbul, Turkey",
+      "areas": [
+        "Financial software"
+      ],
+      "status": "readable",
+      "skills": [
+        "Python"
+      ]
+    },
+    {
+      "employer": "Midas",
+      "title": "Senior Blockchain Engineer",
+      "url": "https://jobs.lever.co/getmidas/0f746779-a756-49b0-94f4-d1c5232ee94c",
+      "location": "Turkey",
+      "areas": [
+        "Financial software"
+      ],
+      "status": "readable",
+      "skills": [
+        "Rust"
+      ]
+    },
+    {
+      "employer": "Midas",
+      "title": "Senior Software Engineer",
+      "url": "https://jobs.lever.co/getmidas/536b118f-21c2-4467-b893-c5dc3c90e9ca",
+      "location": "Turkey",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "status": "readable",
+      "skills": []
+    },
+    {
+      "employer": "Midas",
+      "title": "Software Engineer",
+      "url": "https://jobs.lever.co/getmidas/79cce898-6063-43b2-819a-2f4072dd8bcb",
+      "location": "İstanbul, Turkey",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "status": "readable",
+      "skills": []
+    },
+    {
+      "employer": "Midas",
+      "title": "Software Engineer, Atlas (Frontend)",
+      "url": "https://jobs.lever.co/getmidas/356a88af-cf73-4137-b843-e7b66c6929d0",
+      "location": "Turkey",
+      "areas": [
+        "Frontend",
+        "Software engineering (general)"
+      ],
+      "status": "readable",
+      "skills": [
+        "React"
+      ]
+    },
+    {
+      "employer": "Sezzle",
+      "title": "Data Engineer II, Credit Reporting",
+      "url": "https://job-boards.greenhouse.io/sezzle/jobs/8061535003",
+      "location": "Türkiye",
+      "areas": [
+        "Data and AI"
+      ],
+      "status": "readable",
+      "skills": [
+        "Python",
+        "SQL",
+        "PostgreSQL",
+        "AWS"
+      ]
+    },
+    {
+      "employer": "Sezzle",
+      "title": "Junior Software Engineer with Accounting Experience ",
+      "url": "https://job-boards.greenhouse.io/sezzle/jobs/6668069003",
+      "location": "Türkiye, Remote",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "status": "readable",
+      "skills": [
+        "Python",
+        "Java",
+        "TypeScript",
+        "PostgreSQL",
+        "React",
+        "Kubernetes",
+        "AWS",
+        "Git",
+        "React Native"
+      ]
+    },
+    {
+      "employer": "Sezzle",
+      "title": "Mobile Engineer (Turkey, All Levels)",
+      "url": "https://job-boards.greenhouse.io/sezzle/jobs/7541145003",
+      "location": "Türkiye",
+      "areas": [
+        "Mobile (general/cross-platform)"
+      ],
+      "status": "readable",
+      "skills": [
+        "Python",
+        "JavaScript",
+        "TypeScript",
+        "Swift",
+        "React",
+        "Kubernetes",
+        "AWS",
+        "Git",
+        "React Native"
+      ]
+    },
+    {
+      "employer": "Sezzle",
+      "title": "Principal Infrastructure Engineer",
+      "url": "https://job-boards.greenhouse.io/sezzle/jobs/7993260003",
+      "location": "Türkiye, Remote",
+      "areas": [
+        "Platform and reliability"
+      ],
+      "status": "readable",
+      "skills": [
+        "Python",
+        "Kubernetes",
+        "Terraform",
+        "AWS",
+        "Linux",
+        "Git"
+      ]
+    },
+    {
+      "employer": "Sezzle",
+      "title": "Senior Database Reliability Engineer ",
+      "url": "https://job-boards.greenhouse.io/sezzle/jobs/7725285003",
+      "location": "Türkiye, Remote",
+      "areas": [
+        "Platform and reliability"
+      ],
+      "status": "readable",
+      "skills": [
+        "Python",
+        "TypeScript",
+        "PostgreSQL",
+        "React",
+        "Kubernetes",
+        "Terraform",
+        "AWS",
+        "Git",
+        "React Native"
+      ]
+    },
+    {
+      "employer": "Sezzle",
+      "title": "Senior Data Engineer, Credit Reporting",
+      "url": "https://job-boards.greenhouse.io/sezzle/jobs/8060796003",
+      "location": "Türkiye",
+      "areas": [
+        "Data and AI"
+      ],
+      "status": "readable",
+      "skills": [
+        "Python",
+        "SQL",
+        "PostgreSQL",
+        "AWS"
+      ]
+    },
+    {
+      "employer": "Sezzle",
+      "title": "Senior Payments Engineer — Acquiring & Payment Processing",
+      "url": "https://job-boards.greenhouse.io/sezzle/jobs/7779221003",
+      "location": "Türkiye, Remote",
+      "areas": [
+        "Financial software"
+      ],
+      "status": "readable",
+      "skills": [
+        "Python",
+        "TypeScript",
+        "SQL",
+        "React",
+        "Kubernetes",
+        "Kafka",
+        "AWS",
+        "Git",
+        "React Native"
+      ]
+    },
+    {
+      "employer": "Sezzle",
+      "title": "Senior Security Engineer, Detection & Response",
+      "url": "https://job-boards.greenhouse.io/sezzle/jobs/8031436003",
+      "location": "Türkiye, Remote",
+      "areas": [
+        "Security"
+      ],
+      "status": "readable",
+      "skills": [
+        "Python",
+        "TypeScript",
+        "React",
+        "Kubernetes",
+        "AWS",
+        "Linux",
+        "Git",
+        "React Native"
+      ]
+    },
+    {
+      "employer": "Sezzle",
+      "title": "Senior Security Engineer, Network & Zero Trust",
+      "url": "https://job-boards.greenhouse.io/sezzle/jobs/8032198003",
+      "location": "Türkiye, Remote",
+      "areas": [
+        "Security"
+      ],
+      "status": "readable",
+      "skills": [
+        "Python",
+        "TypeScript",
+        "React",
+        "Kubernetes",
+        "Terraform",
+        "AWS",
+        "Git",
+        "React Native"
+      ]
+    },
+    {
+      "employer": "Sezzle",
+      "title": "Senior Site Reliability Engineer",
+      "url": "https://job-boards.greenhouse.io/sezzle/jobs/7612268003",
+      "location": "Türkiye, Remote",
+      "areas": [
+        "Platform and reliability"
+      ],
+      "status": "readable",
+      "skills": [
+        "Python",
+        "TypeScript",
+        "SQL",
+        "PostgreSQL",
+        "React",
+        "Kubernetes",
+        "AWS",
+        "Git",
+        "React Native"
+      ]
+    },
+    {
+      "employer": "Sezzle",
+      "title": "Senior Software Engineer, Security Platform",
+      "url": "https://job-boards.greenhouse.io/sezzle/jobs/8031665003",
+      "location": "Türkiye, Remote",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "status": "readable",
+      "skills": [
+        "Python",
+        "TypeScript",
+        "React",
+        "Kubernetes",
+        "Kafka",
+        "AWS",
+        "Git",
+        "React Native"
+      ]
+    },
+    {
+      "employer": "Sezzle",
+      "title": "Senior Software Engineer (Turkey)",
+      "url": "https://job-boards.greenhouse.io/sezzle/jobs/6275711003",
+      "location": "Türkiye, Remote",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "status": "readable",
+      "skills": [
+        "Python",
+        "Java",
+        "TypeScript",
+        "SQL",
+        "React",
+        "Kubernetes",
+        "Kafka",
+        "AWS",
+        "Git",
+        "React Native"
+      ]
+    },
+    {
+      "employer": "Sezzle",
+      "title": "Senior Software Engineer with Accounting Experience ",
+      "url": "https://job-boards.greenhouse.io/sezzle/jobs/7527790003",
+      "location": "Türkiye, Remote",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "status": "readable",
+      "skills": [
+        "Python",
+        "Java",
+        "TypeScript",
+        "SQL",
+        "PostgreSQL",
+        "React",
+        "Kubernetes",
+        "AWS",
+        "Git",
+        "React Native"
+      ]
+    },
+    {
+      "employer": "Sezzle",
+      "title": "Software Engineer II (Turkey)",
+      "url": "https://job-boards.greenhouse.io/sezzle/jobs/6503001003",
+      "location": "Türkiye, Remote",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "status": "readable",
+      "skills": [
+        "Python",
+        "TypeScript",
+        "React",
+        "Kubernetes",
+        "AWS",
+        "Git",
+        "React Native"
+      ]
+    },
+    {
+      "employer": "Sezzle",
+      "title": "Software Engineer II with Accounting Experience ",
+      "url": "https://job-boards.greenhouse.io/sezzle/jobs/7527806003",
+      "location": "Türkiye, Remote",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "status": "readable",
+      "skills": [
+        "Python",
+        "Java",
+        "TypeScript",
+        "PostgreSQL",
+        "React",
+        "Kubernetes",
+        "AWS",
+        "Git",
+        "React Native"
+      ]
+    },
+    {
+      "employer": "Spyke Games",
+      "title": "Data Analyst",
+      "url": "https://jobs.lever.co/spyke-games/5ed2a2e8-c2f3-48e7-a6b7-8de049055960",
+      "location": "Istanbul",
+      "areas": [
+        "Data and AI"
+      ],
+      "status": "readable",
+      "skills": [
+        "SQL"
+      ]
+    },
+    {
+      "employer": "Spyke Games",
+      "title": "Senior Game Developer",
+      "url": "https://jobs.lever.co/spyke-games/2b9ed21c-b392-4d09-916d-fd8ecacc05b7",
+      "location": "Istanbul",
+      "areas": [
+        "Games"
+      ],
+      "status": "readable",
+      "skills": [
+        "Java",
+        "C#",
+        "Unity"
+      ]
+    },
+    {
+      "employer": "Trendyol",
+      "title": "Data Engineer",
+      "url": "https://jobs.lever.co/trendyol/eaa523a4-5e9e-4b4a-b674-ee7906be309c",
+      "location": "Istanbul / Maslak",
+      "areas": [
+        "Data and AI"
+      ],
+      "status": "readable",
+      "skills": [
+        "Python",
+        "Java",
+        "SQL",
+        "Docker",
+        "Kubernetes",
+        "Spark"
+      ]
+    },
+    {
+      "employer": "Trendyol",
+      "title": "Data Science Professionals",
+      "url": "https://jobs.lever.co/trendyol/9ab5e4d0-1965-4a28-b8a6-7de57f163e8d",
+      "location": "Istanbul / Maslak",
+      "areas": [
+        "Data and AI"
+      ],
+      "status": "readable",
+      "skills": [
+        "Python",
+        "SQL",
+        "PyTorch"
+      ]
+    },
+    {
+      "employer": "Trendyol",
+      "title": "Data Scientist (Pre-Search)",
+      "url": "https://jobs.lever.co/trendyol/33c48e9f-762d-4081-ba43-ff7be9844310",
+      "location": "Istanbul / Maslak",
+      "areas": [
+        "Data and AI"
+      ],
+      "status": "readable",
+      "skills": [
+        "Python",
+        "SQL",
+        "PyTorch"
+      ]
+    },
+    {
+      "employer": "Trendyol",
+      "title": "Software Engineer (Fintech Services)",
+      "url": "https://jobs.lever.co/trendyol/a12283f5-db1c-4765-880a-27a3c660505f",
+      "location": "Istanbul / Maslak",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "status": "readable",
+      "skills": [
+        "Java",
+        "PostgreSQL",
+        "C#",
+        "Kotlin",
+        "Kubernetes",
+        "Terraform",
+        "Kafka"
+      ]
+    },
+    {
+      "employer": "Trendyol Go",
+      "title": "Backend Developer",
+      "url": "https://jobs.lever.co/trendyol-go/cc14ebf0-e169-4f5b-a7ac-3441b76457b1",
+      "location": "İstanbul",
+      "areas": [
+        "Backend"
+      ],
+      "status": "readable",
+      "skills": [
+        "Java",
+        "PostgreSQL",
+        "C#",
+        "Kotlin",
+        "Kubernetes",
+        "Kafka",
+        "Redis"
+      ]
+    },
+    {
+      "employer": "Voodoo",
+      "title": "Senior Game Data Analyst - Paper.io 2",
+      "url": "https://jobs.ashbyhq.com/voodoo/1fbf08d4-9b69-48cb-bb06-08064d64d2cd",
+      "location": "Istanbul",
+      "areas": [
+        "Data and AI"
+      ],
+      "status": "readable",
+      "skills": [
+        "Python",
+        "SQL"
+      ]
+    },
+    {
+      "employer": "Voodoo",
+      "title": "Senior Game Developer (Game Feel, UI, Animations, VFX) - Paper.io2",
+      "url": "https://jobs.ashbyhq.com/voodoo/8f86c74e-7d06-447d-bd1b-ad268e46bb3e",
+      "location": "Istanbul",
+      "areas": [
+        "Games"
+      ],
+      "status": "readable",
+      "skills": [
+        "C#",
+        "Unity"
+      ]
+    },
+    {
+      "employer": "Voodoo",
+      "title": "Gameplay & UI Developer - Paper.io2",
+      "url": "https://jobs.ashbyhq.com/voodoo/1c428341-5d1f-4903-aacd-1ce05b04dc17",
+      "location": "Istanbul",
+      "areas": [
+        "Games"
+      ],
+      "status": "readable",
+      "skills": [
+        "C#",
+        "Unity"
+      ]
+    },
+    {
+      "employer": "Voodoo",
+      "title": "Senior QA Tester - Paper.io 2",
+      "url": "https://jobs.ashbyhq.com/voodoo/256c76e9-4d4f-45c7-b4e0-978ff2328330",
+      "location": "Istanbul",
+      "areas": [
+        "QA and testing"
+      ],
+      "status": "readable",
+      "skills": []
+    },
+    {
+      "employer": "Voodoo",
+      "title": "Lead Game Developer - Woodturning",
+      "url": "https://jobs.ashbyhq.com/voodoo/9d7b5de1-4b5a-42fd-9473-7628b7f3da78",
+      "location": "Istanbul",
+      "areas": [
+        "Games"
+      ],
+      "status": "readable",
+      "skills": [
+        "Unity"
+      ]
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Senior Application Software Engineer",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000154037659",
+      "location": "Manisa",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "status": "readable",
+      "skills": [
+        "Python",
+        "C++",
+        "Simulink"
+      ]
+    },
+    {
+      "employer": "Ace Games",
+      "title": "Data Analyst",
+      "url": "https://apply.workable.com/ace-games/j/DD04083247/",
+      "location": "Istanbul, İstanbul, Turkey",
+      "areas": [
+        "Data and AI"
+      ],
+      "status": "readable",
+      "skills": [
+        "SQL"
+      ]
+    },
+    {
+      "employer": "Roof Stacks",
+      "title": "Bilgi Güvenliği Mühendisi (Bankacılık)",
+      "url": "https://jobs.lever.co/roofstacks/49e4f4cb-430d-4f93-bbbe-c2556b20f79c",
+      "location": "İstanbul",
+      "areas": [
+        "Security"
+      ],
+      "status": "readable",
+      "skills": []
+    },
+    {
+      "employer": "Roof Stacks",
+      "title": "BT Altyapı Mühendisi (Bankacılık)",
+      "url": "https://jobs.lever.co/roofstacks/fde1267c-de8b-4361-901b-f99925f6b257",
+      "location": "İstanbul",
+      "areas": [
+        "Platform and reliability"
+      ],
+      "status": "readable",
+      "skills": []
+    },
+    {
+      "employer": "Roof Stacks",
+      "title": "DevOps Mühendisi (Bankacılık)",
+      "url": "https://jobs.lever.co/roofstacks/22286111-d965-4644-804a-792504b559b0",
+      "location": "İstanbul",
+      "areas": [
+        "Platform and reliability"
+      ],
+      "status": "readable",
+      "skills": [
+        "Docker",
+        "Kubernetes",
+        "Azure"
+      ]
+    },
+    {
+      "employer": "Roof Stacks",
+      "title": "Kıdemli Uygulama Entegrasyon Mühendisi (Bankacılık)",
+      "url": "https://jobs.lever.co/roofstacks/70409613-03e9-48ba-a1f4-d96361a7b1f4",
+      "location": "İstanbul",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "status": "readable",
+      "skills": []
+    },
+    {
+      "employer": "Roof Stacks",
+      "title": "Senior Backend Developer",
+      "url": "https://jobs.lever.co/roofstacks/3b558b4c-4521-4283-9543-ee8ba9220c41",
+      "location": "İstanbul",
+      "areas": [
+        "Backend"
+      ],
+      "status": "readable",
+      "skills": [
+        "C#",
+        "Docker",
+        "Kubernetes",
+        "Kafka",
+        "Redis"
+      ]
+    },
+    {
+      "employer": "Roof Stacks",
+      "title": "Senior Backend Developer (Card Payment Systems)",
+      "url": "https://jobs.lever.co/roofstacks/0848346f-8e70-4c08-aa18-5bd1626f801c",
+      "location": "İstanbul",
+      "areas": [
+        "Backend"
+      ],
+      "status": "readable",
+      "skills": [
+        "Python",
+        "Java",
+        "SQL",
+        "C#",
+        "Kotlin"
+      ]
+    },
+    {
+      "employer": "Roof Stacks",
+      "title": "Software Architect",
+      "url": "https://jobs.lever.co/roofstacks/8db245d8-a63d-4b71-aba1-c5496482454d",
+      "location": "İstanbul",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "status": "readable",
+      "skills": []
+    },
+    {
+      "employer": "Roof Stacks",
+      "title": "Software Architect",
+      "url": "https://jobs.lever.co/roofstacks/f0556c0d-afeb-4b0d-b608-04d29a4c7823",
+      "location": "İstanbul",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "status": "readable",
+      "skills": []
+    },
+    {
+      "employer": "Roof Stacks",
+      "title": "Veritabanı Yöneticisi (Bankacılık)",
+      "url": "https://jobs.lever.co/roofstacks/31ea2349-542a-4661-b21c-fe5dedc09a06",
+      "location": "İstanbul",
+      "areas": [
+        "Platform and reliability"
+      ],
+      "status": "readable",
+      "skills": [
+        "SQL",
+        "PostgreSQL"
+      ]
+    },
+    {
+      "title": "Senior E2E Test Engineer",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Senior-E2E-Test-Engineer_REQ-10123616-1",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "QA and testing"
+      ],
+      "source_requisition": "REQ-10123616",
+      "source_listed_date": "2026-10-22",
+      "status": "readable",
+      "skills": []
+    },
+    {
+      "title": "Senior Data Analyst (GenAI)",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Senior-Data-Analyst--GenAI-_REQ-10122952",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "Data and AI"
+      ],
+      "source_requisition": "REQ-10122952",
+      "source_listed_date": "2026-10-21",
+      "status": "readable",
+      "skills": [
+        "Python",
+        "SQL"
+      ]
+    },
+    {
+      "title": "DevOps Engineer",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/DevOps-Engineer_REQ-10121531",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "Platform and reliability"
+      ],
+      "source_requisition": "REQ-10121531",
+      "source_listed_date": "2026-10-13",
+      "status": "readable",
+      "skills": [
+        "Python",
+        "Docker",
+        "Azure",
+        "Linux"
+      ]
+    },
+    {
+      "title": "Senior Data Analyst – Wholesale Banking & Advanced Analytics",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Senior-Data-Analyst---Wholesale-Banking---Advanced-Analytics_REQ-10121641",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "Data and AI"
+      ],
+      "source_requisition": "REQ-10121641",
+      "source_listed_date": "2026-09-30",
+      "status": "readable",
+      "skills": [
+        "Python",
+        "SQL"
+      ]
+    },
+    {
+      "title": "Senior AI/LLM Data Scientist in Agentic AI",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Job-Posting-Title-Senior-AI-LLM-Data-Scientist-in-Agentic-AI_REQ-10122273",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "Data and AI"
+      ],
+      "source_requisition": "REQ-10122273",
+      "source_listed_date": "2026-09-27",
+      "status": "readable",
+      "skills": [
+        "Python",
+        "Azure"
+      ]
+    },
+    {
+      "title": "Backend Engineer",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Backend-Engineer_REQ-10121529",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "Backend"
+      ],
+      "source_requisition": "REQ-10121529",
+      "source_listed_date": "2026-09-25",
+      "status": "readable",
+      "skills": [
+        "Java",
+        "SQL",
+        "Kotlin",
+        "Docker",
+        "Kubernetes",
+        "Kafka",
+        "Git"
+      ]
+    },
+    {
+      "title": "Chapter Lead AI/LLM Data Scientist in Agentic AI",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Data-Science-Chapter-Lead--Wholesale-Banking-_REQ-10112768-1",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "Data and AI"
+      ],
+      "source_requisition": "REQ-10112768",
+      "source_listed_date": "2026-09-24",
+      "status": "readable",
+      "skills": [
+        "Python"
+      ]
+    },
+    {
+      "title": "Blockchain Engineer",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Blockchain-Engineer_REQ-10121533",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "Financial software"
+      ],
+      "source_requisition": "REQ-10121533",
+      "source_listed_date": "2026-09-21",
+      "status": "readable",
+      "skills": [
+        "Java",
+        "SQL",
+        "Kotlin",
+        "Docker",
+        "Kubernetes",
+        "Kafka",
+        "Git"
+      ]
+    },
+    {
+      "title": "Senior Agentic AI Engineer",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Senior-Agentic-AI-Engineer_REQ-10121379",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "Data and AI"
+      ],
+      "source_requisition": "REQ-10121379",
+      "source_listed_date": "2026-09-10",
+      "status": "readable",
+      "skills": [
+        "Python",
+        "Kubernetes",
+        "AWS",
+        "Azure"
+      ]
+    },
+    {
+      "title": "Data Science Team Manager",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Data-Science-Team-Manager_REQ-10120369",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "Data and AI"
+      ],
+      "source_requisition": "REQ-10120369",
+      "source_listed_date": "2026-08-23",
+      "status": "readable",
+      "skills": [
+        "Python",
+        "Spark"
+      ]
+    },
+    {
+      "title": "Agentic AI Data Scientist – KYC & Wholesale Banking",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Agentic-AI-Data-Scientist--Wholesale-Banking-_REQ-10112451",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "Data and AI"
+      ],
+      "source_requisition": "REQ-10112451",
+      "source_listed_date": "2026-08-08",
+      "status": "readable",
+      "skills": [
+        "Python"
+      ]
+    },
+    {
+      "title": "Senior NLP/LLM/LLMOps Data Scientist",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Senior-NLP-Data-Scientist_REQ-10104971-1",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "Data and AI"
+      ],
+      "source_requisition": "REQ-10104971",
+      "source_listed_date": "2026-07-27",
+      "status": "readable",
+      "skills": [
+        "Python",
+        "PyTorch"
+      ]
+    },
+    {
+      "title": "Principal Data Scientist",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Principal-Data-Scientist_REQ-10104321-1",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "Data and AI"
+      ],
+      "source_requisition": "REQ-10104321",
+      "source_listed_date": "2026-07-13",
+      "status": "readable",
+      "skills": [
+        "Python",
+        "SQL",
+        "Spark",
+        "Git"
+      ]
+    },
+    {
+      "title": "SRE Engineer",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/SRE-Engineer_REQ-10117175",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "Platform and reliability"
+      ],
+      "source_requisition": "REQ-10117175",
+      "source_listed_date": "2026-06-26",
+      "status": "readable",
+      "skills": []
+    },
+    {
+      "title": "Devops Engineer-2",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Devops-Engineer-2_REQ-10110288",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "Platform and reliability"
+      ],
+      "source_requisition": "REQ-10110288",
+      "source_listed_date": "2026-04-08",
+      "status": "readable",
+      "skills": [
+        "Python",
+        "Java",
+        "Docker",
+        "Azure",
+        "Git"
+      ]
+    },
+    {
+      "title": "Devops Engineer-1",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Devops-Engineer-1_REQ-10110287-2",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "Platform and reliability"
+      ],
+      "source_requisition": "REQ-10110287",
+      "source_listed_date": "2026-02-26",
+      "status": "readable",
+      "skills": [
+        "Python",
+        "Java",
+        "Docker",
+        "Azure",
+        "Git"
+      ]
+    },
+    {
+      "title": "Senior Test Engineer",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Senior-Test-Engineer_REQ-10104461-1",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "QA and testing"
+      ],
+      "source_requisition": "REQ-10104461",
+      "source_listed_date": "2025-11-05",
+      "status": "readable",
+      "skills": [
+        "Java",
+        "SQL",
+        "Azure",
+        "Git"
+      ]
+    },
+    {
+      "title": "Principal Frontend Developer",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Principal-Frontend-Developer_REQ-10104460",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "Frontend"
+      ],
+      "source_requisition": "REQ-10104460",
+      "source_listed_date": "2025-11-05",
+      "status": "readable",
+      "skills": [
+        "JavaScript",
+        "React",
+        "Azure"
+      ]
+    },
+    {
+      "title": "Engineer, Firmware Engineering",
+      "url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External/job/Turkey-Istanbul-Bilisim-Vadisi/Engineer--Firmware-Engineering_R268143",
+      "location": "Turkey, Istanbul, Bilisim Vadisi",
+      "employer": "Analog Devices",
+      "areas": [
+        "Embedded and firmware"
+      ],
+      "source_requisition": "R268143",
+      "source_listed_date": "2026-11-02",
+      "status": "readable",
+      "skills": [
+        "C++",
+        "FreeRTOS",
+        "Linux",
+        "Git",
+        "Zephyr",
+        "I2C",
+        "SPI",
+        "UART"
+      ]
+    },
+    {
+      "title": "Software Engineer Intern",
+      "url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External/job/Turkey-Istanbul-Bilisim-Vadisi/Software-Engineer-Intern_R267005",
+      "location": "Turkey, Istanbul, Bilisim Vadisi",
+      "employer": "Analog Devices",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "source_requisition": "R267005",
+      "source_listed_date": "2026-10-31",
+      "status": "readable",
+      "skills": [
+        "Python",
+        "JavaScript",
+        "TypeScript",
+        "Docker",
+        "Linux",
+        "Git"
+      ]
+    },
+    {
+      "title": "Staff Embedded Software Engineer, Digital Healthcare",
+      "url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External/job/Turkey-Istanbul-Bilisim-Vadisi/Staff-Embedded-Software-Engineer--Digital-Healthcare_R265906",
+      "location": "Turkey, Istanbul, Bilisim Vadisi",
+      "employer": "Analog Devices",
+      "areas": [
+        "Embedded and firmware",
+        "Software engineering (general)"
+      ],
+      "source_requisition": "R265906",
+      "source_listed_date": "2026-09-15",
+      "status": "readable",
+      "skills": []
+    },
+    {
+      "title": "Senior Embedded Software Engineer",
+      "url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External/job/Turkey-Istanbul-Bilisim-Vadisi/Senior-Embedded-Software-Engineer_R265610-1",
+      "location": "Turkey, Istanbul, Bilisim Vadisi",
+      "employer": "Analog Devices",
+      "areas": [
+        "Embedded and firmware",
+        "Software engineering (general)"
+      ],
+      "source_requisition": "R265610",
+      "source_listed_date": "2026-08-31",
+      "status": "readable",
+      "skills": [
+        "C++",
+        "Linux",
+        "RTOS",
+        "I2C",
+        "SPI"
+      ]
+    }
+  ]
+}

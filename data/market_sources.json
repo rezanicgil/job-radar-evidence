@@ -182,5 +182,8 @@
   {"name":"Datasurgery","ats":"workable","slug":"datasurgery-yazilim-ve-danismanlik-1"},
   {"name":"Homa","ats":"workable","slug":"homa-games"},
   {"name":"Ace Games","ats":"workable","slug":"ace-games"},
-  {"name":"Roof Stacks","ats":"lever","slug":"roofstacks"}
+  {"name":"Roof Stacks","ats":"lever","slug":"roofstacks"},
+  {"name":"ING","ats":"workday","slug":"ing.wd3/ICSGBLCOR"},
+  {"name":"Mastercard","ats":"workday","slug":"mastercard.wd1/CorporateCareers"},
+  {"name":"Analog Devices","ats":"workday","slug":"analogdevices.wd1/External"}
 ]

@@ -10,6 +10,7 @@ import re
 from urllib.error import URLError
 from urllib.parse import urlsplit
 from urllib.request import Request, urlopen
+import workday_board
 
 ROOT = Path(__file__).resolve().parents[1]
 SKILLS = json.loads((ROOT / "releases/static-space/technologies.json").read_text(encoding="utf-8"))
@@ -44,10 +45,14 @@ def inspect(job):
         api = f"https://boards-api.greenhouse.io/v1/boards/{board}/jobs/{key}"
     elif url.hostname == "jobs.smartrecruiters.com":
         api = f"https://api.smartrecruiters.com/v1/companies/{board}/postings/{key}"
-    elif url.hostname not in {"jobs.ashbyhq.com","apply.workable.com"}:
+    elif url.hostname not in {"jobs.ashbyhq.com","apply.workable.com"} and not url.hostname.endswith(".myworkdayjobs.com"):
         return dict(**job,status="unsupported source")
     try:
-        if url.hostname == "apply.workable.com":
+        if url.hostname.endswith(".myworkdayjobs.com"):
+            info=workday_board.posting_info(url)
+            body=info["jobDescription"]
+            job=dict(job,source_requisition=info.get("jobReqId"),source_listed_date=info.get("startDate"))
+        elif url.hostname == "apply.workable.com":
             body = workable_descriptions(board)[key]
         elif url.hostname == "jobs.ashbyhq.com":
             body = ashby_descriptions(board)[job["url"]]

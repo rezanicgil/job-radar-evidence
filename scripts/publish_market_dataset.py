@@ -25,6 +25,8 @@ def daily_rows(day, folder):
         postings.append(dict(date=day["date"], collected_at=day["collected_at"],
                              employer=job["employer"], title=job["title"], location=job["location"],
                              url=job["url"], areas=job["areas"],
+                             source_requisition=measured.get("source_requisition"),
+                             source_listed_date=measured.get("source_listed_date"),
                              description_status=measured.get("status","not_selected"),
                              technologies=measured.get("skills") if measured.get("status")=="readable" else None))
     assert len(postings)==len({row["url"] for row in postings})
