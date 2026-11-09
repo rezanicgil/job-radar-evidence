@@ -27,7 +27,8 @@ def evidence_rows(report):
     for i,section in enumerate(sections):
         end=sections[i+1].start() if i+1<len(sections) else len(report)
         quotes=[(int(page),text) for page,text in re.findall(
-            r"^Page (\d+) · (.+)$",report[section.end():end],re.M)]
+            r"^Page (\d+) · (.+)$",report[section.end():end],re.M)
+            if not re.search(r" \| CV: [\d.]+ months · minimum: [\d.]+ months · ",text)]
         rows.append((section[1],section[2],quotes))
     if not rows:
         raise ValueError("No assessment rows in the exported review")

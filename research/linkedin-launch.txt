@@ -1,15 +1,18 @@
-If a job asks for production experience with Docker, does “Dockerized a personal API and ran it locally” meet the requirement?
+If a job asks for 36 months of C++ experience and my CV documents 30, I want to see exactly where I fall short.
 
-I built Job Radar Evidence to help applicants inspect questions like this before they apply. Paste a Turkish or English job requirement, open a CV, and the demo surfaces candidate passages with page references. You decide which requirements the CV supports. The public demo processes your CV in your browser.
+I built Job Radar Evidence so applicants can compare a Turkish or English CV with a job posting. In the public example, the candidate documents 30 months of control software work and meets a second requirement for Python test reporting. The report shows one of two requirements fully supported, links both decisions to the CV, and records the six-month gap. The CV is processed in the browser.
 
-I published the layers of a multilingual classifier trained on 69 fictional requirement–CV pairs. On 30 new synthetic cases grounded in ten employers’ requirements it found none of the ten partial matches. That result shaped the live demo: applicants see the CV evidence and confirm what it supports.
+I trained a multilingual retriever on 1,027 English–Turkish Python documentation pairs. On 721 held-out pairs it found the Turkish translation first for 674 English queries, up from 669. I then tested both models on ten job conditions against 30 fictional CV passages. All ten target passages kept their original ranks. That result is why the demo lets applicants inspect and choose the passages themselves.
 
-You can paste an entire English or Turkish posting and select conditions to review. The English sentence selector reached 75.0% F1 on 2,404 SkillSpan test sentences. In our November 9 Türkiye sample, React Native appeared in 12 of 72 postings, all from one employer. The market view lets you inspect both counts and open the original postings.
+The Türkiye market dataset is also public. In the November 9, 2026 sample, React Native appeared in 12 of 86 technical postings, all from one employer. You can inspect the postings behind each count and compare how widely a technology appears across employers.
 
-Try the fictional example first. If you work in mobile, embedded systems or another software field, what requirement could look convincing on a CV while still missing a crucial detail? A made-up passage and the phrase that changes your judgment would help shape the next evaluation set.
+If you work in software engineering, I'd welcome an independent judgment on one fictional CV passage. The review takes a label and the words you used to make your decision.
 
-Demo: https://huggingface.co/spaces/rezanicgil/job-radar-evidence
-Dataset: https://huggingface.co/datasets/rezanicgil/job-radar-match-pilot
-Research model: https://huggingface.co/rezanicgil/job-radar-evidence-mentions-v3
-Inspect a prediction: https://rezanicgil-job-radar-evidence.static.hf.space/model.html?family=cloud-runtime&reference=supported&job=tr&cv=en#example-cloud-runtime-supported
-Code and experiments: https://github.com/rezanicgil/job-radar-evidence
+Try the demo
+https://huggingface.co/spaces/rezanicgil/job-radar-evidence
+
+Review one Android example
+https://rezanicgil-job-radar-evidence.static.hf.space/annotate.html?case=source-pilot-android-1
+
+Inspect the model, datasets and experiments
+https://github.com/rezanicgil/job-radar-evidence/blob/main/research/portfolio.md

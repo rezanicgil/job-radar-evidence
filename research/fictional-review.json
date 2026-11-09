@@ -1,0 +1,49 @@
+{
+  "format": "job-radar-review-v1",
+  "exported_at": "2026-11-09T18:06:20.805Z",
+  "cv": {
+    "name": null,
+    "kind": "text",
+    "sha256": "6e3da1be56e88427a99c24e9e730cdad892c7076fb6b9432ad8b7a3622f9f211"
+  },
+  "job": null,
+  "method": "terms",
+  "coverage": {
+    "required": 2,
+    "supported": 1,
+    "partial": 1,
+    "unverified": 0,
+    "excluded": 0,
+    "percentage": 50
+  },
+  "conditions": [
+    {
+      "condition": "At least 36 months developing control software with C++.",
+      "label": "partial",
+      "quotes": [
+        {
+          "page": 1,
+          "passage": "C++ ile 30 ay boyunca motor kontrol yazılımı geliştirdim.",
+          "excerpt": null
+        }
+      ],
+      "missing": "36 months",
+      "note": "Document any additional months spent developing control software if you have that experience.",
+      "duration": "Page 1 · C++ ile 30 ay boyunca motor kontrol yazılımı geliştirdim. | CV: 30 months · minimum: 36 months · 6 months below the minimum."
+    },
+    {
+      "condition": "Write test reports using Python.",
+      "label": "supported",
+      "quotes": [
+        {
+          "page": 1,
+          "passage": "Python ile test raporları hazırladım.",
+          "excerpt": null
+        }
+      ],
+      "missing": "",
+      "note": "",
+      "duration": ""
+    }
+  ]
+}

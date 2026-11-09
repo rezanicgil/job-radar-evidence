@@ -1,0 +1,24 @@
+Job Radar Evidence
+
+Pasted CV · 2 job conditions · Shared terms
+
+
+
+50% coverage
+1 of 2 required conditions fully supported by your CV, as reviewed.
+Partially supported · 1/2 (50%)
+Unverified · 0/2 (0%)
+0 excluded from coverage
+Conditions to revisit
+36 months — Document any additional months spent developing control software if you have that experience.
+
+At least 36 months developing control software with C++.
+Assessment: partial
+Page 1 · C++ ile 30 ay boyunca motor kontrol yazılımı geliştirdim.
+Page 1 · C++ ile 30 ay boyunca motor kontrol yazılımı geliştirdim. | CV: 30 months · minimum: 36 months · 6 months below the minimum.
+Requirement still to demonstrate: 36 months
+Next CV edit: Document any additional months spent developing control software if you have that experience.
+
+Write test reports using Python.
+Assessment: supported
+Page 1 · Python ile test raporları hazırladım.
