@@ -4,6 +4,7 @@ const words=text=>new Set(text.toLocaleLowerCase().match(/[\p{L}\p{N}+#]+/gu)||[
 let encoder;
 let vocabulary;
 let sentenceModel;
+const selectedPreferences=new Set();
 const downloadReview=document.createElement("button");
 downloadReview.type="button";
 downloadReview.textContent="Download review (.txt)";
@@ -13,7 +14,11 @@ let reviewVersion=0;
 const jobOrigin=document.createElement("p");
 el("job").parentElement.before(jobOrigin);
 function clearJobOrigin(){jobOrigin.replaceChildren()}
-el("job").addEventListener("input",clearJobOrigin);
+el("job").addEventListener("input",()=>{
+  clearJobOrigin();
+  const present=new Set(el("job").value.split(/\n/).map(s=>s.trim()));
+  for(const s of selectedPreferences)if(!present.has(s))selectedPreferences.delete(s);
+});
 function offerReviewedConditions(card,posting,conditions){
   const button=add(card,"button","Review these conditions with my CV");
   button.type="button";
@@ -28,6 +33,7 @@ function offerReviewedConditions(card,posting,conditions){
     const text=conditions.join("\n");
     replace.hidden=true;
     el("job").value=text;
+    selectedPreferences.clear();
     clearJobOrigin();
     jobOrigin.append("Selected requirements from ");
     add(jobOrigin,"a",posting.employer+" · "+posting.title).href=posting.source_url;
@@ -66,6 +72,23 @@ el("file").onchange=()=>{
 };
 el("removeFile").onclick=()=>{el("file").value="";el("file").onchange()};
 el("posting").oninput=()=>{el("candidates").replaceChildren();el("append").hidden=true;el("example").hidden=Boolean(el("cv").value||el("job").value||el("file").files.length||el("posting").value)};
+el("postingLanguage").onchange=()=>el("posting").oninput();
+function turkishCandidates(text){
+  let section="unknown";
+  const candidates=new Map();
+  for(const raw of text.split(/\r?\n/)){
+    const line=raw.trim().replace(/^[•*–-]\s*/,"");
+    if(!line)continue;
+    const key=line.toLocaleLowerCase("tr").replace(/[:?]\s*$/,"").trim();
+    if(/^(genel nitelikler(?: ve iş tanımı)?|aranan (?:nitelikler|özellikler)|(?:asgari|minimum|teknik) (?:nitelikler|gereksinimler)|gereksinimler|yetkinlikler)$/.test(key)){section="qualification";continue}
+    if(/^(?:tercihen|tercih edilen (?:nitelikler|özellikler)|tercih nedeni olabilecek ek nitelikler|ek nitelikler)$/.test(key)){section="preference";continue}
+    if(/^(?:iş tanımı|sorumluluklar|görev ve sorumluluklar|seni neler bekliyor|biz kimiz|yan haklar|başvur(?:u)?|hakkımızda)$/.test(key)||line.endsWith(":")){section="other";continue}
+    const optional=/tercihen|tercih (?:sebebi|nedenidir|edilir)|artı (?:olur|sayılır)/.test(key);
+    if(section==="other" || (section==="unknown" && !optional && !/deneyim|tecrüb|hakimiyet|hâkimiyet|bilgi sahibi|zorunlu|aranmaktadır/.test(key)))continue;
+    candidates.set(line,optional||section==="preference");
+  }
+  return candidates;
+}
 el("example").onclick=()=>{
   el("cv").value="C++ ile 30 ay boyunca motor kontrol yazılımı geliştirdim.\nPython ile test raporları hazırladım.";
   el("job").value="At least 36 months developing control software with C++.\nWrite test reports using Python.";
@@ -77,23 +100,28 @@ el("suggest").onclick=async()=>{
   output.replaceChildren();
   el("append").hidden=true;
   const text=el("posting").value.trim();
-  if(!text || text.length>100000){output.textContent="Enter an English posting of up to 100,000 characters.";return}
+  const language=el("postingLanguage").value;
+  if(!text || text.length>100000){output.textContent="Enter a posting of up to 100,000 characters.";return}
   el("suggest").disabled=true;
   try{
-    if(!sentenceModel){
+    if(language==="en" && !sentenceModel){
       const response=await fetch("skill-sentences.json");
       if(!response.ok)throw Error();
       sentenceModel=await response.json();
     }
-    if(el("posting").value.trim()!==text)return;
-    const sentences=new Set(text.split(/\n+|(?<=[.!?])\s+/).map(s=>s.trim()).filter(Boolean));
-    for(const sentence of sentences){
+    if(el("posting").value.trim()!==text||el("postingLanguage").value!==language)return;
+    const suggestions=language==="tr"?turkishCandidates(text):new Map();
+    if(language==="en")for(const sentence of new Set(text.split(/\n+|(?<=[.!?])\s+/).map(s=>s.trim()).filter(Boolean))){
       const terms=sentence.toLowerCase().match(/[\p{L}\p{N}_+#]+/gu)||[];
       const value=terms.reduce((sum,term)=>sum+(Object.hasOwn(sentenceModel.weights,term)?sentenceModel.weights[term]:0),sentenceModel.bias);
       if(value<sentenceModel.threshold)continue;
+      suggestions.set(sentence,false);
+    }
+    for(const [sentence,optional] of suggestions){
       const label=add(output,"label","");
       const input=add(label,"input","");input.type="checkbox";input.value=sentence;
-      label.append(" "+sentence);
+      input.dataset.preference=String(optional);
+      label.append((optional?" Preference · ":" ")+sentence);
     }
     el("append").hidden=!output.children.length;
     if(!output.children.length)output.textContent="No suggestions found. Enter conditions below.";
@@ -103,10 +131,15 @@ el("suggest").onclick=async()=>{
 el("append").onclick=()=>{
   const fields=el("job");
   const prior=fields.value.split(/\n/).map(s=>s.trim()).filter(Boolean);
-  const selected=[...el("candidates").querySelectorAll(":checked")].map(input=>input.value);
+  const checked=[...el("candidates").querySelectorAll(":checked")];
+  const selected=checked.map(input=>input.value);
   if(!selected.length)return;
   const combined=new Set([...(fields.value===fields.defaultValue?[]:prior),...selected]);
   if(combined.size>50){el("status").textContent="Select up to 50 conditions.";return}
+  for(const input of checked){
+    if(input.dataset.preference==="true")selectedPreferences.add(input.value);
+    else selectedPreferences.delete(input.value);
+  }
   fields.value=[...combined].join("\n");
   clearJobOrigin();
   invalidateReview();
@@ -317,6 +350,7 @@ el("form").onsubmit=async event=>{
       const select=add(add(card,"label","Assessment "),"select","");
       select.className="assessment";
       for(const [value,label] of [["","Choose"],["supported","Required · supported"],["partial","Required · partial"],["unverified","Required · unverified"],["skip","Exclude from required coverage"]])select.add(new Option(label,value));
+      if(selectedPreferences.has(condition))select.value="skip";
       const picker=addEvidencePicker(card,lines,visible);
       const advice=add(card,"small","");
       const noteLabel=add(card,"label","What could you clarify in your CV? (optional)");
