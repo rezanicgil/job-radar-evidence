@@ -44,6 +44,22 @@ Open “Find conditions in a job posting”, choose English or Turkish, paste th
 
 The selector used [SkillSpan by Zhang et al.](https://aclanthology.org/2022.naacl-main.366/), [source revision](https://huggingface.co/datasets/jjzha/skillspan/tree/33062e6bd0e03a5e01ae299ce0518f4613ef4298). We kept the authors' splits and removed exact normalized sentence repetitions within and across splits, in train/dev/test order. A sentence is positive if it contains any annotated skill or knowledge token. From 11,543 source rows we used 3,943 training, 2,438 development and 2,404 test sentences. The unigram classifier obtained 75.0% test F1 at a threshold selected on development data. It missed 224 of 882 positive test sentences. The last-layer MiniLM experiment obtained 25.2% F1 at its default decision rule. These measurements cover English sentence selection only. Reproduce the runs with `python scripts/skill_sentence_baseline.py` and `python scripts/train_skill_sentences.py`. The live selector adds 390 weakly labelled bullets from 33 Türkiye-location postings. At the same development-selected threshold, SkillSpan test F1 reached 75.5%. It recovered 670 of 882 positives, with 223 false positives. The original model recovered 658, with 215 false positives. On TECHWOLF positives the count rose from 252/325 to 258/325. These benchmarks have been inspected during development. [Reproduce section training](scripts/train_section_selector.py) · [Results](reports/section-training.json). The upstream corpus and its source licenses are documented separately in SkillSpan.
 
+### Reproduce the published bilingual retriever
+
+From a fresh clone, create and activate a Python 3.13 virtual environment. The following commands run on CPU with public downloads and no account credentials.
+
+```shell
+python -m pip install --index-url https://download.pytorch.org/whl/cpu torch==2.7.0
+python -m pip install -r research/requirements-training.txt
+python scripts/train_translation_retrieval.py --output-dir runs/reproduced-model
+python scripts/check_retriever_reproduction.py runs/reproduced-model
+```
+
+1. The trainer downloads a pinned revision of the Turkish Python documentation and reconstructs 1,027 training pairs and 721 validation pairs. It checks the document and both language hashes against the published indexes before training. Entire documents belong to one split.
+2. Only the final encoder layer is trainable. For each batch, the corresponding English and Turkish passages are positives and other passages in the batch serve as negatives. The loss averages cross-entropy in both language directions. Training uses one epoch, batch size 16, temperature 0.07, learning rate 0.00002 and seed 17.
+3. The output directory contains the tokenizer, weights and `training-report.json`, including translation retrieval and CV passage ranks before and after training. Use a new directory for each run.
+4. The checker compares every field with the archived report and verifies the weight file against the pinned Hub release. If serialization differs, it compares the tensors directly. A difference is reported with its affected fields or tensor names. Exact reproducibility may vary across hardware and software versions. [Published model](https://huggingface.co/rezanicgil/python-tr-en-retriever) · [Archived metrics](reports/translation-retrieval.json)
+
 ### Run the local demo
 
 From the repository root, create a Python virtual environment and activate it. Install the CPU dependencies, then start the service:

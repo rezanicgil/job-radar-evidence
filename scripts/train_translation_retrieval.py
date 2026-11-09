@@ -89,8 +89,11 @@ def main():
     parser.add_argument("--export",action="store_true",help="Export text pairs locally and update the public source index")
     parser.add_argument("--output-dir",type=Path,help="Save a new checkpoint and its metrics here instead of the default research paths")
     args=parser.parse_args()
-    if args.output_dir and (args.export or args.output_dir.exists() and any(args.output_dir.iterdir())):
-        parser.error("--output-dir requires a new or empty directory and cannot be combined with --export")
+    if args.output_dir and args.export:
+        parser.error("--output-dir cannot be combined with --export")
+    if args.output_dir and args.output_dir.exists():
+        if not args.output_dir.is_dir() or any(args.output_dir.iterdir()):
+            parser.error("--output-dir requires a new or empty directory")
     groups=corpus()
     if args.export:
         for split,rows in groups.items():
@@ -106,8 +109,8 @@ def main():
         return
     for split, rows in groups.items():
         path=ROOT/"releases/match-pilot"/f"python-translation-index-{split}.jsonl"
-        expected=[(r["document"],r["en_sha256"],r["tr_sha256"])
-                  for line in path.read_text("utf8").splitlines() if (r:=json.loads(line))]
+        index_rows=map(json.loads,path.read_text("utf8").splitlines())
+        expected=[(r["document"],r["en_sha256"],r["tr_sha256"]) for r in index_rows]
         actual=[(document,sha256(en.encode()).hexdigest(),sha256(tr.encode()).hexdigest())
                 for document,en,tr in rows]
         if actual!=expected:
