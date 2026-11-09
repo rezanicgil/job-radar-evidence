@@ -24,6 +24,10 @@ configs:
     data_files:
       - split: train
         path: employer_tr.jsonl
+  - config_name: requirement_switch
+    data_files:
+      - split: validation
+        path: requirement_switch.jsonl
 ---
 
 # Job Radar · Bilingual CV evidence pilot
@@ -33,6 +37,8 @@ This pilot contains 69 training pairs from 23 families and 18 development pairs 
 The validation file begins with nine general challenge examples and ends with nine examples about Docker, Terraform and Prometheus. A passage can name the right technology while describing event logistics rather than engineering work. The [experiment predictions](https://github.com/rezanicgil/job-radar-evidence/blob/dba6189/reports/pair-mentions-v3.json) show where the model confused the two. The [original 54-row release](https://huggingface.co/datasets/rezanicgil/job-radar-match-pilot/tree/cb96ff522186ae77a3b9f1bada3ee32842d91b15) remains available for earlier experiments.
 
 ## How to read a row
+
+The `requirement_switch` diagnostic holds each of eight fictional CV passages fixed and varies the job requirement three ways. A useful match score should change with the requirement even when the applicant's writing stays the same. One frozen-embedding classifier that saw only the CV got 23/30 correct on the source-grounded development split, but just 8/24 on this diagnostic. The analogous paired classifier scored 9/24 and failed to classify all three requirements correctly for any passage. These constructed cases test sensitivity to requirements. [Probe and results](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/requirement-signal.json)
 
 | Split | Pairs | Requirement families | Supported / partial / unverified |
 | --- | ---: | ---: | --- |

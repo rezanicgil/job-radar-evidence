@@ -41,6 +41,11 @@ def main():
     shutil.copyfile(ROOT / "data/match_source_dev.jsonl",destination / "source_validation.jsonl")
     shutil.copyfile(ROOT / "data/match_duration_weak.jsonl",destination / "duration_weak.jsonl")
     shutil.copyfile(ROOT / "data/match_employer_training.jsonl",destination / "employer_tr.jsonl")
+    cases = [json.loads(s) for s in (ROOT/"data/requirement_switch_dev.jsonl").read_text(encoding="utf-8").splitlines()]
+    switches = [dict(family=c["family"],cv_passage=c["cv_passage"],requirement=requirement,label=label)
+                for c in cases for label,requirement in c["requirements"].items()]
+    (destination/"requirement_switch.jsonl").write_bytes(
+        "".join(json.dumps(r,ensure_ascii=False)+"\n" for r in switches).encode("utf-8"))
 
 
 if __name__ == "__main__":
