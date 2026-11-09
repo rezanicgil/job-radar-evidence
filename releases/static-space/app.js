@@ -101,6 +101,13 @@ el("form").onsubmit=async event=>{
 };
 try{
   const market=await (await fetch("market.json")).json();
+  if(market.boards){
+    const boards=market.boards;
+    const details=document.createElement("details");
+    el("scope").after(details);
+    add(details,"summary",boards.filter(board=>board.available).length+" of "+boards.length+" tracked employer boards responded");
+    for(const board of boards)add(details,"div",board.employer+" · "+(board.available?"responded":"unavailable"));
+  }
   el("area").add(new Option("All tracked roles",""));
   for(const a of market.areas)el("area").add(new Option(a,a));
   function render(){
