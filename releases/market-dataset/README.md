@@ -81,6 +81,8 @@ The `direct_employer_observations` configuration records 13 dated listings from 
 
 On November 10 at 00:00 Türkiye time the panel was collected again, about seven minutes after the November 9 observation at 23:53. All 141 technical URLs were readable at both times and all 60 technology counts were unchanged. Select one date to estimate prevalence. Stacking the two dates repeats the same listings.
 
+At 00:59 Türkiye time on November 10 the panel covered 145 readable roles at 27 employers. Recognizing SDET, SAP ABAP developer, low-code application developer and system administrator titles added four previously excluded URLs from the same 461-posting inventory. Python appeared in 60/145 (41.4%) compared with 59/141 (41.8%) before the title filter changed. This difference reflects the selection rule. Percentages describe the sampled boards. Dated report filenames use UTC.
+
 ## Reproduce a percentage
 
 ```python
