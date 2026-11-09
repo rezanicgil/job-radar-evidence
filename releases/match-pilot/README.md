@@ -26,6 +26,8 @@ configs:
         path: employer_tr.jsonl
   - config_name: requirement_switch
     data_files:
+      - split: train
+        path: requirement_switch_train.jsonl
       - split: validation
         path: requirement_switch.jsonl
 ---
@@ -38,7 +40,7 @@ The validation file begins with nine general challenge examples and ends with ni
 
 ## How to read a row
 
-The `requirement_switch` diagnostic holds each of eight fictional CV passages fixed and varies the job requirement three ways. A useful match score should change with the requirement even when the applicant's writing stays the same. One frozen-embedding classifier that saw only the CV got 23/30 correct on the source-grounded development split, but just 8/24 on this diagnostic. The analogous paired classifier scored 9/24 and failed to classify all three requirements correctly for any passage. These constructed cases test sensitivity to requirements. [Probe and results](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/requirement-signal.json)
+The `requirement_switch` configuration contains 36 training pairs from 12 fictional passages and 24 validation pairs from eight other passages. Each passage is paired with three different requirements. The train and validation splits share no exact passage, requirement or family. A useful match score should change with the requirement even when the applicant's writing stays the same. One frozen-embedding classifier that saw only the CV got 23/30 correct on the source-grounded development split, but just 8/24 on this diagnostic. The analogous paired classifier scored 9/24 and failed to classify all three requirements correctly for any passage. These constructed cases test sensitivity to requirements. [Probe and results](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/requirement-signal.json)
 
 | Split | Pairs | Requirement families | Supported / partial / unverified |
 | --- | ---: | ---: | --- |
