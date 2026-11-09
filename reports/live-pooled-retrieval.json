@@ -97,11 +97,11 @@
         "engine-duration": true
       },
       "resource_hosts": [
-        "cdn-lfs-us-1.hf.co",
         "huggingface.co",
-        "rezanicgil-job-radar-evidence.static.hf.space"
+        "rezanicgil-job-radar-evidence.static.hf.space",
+        "us.aws.cdn.hf.co"
       ]
     }
   },
-  "app_sha256": "fdf3d9c2224dd455da28ff3d0a3c33bb1a005c8125fbeeb738d52ae1d934c34a"
+  "app_sha256": "0ca903e37a79588337ce37fb9d857ea698e412d03fc7f57d7c22ad572df1b2d3"
 }
