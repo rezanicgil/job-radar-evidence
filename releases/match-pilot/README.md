@@ -48,6 +48,10 @@ configs:
     data_files:
       - split: validation
         path: connective_actors.jsonl
+  - config_name: progit_section_index
+    data_files:
+      - split: validation
+        path: progit_section_index.jsonl
   - config_name: python_translation_index
     data_files:
       - split: train
@@ -106,6 +110,8 @@ In `connective_actors`, each of 18 project-authored fictional CV passages mentio
 The `turkish_section_index` configuration contains 96 source pointers from five technical postings on one employer's board. Section headings distinguish qualifications, communication skills and teamwork expectations. Two bullets begin with “Tercihen” and are labelled as preferences. Each row contains its source URL, line number, document fingerprint and whitespace-normalized line fingerprint. Several postings repeat the same wording. These examples were used to develop the parsing rules and represent section-based references rather than independent human judgments. [Before and after counts](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/turkish-board-sections.json)
 
 The `turkish_crenno_sections` split indexes 94 qualification-section items across seven Turkish CRENNO postings, including mobile, frontend, backend and .NET roles. Employer subheadings and explicit preference phrases identify 38 optional items. Each row contains a source URL, one-based block position within the qualification section, digest of the normalized wording and expected preference status. Repeated items in different postings are separate references. The reviewed layout informed the parser update, so this diagnostic measures behavior on that layout. [Before](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/crenno-before.json) · [After](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/crenno-after.json)
+
+The `progit_section_index` is an external retrieval evaluation using 154 heading pairs from 79 matching files in the English and Turkish editions of *Pro Git* by Scott Chacon, Ben Straub and contributors. The upstream texts are licensed under CC BY-NC-SA 3.0. This index publishes source pointers, section keys and hashes. Book text and model training examples are not included. Each row pairs the first heading in the same source file or a heading with the same explicit section anchor in both editions. Identical case-folded headings and ambiguous repeated titles are excluded. Ranks in the report follow index order. Source alignment is structural and has not been independently adjudicated. [Original book and license](https://git-scm.com/book/tr/v2) · [Evaluation code](https://github.com/rezanicgil/job-radar-evidence/blob/main/scripts/check_progit_retrieval.py) · [Ranks](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/progit-section-retrieval.json)
 
 The `mobile_section_index` contains 40 distinct English bullets referenced by 114 pointers to seven Yassir and Lucida AI mobile job URLs. Each row records the normalized-text digest, original heading, one-based list position and source URL. It excludes exact text present in the section training index or SkillSpan and external reference data. Employer headings provide weak labels, not human annotation. The same Flutter copy occurs on several URLs. The source pages may change. [Held-out evaluation](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/mobile-section-transfer.json)
 
