@@ -14,7 +14,20 @@ def main():
     shutil.copytree(ROOT / "releases/static-space",dest,dirs_exist_ok=True)
     shutil.copyfile(ROOT / "LICENSE",dest / "LICENSE")
     snapshot = json.loads(max((ROOT / "reports").glob("skill-mentions-*.json")).read_text(encoding="utf-8"))
-    snapshot["areas"] = list(PATTERNS)
+    postings = {row["url"]: row for row in snapshot["postings"]}
+    reviews = []
+    for line in (ROOT / "data/role_reviews.jsonl").read_text(encoding="utf-8").splitlines():
+        review = json.loads(line)
+        posting = postings.get(review["source_url"])
+        if posting and review["review_date"] <= snapshot["collected_at"][:10]:
+            reviews.append(dict(review, title=posting["title"], employer=posting["employer"]))
+            if review["area"] not in posting["areas"]:
+                posting["areas"].append(review["area"])
+    direct = [json.loads(line) for line in (ROOT / "data/reviewed_employer_postings.jsonl").read_text(encoding="utf-8").splitlines()]
+    snapshot["direct"] = [row for row in direct if row["observed_on"] <= snapshot["collected_at"][:10]]
+    snapshot["reviews"] = reviews
+    snapshot["areas"] = sorted(set(PATTERNS) | {r["area"] for r in reviews} |
+                               {a for row in snapshot["direct"] for a in row["areas"]})
     (dest / "market.json").write_text(json.dumps(snapshot,ensure_ascii=False),encoding="utf-8")
     print(dest)
 

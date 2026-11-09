@@ -64,6 +64,32 @@ try{
   function render(){
     const group=market.postings.filter(p=>!el("area").value||p.areas.includes(el("area").value));
     const records=group.filter(p=>p.status==="readable");
+    const urls=new Set(group.map(posting=>posting.url));
+    const reviewed=(market.reviews||[]).filter(review=>urls.has(review.source_url));
+    const evidence=el("verified");
+    evidence.replaceChildren();
+    if(reviewed.length){
+      add(evidence,"h2","Reviewed requirements");
+      for(const review of reviewed){
+        const card=add(evidence,"article","");
+        const link=add(card,"a",review.employer+" · "+review.title);
+        link.href=review.source_url;
+        add(card,"p",review.required_skills.join(review.skill_relation==="all_of"?" + ":" or "));
+        add(card,"blockquote",review.requirement_evidence);
+      }
+    }
+    const direct=el("direct");
+    direct.replaceChildren();
+    const openings=(market.direct||[]).filter(row=>!el("area").value||row.areas.includes(el("area").value));
+    if(openings.length){
+      add(direct,"h2","Direct employer observations");
+      add(direct,"p","Shown separately from the technology mention counts.");
+      for(const row of openings){
+        const card=add(direct,"article","");
+        add(card,"a",row.employer+" · "+row.title).href=row.source_url;
+        add(card,"p",row.location+" · Observed "+row.observed_on);
+      }
+    }
     el("scope").textContent=market.collected_at.slice(0,10)+" · "+records.length+" readable descriptions of "+group.length+" selected postings. Counts include mentions in preferences and company context.";
     const skills=new Map();
     for(const p of records)for(const s of new Set(p.skills)){if(!skills.has(s))skills.set(s,[]);skills.get(s).push(p)}
