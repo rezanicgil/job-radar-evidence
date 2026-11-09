@@ -5,6 +5,7 @@ import argparse
 import json
 from pathlib import Path
 import random
+import sys
 import re
 from zipfile import ZipFile
 
@@ -115,6 +116,7 @@ def main():
                 for document,en,tr in rows]
         if actual!=expected:
             raise ValueError(f"Reconstructed {split} pairs differ from the published index")
+    print(f"Verified {len(groups['train'])} training and {len(groups['validation'])} validation pairs. Evaluating the base encoder.",file=sys.stderr,flush=True)
     tokenizer=AutoTokenizer.from_pretrained(BASE,revision=REVISION)
     model=AutoModel.from_pretrained(BASE,revision=REVISION)
     torch.manual_seed(17)
@@ -125,6 +127,7 @@ def main():
                 documents={k:sorted({doc for doc,_,_ in rows}) for k,rows in groups.items()},
                 seed=17,batch_size=16,epochs=1,learning_rate=2e-5,temperature=0.07,
                 before=evaluate(model,tokenizer,heldout))
+    print("Training the final encoder layer for one epoch.",file=sys.stderr,flush=True)
     model.requires_grad_(False)
     model.encoder.layer[-1].requires_grad_(True)
     optimizer=torch.optim.AdamW(model.encoder.layer[-1].parameters(),lr=result["learning_rate"])
@@ -145,6 +148,7 @@ def main():
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()
+    print("Evaluating the adapted encoder on the same translation and CV queries.",file=sys.stderr,flush=True)
     result["after"]=evaluate(model,tokenizer,heldout)
     destination=args.output_dir or ROOT/"runs/python-tr-retriever"
     model.save_pretrained(destination)

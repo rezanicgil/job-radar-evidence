@@ -1,0 +1,23 @@
+{
+  "published_repo": "rezanicgil/python-tr-en-retriever",
+  "published_revision": "813078062d92ba7d57487fd97b14af3acd620522",
+  "published_sha256": "b26ba551d721af2c3060c0cb0a205af1a9b761a7536cca460e3ac8752bcdd21b",
+  "local_sha256": "b26ba551d721af2c3060c0cb0a205af1a9b761a7536cca460e3ac8752bcdd21b",
+  "weight_file_identical": true,
+  "tensors_identical": true,
+  "differing_tensors": [],
+  "metrics_and_protocol_identical": true,
+  "differing_report_fields": [],
+  "python": "3.13.3",
+  "platform": "Windows",
+  "packages": {
+    "torch": "2.7.0+cpu",
+    "transformers": "4.52.4",
+    "tokenizers": "0.21.4",
+    "numpy": "2.5.4",
+    "huggingface-hub": "0.32.4",
+    "safetensors": "0.5.3",
+    "polib": "1.2.0",
+    "requests": "2.32.3"
+  }
+}

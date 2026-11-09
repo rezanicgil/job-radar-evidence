@@ -67,3 +67,7 @@ with torch.inference_mode():
 ## External Git translation retrieval
 
 Git’s Turkish localization catalog supplied 3,039 distinct evaluation pairs. Each message was retrieved against the entire opposite-language pool. The checkpoint and base model were frozen. Top-three retrieval rose from 2,151 to 2,204 in English-to-Turkish search and from 2,165 to 2,190 in Turkish-to-English search. The task tests exact technical translation retrieval. The separate job-condition experiments describe the model’s behavior on CV passages. [Source index](https://huggingface.co/datasets/rezanicgil/job-radar-match-pilot/viewer/git_localization_index/validation) · [Scores and pairwise changes](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/git-localization-retrieval.json)
+
+## Reproduce this checkpoint
+
+The repository includes a CPU training recipe and an independent checker. In a clean Windows checkout with a new Python 3.13 virtual environment, the trainer reconstructed the published dataset indexes and produced a byte-identical `model.safetensors` file. Every field in the archived evaluation report also matched. The base model came from the local Hugging Face cache. This checks reproducibility on that environment. [Training commands](https://github.com/rezanicgil/job-radar-evidence#reproduce-the-published-bilingual-retriever) · [Hashes and versions](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/retriever-reproduction.json)

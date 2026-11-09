@@ -46,7 +46,15 @@ The selector used [SkillSpan by Zhang et al.](https://aclanthology.org/2022.naac
 
 ### Reproduce the published bilingual retriever
 
-From a fresh clone, create and activate a Python 3.13 virtual environment. The following commands run on CPU with public downloads and no account credentials.
+Clone the repository and create a Python 3.13 virtual environment. These commands use CPU and public downloads.
+
+```shell
+git clone https://github.com/rezanicgil/job-radar-evidence.git
+cd job-radar-evidence
+python -m venv .venv
+```
+
+Activate the environment with `.\.venv\Scripts\Activate.ps1` in PowerShell or `source .venv/bin/activate` in Bash. Then install the training dependencies and run:
 
 ```shell
 python -m pip install --index-url https://download.pytorch.org/whl/cpu torch==2.7.0
@@ -59,6 +67,8 @@ python scripts/check_retriever_reproduction.py runs/reproduced-model
 2. Only the final encoder layer is trainable. For each batch, the corresponding English and Turkish passages are positives and other passages in the batch serve as negatives. The loss averages cross-entropy in both language directions. Training uses one epoch, batch size 16, temperature 0.07, learning rate 0.00002 and seed 17.
 3. The output directory contains the tokenizer, weights and `training-report.json`, including translation retrieval and CV passage ranks before and after training. Use a new directory for each run.
 4. The checker compares every field with the archived report and verifies the weight file against the pinned Hub release. If serialization differs, it compares the tensors directly. A difference is reported with its affected fields or tensor names. Exact reproducibility may vary across hardware and software versions. [Published model](https://huggingface.co/rezanicgil/python-tr-en-retriever) · [Archived metrics](reports/translation-retrieval.json)
+
+In the Windows CPU reproduction, a clean checkout and new virtual environment produced the same weight file byte for byte and the same full evaluation report. The run reconstructed its own data from the upstream archive and reused the Hugging Face cache for the base model. [Reproduction record and package versions](reports/retriever-reproduction.json)
 
 ### Run the local demo
 
