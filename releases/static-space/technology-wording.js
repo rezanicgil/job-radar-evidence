@@ -19,3 +19,8 @@ export function technologyWording(condition,vocabulary){
   const items=match[0].split(/(?:\s*,\s*(?:(?:and|or|veya|ve|ya da)\s+)?|\s+(?:and|or|veya|ve|ya da)\s+)/iu);
   return {mode:[...modes][0],items};
 }
+
+export function hasTechnology(text,name){
+  const tokens=text.toLowerCase().match(/[\p{L}\p{N}_+#]+/gu)||[];
+  return (" "+tokens.join(" ")+" ").includes(" "+name.toLowerCase()+" ");
+}

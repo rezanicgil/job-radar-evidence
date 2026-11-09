@@ -1,6 +1,6 @@
 import {counts} from "./review-counts.js";
 import {sourceUrl} from "./job-source.js";
-import {technologyWording} from "./technology-wording.js";
+import {technologyWording,hasTechnology} from "./technology-wording.js";
 const el=id=>document.getElementById(id);
 const add=(parent,tag,text)=>{const node=document.createElement(tag);node.textContent=text;parent.append(node);return node};
 const words=text=>new Set(text.toLocaleLowerCase().match(/[\p{L}\p{N}+#]+/gu)||[]);
@@ -295,10 +295,6 @@ function addHighlighted(optional){
 }
 el("manualRequired").onclick=()=>addHighlighted(false);
 el("manualOptional").onclick=()=>addHighlighted(true);
-function hasTechnology(text,name){
-  const tokens=text.toLowerCase().match(/[\p{L}\p{N}_+#]+/gu)||[];
-  return (" "+tokens.join(" ")+" ").includes(" "+name.toLowerCase()+" ");
-}
 async function vectors(texts,method){
   const {pipeline,env,AutoModel,AutoTokenizer,FeatureExtractionPipeline}=await import("https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2/dist/transformers.min.js");
   env.allowLocalModels=false;
