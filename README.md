@@ -2,13 +2,23 @@
 
 [Try the public Hugging Face Space](https://huggingface.co/spaces/rezanicgil/job-radar-evidence) · [Browse the published dataset](https://huggingface.co/datasets/rezanicgil/job-radar-match-pilot)
 
-[Download the fine-tuned research layers and run the bilingual classifier locally](https://huggingface.co/rezanicgil/job-radar-evidence-mentions-v3). The research model reproduced nine of 18 development labels and incorrectly credited full support twice. The public Space uses reviewer-confirmed coverage.
-
-Job Radar is being designed for applicants who want to compare their CV with a Turkish, English or mixed-language software job posting. Each assessment will show the original requirement, the supporting CV passage and an English explanation. The first score measures the share of required technical conditions fully supported by the submitted CV.
+Job Radar helps an applicant answer “Which requirements can I demonstrate in my CV, and what could I clarify before applying?” Open a PDF or TXT in the browser, select conditions from a Turkish or English posting, and attach CV passages to your assessment. The downloadable report preserves page references, selected wording and notes for your next CV edit.
 
 ## Example
 
-The market's daily observations use the last recorded collection on each Türkiye calendar day. A percentage uses readable, distinct posting URLs as its denominator; the display includes board response counts and a link to the dated source file. To refresh, run `python scripts/market_inventory.py` followed by `python scripts/market_skills.py`. Publish the dated report files to GitHub before running `python scripts/publish_market.py` with Space write access. The publisher sends the current snapshot and history in one commit and refuses to drop a previously published date.
+Choose **Try a bilingual example** in the public Space. The fictional CV documents 30 months of C++ experience and Python test reporting. The job asks for 36 months of C++ and Python test reporting. Mark the first condition partial and the second supported, then select the relevant passages. The result is **50% coverage (1/2)**. The six-month shortfall and its source can travel with the exported report. This percentage counts fully documented conditions; hiring likelihood has not been measured.
+
+### What the fine-tuning experiments established
+
+The [downloadable research classifier](https://huggingface.co/rezanicgil/job-radar-evidence-mentions-v3) trained on 69 synthetic pairs. On 30 separate, author-labeled cases grounded in ten employers' postings, it matched 14 labels and missed all ten partial matches. Changing the job or CV language changed its prediction in 17 of the 30 cases. These results shaped the public product: the model research is inspectable, and applicants confirm their evidence before receiving a coverage percentage. [Explore recorded predictions and translations](https://rezanicgil-job-radar-evidence.static.hf.space/model.html) · [Contribute an independent review](https://rezanicgil-job-radar-evidence.static.hf.space/annotate.html)
+
+### Türkiye market sample
+
+On November 9, 2026, all 72 selected posting descriptions were readable, representing 18 employers and a vocabulary of 50 technologies. The view lets you compare the share of postings with the share of represented employers. For example, all 12 postings mentioning React Native came from one employer. Location-unconfirmed employer listings appear separately. [Inspect the dated counts](reports/skill-mentions-2026-11-09T163018Z.md)
+
+Daily history uses the last collection on each Türkiye calendar day. To refresh, run `python scripts/market_inventory.py` followed by `python scripts/market_skills.py`. Publish the dated report files to GitHub before running `python scripts/publish_market.py` with Space write access. The publisher updates the snapshot and history in one commit.
+
+### Select conditions from a posting
 
 Open “Find conditions in a job posting”, choose English or Turkish, paste the posting and select the conditions to review against your CV. Both selectors run locally. English uses a model for skill or knowledge mentions. Turkish uses section headings and qualification wording. A Turkish preference carried into the form starts excluded from required coverage; the reviewer can change its assessment. Keep line breaks when pasting Turkish postings so section boundaries remain visible.
 
@@ -28,7 +38,7 @@ Open [the local demo](http://127.0.0.1:7860/) and try the fictional CV first. Th
 
 ### Where the CV goes
 
-The command-line reviewer reads the CV on your machine. In the web demo, the browser sends it to the server running the demo. Use the included fictional CV to try a hosted instance. The server extracts passages in a temporary directory and removes that directory on exit, including on a parsing error. The response contains matching passages and carries a `no-store` cache directive. Anyone reviewing a public deployment should also check its hosting and proxy logging settings.
+The public Hugging Face Space processes the CV in the browser. The separate local Flask interface sends the document to your Flask server for temporary extraction. The server removes that directory on exit, including on a parsing error, and replies with a `no-store` cache directive.
 
 ```mermaid
 flowchart LR
@@ -64,6 +74,6 @@ For an interactive whole-posting review, run `python scripts/review_cv.py my-cv.
 
 Run `python scripts/evaluate_keywords.py` from the project root. The script uses the Python standard library. Its development examples illustrate errors in a vocabulary-based rule. See the [experiment protocol](research/methodology.md) for the planned held-out comparison.
 
-Original project code is licensed under [Apache-2.0](LICENSE). This code license does not grant rights to CV uploads, third-party postings or upstream model weights. Dataset and model licenses will be documented per release.
+Original project code is licensed under [Apache-2.0](LICENSE). The [dataset card](releases/match-pilot/README.md) describes synthetic-record provenance and licensing. The [research model card](releases/mentions-v3/README.md) identifies its base, revision, results and licensing.
 
 Read the [portfolio case study](research/portfolio.md) or [report an evidence or market-data correction](https://github.com/rezanicgil/job-radar-evidence/issues/new?template=evidence_feedback.yml).

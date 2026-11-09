@@ -8,11 +8,11 @@ The project combines Turkish and English evidence retrieval, PDF and TXT parsing
 
 The [public Hugging Face demo](https://huggingface.co/spaces/rezanicgil/job-radar-evidence) uses a Static Space. It processes documents in the visitor's browser and offers shared-term retrieval or optional multilingual semantic search. The server-based Docker build remains available for local deployments.
 
-The published research classifier trained on 69 synthetic pairs. A separate English job-sentence selector trained on 3,943 deduplicated SkillSpan sentences and reached 75.0% F1 on its 2,404-sentence test split. The November 9 snapshot includes 69 readable descriptions among 72 title-tagged postings. Readers can inspect source links, employer counts and collection coverage.
+The published research classifier trained on 69 synthetic pairs. A separate English job-sentence selector trained on 3,943 deduplicated SkillSpan sentences and reached 75.0% F1 on its 2,404-sentence test split. The November 9 snapshot includes 72 readable descriptions from 18 employers. Readers can inspect source links and compare posting share with employer share.
 
 ## A decision based on evaluation
 
-On nine synthetic development examples, the calibrated similarity baseline returned six correct labels but missed all three fully supported cases. The 54-example adapted pair encoder returned three correct labels and two false claims of full support. The demo therefore retrieves candidate evidence and asks the applicant to confirm coverage. Independent evaluation and broader source coverage remain open.
+On 30 synthetic development cases inspired by ten employers, the published classifier matched 14 reference labels and missed all ten partial cases. The same evidence yielded different predictions across Turkish and English versions in 17 cases. The public demo asks applicants to verify passages and can export their decisions with exact wording and page references. Independent human validation and broader Türkiye source coverage remain open.
 
 ## CV project entry
 
@@ -25,5 +25,6 @@ Built and published a bilingual CV evidence-review tool on Hugging Face. Fine-tu
 - [Similarity baseline](../reports/similarity-challenge.json)
 - [Published classifier](https://huggingface.co/rezanicgil/job-radar-evidence-mentions-v3)
 - [Employer-sourced evaluation](../reports/source-pairs-dev.json)
-- [Market sources and counts](../reports/skill-mentions-2026-11-09T153754Z.md)
+- [Market sources and counts](../reports/skill-mentions-2026-11-09T163018Z.md)
+- [Public browser review workflow check](https://github.com/rezanicgil/job-radar-evidence/actions/runs/42654331798)
 - [Container verification](https://github.com/rezanicgil/job-radar-evidence/actions/runs/42635859051)

@@ -4,11 +4,12 @@ I built Job Radar Evidence to help applicants inspect questions like this before
 
 I published the layers of a multilingual classifier trained on 69 fictional requirement–CV pairs. On 30 new synthetic cases grounded in ten employers’ requirements it found none of the ten partial matches. That result shaped the live demo: applicants see the CV evidence and confirm what it supports.
 
-You can also paste an entire English posting and select the skill sentences to review. That selector achieved 75.0% F1 on 2,404 deduplicated SkillSpan test sentences. The Türkiye market view shows technology mentions across 69 readable postings from the November 9 snapshot, with links to the sources.
+You can paste an entire English or Turkish posting and select conditions to review. The English sentence selector reached 75.0% F1 on 2,404 SkillSpan test sentences. In our November 9 Türkiye sample, React Native appeared in 12 of 72 postings, all from one employer. The market view lets you inspect both counts and open the original postings.
 
 Try the fictional example first. If you work in mobile, embedded systems or another software field, what requirement could look convincing on a CV while still missing a crucial detail? A made-up passage and the phrase that changes your judgment would help shape the next evaluation set.
 
 Demo: https://huggingface.co/spaces/rezanicgil/job-radar-evidence
 Dataset: https://huggingface.co/datasets/rezanicgil/job-radar-match-pilot
 Research model: https://huggingface.co/rezanicgil/job-radar-evidence-mentions-v3
+Inspect a prediction: https://rezanicgil-job-radar-evidence.static.hf.space/model.html?family=cloud-runtime&reference=supported&job=tr&cv=en#example-cloud-runtime-supported
 Code and experiments: https://github.com/rezanicgil/job-radar-evidence

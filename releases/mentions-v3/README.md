@@ -34,4 +34,6 @@ Base model by Moritz Laurer, derived from Microsoft's multilingual MiniLMv2. The
 
 ## Selective suggestions
 
+Across 30 fictional cases grounded in ten employers' qualifications, the checkpoint matched 14/30 reference labels and missed all ten partial examples. When each case was rendered in four job/CV language combinations, the predicted label varied for 17/30 cases. The 120 views represent 30 underlying examples. [Inspect a language-dependent prediction](https://rezanicgil-job-radar-evidence.static.hf.space/model.html?family=cloud-runtime&reference=supported&job=tr&cv=en#example-cloud-runtime-supported)
+
 A class-specific threshold on the difference between the two largest logits was chosen on the 18 original development pairs. A class needed at least three accepted predictions and 80% empirical precision there. Only the supported class qualified. On the separate 30 source-grounded development pairs, the model suggested full support five times and was correct once. It withheld the remaining 25 predictions. The margin therefore does not provide a dependable confidence percentage for an applicant. Both sets are synthetic and have previously been inspected during development. [Thresholds and individual predictions](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/selective-evidence.json)
