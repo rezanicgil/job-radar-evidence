@@ -38,13 +38,19 @@ def daily_rows(day, folder):
     employers = {p["employer"] for p in readable}
     assert len(readable)==day["readable"] and len(employers)==day["employers"] and counts==day["mentions"]
     employer_totals = Counter(p["employer"] for p in readable)
+    has_digests = bool(readable) and all(p["description_sha256"] for p in readable)
+    distinct = {(p["employer"],p["description_sha256"]) for p in readable} if has_digests else None
     technologies = []
     for skill in day["vocabulary"]:
         mentioning = Counter(p["employer"] for p in readable if skill in p["technologies"])
+        distinct_mentions = {(p["employer"],p["description_sha256"]) for p in readable
+                             if skill in p["technologies"]} if has_digests else None
         top = min(mentioning, key=lambda employer: (-mentioning[employer], employer), default=None)
         technologies.append(dict(date=day["date"], technology=skill, postings_mentioning=counts[skill],
                                  readable_postings=len(readable), employers_mentioning=len(mentioning),
                                  represented_employers=len(employers), top_employer=top,
+                                 distinct_descriptions=len(distinct) if has_digests else None,
+                                 distinct_descriptions_mentioning=len(distinct_mentions) if has_digests else None,
                                  top_employer_mentions=mentioning[top] if top else None,
                                  other_employer_mentions=counts[skill]-mentioning[top] if top else None,
                                  other_employer_postings=len(readable)-employer_totals[top] if top else None))

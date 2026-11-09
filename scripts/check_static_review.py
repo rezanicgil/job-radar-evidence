@@ -270,6 +270,26 @@ def check(page, origin):
     alternatives=sum(r.get("location_scope")=="listed_alternative" for r in records)
     if alternatives:
         expect(page.locator("#scope")).to_contain_text(f"{alternatives} postings explicitly list Türkiye")
+    if records and all(r.get("description_sha256") for r in records):
+        page.locator("#area").select_option("Mobile (general/cross-platform)")
+        subset=[r for r in records if "Mobile (general/cross-platform)" in r["areas"]]
+        if subset:
+            page.locator("#basis").select_option("descriptions")
+            page.locator("#skillSearch").fill("Flutter")
+            unique=lambda rows: len({(r["employer"],r["description_sha256"]) for r in rows})
+            mentioning=[r for r in subset if "Flutter" in r["skills"]]
+            expect(page.locator("#counts summary")).to_contain_text(f"{unique(mentioning)}/{unique(subset)} distinct descriptions")
+            with page.expect_download() as event:
+                page.locator("#marketExport").click()
+            exported=event.value.path().read_text(encoding="utf-8")
+            assert "Role: Mobile (general/cross-platform)" in exported and "Technology filter: Flutter" in exported
+            assert f"({unique(mentioning)}/{unique(subset)})" in exported
+            assert all(r["url"] in exported for r in mentioning)
+            assert all(r["url"] not in exported for r in subset if r not in mentioning)
+            page.locator("#mentionScope").select_option("preferences")
+            expect(page.locator("#basis")).to_have_value("postings")
+            page.locator("#mentionScope").select_option("all")
+        page.locator("#area").select_option("")
     users=[r for r in records if "React Native" in r["skills"]]
     page.locator("#skillSearch").fill("React Native")
     chart=page.locator("#counts details")

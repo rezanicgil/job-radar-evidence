@@ -748,7 +748,12 @@ try{
       const sections=(row.sections||[]).filter(section=>section.kind===scope);
       return sections.length?[{...row,sections,skills:sections.flatMap(s=>s.skills)}]:[];
     });
-    const byEmployer=el("basis").value==="employers";
+    const distinctCount=rows=>new Set(rows.map(p=>JSON.stringify([p.employer,p.description_sha256]))).size;
+    const hasDigests=scope==="all"&&records.length>0&&records.every(p=>p.description_sha256);
+    const descriptionTotal=hasDigests?distinctCount(records):null;
+    const basis=el("basis");
+    basis.querySelector('[value="descriptions"]').disabled=!hasDigests;
+    if(!hasDigests&&basis.value==="descriptions")basis.value="postings";
     const employerTotals=new Map();
     for(const p of records)employerTotals.set(p.employer,(employerTotals.get(p.employer)||0)+1);
     const employers=employerTotals.size;
@@ -766,7 +771,9 @@ try{
         if(!grouped.has(p.employer))grouped.set(p.employer,[]);
         grouped.get(p.employer).push(p);
       }
-      return {name,postings,grouped,count:byEmployer?grouped.size:postings.length};
+      const descriptions=hasDigests?distinctCount(postings):null;
+      const totals={employers:grouped.size,descriptions,postings:postings.length};
+      return {name,postings,grouped,descriptions,count:totals[basis.value]};
     }).sort((a,b)=>b.count-a.count||a.name.localeCompare(b.name));
     el("counts").replaceChildren();
     const visible=showAll||query?measured:measured.slice(0,8);
@@ -779,12 +786,46 @@ try{
       " readable postings have a recognized Lever "+sectionName+" heading. Shares use these postings and their "+employers+" represented employers. ")+description;
     el("allSkills").hidden=!records.length||Boolean(query)||measured.length<=8;
     el("allSkills").textContent=showAll?"Show top 8":"Show all "+measured.length+" technologies";
+    const exportButton=el("marketExport");
+    exportButton.hidden=!records.length||!measured.length;
+    exportButton.onclick=()=>{
+      const share=(n,total)=>(100*n/total).toFixed(1)+"% ("+n+"/"+total+")";
+      const report=[
+        "Türkiye software job market",
+        "Collection time: "+market.collected_at,
+        "Role: "+(el("area").value||"All tracked roles"),
+        "Text analyzed: "+el("mentionScope").selectedOptions[0].text,
+        "Technology filter: "+(el("skillSearch").value.trim()||"All mentioned technologies"),
+        "Sorted by: "+basis.selectedOptions[0].text,
+        "Readable postings in role selection: "+readable.length,
+        "Postings in measured text scope: "+records.length,
+        "Employers represented in measured text scope: "+employers,
+        "Market dataset: https://huggingface.co/datasets/rezanicgil/turkiye-software-job-market",
+        "A mention can occur in company context or a preference. The percentages describe this employer panel.",
+      ];
+      if(hasDigests)report.push("Distinct descriptions within employers: "+descriptionTotal);
+      for(const {name,postings,grouped,descriptions} of measured){
+        report.push("",name,"Posting URLs: "+share(postings.length,records.length),
+          "Employers: "+share(grouped.size,employers));
+        if(hasDigests)report.push("Distinct descriptions: "+share(descriptions,descriptionTotal));
+        for(const p of postings)report.push(p.employer+" · "+p.title+" · "+p.url);
+      }
+      const url=URL.createObjectURL(new Blob([report.join("\n")+"\n"],{type:"text/plain;charset=utf-8"}));
+      const link=document.createElement("a");
+      link.href=url;link.download="turkiye-market-"+market.collected_at.slice(0,10)+".txt";link.click();
+      setTimeout(()=>URL.revokeObjectURL(url),1000);
+    };
     if(!records.length)return;
-    for(const {name,postings,grouped} of visible){
+    for(const {name,postings,grouped,descriptions} of visible){
       const d=add(el("counts"),"details","");
       const summary=add(d,"summary","");
       add(summary,"strong",name);
-      for(const [label,count,total] of [["postings",postings.length,records.length],["employers",grouped.size,employers]]){
+      const measures=[["postings",postings.length,records.length],["employers",grouped.size,employers]];
+      if(hasDigests){
+        measures.push(["distinct descriptions",descriptions,descriptionTotal]);
+        summary.classList.add("with-descriptions");
+      }
+      for(const [label,count,total] of measures){
         const share=add(summary,"span","");
         share.className="share "+label;
         add(share,"b",(Math.round(1000*count/total)/10)+"%");
