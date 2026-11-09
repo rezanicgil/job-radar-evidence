@@ -1,0 +1,479 @@
+{
+  "source_sha256": "2b4485b090ae10b860881d9cc26ea0f9bb4d4ffbb3494aab3b04ca08bacd7c8e",
+  "methods": {
+    "base": {
+      "en-tr": {
+        "target_first": 1,
+        "target_last": 3,
+        "total": 4,
+        "cases": {
+          "firmware-c": {
+            "order": [
+              "adjacent_or_future",
+              "other_actor",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "ios-production": {
+            "order": [
+              "target",
+              "other_actor",
+              "adjacent_or_future"
+            ],
+            "target_rank": 1
+          },
+          "programming-example": {
+            "order": [
+              "other_actor",
+              "adjacent_or_future",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "visual-report": {
+            "order": [
+              "adjacent_or_future",
+              "other_actor",
+              "target"
+            ],
+            "target_rank": 3
+          }
+        }
+      },
+      "tr-en": {
+        "target_first": 0,
+        "target_last": 2,
+        "total": 4,
+        "cases": {
+          "firmware-c": {
+            "order": [
+              "adjacent_or_future",
+              "target",
+              "other_actor"
+            ],
+            "target_rank": 2
+          },
+          "ios-production": {
+            "order": [
+              "other_actor",
+              "target",
+              "adjacent_or_future"
+            ],
+            "target_rank": 2
+          },
+          "programming-example": {
+            "order": [
+              "other_actor",
+              "adjacent_or_future",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "visual-report": {
+            "order": [
+              "adjacent_or_future",
+              "other_actor",
+              "target"
+            ],
+            "target_rank": 3
+          }
+        }
+      },
+      "en-en": {
+        "target_first": 0,
+        "target_last": 2,
+        "total": 4,
+        "cases": {
+          "firmware-c": {
+            "order": [
+              "adjacent_or_future",
+              "target",
+              "other_actor"
+            ],
+            "target_rank": 2
+          },
+          "ios-production": {
+            "order": [
+              "other_actor",
+              "target",
+              "adjacent_or_future"
+            ],
+            "target_rank": 2
+          },
+          "programming-example": {
+            "order": [
+              "other_actor",
+              "adjacent_or_future",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "visual-report": {
+            "order": [
+              "adjacent_or_future",
+              "other_actor",
+              "target"
+            ],
+            "target_rank": 3
+          }
+        }
+      },
+      "tr-tr": {
+        "target_first": 1,
+        "target_last": 2,
+        "total": 4,
+        "cases": {
+          "firmware-c": {
+            "order": [
+              "adjacent_or_future",
+              "target",
+              "other_actor"
+            ],
+            "target_rank": 2
+          },
+          "ios-production": {
+            "order": [
+              "target",
+              "other_actor",
+              "adjacent_or_future"
+            ],
+            "target_rank": 1
+          },
+          "programming-example": {
+            "order": [
+              "other_actor",
+              "adjacent_or_future",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "visual-report": {
+            "order": [
+              "adjacent_or_future",
+              "other_actor",
+              "target"
+            ],
+            "target_rank": 3
+          }
+        }
+      }
+    },
+    "fine_tuned": {
+      "en-tr": {
+        "target_first": 1,
+        "target_last": 3,
+        "total": 4,
+        "cases": {
+          "firmware-c": {
+            "order": [
+              "adjacent_or_future",
+              "other_actor",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "ios-production": {
+            "order": [
+              "target",
+              "other_actor",
+              "adjacent_or_future"
+            ],
+            "target_rank": 1
+          },
+          "programming-example": {
+            "order": [
+              "other_actor",
+              "adjacent_or_future",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "visual-report": {
+            "order": [
+              "adjacent_or_future",
+              "other_actor",
+              "target"
+            ],
+            "target_rank": 3
+          }
+        }
+      },
+      "tr-en": {
+        "target_first": 0,
+        "target_last": 3,
+        "total": 4,
+        "cases": {
+          "firmware-c": {
+            "order": [
+              "adjacent_or_future",
+              "other_actor",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "ios-production": {
+            "order": [
+              "other_actor",
+              "target",
+              "adjacent_or_future"
+            ],
+            "target_rank": 2
+          },
+          "programming-example": {
+            "order": [
+              "adjacent_or_future",
+              "other_actor",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "visual-report": {
+            "order": [
+              "adjacent_or_future",
+              "other_actor",
+              "target"
+            ],
+            "target_rank": 3
+          }
+        }
+      },
+      "en-en": {
+        "target_first": 0,
+        "target_last": 3,
+        "total": 4,
+        "cases": {
+          "firmware-c": {
+            "order": [
+              "adjacent_or_future",
+              "other_actor",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "ios-production": {
+            "order": [
+              "other_actor",
+              "target",
+              "adjacent_or_future"
+            ],
+            "target_rank": 2
+          },
+          "programming-example": {
+            "order": [
+              "other_actor",
+              "adjacent_or_future",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "visual-report": {
+            "order": [
+              "adjacent_or_future",
+              "other_actor",
+              "target"
+            ],
+            "target_rank": 3
+          }
+        }
+      },
+      "tr-tr": {
+        "target_first": 1,
+        "target_last": 2,
+        "total": 4,
+        "cases": {
+          "firmware-c": {
+            "order": [
+              "adjacent_or_future",
+              "target",
+              "other_actor"
+            ],
+            "target_rank": 2
+          },
+          "ios-production": {
+            "order": [
+              "target",
+              "other_actor",
+              "adjacent_or_future"
+            ],
+            "target_rank": 1
+          },
+          "programming-example": {
+            "order": [
+              "other_actor",
+              "adjacent_or_future",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "visual-report": {
+            "order": [
+              "adjacent_or_future",
+              "other_actor",
+              "target"
+            ],
+            "target_rank": 3
+          }
+        }
+      }
+    },
+    "attribution": {
+      "en-tr": {
+        "target_first": 2,
+        "target_last": 2,
+        "total": 4,
+        "cases": {
+          "firmware-c": {
+            "order": [
+              "adjacent_or_future",
+              "other_actor",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "ios-production": {
+            "order": [
+              "target",
+              "other_actor",
+              "adjacent_or_future"
+            ],
+            "target_rank": 1
+          },
+          "programming-example": {
+            "order": [
+              "other_actor",
+              "adjacent_or_future",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "visual-report": {
+            "order": [
+              "target",
+              "other_actor",
+              "adjacent_or_future"
+            ],
+            "target_rank": 1
+          }
+        }
+      },
+      "tr-en": {
+        "target_first": 2,
+        "target_last": 1,
+        "total": 4,
+        "cases": {
+          "firmware-c": {
+            "order": [
+              "target",
+              "adjacent_or_future",
+              "other_actor"
+            ],
+            "target_rank": 1
+          },
+          "ios-production": {
+            "order": [
+              "other_actor",
+              "adjacent_or_future",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "programming-example": {
+            "order": [
+              "other_actor",
+              "target",
+              "adjacent_or_future"
+            ],
+            "target_rank": 2
+          },
+          "visual-report": {
+            "order": [
+              "target",
+              "adjacent_or_future",
+              "other_actor"
+            ],
+            "target_rank": 1
+          }
+        }
+      },
+      "en-en": {
+        "target_first": 2,
+        "target_last": 1,
+        "total": 4,
+        "cases": {
+          "firmware-c": {
+            "order": [
+              "target",
+              "adjacent_or_future",
+              "other_actor"
+            ],
+            "target_rank": 1
+          },
+          "ios-production": {
+            "order": [
+              "target",
+              "other_actor",
+              "adjacent_or_future"
+            ],
+            "target_rank": 1
+          },
+          "programming-example": {
+            "order": [
+              "other_actor",
+              "adjacent_or_future",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "visual-report": {
+            "order": [
+              "adjacent_or_future",
+              "target",
+              "other_actor"
+            ],
+            "target_rank": 2
+          }
+        }
+      },
+      "tr-tr": {
+        "target_first": 3,
+        "target_last": 0,
+        "total": 4,
+        "cases": {
+          "firmware-c": {
+            "order": [
+              "target",
+              "other_actor",
+              "adjacent_or_future"
+            ],
+            "target_rank": 1
+          },
+          "ios-production": {
+            "order": [
+              "other_actor",
+              "target",
+              "adjacent_or_future"
+            ],
+            "target_rank": 2
+          },
+          "programming-example": {
+            "order": [
+              "target",
+              "adjacent_or_future",
+              "other_actor"
+            ],
+            "target_rank": 1
+          },
+          "visual-report": {
+            "order": [
+              "target",
+              "adjacent_or_future",
+              "other_actor"
+            ],
+            "target_rank": 1
+          }
+        }
+      }
+    }
+  }
+}
