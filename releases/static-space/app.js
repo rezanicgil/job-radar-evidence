@@ -27,6 +27,27 @@ async function readPages(file){
   }finally{await doc.destroy()}
   return pages;
 }
+const sectionTitle=/^(?:(?:professional |work |relevant )?experience|(?:technical )?skills|(?:professional )?summary|education|projects|certifications|languages|iş deneyimi|deneyim|eğitim|projeler|teknik beceriler|yetenekler|özet|diller)\s*:?$/iu;
+function pagePassages(page,isPdf){
+  const chunks=[];
+  let previous="";
+  function flush(){
+    if(previous)chunks.push(previous);
+    previous="";
+  }
+  for(const raw of page.split(/\r?\n/)){
+    const line=raw.trim();
+    if(!line || sectionTitle.test(line)){flush();continue}
+    const bullet=/^[•▪●]|^[-–]\s/.test(line);
+    const content=line.replace(/^[•▪●]\s*|^[-–]\s+/,"");
+    // A PDF line break before lowercase text commonly wraps the same sentence.
+    const wraps=isPdf && !bullet && /^\p{Ll}/u.test(content) && !/[.!?:]$/.test(previous);
+    if(!wraps)flush();
+    previous=previous ? previous+" "+content : content;
+  }
+  flush();
+  return chunks.flatMap(chunk=>chunk.split(/(?<=[.!?])\s+/)).filter(text=>!sectionTitle.test(text));
+}
 function coverage(){
   const values=[...el("results").querySelectorAll("select")].map(s=>s.value);
   if(values.includes("")){el("status").textContent=values.filter(v=>!v).length+" conditions awaiting review.";return}
@@ -37,7 +58,8 @@ el("form").onsubmit=async event=>{
   event.preventDefault();el("find").disabled=true;el("results").replaceChildren();
   try{
     const pages=await readPages(el("file").files[0]);
-    const lines=pages.flatMap((p,i)=>p.split(/[\r\n]+|(?<=[.!?])\s+/).map(text=>({text:text.trim(),page:i+1}))).filter(x=>x.text);
+    const isPdf=/\.pdf$/i.test(el("file").files[0]?.name || "");
+    const lines=pages.flatMap((p,i)=>pagePassages(p,isPdf).map(text=>({text,page:i+1})));
     const job=[...new Set(el("job").value.split(/[\r\n]+/).map(x=>x.trim()).filter(Boolean))];
     if(!lines.length||!job.length||job.length>50||lines.length>800)throw Error("Use a readable CV and 1–50 conditions.");
     el("status").textContent="Finding passages…";
