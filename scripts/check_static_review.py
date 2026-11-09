@@ -21,10 +21,17 @@ def check(page, origin):
         card.locator(".evidence").first.check()
     expect(page.locator("#status")).to_contain_text("50% coverage")
     report=page.get_by_role("button",name="Download review (.txt)")
+    editor=cards.first.locator(".quote-editor")
+    editor.locator("summary").click()
+    editor.locator(".excerpt").fill("a phrase absent from the passage")
+    expect(report).to_be_hidden()
+    editor.locator(".excerpt").fill("30 ay")
+    expect(report).to_be_visible()
     with page.expect_download() as event:
         report.click()
     exported=event.value.path().read_text(encoding="utf-8")
     assert "1 of 2 required conditions" in exported and "Page 1" in exported
+    assert "Highlighted wording: 30 ay" in exported and "motor kontrol yazılımı geliştirdim" in exported
     cards.first.locator(".assessment").select_option("skip")
     expect(page.locator("#status")).to_contain_text("100% coverage")
     expect(page.locator("#status")).to_contain_text("1 of 1 required")

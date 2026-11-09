@@ -241,13 +241,32 @@ function addEvidencePicker(card,lines,suggestions){
   panel.hidden=true;
   add(panel,"p","Select the CV passage or passages that support this assessment.");
   function addChoice(parent,line){
-    const label=add(parent,"label","");
+    const choice=add(parent,"div","");
+    const label=add(choice,"label","");
     const input=add(label,"input","");
     input.type="checkbox";
     input.className="evidence";
     input.value="Page "+line.page+" · "+line.text;
     label.append(" "+input.value);
-    input.onchange=coverage;
+    input.onchange=()=>{
+      choice.querySelector(".quote-editor")?.remove();
+      if(input.checked){
+        const editor=add(choice,"details","");
+        editor.className="quote-editor";
+        add(editor,"summary","Highlight exact wording (optional)");
+        const field=add(add(editor,"label","Copy a phrase from the selected passage"),"input","");
+        field.type="text";field.className="excerpt";
+        const message=add(editor,"small","");
+        field.oninput=()=>{
+          const invalid=!line.text.includes(field.value.trim());
+          field.setCustomValidity(invalid?"Use the exact wording of the selected passage.":"");
+          field.setAttribute("aria-invalid",String(invalid));
+          message.textContent=field.validationMessage;
+          coverage();
+        };
+      }
+      coverage();
+    };
   }
   for(const line of suggestions)addChoice(panel,line);
   const others=lines.filter(line=>!suggestions.includes(line));
@@ -265,12 +284,18 @@ function addEvidencePicker(card,lines,suggestions){
 function assessmentRows(){
   return [...el("results").querySelectorAll("article")].map(card=>{
     const label=card.querySelector(".assessment").value;
-    const quotes=[...card.querySelectorAll(".evidence:checked")].map(input=>input.value);
+    const chosen=[...card.querySelectorAll(".evidence:checked")];
+    const quotes=chosen.map(input=>{
+      const field=input.closest("div").querySelector(".excerpt");
+      const excerpt=field?.value.trim();
+      return excerpt?input.value+"\nHighlighted wording: "+excerpt:input.value;
+    });
+    const validQuotes=chosen.every(input=>input.closest("div").querySelector(".excerpt")?.validity.valid!==false);
     const needsQuote=label==="partial"||label==="supported";
     const note=card.querySelector(".gap-note");
     return {condition:card.querySelector("h3").textContent,label,quotes,
             note:note.disabled?"":note.value.trim(),duration:card.querySelector(".duration-result")?.textContent||"",
-            complete:Boolean(label)&&(!needsQuote||quotes.length>0)};
+            complete:Boolean(label)&&(!needsQuote||(quotes.length>0&&validQuotes))};
   });
 }
 downloadReview.onclick=()=>{
@@ -366,7 +391,10 @@ el("form").onsubmit=async event=>{
       noteLabel.hidden=true;note.disabled=true;
       select.onchange=()=>{
         picker.hidden=!(select.value==="supported"||select.value==="partial");
-        if(picker.hidden)for(const input of picker.querySelectorAll(":checked"))input.checked=false;
+        if(picker.hidden){
+          for(const input of picker.querySelectorAll(".evidence:checked"))input.checked=false;
+          for(const editor of picker.querySelectorAll(".quote-editor"))editor.remove();
+        }
         noteLabel.hidden=!(select.value==="partial"||select.value==="unverified");
         note.disabled=noteLabel.hidden;
         advice.textContent=({partial:"Identify which part your CV demonstrates and which part needs an example.",unverified:"If you have relevant experience, describe the work you personally did."})[select.value]||"";
