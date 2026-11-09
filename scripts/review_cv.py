@@ -13,12 +13,17 @@ from transformers import AutoModel, AutoTokenizer
 from train_smoke import BASE, REVISION
 
 _MODEL_LOAD_LOCK = Lock()
+ENCODERS = {
+    "base": (BASE, REVISION),
+    "fine-tuned": ("rezanicgil/python-tr-en-retriever","5621cc7f11eac83bb1be35b849797e5dba153218"),
+}
 
 
 @lru_cache(maxsize=1)
-def load_encoder():
-    tokenizer = AutoTokenizer.from_pretrained(BASE, revision=REVISION)
-    model = AutoModel.from_pretrained(BASE, revision=REVISION).eval()
+def load_encoder(encoder="base"):
+    repo,revision=ENCODERS[encoder]
+    tokenizer = AutoTokenizer.from_pretrained(repo, revision=revision)
+    model = AutoModel.from_pretrained(repo, revision=revision).eval()
     return tokenizer, model
 
 
@@ -68,14 +73,14 @@ def read_passages(path, *, posting=False):
     return passages
 
 
-def rank_passages(passages, requirements):
+def rank_passages(passages, requirements, encoder="base"):
     # Rank each distinct passage once and cite the page where it first appears.
     first_by_text = {}
     for page, text in passages:
         first_by_text.setdefault(" ".join(text.split()), (page, text))
     passages = list(first_by_text.values())
     with _MODEL_LOAD_LOCK:
-        tokenizer, model = load_encoder()
+        tokenizer, model = load_encoder(encoder)
     texts = requirements + [line for _, line in passages]
     vectors = []
     with torch.inference_mode():
@@ -103,9 +108,9 @@ def rank_passages(passages, requirements):
     return results
 
 
-def review_posting(passages, path):
+def review_posting(passages, path, encoder="base"):
     statements = list(dict.fromkeys(line for _, line in read_passages(path, posting=True)))
-    ranked = rank_passages(passages, statements)
+    ranked = rank_passages(passages, statements,encoder)
     confirmed = required = 0
     for statement, candidates in zip(statements, ranked, strict=True):
         print("\nPosting:", statement)
@@ -132,23 +137,26 @@ def main():
     parser.add_argument("cv", type=Path)
     parser.add_argument("requirement", nargs="?")
     parser.add_argument("--posting", type=Path, help="Review a full posting in TXT or text PDF format.")
+    parser.add_argument("--encoder", choices=ENCODERS, default="base",
+                        help="Choose the base encoder or the research retriever adapted on Python translations.")
     args = parser.parse_args()
     if bool(args.requirement and args.requirement.strip()) == bool(args.posting):
         parser.error("Supply either one requirement or --posting PATH.")
     torch.set_num_threads(4)
     try:
         passages = read_passages(args.cv)
+        sys.stdout.reconfigure(encoding="utf-8")
+        repo,revision=ENCODERS[args.encoder]
+        print(f"Passage encoder: {repo} at {revision}")
         if args.posting:
-            sys.stdout.reconfigure(encoding="utf-8")
-            review_posting(passages, args.posting)
-            return
+            review_posting(passages, args.posting,args.encoder)
+        else:
+            print("Requirement:", args.requirement)
+            print("Candidate passages · review for evidence")
+            for page, text in rank_passages(passages, [args.requirement],args.encoder)[0]:
+                print(f"[Page {page}] {text}")
     except (ValueError, OSError) as error:
         parser.exit(2, f"{error}\n")
-    sys.stdout.reconfigure(encoding="utf-8")
-    print("Requirement:", args.requirement)
-    print("Candidate passages · review for evidence")
-    for page, text in rank_passages(passages, [args.requirement])[0]:
-        print(f"[Page {page}] {text}")
 
 
 if __name__ == "__main__":

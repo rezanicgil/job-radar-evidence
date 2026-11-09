@@ -70,7 +70,7 @@ Small fine-tuning runs and a development challenge are available under `scripts/
 
 ## Review evidence in a local CV
 
-With PyTorch, Transformers and pypdf installed, run `python scripts/review_cv.py my-cv.pdf "Production experience with Docker"`. The same command accepts UTF-8 TXT. It ranks extracted CV passages with the multilingual MiniLM base encoder and prints up to three candidates with page references. Check the wording yourself. Ranking is exploratory and supplies no verified match score. CV text is processed locally. The pinned public encoder is downloaded on first use.
+With PyTorch, Transformers and pypdf installed, run `python scripts/review_cv.py my-cv.pdf "Production experience with Docker"`. The same command accepts UTF-8 TXT. It ranks extracted CV passages with the multilingual MiniLM base encoder and prints up to three candidates with page references. Check the wording yourself. Ranking is exploratory and supplies no verified match score. CV text is processed locally. The pinned public encoder is downloaded on first use. Add `--encoder fine-tuned` to run the released Python documentation retriever on your own CV. This works with either a single requirement or `--posting job.txt`. The output identifies the model and its pinned revision. After downloading the model once, set `HF_HUB_OFFLINE=1` for offline use.
 
 ## Reproduce the pilot baseline
 
