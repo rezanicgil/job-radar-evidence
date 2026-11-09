@@ -1,0 +1,1128 @@
+{
+  "base": "MoritzLaurer/multilingual-MiniLMv2-L6-mnli-xnli",
+  "revision": "0a71e92a985b6e1ad1828cf67ce9c459639c1dca",
+  "seed": 17,
+  "epochs": 6,
+  "batch_size": 6,
+  "learning_rate": 5e-05,
+  "sha256": {
+    "train": "62c3d3bfa06a7b9b9853dd689349b0f41b674c05972c3bcc0dacc1590246f790",
+    "dev": "a39df6dc4fb6041edb2a29e766401bcdfa82cc89fe2d63f6aa3481b2dd4a6ca5"
+  },
+  "splits": {
+    "train": {
+      "total": 144,
+      "counts": {
+        "exact": 71,
+        "correct_null": 48,
+        "returned_on_null": 0,
+        "missed_quote": 65,
+        "exact_applicant": 19,
+        "exact_other": 4
+      },
+      "cases": [
+        {
+          "family": "query-plans",
+          "component": "Inspect a PostgreSQL execution plan.",
+          "gold": "PostgreSQL sorgu planını inceledim",
+          "predicted": "PostgreSQL sorgu planını inceledim"
+        },
+        {
+          "family": "query-plans",
+          "component": "Create a database index.",
+          "gold": "İndeksi ekip arkadaşım oluşturdu",
+          "predicted": null
+        },
+        {
+          "family": "query-plans",
+          "component": "Rewrite a slow query.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "query-plans",
+          "component": "Inspect a PostgreSQL execution plan.",
+          "gold": "PostgreSQL sorgu planını inceledim",
+          "predicted": "PostgreSQL sorgu planını inceledim"
+        },
+        {
+          "family": "query-plans",
+          "component": "Create a database index.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "query-plans",
+          "component": "Rewrite a slow query.",
+          "gold": "Yavaş sorguyu başka bir mühendis yeniden yazdı",
+          "predicted": null
+        },
+        {
+          "family": "query-plans",
+          "component": "Inspect a PostgreSQL execution plan.",
+          "gold": "Sorgu planını DBA inceledi",
+          "predicted": null
+        },
+        {
+          "family": "query-plans",
+          "component": "Create a database index.",
+          "gold": "Veritabanı indeksini oluşturdum",
+          "predicted": null
+        },
+        {
+          "family": "query-plans",
+          "component": "Rewrite a slow query.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "query-plans",
+          "component": "Inspect a PostgreSQL execution plan.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "query-plans",
+          "component": "Create a database index.",
+          "gold": "Veritabanı indeksini oluşturdum",
+          "predicted": null
+        },
+        {
+          "family": "query-plans",
+          "component": "Rewrite a slow query.",
+          "gold": "Yavaş sorguyu başka bir mühendis yeniden yazdı",
+          "predicted": null
+        },
+        {
+          "family": "query-plans",
+          "component": "Inspect a PostgreSQL execution plan.",
+          "gold": "Sorgu planını DBA inceledi",
+          "predicted": null
+        },
+        {
+          "family": "query-plans",
+          "component": "Create a database index.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "query-plans",
+          "component": "Rewrite a slow query.",
+          "gold": "Yavaş sorguyu yeniden yazdım",
+          "predicted": null
+        },
+        {
+          "family": "query-plans",
+          "component": "Inspect a PostgreSQL execution plan.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "query-plans",
+          "component": "Create a database index.",
+          "gold": "İndeksi ekip arkadaşım oluşturdu",
+          "predicted": null
+        },
+        {
+          "family": "query-plans",
+          "component": "Rewrite a slow query.",
+          "gold": "Yavaş sorguyu yeniden yazdım",
+          "predicted": null
+        },
+        {
+          "family": "android-permission",
+          "component": "Android izin ekranını geliştirmek.",
+          "gold": "I implemented the Android permission screen",
+          "predicted": null
+        },
+        {
+          "family": "android-permission",
+          "component": "Bir erişilebilirlik testi yürütmek.",
+          "gold": "The QA engineer ran the accessibility test",
+          "predicted": null
+        },
+        {
+          "family": "android-permission",
+          "component": "Çökme raporunu analiz etmek.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "android-permission",
+          "component": "Android izin ekranını geliştirmek.",
+          "gold": "I implemented the Android permission screen",
+          "predicted": null
+        },
+        {
+          "family": "android-permission",
+          "component": "Bir erişilebilirlik testi yürütmek.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "android-permission",
+          "component": "Çökme raporunu analiz etmek.",
+          "gold": "My colleague analyzed the crash report",
+          "predicted": null
+        },
+        {
+          "family": "android-permission",
+          "component": "Android izin ekranını geliştirmek.",
+          "gold": "Our mobile engineer implemented the permission screen",
+          "predicted": null
+        },
+        {
+          "family": "android-permission",
+          "component": "Bir erişilebilirlik testi yürütmek.",
+          "gold": "I ran the accessibility test",
+          "predicted": "I ran the accessibility test"
+        },
+        {
+          "family": "android-permission",
+          "component": "Çökme raporunu analiz etmek.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "android-permission",
+          "component": "Android izin ekranını geliştirmek.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "android-permission",
+          "component": "Bir erişilebilirlik testi yürütmek.",
+          "gold": "I ran the accessibility test",
+          "predicted": "I ran the accessibility test"
+        },
+        {
+          "family": "android-permission",
+          "component": "Çökme raporunu analiz etmek.",
+          "gold": "My colleague analyzed the crash report",
+          "predicted": null
+        },
+        {
+          "family": "android-permission",
+          "component": "Android izin ekranını geliştirmek.",
+          "gold": "Our mobile engineer implemented the permission screen",
+          "predicted": null
+        },
+        {
+          "family": "android-permission",
+          "component": "Bir erişilebilirlik testi yürütmek.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "android-permission",
+          "component": "Çökme raporunu analiz etmek.",
+          "gold": "I analyzed the crash report",
+          "predicted": null
+        },
+        {
+          "family": "android-permission",
+          "component": "Android izin ekranını geliştirmek.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "android-permission",
+          "component": "Bir erişilebilirlik testi yürütmek.",
+          "gold": "The QA engineer ran the accessibility test",
+          "predicted": null
+        },
+        {
+          "family": "android-permission",
+          "component": "Çökme raporunu analiz etmek.",
+          "gold": "I analyzed the crash report",
+          "predicted": null
+        },
+        {
+          "family": "iot-radio",
+          "component": "Capture BLE packets.",
+          "gold": "I captured BLE packets",
+          "predicted": "I captured BLE packets"
+        },
+        {
+          "family": "iot-radio",
+          "component": "Tune radio power.",
+          "gold": "A technician tuned the radio power",
+          "predicted": "I captured BLE packets. A technician tuned the radio power"
+        },
+        {
+          "family": "iot-radio",
+          "component": "Decode a sensor frame.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "iot-radio",
+          "component": "Capture BLE packets.",
+          "gold": "I captured BLE packets",
+          "predicted": "I captured BLE packets"
+        },
+        {
+          "family": "iot-radio",
+          "component": "Tune radio power.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "iot-radio",
+          "component": "Decode a sensor frame.",
+          "gold": "My teammate decoded the sensor frame",
+          "predicted": "My teammate decoded the sensor frame"
+        },
+        {
+          "family": "iot-radio",
+          "component": "Capture BLE packets.",
+          "gold": "The radio engineer captured the BLE packets",
+          "predicted": null
+        },
+        {
+          "family": "iot-radio",
+          "component": "Tune radio power.",
+          "gold": "I adjusted the radio power",
+          "predicted": null
+        },
+        {
+          "family": "iot-radio",
+          "component": "Decode a sensor frame.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "iot-radio",
+          "component": "Capture BLE packets.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "iot-radio",
+          "component": "Tune radio power.",
+          "gold": "I adjusted the radio power",
+          "predicted": null
+        },
+        {
+          "family": "iot-radio",
+          "component": "Decode a sensor frame.",
+          "gold": "My teammate decoded the sensor frame",
+          "predicted": "My teammate decoded the sensor frame"
+        },
+        {
+          "family": "iot-radio",
+          "component": "Capture BLE packets.",
+          "gold": "The radio engineer captured the BLE packets",
+          "predicted": null
+        },
+        {
+          "family": "iot-radio",
+          "component": "Tune radio power.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "iot-radio",
+          "component": "Decode a sensor frame.",
+          "gold": "I decoded the sensor frame",
+          "predicted": "I decoded the sensor frame"
+        },
+        {
+          "family": "iot-radio",
+          "component": "Capture BLE packets.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "iot-radio",
+          "component": "Tune radio power.",
+          "gold": "A technician tuned the radio power",
+          "predicted": "A technician tuned the radio power"
+        },
+        {
+          "family": "iot-radio",
+          "component": "Decode a sensor frame.",
+          "gold": "I decoded the sensor frame",
+          "predicted": "I decoded the sensor frame"
+        },
+        {
+          "family": "data-ingest",
+          "component": "ETL işini zamanlamak.",
+          "gold": "ETL görevini zamanladım",
+          "predicted": "ETL görevini zamanladım"
+        },
+        {
+          "family": "data-ingest",
+          "component": "Veri şemasını doğrulamak.",
+          "gold": "Şemayı analist doğruladı",
+          "predicted": null
+        },
+        {
+          "family": "data-ingest",
+          "component": "Bozuk kayıtları ayırmak.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "data-ingest",
+          "component": "ETL işini zamanlamak.",
+          "gold": "ETL görevini zamanladım",
+          "predicted": "ETL görevini zamanladı"
+        },
+        {
+          "family": "data-ingest",
+          "component": "Veri şemasını doğrulamak.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "data-ingest",
+          "component": "Bozuk kayıtları ayırmak.",
+          "gold": "Bozuk kayıtları veri mühendisi ayırdı",
+          "predicted": null
+        },
+        {
+          "family": "data-ingest",
+          "component": "ETL işini zamanlamak.",
+          "gold": "ETL işini platform ekibi zamanladı",
+          "predicted": "ETL işini platform ekibi zamanladı. Veri şemasını doğruladım"
+        },
+        {
+          "family": "data-ingest",
+          "component": "Veri şemasını doğrulamak.",
+          "gold": "Veri şemasını doğruladım",
+          "predicted": "Veri şemasını doğruladı"
+        },
+        {
+          "family": "data-ingest",
+          "component": "Bozuk kayıtları ayırmak.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "data-ingest",
+          "component": "ETL işini zamanlamak.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "data-ingest",
+          "component": "Veri şemasını doğrulamak.",
+          "gold": "Veri şemasını doğruladım",
+          "predicted": "Veri şemasını doğruladı"
+        },
+        {
+          "family": "data-ingest",
+          "component": "Bozuk kayıtları ayırmak.",
+          "gold": "Bozuk kayıtları veri mühendisi ayırdı",
+          "predicted": null
+        },
+        {
+          "family": "data-ingest",
+          "component": "ETL işini zamanlamak.",
+          "gold": "ETL işini platform ekibi zamanladı",
+          "predicted": null
+        },
+        {
+          "family": "data-ingest",
+          "component": "Veri şemasını doğrulamak.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "data-ingest",
+          "component": "Bozuk kayıtları ayırmak.",
+          "gold": "Bozuk kayıtları ayrı bir tabloya taşıdım",
+          "predicted": "Bozuk kayıtları ayrı bir tabloya taşıdım"
+        },
+        {
+          "family": "data-ingest",
+          "component": "ETL işini zamanlamak.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "data-ingest",
+          "component": "Veri şemasını doğrulamak.",
+          "gold": "Şemayı analist doğruladı",
+          "predicted": null
+        },
+        {
+          "family": "data-ingest",
+          "component": "Bozuk kayıtları ayırmak.",
+          "gold": "Bozuk kayıtları ayrı bir tabloya taşıdım",
+          "predicted": "Bozuk kayıtları ayrı bir tabloya taşıdım"
+        },
+        {
+          "family": "game-physics",
+          "component": "Tune collision response.",
+          "gold": "Çarpışma tepkisini ayarladım",
+          "predicted": null
+        },
+        {
+          "family": "game-physics",
+          "component": "Profile frame time.",
+          "gold": "Kare süresini ekip arkadaşım ölçtü",
+          "predicted": null
+        },
+        {
+          "family": "game-physics",
+          "component": "Write a shader.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "game-physics",
+          "component": "Tune collision response.",
+          "gold": "Çarpışma tepkisini ayarladım",
+          "predicted": null
+        },
+        {
+          "family": "game-physics",
+          "component": "Profile frame time.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "game-physics",
+          "component": "Write a shader.",
+          "gold": "Gölgelendiriciyi grafik mühendisi yazdı",
+          "predicted": null
+        },
+        {
+          "family": "game-physics",
+          "component": "Tune collision response.",
+          "gold": "Çarpışma tepkisini fizik ekibi ayarladı",
+          "predicted": null
+        },
+        {
+          "family": "game-physics",
+          "component": "Profile frame time.",
+          "gold": "Kare süresini profilleme aracıyla ölçtüm",
+          "predicted": null
+        },
+        {
+          "family": "game-physics",
+          "component": "Write a shader.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "game-physics",
+          "component": "Tune collision response.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "game-physics",
+          "component": "Profile frame time.",
+          "gold": "Kare süresini profilleme aracıyla ölçtüm",
+          "predicted": null
+        },
+        {
+          "family": "game-physics",
+          "component": "Write a shader.",
+          "gold": "Gölgelendiriciyi grafik mühendisi yazdı",
+          "predicted": null
+        },
+        {
+          "family": "game-physics",
+          "component": "Tune collision response.",
+          "gold": "Çarpışma tepkisini fizik ekibi ayarladı",
+          "predicted": null
+        },
+        {
+          "family": "game-physics",
+          "component": "Profile frame time.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "game-physics",
+          "component": "Write a shader.",
+          "gold": "Gölgelendiriciyi yazdım",
+          "predicted": "Gölgelendiriciyi yazdım"
+        },
+        {
+          "family": "game-physics",
+          "component": "Tune collision response.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "game-physics",
+          "component": "Profile frame time.",
+          "gold": "Kare süresini ekip arkadaşım ölçtü",
+          "predicted": null
+        },
+        {
+          "family": "game-physics",
+          "component": "Write a shader.",
+          "gold": "Gölgelendiriciyi yazdım",
+          "predicted": null
+        },
+        {
+          "family": "service-auth",
+          "component": "OAuth istemcisini yapılandırmak.",
+          "gold": "I configured the OAuth client",
+          "predicted": null
+        },
+        {
+          "family": "service-auth",
+          "component": "Yetkilendirme kurallarını yazmak.",
+          "gold": "Another developer wrote the authorization rules",
+          "predicted": null
+        },
+        {
+          "family": "service-auth",
+          "component": "Denetim kayıtlarını incelemek.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "service-auth",
+          "component": "OAuth istemcisini yapılandırmak.",
+          "gold": "I configured the OAuth client",
+          "predicted": null
+        },
+        {
+          "family": "service-auth",
+          "component": "Yetkilendirme kurallarını yazmak.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "service-auth",
+          "component": "Denetim kayıtlarını incelemek.",
+          "gold": "The auditor examined the logs",
+          "predicted": null
+        },
+        {
+          "family": "service-auth",
+          "component": "OAuth istemcisini yapılandırmak.",
+          "gold": "The security lead configured OAuth",
+          "predicted": null
+        },
+        {
+          "family": "service-auth",
+          "component": "Yetkilendirme kurallarını yazmak.",
+          "gold": "I implemented authorization rules",
+          "predicted": null
+        },
+        {
+          "family": "service-auth",
+          "component": "Denetim kayıtlarını incelemek.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "service-auth",
+          "component": "OAuth istemcisini yapılandırmak.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "service-auth",
+          "component": "Yetkilendirme kurallarını yazmak.",
+          "gold": "I implemented authorization rules",
+          "predicted": null
+        },
+        {
+          "family": "service-auth",
+          "component": "Denetim kayıtlarını incelemek.",
+          "gold": "The auditor examined the logs",
+          "predicted": null
+        },
+        {
+          "family": "service-auth",
+          "component": "OAuth istemcisini yapılandırmak.",
+          "gold": "The security lead configured OAuth",
+          "predicted": null
+        },
+        {
+          "family": "service-auth",
+          "component": "Yetkilendirme kurallarını yazmak.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "service-auth",
+          "component": "Denetim kayıtlarını incelemek.",
+          "gold": "I inspected the audit logs",
+          "predicted": null
+        },
+        {
+          "family": "service-auth",
+          "component": "OAuth istemcisini yapılandırmak.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "service-auth",
+          "component": "Yetkilendirme kurallarını yazmak.",
+          "gold": "Another developer wrote the authorization rules",
+          "predicted": null
+        },
+        {
+          "family": "service-auth",
+          "component": "Denetim kayıtlarını incelemek.",
+          "gold": "I inspected the audit logs",
+          "predicted": null
+        },
+        {
+          "family": "infra-capacity",
+          "component": "Load-test an endpoint.",
+          "gold": "I load-tested the API endpoint",
+          "predicted": null
+        },
+        {
+          "family": "infra-capacity",
+          "component": "Increase worker capacity.",
+          "gold": "Operations increased worker capacity",
+          "predicted": null
+        },
+        {
+          "family": "infra-capacity",
+          "component": "Diagnose queue lag.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "infra-capacity",
+          "component": "Load-test an endpoint.",
+          "gold": "I load-tested the API endpoint",
+          "predicted": null
+        },
+        {
+          "family": "infra-capacity",
+          "component": "Increase worker capacity.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "infra-capacity",
+          "component": "Diagnose queue lag.",
+          "gold": "The messaging team diagnosed the consumer lag",
+          "predicted": null
+        },
+        {
+          "family": "infra-capacity",
+          "component": "Load-test an endpoint.",
+          "gold": "Our QA lead ran the endpoint load test",
+          "predicted": "Our QA lead ran the endpoint load test"
+        },
+        {
+          "family": "infra-capacity",
+          "component": "Increase worker capacity.",
+          "gold": "I increased worker capacity",
+          "predicted": "I increased worker capacity"
+        },
+        {
+          "family": "infra-capacity",
+          "component": "Diagnose queue lag.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "infra-capacity",
+          "component": "Load-test an endpoint.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "infra-capacity",
+          "component": "Increase worker capacity.",
+          "gold": "I increased worker capacity",
+          "predicted": "I increased worker capacity"
+        },
+        {
+          "family": "infra-capacity",
+          "component": "Diagnose queue lag.",
+          "gold": "The messaging team diagnosed the consumer lag",
+          "predicted": null
+        },
+        {
+          "family": "infra-capacity",
+          "component": "Load-test an endpoint.",
+          "gold": "Our QA lead ran the endpoint load test",
+          "predicted": null
+        },
+        {
+          "family": "infra-capacity",
+          "component": "Increase worker capacity.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "infra-capacity",
+          "component": "Diagnose queue lag.",
+          "gold": "I diagnosed the consumer lag",
+          "predicted": null
+        },
+        {
+          "family": "infra-capacity",
+          "component": "Load-test an endpoint.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "infra-capacity",
+          "component": "Increase worker capacity.",
+          "gold": "Operations increased worker capacity",
+          "predicted": "worker capacity"
+        },
+        {
+          "family": "infra-capacity",
+          "component": "Diagnose queue lag.",
+          "gold": "I diagnosed the consumer lag",
+          "predicted": null
+        },
+        {
+          "family": "ios-sync",
+          "component": "Çevrimdışı kayıtları eşitlemek.",
+          "gold": "Çevrimdışı kayıtların eşitlemesini yazdım",
+          "predicted": "Çevrimdışı kayıtların eşitlemesini yazdım"
+        },
+        {
+          "family": "ios-sync",
+          "component": "Önbellek geçersizleştirmesini uygulamak.",
+          "gold": "Önbellek geçersizleştirmesini ekip arkadaşım uyguladı",
+          "predicted": null
+        },
+        {
+          "family": "ios-sync",
+          "component": "Çakışma çözümünü test etmek.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "ios-sync",
+          "component": "Çevrimdışı kayıtları eşitlemek.",
+          "gold": "Çevrimdışı kayıtların eşitlemesini yazdım",
+          "predicted": "Çevrimdışı kayıtların eşitlemesini yazdım"
+        },
+        {
+          "family": "ios-sync",
+          "component": "Önbellek geçersizleştirmesini uygulamak.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "ios-sync",
+          "component": "Çakışma çözümünü test etmek.",
+          "gold": "Çakışma çözümünü test mühendisi sınadı",
+          "predicted": null
+        },
+        {
+          "family": "ios-sync",
+          "component": "Çevrimdışı kayıtları eşitlemek.",
+          "gold": "Eşitlemeyi iOS ekibi yazdı",
+          "predicted": null
+        },
+        {
+          "family": "ios-sync",
+          "component": "Önbellek geçersizleştirmesini uygulamak.",
+          "gold": "Önbellek geçersizleştirmesini uyguladım",
+          "predicted": "Önbellek geçersizleştirmesini uyguladım"
+        },
+        {
+          "family": "ios-sync",
+          "component": "Çakışma çözümünü test etmek.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "ios-sync",
+          "component": "Çevrimdışı kayıtları eşitlemek.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "ios-sync",
+          "component": "Önbellek geçersizleştirmesini uygulamak.",
+          "gold": "Önbellek geçersizleştirmesini uyguladım",
+          "predicted": "Önbellek geçersizleştirmesini uyguladım"
+        },
+        {
+          "family": "ios-sync",
+          "component": "Çakışma çözümünü test etmek.",
+          "gold": "Çakışma çözümünü test mühendisi sınadı",
+          "predicted": null
+        },
+        {
+          "family": "ios-sync",
+          "component": "Çevrimdışı kayıtları eşitlemek.",
+          "gold": "Eşitlemeyi iOS ekibi yazdı",
+          "predicted": null
+        },
+        {
+          "family": "ios-sync",
+          "component": "Önbellek geçersizleştirmesini uygulamak.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "ios-sync",
+          "component": "Çakışma çözümünü test etmek.",
+          "gold": "Çakışma çözümünü test ettim",
+          "predicted": "Çakışma çözümünü test ett"
+        },
+        {
+          "family": "ios-sync",
+          "component": "Çevrimdışı kayıtları eşitlemek.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "ios-sync",
+          "component": "Önbellek geçersizleştirmesini uygulamak.",
+          "gold": "Önbellek geçersizleştirmesini ekip arkadaşım uyguladı",
+          "predicted": "Önbellek geçersizleştirmesini ekip arkadaşım uyguladı. Çakışma çözümünü test ettim"
+        },
+        {
+          "family": "ios-sync",
+          "component": "Çakışma çözümünü test etmek.",
+          "gold": "Çakışma çözümünü test ettim",
+          "predicted": "Çakışma çözümünü test ettim"
+        }
+      ],
+      "when_gold_present_force_answer": {
+        "total": 96,
+        "exact": 31
+      }
+    },
+    "dev": {
+      "total": 36,
+      "counts": {
+        "exact": 12,
+        "correct_null": 12,
+        "returned_on_null": 0,
+        "missed_quote": 23,
+        "exact_applicant": 0,
+        "exact_other": 0
+      },
+      "cases": [
+        {
+          "family": "cert-rotation-check",
+          "component": "Configure certificate expiry alerts.",
+          "gold": "I configured our certificate-expiry alert",
+          "predicted": null
+        },
+        {
+          "family": "cert-rotation-check",
+          "component": "Rotate certificates on production gateways.",
+          "gold": "replaced the TLS certificates on the production gateways",
+          "predicted": null
+        },
+        {
+          "family": "cert-rotation-check",
+          "component": "Configure certificate expiry alerts.",
+          "gold": "Süre alarmını güvenlik ekibi kurdu",
+          "predicted": null
+        },
+        {
+          "family": "cert-rotation-check",
+          "component": "Rotate certificates on production gateways.",
+          "gold": "Sertifika değişimini canlı ağ geçitlerinde yaptım",
+          "predicted": null
+        },
+        {
+          "family": "cert-rotation-check",
+          "component": "Configure certificate expiry alerts.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "cert-rotation-check",
+          "component": "Rotate certificates on production gateways.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "ios-symbols",
+          "component": "iOS çökme kayıtlarını sembolleştirmek.",
+          "gold": "dSYM ile iOS çökme izini çözdüm",
+          "predicted": null
+        },
+        {
+          "family": "ios-symbols",
+          "component": "İlgili çökme hatasını yayımlanan bir iOS sürümünde gidermek.",
+          "gold": "düzeltmemi 2.4 sürümünde yayımladım",
+          "predicted": null
+        },
+        {
+          "family": "ios-symbols",
+          "component": "iOS çökme kayıtlarını sembolleştirmek.",
+          "gold": "I symbolicated the iOS crash with dSYM",
+          "predicted": null
+        },
+        {
+          "family": "ios-symbols",
+          "component": "İlgili çökme hatasını yayımlanan bir iOS sürümünde gidermek.",
+          "gold": "Another engineer shipped the fix",
+          "predicted": null
+        },
+        {
+          "family": "ios-symbols",
+          "component": "iOS çökme kayıtlarını sembolleştirmek.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "ios-symbols",
+          "component": "İlgili çökme hatasını yayımlanan bir iOS sürümünde gidermek.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "board-bringup",
+          "component": "Load firmware on a physical board.",
+          "gold": "I flashed the target board",
+          "predicted": null
+        },
+        {
+          "family": "board-bringup",
+          "component": "Verify UART output on the physical board.",
+          "gold": "captured its UART boot output to verify initialization",
+          "predicted": null
+        },
+        {
+          "family": "board-bringup",
+          "component": "Load firmware on a physical board.",
+          "gold": "Kartı teknisyen programladı",
+          "predicted": null
+        },
+        {
+          "family": "board-bringup",
+          "component": "Verify UART output on the physical board.",
+          "gold": "Açılış mesajını UART hattından okuyup doğruladım",
+          "predicted": null
+        },
+        {
+          "family": "board-bringup",
+          "component": "Load firmware on a physical board.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "board-bringup",
+          "component": "Verify UART output on the physical board.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "dataset-release-check",
+          "component": "Veri setindeki kişisel tanımlayıcıları temizlemek.",
+          "gold": "I removed personal identifiers",
+          "predicted": null
+        },
+        {
+          "family": "dataset-release-check",
+          "component": "Sürümlü bir veri setini yayımlamak.",
+          "gold": "published the cleaned dataset as version 1.2",
+          "predicted": null
+        },
+        {
+          "family": "dataset-release-check",
+          "component": "Veri setindeki kişisel tanımlayıcıları temizlemek.",
+          "gold": "Veriden e-posta adreslerini ve telefonları çıkardım",
+          "predicted": null
+        },
+        {
+          "family": "dataset-release-check",
+          "component": "Sürümlü bir veri setini yayımlamak.",
+          "gold": "Sürümü ekip arkadaşım yayımladı",
+          "predicted": null
+        },
+        {
+          "family": "dataset-release-check",
+          "component": "Veri setindeki kişisel tanımlayıcıları temizlemek.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "dataset-release-check",
+          "component": "Sürümlü bir veri setini yayımlamak.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "restore-monitor",
+          "component": "Configure database backups.",
+          "gold": "Yedekleme işini kurdum",
+          "predicted": null
+        },
+        {
+          "family": "restore-monitor",
+          "component": "Verify a database restore.",
+          "gold": "geri yüklenen veritabanında sağlama toplamlarını doğruladım",
+          "predicted": null
+        },
+        {
+          "family": "restore-monitor",
+          "component": "Configure database backups.",
+          "gold": "The platform team set up the backups",
+          "predicted": null
+        },
+        {
+          "family": "restore-monitor",
+          "component": "Verify a database restore.",
+          "gold": "I restored one and checked the restored rows",
+          "predicted": null
+        },
+        {
+          "family": "restore-monitor",
+          "component": "Configure database backups.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "restore-monitor",
+          "component": "Verify a database restore.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "release-signoff",
+          "component": "Mobil uygulama derlemesini imzalamak.",
+          "gold": "Mobil sürümü anahtarla imzalayıp",
+          "predicted": null
+        },
+        {
+          "family": "release-signoff",
+          "component": "Mobil uygulama sürümünü mağazaya göndermek.",
+          "gold": "mağazaya gönderdim",
+          "predicted": "Mobil sürümü anahtarla imzalayıp mağazaya gönder"
+        },
+        {
+          "family": "release-signoff",
+          "component": "Mobil uygulama derlemesini imzalamak.",
+          "gold": "I signed the mobile build",
+          "predicted": null
+        },
+        {
+          "family": "release-signoff",
+          "component": "Mobil uygulama sürümünü mağazaya göndermek.",
+          "gold": "release management submitted it to the store",
+          "predicted": null
+        },
+        {
+          "family": "release-signoff",
+          "component": "Mobil uygulama derlemesini imzalamak.",
+          "gold": null,
+          "predicted": null
+        },
+        {
+          "family": "release-signoff",
+          "component": "Mobil uygulama sürümünü mağazaya göndermek.",
+          "gold": null,
+          "predicted": null
+        }
+      ],
+      "when_gold_present_force_answer": {
+        "total": 24,
+        "exact": 3
+      }
+    }
+  }
+}
