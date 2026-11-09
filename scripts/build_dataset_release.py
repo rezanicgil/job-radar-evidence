@@ -38,6 +38,7 @@ def main():
         (destination / (split+".jsonl")).write_bytes(content)
         print(f"{split}: {len(rows)} records, SHA-256 {hashlib.sha256(content).hexdigest()}")
     shutil.copyfile(ROOT / "LICENSE",destination / "LICENSE")
+    shutil.copyfile(ROOT / "data/match_source_dev.jsonl",destination / "source_validation.jsonl")
 
 
 if __name__ == "__main__":
