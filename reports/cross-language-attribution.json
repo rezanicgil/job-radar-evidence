@@ -1,5 +1,19 @@
 {
   "source_sha256": "2b4485b090ae10b860881d9cc26ea0f9bb4d4ffbb3494aab3b04ca08bacd7c8e",
+  "checkpoints": {
+    "base": {
+      "repo": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+      "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42"
+    },
+    "fine_tuned": {
+      "repo": "rezanicgil/python-tr-en-retriever",
+      "revision": "813078062d92ba7d57487fd97b14af3acd620522"
+    },
+    "attribution": {
+      "repo": "rezanicgil/job-radar-clause-attribution",
+      "revision": "c818969bb437370febedbfe2f5a80adac976d331"
+    }
+  },
   "methods": {
     "base": {
       "en-tr": {
@@ -474,20 +488,6 @@
           }
         }
       }
-    }
-  },
-  "checkpoints": {
-    "base": {
-      "repo": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
-      "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42"
-    },
-    "fine_tuned": {
-      "repo": "rezanicgil/python-tr-en-retriever",
-      "revision": "813078062d92ba7d57487fd97b14af3acd620522"
-    },
-    "attribution": {
-      "repo": "rezanicgil/job-radar-clause-attribution",
-      "revision": "c818969bb437370febedbfe2f5a80adac976d331"
     }
   }
 }
