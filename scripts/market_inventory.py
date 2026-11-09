@@ -37,7 +37,7 @@ def in_turkiye(country, location):
     return bool(TR_LOCATION.search(location or ""))
 
 
-def fetch(source):
+def fetch(source, *, retry_timeout=True):
     ats, slug = source["ats"], source["slug"]
     url = {"workday": f"https://{slug.split('/')[0]}.myworkdayjobs.com/en-US/{slug.split('/')[-1]}",
            "lever": f"https://api.lever.co/v0/postings/{slug}?mode=json",
@@ -105,6 +105,8 @@ def fetch(source):
                                  areas=[area for area, pattern in PATTERNS.items() if re.search(pattern,title,re.I)]))
         return dict(source=source["name"], url=url, status="ok", scanned=len(rows)), jobs
     except (URLError, TimeoutError, ValueError, KeyError, TypeError) as exc:
+        if retry_timeout and isinstance(getattr(exc,"reason",exc),TimeoutError):
+            return fetch(source,retry_timeout=False)
         return dict(source=source["name"], url=url, status=f"{type(exc).__name__}: {exc}"), []
 
 
