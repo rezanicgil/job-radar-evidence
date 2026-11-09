@@ -13,4 +13,7 @@
 <section><h2>Bilingual passage retrieval</h2>
 <p>A separate encoder was fine-tuned on 1,027 English–Turkish Python documentation pairs. On ten other documents, English queries retrieved the correct Turkish translation first in 674 of 721 cases, up from 669 with the base model. On ten job conditions searched against 30 fictional CV passages, all ten target passages kept their original rank.</p>
 <p><a href="https://huggingface.co/rezanicgil/python-tr-en-retriever">Download the retriever and try the example</a> · <a href="https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/translation-retrieval.json">Inspect the evaluation results</a></p></section>
+<section><h2>External evaluation</h2>
+<p>On 1,759 external CV/job pairs, the fine-tuned encoder agreed with the ordering of differently labelled jobs for the same applicant 64.58% of the time, averaged over 275 CVs. The base encoder reached 63.25%. The source labels refer to whole documents and their reviewer provenance is undocumented. <a href="https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/external-fit-ranking.json">Inspect both ranking directions</a></p>
+<p>In a separate TECHWOLF test, the English sentence selector found 252 of 325 skill-bearing sentences outside its training and development texts. This positive-only test measures recall. <a href="https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/external-skill-recall.json">Inspect the skill extraction check</a></p></section>
 </main><script type="module" src="model.js"></script></html>

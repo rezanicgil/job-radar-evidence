@@ -1,0 +1,185 @@
+{
+  "dataset": "cnamuangtoun/resume-job-description-fit",
+  "revision": "08978e21714984bb417547d2c0f9b477f5298163",
+  "train": 6241,
+  "test": 1759,
+  "train_unique_pairs": 6234,
+  "train_conflicting_pairs": 6,
+  "overlap": {
+    "cv": {
+      "train": 642,
+      "test": 477,
+      "shared": 476
+    },
+    "job": {
+      "train": 280,
+      "test": 71,
+      "shared": 0
+    }
+  },
+  "results": {
+    "tfidf_cosine": {
+      "jobs_for_same_cv": {
+        "eligible_groups": 275,
+        "macro_concordance": 0.561795696874215,
+        "label_contrasts": {
+          "0-1": {
+            "groups": 183,
+            "concordance": 0.5277120016191055
+          },
+          "0-2": {
+            "groups": 176,
+            "concordance": 0.5638611015457606
+          },
+          "1-2": {
+            "groups": 166,
+            "concordance": 0.5541045132912603
+          }
+        }
+      },
+      "cvs_for_same_job": {
+        "eligible_groups": 61,
+        "macro_concordance": 0.6212461759208102,
+        "label_contrasts": {
+          "0-1": {
+            "groups": 52,
+            "concordance": 0.6078859620868683
+          },
+          "0-2": {
+            "groups": 28,
+            "concordance": 0.6475276018070487
+          },
+          "1-2": {
+            "groups": 19,
+            "concordance": 0.5018223321727316
+          }
+        }
+      }
+    },
+    "base": {
+      "jobs_for_same_cv": {
+        "eligible_groups": 275,
+        "macro_concordance": 0.6324502378279367,
+        "label_contrasts": {
+          "0-1": {
+            "groups": 183,
+            "concordance": 0.5380281148723771
+          },
+          "0-2": {
+            "groups": 176,
+            "concordance": 0.6972104773383183
+          },
+          "1-2": {
+            "groups": 166,
+            "concordance": 0.6321213425129087
+          }
+        }
+      },
+      "cvs_for_same_job": {
+        "eligible_groups": 61,
+        "macro_concordance": 0.661817466245248,
+        "label_contrasts": {
+          "0-1": {
+            "groups": 52,
+            "concordance": 0.6405994609220494
+          },
+          "0-2": {
+            "groups": 28,
+            "concordance": 0.7152547688488864
+          },
+          "1-2": {
+            "groups": 19,
+            "concordance": 0.5164670576219179
+          }
+        }
+      },
+      "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+      "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+      "chunks": 5878
+    },
+    "adapted": {
+      "jobs_for_same_cv": {
+        "eligible_groups": 275,
+        "macro_concordance": 0.6458463911607712,
+        "label_contrasts": {
+          "0-1": {
+            "groups": 183,
+            "concordance": 0.5384894022189104
+          },
+          "0-2": {
+            "groups": 176,
+            "concordance": 0.7139458847129302
+          },
+          "1-2": {
+            "groups": 166,
+            "concordance": 0.6433185121438134
+          }
+        }
+      },
+      "cvs_for_same_job": {
+        "eligible_groups": 61,
+        "macro_concordance": 0.6511295567276087,
+        "label_contrasts": {
+          "0-1": {
+            "groups": 52,
+            "concordance": 0.6331461923751309
+          },
+          "0-2": {
+            "groups": 28,
+            "concordance": 0.6997566318354623
+          },
+          "1-2": {
+            "groups": 19,
+            "concordance": 0.5237886396771679
+          }
+        }
+      },
+      "model": "rezanicgil/python-tr-en-retriever",
+      "revision": "5621cc7f11eac83bb1be35b849797e5dba153218",
+      "chunks": 5878
+    },
+    "training_cv_label_mean": {
+      "jobs_for_same_cv": {
+        "eligible_groups": 275,
+        "macro_concordance": 0.5,
+        "label_contrasts": {
+          "0-1": {
+            "groups": 183,
+            "concordance": 0.5
+          },
+          "0-2": {
+            "groups": 176,
+            "concordance": 0.5
+          },
+          "1-2": {
+            "groups": 166,
+            "concordance": 0.5
+          }
+        }
+      },
+      "cvs_for_same_job": {
+        "eligible_groups": 61,
+        "macro_concordance": 0.6613114936629267,
+        "label_contrasts": {
+          "0-1": {
+            "groups": 52,
+            "concordance": 0.6487339932173715
+          },
+          "0-2": {
+            "groups": 28,
+            "concordance": 0.6870123907529535
+          },
+          "1-2": {
+            "groups": 19,
+            "concordance": 0.7237050808714779
+          }
+        }
+      }
+    }
+  },
+  "label_levels": {
+    "No Fit": 0,
+    "Potential Fit": 1,
+    "Good Fit": 2
+  }
+}

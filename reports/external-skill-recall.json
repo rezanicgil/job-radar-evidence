@@ -1,0 +1,12 @@
+{
+  "source": "https://raw.githubusercontent.com/jensjorisdecorte/skill-extraction-benchmark/19305c85e35a74fb2a5128d8ee3798b06470b596/data/techwolf_test_annotations.csv",
+  "source_sha256": "e2af8df7f515b9c1d5ca7dd87f892ed456255ee38d7f76fd6b3c8b102823c34a",
+  "annotations": 588,
+  "unique_sentences": 326,
+  "excluded_seen": 1,
+  "eligible": 325,
+  "recalled": 252,
+  "recall": 0.7753846153846153,
+  "model_sha256": "ba44af1fc7f1839653f31b9517167b14e82949df07a29a5a28325bbfe4a549c4",
+  "scope": "Headings absent. Positive skill-annotated sentences only. Precision and CV fit cannot be estimated."
+}

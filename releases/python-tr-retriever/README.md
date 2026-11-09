@@ -21,6 +21,19 @@ The documentation evaluation uses ten held-out files. The base model's pretraini
 
 The same ten job conditions were also tested in four translated job/CV language combinations. In Turkish/Turkish retrieval, one target moved from fourth to third and another from first to second. In Turkish/English retrieval, one target moved from fifth to sixth. The two English-query views kept all ten original ranks within each view.
 
+## External whole-document ranking
+
+We tested all 1,759 held-out CV/job pairs in an English-language external dataset. Within each CV, we compared pairs of jobs with different source labels and counted how often the model placed the higher-labelled job first. Ties earned half credit. The table gives each eligible CV or job equal weight.
+
+| Method | Rank jobs for one CV (275 CVs) | Rank CVs for one job (61 jobs) |
+| --- | ---: | ---: |
+| CV's mean training label | 50.00% | 66.13% |
+| TF-IDF cosine | 56.18% | 62.12% |
+| Base encoder | 63.25% | 66.18% |
+| Adapted encoder | 64.58% | 65.11% |
+
+All 71 test job descriptions were unseen in the external training split. Of 477 distinct test CVs, 476 also appeared in training. The dataset provides whole-document labels with undocumented reviewer provenance. These results measure agreement with its ordering. They cannot establish evidence for an individual job requirement. [Pinned dataset](https://huggingface.co/datasets/cnamuangtoun/resume-job-description-fit/tree/08978e21714984bb417547d2c0f9b477f5298163) · [Audit and label-level results](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/external-fit-ranking.json)
+
 ```python
 import torch
 from transformers import AutoModel, AutoTokenizer
