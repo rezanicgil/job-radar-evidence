@@ -27,6 +27,7 @@ def daily_rows(day, folder):
                              url=job["url"], areas=job["areas"],
                              source_requisition=measured.get("source_requisition"),
                              source_listed_date=measured.get("source_listed_date"),
+                             sections=measured.get("sections"),
                              description_status=measured.get("status","not_selected"),
                              technologies=measured.get("skills") if measured.get("status")=="readable" else None))
     assert len(postings)==len({row["url"] for row in postings})

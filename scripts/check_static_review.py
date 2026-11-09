@@ -167,6 +167,16 @@ def check(page, origin):
     expect(chart.locator("summary")).to_contain_text(f"{len({r['employer'] for r in users})}/{len(employers)} employers")
     chart.locator("summary").click()
     expect(chart.locator("li a")).to_have_count(len(users))
+    page.locator("#mentionScope").select_option("preferences")
+    preference_rows=[p for p in records if any(s["kind"]=="preferences" for s in p.get("sections") or [])]
+    expect(page.locator("#skillCount")).to_contain_text(f"{len(preference_rows)} of {len(records)} readable postings")
+    if preference_rows:
+        sample=next((name for p in preference_rows for s in p["sections"] if s["kind"]=="preferences" for name in s["skills"]),None)
+        if sample:
+            page.locator("#skillSearch").fill(sample)
+            matched=[p for p in preference_rows if any(s["kind"]=="preferences" and sample in s["skills"] for s in p["sections"])]
+            row=page.locator("#counts details").filter(has=page.get_by_text(sample,exact=True)).first
+            expect(row.locator("summary")).to_contain_text(f"{len(matched)}/{len(preference_rows)} postings")
     assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
     case_id="source-pilot-android-1"
     page.goto(urljoin(origin,"annotate.html?case="+case_id))

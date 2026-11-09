@@ -613,7 +613,12 @@ try{
   el("area").add(new Option("All tracked roles",""));
   for(const a of market.areas)el("area").add(new Option(a,a));
   let showAll=false;
-  function drawTechnologies(records){
+  function drawTechnologies(readable){
+    const scope=el("mentionScope").value;
+    const records=scope==="all"?readable:readable.flatMap(row=>{
+      const sections=(row.sections||[]).filter(section=>section.kind===scope);
+      return sections.length?[{...row,sections,skills:sections.flatMap(s=>s.skills)}]:[];
+    });
     const byEmployer=el("basis").value==="employers";
     const employers=new Set(records.map(p=>p.employer)).size;
     const skills=new Map();
@@ -634,10 +639,13 @@ try{
     }).sort((a,b)=>b.count-a.count||a.name.localeCompare(b.name));
     el("counts").replaceChildren();
     const visible=showAll||query?measured:measured.slice(0,8);
-    el("skillCount").textContent=!records.length?"No readable descriptions for this role selection.":
+    const description=!records.length?(scope==="all"?"No readable descriptions for this role selection.":"No measured sections for this role selection."):
       !measured.length?(query?"No tracked technology matches this search.":"No tracked technologies mentioned."):
       (query?measured.length+" matching "+(measured.length===1?"technology.":"technologies."):
         "Showing "+visible.length+" of "+measured.length+" mentioned technologies.");
+    const sectionName=scope==="preferences"?"preference":"qualification";
+    el("skillCount").textContent=(scope==="all"?"":records.length+" of "+readable.length+
+      " readable postings have a recognized Lever "+sectionName+" heading. Percentages use these "+records.length+" postings. ")+description;
     el("allSkills").hidden=!records.length||Boolean(query)||measured.length<=8;
     el("allSkills").textContent=showAll?"Show top 8":"Show all "+measured.length+" technologies";
     if(!records.length)return;
@@ -660,6 +668,7 @@ try{
         for(const p of items){
           const a=add(add(links,"li",""),"a",p.title);
           if(p.url.startsWith("https://"))a.href=p.url;
+          if(scope!=="all")add(a.parentElement,"small",p.sections.filter(s=>s.skills.includes(name)).map(s=>s.heading).join(" · "));
         }
       }
     }
@@ -719,6 +728,7 @@ try{
     el("scope").textContent=market.collected_at.slice(0,10)+" · "+records.length+" readable descriptions of "+group.length+" selected postings. Counts include mentions in preferences and company context.";
     const redraw=()=>drawTechnologies(records);
     el("basis").onchange=redraw;
+    el("mentionScope").onchange=()=>{showAll=false;redraw()};
     el("skillSearch").oninput=redraw;
     el("allSkills").onclick=()=>{showAll=!showAll;redraw()};
     redraw();

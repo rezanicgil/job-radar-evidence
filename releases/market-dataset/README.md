@@ -40,4 +40,6 @@ The technologies configuration contains one row per tracked name per date, inclu
 
 For selected Workday postings, `source_requisition` and `source_listed_date` preserve the employer's requisition ID and Workday start date when available. Rows without these fields have null values. The snapshot date records when this project observed the posting.
 
+The `sections` field contains recognized qualification and preference headings from structured Lever descriptions, along with the technology names found under each heading. A null value means the posting was not measured by this parser. An empty list means it found no recognized heading. For a section-specific percentage, count each posting once and use only postings with that section type as the denominator. A qualification may list alternatives or give examples. Its heading alone cannot establish that every technology mentioned is mandatory.
+
 The last collected snapshot on each Türkiye calendar day supplies the records. Collection dates record when the job board was observed. They do not establish publication dates, hiring outcomes or total demand in Türkiye. The release contains factual listing metadata and project-generated classifications. The descriptions remain on the linked employer websites. [Collection code and dated source files](https://github.com/rezanicgil/job-radar-evidence)

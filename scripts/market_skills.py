@@ -15,6 +15,26 @@ import workday_board
 ROOT = Path(__file__).resolve().parents[1]
 SKILLS = json.loads((ROOT / "releases/static-space/technologies.json").read_text(encoding="utf-8"))
 PATTERNS = {s:re.compile(r"(?<![\w+#])"+re.escape(s)+r"(?![\w+#])",re.I) for s in SKILLS}
+HEADINGS = {
+    "qualifications": {"requirements","job requirements","qualifications","expected qualifications",
+                       "qualifications & experience","what we're looking for","what you will need",
+                       "what you'll bring","aranan nitelikler","genel nitelikler"},
+    "preferences": {"nice to have","nice-to-have","nice to haves","preferred qualifications",
+                    "preferred skills","bonus points","tercih edilen nitelikler","tercihen"},
+}
+
+
+def lever_sections(lists):
+    sections=[]
+    for item in lists:
+        heading=item["text"].strip()
+        normalized=" ".join(heading.replace("’","'").lower().rstrip(":?").split())
+        kind=next((k for k,v in HEADINGS.items() if normalized in v),None)
+        text=unescape(re.sub("<[^>]+>"," ",unescape(item["content"]))).strip()
+        if kind and text:
+            sections.append(dict(kind=kind,heading=heading,skills=[
+                skill for skill,pattern in PATTERNS.items() if pattern.search(text)]))
+    return sections
 
 
 @lru_cache(maxsize=64)
@@ -60,6 +80,7 @@ def inspect(job, *, retry_timeout=True):
             with urlopen(api, timeout=15) as response:
                 j = json.load(response)
         if url.hostname == "jobs.lever.co":
+            job=dict(job,sections=lever_sections(j["lists"]))
             body = " ".join([j.get("descriptionPlain") or "", *(s["content"] for s in j["lists"]),
                              j.get("additionalPlain") or ""])
         elif url.hostname == "job-boards.greenhouse.io":
