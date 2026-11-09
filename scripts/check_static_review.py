@@ -147,6 +147,28 @@ def check(page, origin):
         card.locator(".assessment").select_option("unverified")
     expect(page.locator("#status")).to_contain_text("0 of 2 required")
     expect(page.locator("#status")).to_contain_text("1 excluded")
+    opt=cards.last
+    opt.locator(".assessment").select_option("optional-partial")
+    expect(page.locator("#status")).to_contain_text("0 of 2 required")
+    expect(data_button).to_be_hidden()
+    browse=opt.get_by_text("Browse ",exact=False)
+    if browse.count(): browse.first.click()
+    opt.locator(".evidence").first.check()
+    opt.locator(".gap-note").fill("Add a concrete example of the optional skill.")
+    expect(page.locator("#status")).to_contain_text("1 optional assessment recorded separately")
+    with page.expect_download() as event:
+        data_button.click()
+    optional_export=json.loads(event.value.path().read_text(encoding="utf-8"))
+    assert optional_export["coverage"]["required"]==2 and optional_export["coverage"]["percentage"]==0
+    row=optional_export["conditions"][-1]
+    assert row["label"]=="skip" and not row["quotes"]
+    assert row["preference_review"]["label"]=="partial" and len(row["preference_review"]["quotes"])==1
+    with page.expect_download() as event:
+        report.click()
+    txt=event.value.path().read_text(encoding="utf-8")
+    assert "Optional assessment: partial" in txt and row["preference_review"]["quotes"][0]["passage"] in txt
+    opt.locator(".assessment").select_option("skip")
+    expect(page.locator("#status")).not_to_contain_text("optional assessment recorded")
     page.locator("#job").fill("")
     page.locator("#postingLanguage").select_option("en")
     page.locator("#posting").fill("About your experience\nShip an iOS feature.\nNice to have\nUse a profiler.\nWhy you should join Example Company\nReceive an annual training budget.")

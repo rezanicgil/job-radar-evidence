@@ -20,6 +20,12 @@ async function read(file){
        ["supported","partial","unverified","skip"].includes(r.label))){
     throw Error("Choose a JSON report downloaded from CV review.");
   }
+  if(data.conditions.some(r=>r.preference_review!=null&&(
+      r.label!=="skip"||!["supported","partial","unverified"].includes(r.preference_review.label)||
+      !Array.isArray(r.preference_review.quotes)||r.preference_review.quotes.some(q=>typeof q?.passage!=="string")||
+      (r.preference_review.label!=="unverified"&&!r.preference_review.quotes.length)))){
+    throw Error("An optional assessment in "+file.name+" has invalid or missing evidence.");
+  }
   const summary=counts(data.conditions.map(r=>r.label));
   if(Object.entries(summary).some(([k,v])=>v!==data.coverage?.[k])){
     throw Error("The summary in "+file.name+" differs from its condition decisions. Export the review again.");
@@ -39,6 +45,19 @@ function show({data,summary,file}){
   add(card,"strong",summary.percentage===null?"No required conditions":summary.percentage+"% coverage").className="metric";
   add(card,"p",summary.supported+" of "+summary.required+" required conditions fully supported.");
   add(card,"p",summary.partial+" partial · "+summary.unverified+" unverified · "+summary.excluded+" excluded");
+  const preferences=data.conditions.filter(r=>r.label==="skip"&&r.preference_review);
+  if(preferences.length){
+    const panel=add(card,"details","");
+    add(panel,"summary","Optional assessments ("+preferences.length+")");
+    const list=add(panel,"ul","");
+    for(const row of preferences){
+      const item=add(list,"li",row.condition);
+      add(item,"small",assessmentLabel(row));
+      if(row.preference_review.missing)add(item,"small","Wording to demonstrate: "+row.preference_review.missing);
+      if(row.preference_review.next_edit||row.preference_review.note)add(item,"small","Next CV edit: "+(row.preference_review.next_edit||row.preference_review.note));
+      for(const q of row.preference_review.quotes||[])add(item,"blockquote",q.excerpt||q.passage);
+    }
+  }
   const gaps=data.conditions.filter(r=>r.label==="partial"||r.label==="unverified");
   if(gaps.length){
     const panel=add(card,"details","");
@@ -53,12 +72,15 @@ function show({data,summary,file}){
   }
 }
 const labels={supported:"Fully supported",partial:"Partially supported",unverified:"Unverified",skip:"Excluded"};
+function assessmentLabel(row){
+  return row.label==="skip"&&row.preference_review?"Optional · "+labels[row.preference_review.label]:labels[row.label];
+}
 function showConditionComparison(first,second){
   const panel=add(result,"section","");
   panel.className="alignment";
   add(panel,"h2","Compare individual conditions");
   const shared=[...first.indexed.keys()].filter(key=>second.indexed.has(key));
-  const changed=shared.filter(key=>first.indexed.get(key).label!==second.indexed.get(key).label);
+  const changed=shared.filter(key=>assessmentLabel(first.indexed.get(key))!==assessmentLabel(second.indexed.get(key)));
   add(panel,"p",shared.length+(shared.length===1?" condition":" conditions")+" with matching wording · "+changed.length+" assessed differently. Matching preserves the original language and ignores spacing.");
   function group(title,keys){
     if(!keys.length)return;
@@ -70,8 +92,9 @@ function showConditionComparison(first,second){
       for(const [name,review] of [["First",first],["Second",second]]){
         const row=review.indexed.get(key);
         if(!row)continue;
-        add(item,"small",name+" review · "+labels[row.label]);
-        if(Array.isArray(row.quotes))for(const quote of row.quotes){
+        add(item,"small",name+" review · "+assessmentLabel(row));
+        const quotes=row.preference_review?.quotes||row.quotes;
+        if(Array.isArray(quotes))for(const quote of quotes){
           const passage=quote?.excerpt||quote?.passage;
           if(typeof passage==="string"&&passage.trim()){
             if(Number.isInteger(quote.search_rank)&&quote.search_rank>0)add(item,"small","Search rank "+quote.search_rank);
@@ -82,7 +105,7 @@ function showConditionComparison(first,second){
     }
   }
   group("Different assessments",changed);
-  group("Same assessments",shared.filter(key=>first.indexed.get(key).label===second.indexed.get(key).label));
+  group("Same assessments",shared.filter(key=>assessmentLabel(first.indexed.get(key))===assessmentLabel(second.indexed.get(key))));
   group("Only in the first review",[...first.indexed.keys()].filter(key=>!second.indexed.has(key)));
   group("Only in the second review",[...second.indexed.keys()].filter(key=>!first.indexed.has(key)));
 }
@@ -102,7 +125,7 @@ function showSharedTechnologies(first,second,names){
     rows.forEach((conditions,i)=>{
       add(details,"strong",i===0?"First review":"Second review");
       const list=add(details,"ul","");
-      for(const row of conditions)add(list,"li",row.condition+" · "+labels[row.label]);
+      for(const row of conditions)add(list,"li",row.condition+" · "+assessmentLabel(row));
     });
   }
 }

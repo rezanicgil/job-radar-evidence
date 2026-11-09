@@ -503,7 +503,10 @@ function addEvidencePicker(card,lines,suggestions,ranks){
 }
 function assessmentRows(){
   return [...el("results").querySelectorAll("article")].map(card=>{
-    const label=card.querySelector(".assessment").value;
+    const choice=card.querySelector(".assessment").value;
+    const optional=choice.startsWith("optional-");
+    const decision=optional?choice.slice(9):choice;
+    const label=optional?"skip":choice;
     const chosen=[...card.querySelectorAll(".evidence:checked")];
     const quotes=chosen.map(input=>{
       const field=input.closest("div").querySelector(".excerpt");
@@ -511,12 +514,14 @@ function assessmentRows(){
       return {page:Number(input.dataset.page),passage:input.dataset.passage,excerpt:excerpt||null,search_rank:Number(input.dataset.rank)||null};
     });
     const validQuotes=chosen.every(input=>input.closest("div").querySelector(".excerpt")?.validity.valid!==false);
-    const needsQuote=label==="partial"||label==="supported";
+    const needsQuote=decision==="partial"||decision==="supported";
     const note=card.querySelector(".gap-note");
     const gap=card.querySelector(".job-gap");
-    return {condition:card.querySelector("h3").textContent,label,quotes,
-            missing:gap.disabled?"":gap.value.trim(),
-            note:note.disabled?"":note.value.trim(),duration:card.querySelector(".duration-result")?.textContent||"",
+    const missing=gap.disabled?"":gap.value.trim();
+    const advice=note.disabled?"":note.value.trim();
+    const preference_review=optional?{label:decision,quotes,missing,note:advice,next_edit:nextEdit({label:decision,note:advice})||null}:null;
+    return {condition:card.querySelector("h3").textContent,label,quotes:optional?[]:quotes,preference_review,
+            missing:optional?"":missing,note:optional?"":advice,duration:card.querySelector(".duration-result")?.textContent||"",
             complete:Boolean(label)&&gap.validity.valid&&(!needsQuote||(quotes.length>0&&validQuotes))};
   });
 }
@@ -541,10 +546,10 @@ function exportReview(format){
     encoder:retrievalModels[el("method").value]||null,
     coverage:counts(rows.map(row=>row.label)),conditions:rows.map(({complete,...row})=>({...row,next_edit:nextEdit(row)||null}))};
   const body=format==="json"?JSON.stringify(data,null,2):["Job Radar Evidence",el("source").textContent,context,heading,...rows.map(row=>
-    [row.condition,"Assessment: "+row.label,...row.quotes.map(q=>"Page "+q.page+" · "+q.passage+
+    [row.condition,row.preference_review?"Optional assessment: "+row.preference_review.label:"Assessment: "+row.label,...(row.preference_review?.quotes||row.quotes).map(q=>"Page "+q.page+" · "+q.passage+
       (q.search_rank?"\nSearch rank: "+q.search_rank:"")+(q.excerpt?"\nHighlighted wording: "+q.excerpt:"")),row.duration,
-     row.missing?"Requirement still to demonstrate: "+row.missing:"",
-     nextEdit(row)?"Next CV edit: "+nextEdit(row):""].filter(Boolean).join("\n"))].join("\n\n");
+     (row.preference_review?.missing||row.missing)?"Requirement still to demonstrate: "+(row.preference_review?.missing||row.missing):"",
+     nextEdit(row.preference_review||row)?"Next CV edit: "+nextEdit(row.preference_review||row):""].filter(Boolean).join("\n"))].join("\n\n");
   const url=URL.createObjectURL(new Blob([body+"\n"],{type:format==="json"?"application/json":"text/plain;charset=utf-8"}));
   const link=document.createElement("a");
   link.href=url;link.download="job-radar-review."+format;link.click();
@@ -584,15 +589,20 @@ function coverage(){
   else {feedback.open=false;feedbackLink.removeAttribute("href");feedbackText.textContent=""}
   const status=el("status");
   status.replaceChildren();
-  if(values.includes("")){
+  if(rows.some(row=>!row.complete&&row.label!=="skip")){
     const completed=values.filter(Boolean).length;
     add(status,"strong",Math.round(100*completed/values.length)+"% reviewed");
     add(status,"span",completed+" of "+values.length+" conditions reviewed. Choose an assessment and attach evidence for supported or partial conditions.");
     return;
   }
-  const summary=counts(values);
+  const summary=counts(rows.map(row=>row.label));
   const {required:n,supported:s}=summary;
-  if(!n){status.textContent="No required conditions selected.";return}
+  const reviewedPreferences=rows.filter(row=>row.preference_review&&row.complete);
+  const optionalSummary=()=>{
+    if(reviewedPreferences.length)add(status,"span",reviewedPreferences.length+" optional assessment"+(reviewedPreferences.length===1?"":"s")+" recorded separately.");
+    if(rows.some(row=>!row.complete))add(status,"span","Finish the optional assessment and attach evidence before downloading.");
+  };
+  if(!n){status.textContent="No required conditions selected.";optionalSummary();return}
   add(status,"strong",summary.percentage+"% coverage");
   add(status,"span",s+" of "+n+" required conditions fully supported by your CV, as reviewed.");
   for(const [label,title] of [["partial","Partially supported"],["unverified","Unverified"]]){
@@ -600,6 +610,7 @@ function coverage(){
     add(status,"span",title+" · "+count+"/"+n+" ("+Math.round(100*count/n)+"%)");
   }
   add(status,"span",(values.length-n)+" excluded from coverage");
+  optionalSummary();
   const gaps=rows.filter(row=>row.label==="partial"||row.label==="unverified");
   if(gaps.length){
     add(status,"b","Conditions to revisit");
@@ -691,7 +702,7 @@ el("form").onsubmit=async event=>{
       durationComparison(card,condition,lines);
       const select=add(add(card,"label","Assessment "),"select","");
       select.className="assessment";
-      for(const [value,label] of [["","Choose"],["supported","Required · supported"],["partial","Required · partial"],["unverified","Required · unverified"],["skip","Exclude from required coverage"]])select.add(new Option(label,value));
+      for(const [value,label] of [["","Choose"],["supported","Required · supported"],["partial","Required · partial"],["unverified","Required · unverified"],["optional-supported","Optional · supported"],["optional-partial","Optional · partial"],["optional-unverified","Optional · unverified"],["skip","Exclude from required coverage"]])select.add(new Option(label,value));
       if(selectedPreferences.has(condition))select.value="skip";
       const picker=addEvidencePicker(card,lines,visible,ranks);
       picker.hidden=select.value==="skip";
@@ -711,18 +722,19 @@ el("form").onsubmit=async event=>{
       note.oninput=coverage;
       noteLabel.hidden=true;note.disabled=true;
       select.onchange=()=>{
-        gapLabel.hidden=select.value!=="partial";
+        const decision=select.value.replace(/^optional-/,"");
+        gapLabel.hidden=decision!=="partial";
         gap.disabled=gapLabel.hidden;
         if(gap.disabled){gap.value="";gapError.textContent="";gap.setCustomValidity("")}
-        picker.hidden=select.value==="unverified"||select.value==="skip";
+        picker.hidden=decision==="unverified"||decision==="skip";
         picker.open=!picker.hidden;
         if(picker.hidden){
           for(const input of picker.querySelectorAll(".evidence:checked"))input.checked=false;
           for(const editor of picker.querySelectorAll(".quote-editor"))editor.remove();
         }
-        noteLabel.hidden=!(select.value==="partial"||select.value==="unverified");
+        noteLabel.hidden=!(decision==="partial"||decision==="unverified");
         note.disabled=noteLabel.hidden;
-        advice.textContent=({partial:"Identify which part your CV demonstrates and which part needs an example.",unverified:"If you have relevant experience, describe the work you personally did."})[select.value]||"";
+        advice.textContent=({partial:"Identify which part your CV demonstrates and which part needs an example.",unverified:"If you have relevant experience, describe the work you personally did."})[decision]||"";
         coverage();
       };
     });coverage();
