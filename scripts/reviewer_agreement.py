@@ -53,13 +53,25 @@ def compare(packet_path, first_path, second_path):
     n = len(packet)
     a_counts = Counter(r["label"] for r in a.values())
     b_counts = Counter(r["label"] for r in b.values())
-    disagreements = [dict(id=k,first=a[k],second=b[k]) for k in packet if a[k]["label"] != b[k]["label"]]
+    disagreements = []
+    different_quotes = []
+    for key, case in packet.items():
+        first, second = a[key], b[key]
+        if first["label"] == second["label"] and first.get("evidence") == second.get("evidence"):
+            continue
+        detail = dict(id=key, requirement=case.get("requirement"), cv_passage=case["cv_passage"],
+                      first=first, second=second)
+        if first["label"] != second["label"]:
+            disagreements.append(detail)
+        else:
+            different_quotes.append(detail)
     observed = (n-len(disagreements))/n
     chance = sum(a_counts[l]*b_counts[l] for l in LABELS)/(n*n)
     verified_versions = all("packet_sha256" in row for rows in (a,b) for row in rows.values())
     return dict(records=n,packet_sha256=packet_hash,all_review_versions_verified=verified_versions,
                 agreement=observed,kappa=None if chance == 1 else (observed-chance)/(1-chance),
-                first_label_counts=a_counts,second_label_counts=b_counts,disagreements=disagreements)
+                first_label_counts=a_counts,second_label_counts=b_counts,disagreements=disagreements,
+                same_label_different_excerpt=different_quotes)
 
 
 if __name__ == "__main__":
