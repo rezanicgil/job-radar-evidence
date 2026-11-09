@@ -299,9 +299,11 @@ function assessmentRows(){
     const validQuotes=chosen.every(input=>input.closest("div").querySelector(".excerpt")?.validity.valid!==false);
     const needsQuote=label==="partial"||label==="supported";
     const note=card.querySelector(".gap-note");
+    const gap=card.querySelector(".job-gap");
     return {condition:card.querySelector("h3").textContent,label,quotes,
+            missing:gap.disabled?"":gap.value.trim(),
             note:note.disabled?"":note.value.trim(),duration:card.querySelector(".duration-result")?.textContent||"",
-            complete:Boolean(label)&&(!needsQuote||(quotes.length>0&&validQuotes))};
+            complete:Boolean(label)&&gap.validity.valid&&(!needsQuote||(quotes.length>0&&validQuotes))};
   });
 }
 downloadReview.onclick=()=>{
@@ -312,6 +314,7 @@ downloadReview.onclick=()=>{
   const context=origin?"Selected requirements from "+origin.textContent+"\n"+origin.href+"\nCoverage applies only to the selected conditions.":"";
   const body=["Job Radar Evidence",el("source").textContent,context,heading,...rows.map(row=>
     [row.condition,"Assessment: "+row.label,...row.quotes,row.duration,
+     row.missing?"Requirement still to demonstrate: "+row.missing:"",
      row.note?"Next CV edit: "+row.note:""].filter(Boolean).join("\n"))].join("\n\n");
   const url=URL.createObjectURL(new Blob([body+"\n"],{type:"text/plain;charset=utf-8"}));
   const link=document.createElement("a");
@@ -343,7 +346,7 @@ function coverage(){
   if(gaps.length){
     add(status,"b","Conditions to revisit");
     const list=add(status,"ul","");
-    for(const row of gaps)add(list,"li",row.condition+" — "+(row.note||
+    for(const row of gaps)add(list,"li",(row.missing||row.condition)+" — "+(row.note||
       (row.label==="partial"?"Clarify the part your evidence does not cover.":"Add a specific example if you have one.")));
   }
 }
@@ -403,11 +406,24 @@ el("form").onsubmit=async event=>{
       if(selectedPreferences.has(condition))select.value="skip";
       const picker=addEvidencePicker(card,lines,visible);
       const advice=add(card,"small","");
+      const gapLabel=add(card,"label","Which words in this requirement still lack evidence? (optional)");
+      const gap=add(gapLabel,"input","");gap.className="job-gap";
+      const gapError=add(gapLabel,"small","");
+      gap.oninput=()=>{
+        const valid=condition.includes(gap.value.trim());
+        gapError.textContent=valid?"":"Copy the exact wording from the job condition above.";
+        gap.setCustomValidity(gapError.textContent);
+        coverage();
+      };
+      gapLabel.hidden=true;gap.disabled=true;
       const noteLabel=add(card,"label","What could you clarify in your CV? (optional)");
       const note=add(noteLabel,"textarea","");note.className="gap-note";
       note.oninput=coverage;
       noteLabel.hidden=true;note.disabled=true;
       select.onchange=()=>{
+        gapLabel.hidden=select.value!=="partial";
+        gap.disabled=gapLabel.hidden;
+        if(gap.disabled){gap.value="";gapError.textContent="";gap.setCustomValidity("")}
         picker.hidden=!(select.value==="supported"||select.value==="partial");
         if(picker.hidden){
           for(const input of picker.querySelectorAll(".evidence:checked"))input.checked=false;

@@ -1,0 +1,362 @@
+{
+  "base": "MoritzLaurer/multilingual-MiniLMv2-L6-mnli-xnli",
+  "revision": "0a71e92a985b6e1ad1828cf67ce9c459639c1dca",
+  "seed": 17,
+  "data_hashes": {
+    "actor_evidence_train.jsonl": "62c3d3bfa06a7b9b9853dd689349b0f41b674c05972c3bcc0dacc1590246f790",
+    "compound_evidence_dev.jsonl": "8a611d0e77946ff678b8a71e17163bf61082bbd6f0f325c9ef276df3f91d8ccd",
+    "compound_transfer.jsonl": "9e5bf9c134f671784670e89b1e1dc79ae9829c46a624afd8d1b933f190a4ba6e"
+  },
+  "unique_training_pairs": 144,
+  "classes": {
+    "applicant": 24,
+    "not_stated": 96,
+    "other": 24
+  },
+  "splits": {
+    "original": {
+      "compound": {
+        "total": 18,
+        "correct": 11,
+        "partial_found": 4,
+        "false_full": 0
+      },
+      "direct_baseline": {
+        "total": 18,
+        "correct": 10,
+        "partial_found": 0,
+        "false_full": 7
+      },
+      "atomic": {
+        "total": 36,
+        "correct": 23,
+        "partial_found": 0,
+        "false_full": 4
+      },
+      "cases": [
+        {
+          "family": "cert-rotation-check",
+          "expected": "supported",
+          "prediction": "supported",
+          "component_predictions": [
+            "supported",
+            "supported"
+          ],
+          "direct": "supported"
+        },
+        {
+          "family": "cert-rotation-check",
+          "expected": "partial",
+          "prediction": "partial",
+          "component_predictions": [
+            "supported",
+            "unverified"
+          ],
+          "direct": "supported"
+        },
+        {
+          "family": "cert-rotation-check",
+          "expected": "unverified",
+          "prediction": "unverified",
+          "component_predictions": [
+            "unverified",
+            "unverified"
+          ],
+          "direct": "unverified"
+        },
+        {
+          "family": "ios-symbols",
+          "expected": "supported",
+          "prediction": "supported",
+          "component_predictions": [
+            "supported",
+            "supported"
+          ],
+          "direct": "supported"
+        },
+        {
+          "family": "ios-symbols",
+          "expected": "partial",
+          "prediction": "partial",
+          "component_predictions": [
+            "supported",
+            "unverified"
+          ],
+          "direct": "supported"
+        },
+        {
+          "family": "ios-symbols",
+          "expected": "unverified",
+          "prediction": "partial",
+          "component_predictions": [
+            "unverified",
+            "supported"
+          ],
+          "direct": "unverified"
+        },
+        {
+          "family": "board-bringup",
+          "expected": "supported",
+          "prediction": "unverified",
+          "component_predictions": [
+            "unverified",
+            "unverified"
+          ],
+          "direct": "supported"
+        },
+        {
+          "family": "board-bringup",
+          "expected": "partial",
+          "prediction": "unverified",
+          "component_predictions": [
+            "unverified",
+            "unverified"
+          ],
+          "direct": "supported"
+        },
+        {
+          "family": "board-bringup",
+          "expected": "unverified",
+          "prediction": "unverified",
+          "component_predictions": [
+            "unverified",
+            "unverified"
+          ],
+          "direct": "supported"
+        },
+        {
+          "family": "dataset-release-check",
+          "expected": "supported",
+          "prediction": "unverified",
+          "component_predictions": [
+            "unverified",
+            "unverified"
+          ],
+          "direct": "supported"
+        },
+        {
+          "family": "dataset-release-check",
+          "expected": "partial",
+          "prediction": "partial",
+          "component_predictions": [
+            "unverified",
+            "supported"
+          ],
+          "direct": "supported"
+        },
+        {
+          "family": "dataset-release-check",
+          "expected": "unverified",
+          "prediction": "partial",
+          "component_predictions": [
+            "unverified",
+            "supported"
+          ],
+          "direct": "unverified"
+        },
+        {
+          "family": "restore-monitor",
+          "expected": "supported",
+          "prediction": "partial",
+          "component_predictions": [
+            "unverified",
+            "supported"
+          ],
+          "direct": "supported"
+        },
+        {
+          "family": "restore-monitor",
+          "expected": "partial",
+          "prediction": "unverified",
+          "component_predictions": [
+            "unverified",
+            "unverified"
+          ],
+          "direct": "unverified"
+        },
+        {
+          "family": "restore-monitor",
+          "expected": "unverified",
+          "prediction": "unverified",
+          "component_predictions": [
+            "unverified",
+            "unverified"
+          ],
+          "direct": "unverified"
+        },
+        {
+          "family": "release-signoff",
+          "expected": "supported",
+          "prediction": "supported",
+          "component_predictions": [
+            "supported",
+            "supported"
+          ],
+          "direct": "supported"
+        },
+        {
+          "family": "release-signoff",
+          "expected": "partial",
+          "prediction": "partial",
+          "component_predictions": [
+            "supported",
+            "unverified"
+          ],
+          "direct": "supported"
+        },
+        {
+          "family": "release-signoff",
+          "expected": "unverified",
+          "prediction": "unverified",
+          "component_predictions": [
+            "unverified",
+            "unverified"
+          ],
+          "direct": "supported"
+        }
+      ]
+    },
+    "transfer": {
+      "compound": {
+        "total": 12,
+        "correct": 5,
+        "partial_found": 1,
+        "false_full": 0
+      },
+      "direct_baseline": {
+        "total": 12,
+        "correct": 7,
+        "partial_found": 0,
+        "false_full": 2
+      },
+      "atomic": {
+        "total": 24,
+        "correct": 16,
+        "partial_found": 0,
+        "false_full": 1
+      },
+      "cases": [
+        {
+          "family": "android-offline",
+          "expected": "supported",
+          "prediction": "partial",
+          "component_predictions": [
+            "unverified",
+            "supported"
+          ],
+          "direct": "supported"
+        },
+        {
+          "family": "android-offline",
+          "expected": "partial",
+          "prediction": "unverified",
+          "component_predictions": [
+            "unverified",
+            "unverified"
+          ],
+          "direct": "supported"
+        },
+        {
+          "family": "android-offline",
+          "expected": "unverified",
+          "prediction": "partial",
+          "component_predictions": [
+            "supported",
+            "unverified"
+          ],
+          "direct": "unverified"
+        },
+        {
+          "family": "firmware-rollback",
+          "expected": "supported",
+          "prediction": "unverified",
+          "component_predictions": [
+            "unverified",
+            "unverified"
+          ],
+          "direct": "supported"
+        },
+        {
+          "family": "firmware-rollback",
+          "expected": "partial",
+          "prediction": "unverified",
+          "component_predictions": [
+            "unverified",
+            "unverified"
+          ],
+          "direct": "supported"
+        },
+        {
+          "family": "firmware-rollback",
+          "expected": "unverified",
+          "prediction": "unverified",
+          "component_predictions": [
+            "unverified",
+            "unverified"
+          ],
+          "direct": "unverified"
+        },
+        {
+          "family": "payments-idempotency",
+          "expected": "supported",
+          "prediction": "partial",
+          "component_predictions": [
+            "unverified",
+            "supported"
+          ],
+          "direct": "supported"
+        },
+        {
+          "family": "payments-idempotency",
+          "expected": "partial",
+          "prediction": "unverified",
+          "component_predictions": [
+            "unverified",
+            "unverified"
+          ],
+          "direct": "unverified"
+        },
+        {
+          "family": "payments-idempotency",
+          "expected": "unverified",
+          "prediction": "unverified",
+          "component_predictions": [
+            "unverified",
+            "unverified"
+          ],
+          "direct": "unverified"
+        },
+        {
+          "family": "ios-accessibility",
+          "expected": "supported",
+          "prediction": "supported",
+          "component_predictions": [
+            "supported",
+            "supported"
+          ],
+          "direct": "unverified"
+        },
+        {
+          "family": "ios-accessibility",
+          "expected": "partial",
+          "prediction": "partial",
+          "component_predictions": [
+            "unverified",
+            "supported"
+          ],
+          "direct": "unverified"
+        },
+        {
+          "family": "ios-accessibility",
+          "expected": "unverified",
+          "prediction": "unverified",
+          "component_predictions": [
+            "unverified",
+            "unverified"
+          ],
+          "direct": "unverified"
+        }
+      ]
+    }
+  }
+}

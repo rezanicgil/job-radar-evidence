@@ -24,6 +24,11 @@ def check(page, origin):
     cards.first.locator(".gap-note").fill("Document the duration of the control software project.")
     expect(page.locator("#status")).to_contain_text("Document the duration")
     report=page.get_by_role("button",name="Download review (.txt)")
+    gap=cards.first.locator(".job-gap")
+    gap.fill("40 months")
+    expect(report).to_be_hidden()
+    gap.fill("36 months")
+    expect(page.locator("#status li")).to_contain_text("36 months")
     editor=cards.first.locator(".quote-editor")
     editor.locator("summary").click()
     editor.locator(".excerpt").fill("a phrase absent from the passage")
@@ -35,6 +40,7 @@ def check(page, origin):
     exported=event.value.path().read_text(encoding="utf-8")
     assert "1 of 2 required conditions" in exported and "Page 1" in exported
     assert "Conditions to revisit" in exported and "Document the duration" in exported
+    assert "Requirement still to demonstrate: 36 months" in exported
     assert "Highlighted wording: 30 ay" in exported and "motor kontrol yazılımı geliştirdim" in exported
     cards.first.locator(".assessment").select_option("skip")
     expect(page.locator("#status")).to_contain_text("100% coverage")

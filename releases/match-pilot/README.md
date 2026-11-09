@@ -34,6 +34,8 @@ configs:
     data_files:
       - split: validation
         path: compound_evidence.jsonl
+      - split: test
+        path: compound_transfer.jsonl
   - config_name: actor_evidence
     data_files:
       - split: train
@@ -55,6 +57,8 @@ The default configuration contains 69 training pairs from 23 families and 18 dev
 The validation file begins with nine general challenge examples and ends with nine examples about Docker, Terraform and Prometheus. A passage can name the right technology while describing event logistics rather than engineering work. The [experiment predictions](https://github.com/rezanicgil/job-radar-evidence/blob/dba6189/reports/pair-mentions-v3.json) show where the model confused the two. The [original 54-row release](https://huggingface.co/datasets/rezanicgil/job-radar-match-pilot/tree/cb96ff522186ae77a3b9f1bada3ee32842d91b15) remains available for earlier experiments.
 
 ## How to read a row
+
+The `compound_evidence` test split contains 12 fictional cases from four additional requirements covering Android uploads, firmware updates, payments and iOS accessibility. Each requirement has two necessary components and three passages. A clause classifier trained on 144 distinct clause–requirement pairs found 4/6 partial matches in the original diagnostic and 1/4 in this new split. Overall accuracy on the new split was 5/12, versus 7/12 for the released classifier. The labels come from the project authors. [Predictions per case](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/clause-attribution.json)
 
 The `language_switch` diagnostic renders each of the same 30 source-grounded pairs in four language combinations (job/CV). These 120 views contain 30 distinct underlying cases. Translations are project-authored and lack independent review. Across the four views the released model changed its prediction for 17/30 cases. Accuracy was 13/30 for Turkish/Turkish, 16/30 for Turkish/English, 13/30 for English/Turkish and 11/30 for English/English. Keep translations in one partition whenever training or evaluating. [Results per pair](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/language-switch.json)
 
