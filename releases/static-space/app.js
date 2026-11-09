@@ -6,7 +6,7 @@ const words=text=>new Set(text.toLocaleLowerCase().match(/[\p{L}\p{N}+#]+/gu)||[
 const encoders=new Map();
 const retrievalModels={
   semantic:{repo:"Xenova/paraphrase-multilingual-MiniLM-L12-v2",revision:"2c4055b12046f11709e9df2c122e59ffbdc2f900",label:"Base semantic search"},
-  research:{repo:"rezanicgil/python-tr-en-retriever",revision:"813078062d92ba7d57487fd97b14af3acd620522",label:"Fine-tuned semantic search"}
+  research:{repo:"rezanicgil/python-tr-en-retriever",revision:"813078062d92ba7d57487fd97b14af3acd620522",label:"Fine-tuned semantic search",max_tokens:128,passage_strategy:"overlapping_windows_and_clauses"}
 };
 let vocabulary;
 let concepts;
@@ -297,17 +297,41 @@ async function vectors(texts,method){
       AutoModel.from_pretrained(repo,{revision,quantized:true}),
       AutoTokenizer.from_pretrained(base.repo,{revision:base.revision})
     ]).then(async ([model,tokenizer])=>{
-      const {researchTokenizer}=await import("./research-tokenizer.js");
-      return new FeatureExtractionPipeline({task:"feature-extraction",model,tokenizer:researchTokenizer(tokenizer)});
+      const {researchTokenizer,passageWindows}=await import("./research-tokenizer.js");
+      const encoder=new FeatureExtractionPipeline({task:"feature-extraction",model,tokenizer:researchTokenizer(tokenizer)});
+      encoder.windows=text=>passageWindows(text,tokenizer);
+      return encoder;
     }):
       pipeline("feature-extraction",repo,{revision,quantized:true});
     encoders.set(method,promise);
   }
   let encoder;
   try{encoder=await encoders.get(method)}catch(error){encoders.delete(method);throw error}
-  const all=[];
-  for(let i=0;i<texts.length;i+=8)all.push(...(await encoder(texts.slice(i,i+8),{pooling:"mean",normalize:true})).tolist());
-  return all;
+  const unique=new Map();
+  const grouped=texts.map(text=>(encoder.windows?encoder.windows(text):[text]).map(piece=>{
+    if(!unique.has(piece))unique.set(piece,{piece});
+    return unique.get(piece);
+  }));
+  const flat=[...unique.values()];
+  for(let i=0;i<flat.length;i+=8){
+    const batch=flat.slice(i,i+8);
+    const output=await encoder(batch.map(w=>w.piece),{pooling:"mean",normalize:true});
+    output.tolist().forEach((vector,n)=>{batch[n].vector=vector});
+  }
+  return grouped;
+}
+function semanticMatch(query,passage){
+  let total=0,strongest=-Infinity,excerpt=null;
+  for(const q of query){
+    let best=-Infinity;
+    for(const w of passage){
+      const score=q.vector.reduce((sum,v,k)=>sum+v*w.vector[k],0);
+      best=Math.max(best,score);
+      if(score>strongest){strongest=score;excerpt=w.piece}
+    }
+    total+=best;
+  }
+  return {score:total/query.length,excerpt:passage.length>1?excerpt:null};
 }
 async function readPages(file){
   if(!file)return [el("cv").value];
@@ -577,16 +601,17 @@ el("form").onsubmit=async event=>{
       const translations=semantic?[]:translatedTerms(condition);
       const ranked=lines.map((line,j)=>{
         const matches=translations.filter(m=>phraseText(line.text,m.language).includes(phraseText(m.target,m.language)));
-        const score=semantic?vec[i].reduce((s,v,k)=>s+v*vec[job.length+j][k],0):
-          [...words(line.text)].filter(t=>terms.has(t)).length+matches.length;
-        return {line,score,matches};
+        const match=semantic?semanticMatch(vec[i],vec[job.length+j]):
+          {score:[...words(line.text)].filter(t=>terms.has(t)).length+matches.length};
+        return {line,...match,matches};
       })
         .filter(x=>semantic||x.score>0).sort((a,b)=>b.score-a.score).slice(0,3);
       const card=add(el("results"),"article","");add(card,"h3",condition);
       if(selectedPreferences.has(condition))add(card,"small","Optional condition · excluded from required coverage by default");
       const visible=ranked.map(item=>item.line);
-      for(const {line,matches} of ranked){
+      for(const {line,matches,excerpt} of ranked){
         add(card,"p","Page "+line.page+" · "+line.text);
+        if(excerpt)add(card,"small","Highest-scoring excerpt · "+excerpt);
         for(const {concept} of matches){
           const link=add(add(card,"small","Matched terminology · "),"a",concept.en+" / "+concept.tr);
           link.href="https://www.wikidata.org/wiki/"+concept.id;

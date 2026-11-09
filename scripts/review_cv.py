@@ -73,6 +73,38 @@ def read_passages(path, *, posting=False):
     return passages
 
 
+def passage_windows(text,tokenizer):
+    def fits(piece):
+        return len(tokenizer.encode(piece,verbose=False))<=128
+    if len(text)<=768 and fits(text):
+        return [text]
+    windows=[]
+    start=0
+    while start<len(text):
+        lo,hi=start+1,min(start+768,len(text))
+        while lo<hi:
+            mid=(lo+hi+1)//2
+            if fits(text[start:mid]):
+                lo=mid
+            else:
+                hi=mid-1
+        end=lo
+        if end<len(text):
+            end=next((j for j in range(end,start+(end-start)//2,-1) if text[j].isspace()),end)
+        piece=text[start:end].strip()
+        if piece:
+            windows.append(piece)
+        if end==len(text):
+            break
+        start=end-(end-start)//4
+    if len(windows)>1:
+        for part in re.split(r"[,;:]",text):
+            clause=part.strip()
+            if len(clause.split())>=4 and len(clause)<=768 and fits(clause):
+                windows.append(clause)
+    return list(dict.fromkeys(windows))
+
+
 def rank_passages(passages, requirements, encoder="base"):
     # Rank each distinct passage once and cite the page where it first appears.
     first_by_text = {}
@@ -82,6 +114,10 @@ def rank_passages(passages, requirements, encoder="base"):
     with _MODEL_LOAD_LOCK:
         tokenizer, model = load_encoder(encoder)
     texts = requirements + [line for _, line in passages]
+    groups=[passage_windows(text,tokenizer) for text in texts] if encoder=="fine-tuned" else [[text] for text in texts]
+    flattened=[w for group in groups for w in group]
+    texts=list(dict.fromkeys(flattened))
+    lookup={text:i for i,text in enumerate(texts)}
     vectors = []
     with torch.inference_mode():
         for start in range(0,len(texts),16):
@@ -90,7 +126,14 @@ def rank_passages(passages, requirements, encoder="base"):
             mask = batch.attention_mask.unsqueeze(-1)
             vectors.extend((model(**batch).last_hidden_state * mask).sum(1) / mask.sum(1))
         normalized = torch.nn.functional.normalize(torch.stack(vectors))
-        scores = normalized[:len(requirements)] @ normalized[len(requirements):].T
+        normalized=normalized[[lookup[text] for text in flattened]]
+        sizes=[len(g) for g in groups]
+        if max(sizes)==1:
+            scores=normalized[:len(requirements)] @ normalized[len(requirements):].T
+        else:
+            chunks=normalized.split(sizes)
+            scores=torch.stack([torch.stack([(query @ candidate.T).max(dim=1).values.mean()
+                                for candidate in chunks[len(requirements):]]) for query in chunks[:len(requirements)]])
     results = []
     for requirement, row in zip(requirements, scores, strict=True):
         ranked = [passages[i] for i in row.argsort(descending=True).tolist()]
