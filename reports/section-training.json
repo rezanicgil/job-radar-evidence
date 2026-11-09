@@ -1,0 +1,35 @@
+{
+  "weak_rows": 390,
+  "weak_positive": 361,
+  "weak_boards": 9,
+  "weak_postings": 33,
+  "skillspan_revision": "33062e6bd0e03a5e01ae299ce0518f4613ef4298",
+  "results": {
+    "released": {
+      "threshold": 1,
+      "skillspan_test": {
+        "tp": 658,
+        "fp": 215,
+        "fn": 224,
+        "precision": 0.7537227949599083,
+        "recall": 0.746031746031746,
+        "f1": 0.7498575498575498
+      },
+      "external_found": 252,
+      "external_total": 325
+    },
+    "augmented": {
+      "threshold": 1,
+      "skillspan_test": {
+        "tp": 670,
+        "fp": 223,
+        "fn": 212,
+        "precision": 0.7502799552071668,
+        "recall": 0.7596371882086168,
+        "f1": 0.7549295774647887
+      },
+      "external_found": 258,
+      "external_total": 325
+    }
+  }
+}

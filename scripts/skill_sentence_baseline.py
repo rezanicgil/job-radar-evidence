@@ -18,6 +18,14 @@ def score(text,model):
     return model["bias"]+sum(model["weights"].get(word,0) for word in tokens(text))
 
 
+def fit_counts(counts,positive,total):
+    vocab=set(counts[0])|set(counts[1])
+    denominator=[len(vocab)+c.total() for c in counts]
+    return dict(bias=log(positive/(total-positive)),weights={
+        w:log((1+counts[1][w])/denominator[1])-log((1+counts[0][w])/denominator[0])
+        for w in sorted(vocab) if counts[0][w]+counts[1][w]>=5})
+
+
 def main():
     counts=[Counter(),Counter()]
     seen=set()
@@ -38,12 +46,7 @@ def main():
         if split=="train":
             for text,label in rows:
                 counts[label].update(tokens(text))
-            vocab=set(counts[0])|set(counts[1])
-            denominator=[len(vocab)+c.total() for c in counts]
-            positive=sum(label for _,label in rows)
-            model=dict(bias=log(positive/(len(rows)-positive)),weights={
-                w:log((1+counts[1][w])/denominator[1])-log((1+counts[0][w])/denominator[0])
-                for w in sorted(vocab) if counts[0][w]+counts[1][w]>=5})
+            model=fit_counts(counts,sum(label for _,label in rows),len(rows))
             continue
         truth=[label for _,label in rows]
         scores=[score(text,model) for text,_ in rows]

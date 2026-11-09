@@ -20,6 +20,10 @@ configs:
     data_files:
       - split: validation
         path: posting_modality.jsonl
+  - config_name: section_training_index
+    data_files:
+      - split: train
+        path: section_training_index.jsonl
   - config_name: python_translation_index
     data_files:
       - split: train
@@ -67,6 +71,8 @@ The default configuration contains 69 training pairs from 23 families and 18 dev
 The validation file begins with nine general challenge examples and ends with nine examples about Docker, Terraform and Prometheus. A passage can name the right technology while describing event logistics rather than engineering work. The [experiment predictions](https://github.com/rezanicgil/job-radar-evidence/blob/dba6189/reports/pair-mentions-v3.json) show where the model confused the two. The [original 54-row release](https://huggingface.co/datasets/rezanicgil/job-radar-match-pilot/tree/cb96ff522186ae77a3b9f1bada3ee32842d91b15) remains available for earlier experiments.
 
 ## How to read a row
+
+The `section_training_index` links 390 deduplicated English job bullets to their sources in 33 Türkiye-location postings from nine employer boards. Each record identifies a bullet by its one-based position, heading and normalized text fingerprint. Qualification and preference headings supplied 361 weak positives. Benefits and employer-offer headings supplied 29 weak negatives. These labels describe the section and have no independent human skill annotations. The sample is employer-selected and weighted toward positive examples. [Aggregate word counts](https://github.com/rezanicgil/job-radar-evidence/blob/main/data/section-training-counts.json) · [Comparison with SkillSpan-only training](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/section-training.json)
 
 The `python_translation_index` configuration indexes 1,748 English–Turkish documentation pairs from the [Python Turkish translation project](https://github.com/python/python-docs-tr/tree/caa8b1e08b8534a1e1344a82889fc6c820768a91). Each row links to a pinned source file and fingerprints both normalized texts. These are translation pairs for training a passage retriever. The CV evidence labels belong to the other configurations. The 1,027 training pairs come from 34 documents. The 721 validation pairs come from ten other documents. Translations marked fuzzy or obsolete, identical bilingual strings, and repeated texts on either side were excluded. Python documentation and translations retain their upstream terms.
 
