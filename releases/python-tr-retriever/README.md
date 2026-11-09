@@ -23,6 +23,8 @@ The same ten job conditions were also tested in four translated job/CV language 
 
 ## Try a requirement against your own CV
 
+In the [public Space](https://huggingface.co/spaces/rezanicgil/job-radar-evidence), choose **Fine-tuned research encoder (118 MB)** to download the quantized model into your browser. CV passages are ranked on your device. Quantization can change which passages appear in the first three. The browser uses ONNX weights pinned to revision `813078062d92ba7d57487fd97b14af3acd620522`. [Float and quantized ranks on 40 language views](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/browser-encoder.json)
+
 In the Job Radar checkout, use a text PDF or a UTF-8 TXT file. The command downloads the pinned encoder on first use and processes the CV locally. It prints up to three passages with page references. For an interactive review of multiple requirements, use `--posting job.txt` in place of the quoted requirement. [Local review CLI](https://github.com/rezanicgil/job-radar-evidence/blob/main/scripts/review_cv.py)
 
 ```console

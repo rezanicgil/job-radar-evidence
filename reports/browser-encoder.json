@@ -1,0 +1,188 @@
+{
+  "model": "rezanicgil/python-tr-en-retriever",
+  "float_revision": "5621cc7f11eac83bb1be35b849797e5dba153218",
+  "onnx_sha256": "4b53882ddda7fa63b9925c5c2969a11d22e361f57ea83c7fa53c650f2ead6e07",
+  "corpus_sha256": "912a54edbc6ad8af858dadcca7d0c5298f5bd5766b172e9b1ae343b66f3701ef",
+  "views": {
+    "tr-tr": {
+      "mean_embedding_cosine": 0.9898843644801569,
+      "ranks": {
+        "kafka-use": {
+          "float": 4,
+          "quantized": 4
+        },
+        "engine-years": {
+          "float": 4,
+          "quantized": 4
+        },
+        "cloud-runtime": {
+          "float": 1,
+          "quantized": 1
+        },
+        "database-stores": {
+          "float": 3,
+          "quantized": 3
+        },
+        "mobile-game": {
+          "float": 1,
+          "quantized": 1
+        },
+        "outbox-pattern": {
+          "float": 1,
+          "quantized": 1
+        },
+        "small-project": {
+          "float": 1,
+          "quantized": 1
+        },
+        "batch-pipelines": {
+          "float": 3,
+          "quantized": 3
+        },
+        "contract-operations": {
+          "float": 1,
+          "quantized": 1
+        },
+        "engine-duration": {
+          "float": 2,
+          "quantized": 1
+        }
+      }
+    },
+    "tr-en": {
+      "mean_embedding_cosine": 0.9906553352484291,
+      "ranks": {
+        "batch-pipelines": {
+          "float": 1,
+          "quantized": 1
+        },
+        "engine-years": {
+          "float": 2,
+          "quantized": 3
+        },
+        "mobile-game": {
+          "float": 1,
+          "quantized": 2
+        },
+        "small-project": {
+          "float": 1,
+          "quantized": 1
+        },
+        "database-stores": {
+          "float": 6,
+          "quantized": 9
+        },
+        "kafka-use": {
+          "float": 4,
+          "quantized": 4
+        },
+        "cloud-runtime": {
+          "float": 1,
+          "quantized": 1
+        },
+        "outbox-pattern": {
+          "float": 1,
+          "quantized": 1
+        },
+        "contract-operations": {
+          "float": 1,
+          "quantized": 1
+        },
+        "engine-duration": {
+          "float": 3,
+          "quantized": 3
+        }
+      }
+    },
+    "en-tr": {
+      "mean_embedding_cosine": 0.9907221669287617,
+      "ranks": {
+        "kafka-use": {
+          "float": 4,
+          "quantized": 3
+        },
+        "engine-years": {
+          "float": 10,
+          "quantized": 10
+        },
+        "cloud-runtime": {
+          "float": 1,
+          "quantized": 1
+        },
+        "database-stores": {
+          "float": 2,
+          "quantized": 2
+        },
+        "mobile-game": {
+          "float": 1,
+          "quantized": 1
+        },
+        "outbox-pattern": {
+          "float": 1,
+          "quantized": 1
+        },
+        "small-project": {
+          "float": 1,
+          "quantized": 1
+        },
+        "batch-pipelines": {
+          "float": 2,
+          "quantized": 3
+        },
+        "contract-operations": {
+          "float": 2,
+          "quantized": 2
+        },
+        "engine-duration": {
+          "float": 1,
+          "quantized": 1
+        }
+      }
+    },
+    "en-en": {
+      "mean_embedding_cosine": 0.9916940070989991,
+      "ranks": {
+        "batch-pipelines": {
+          "float": 1,
+          "quantized": 1
+        },
+        "engine-years": {
+          "float": 8,
+          "quantized": 8
+        },
+        "mobile-game": {
+          "float": 1,
+          "quantized": 2
+        },
+        "small-project": {
+          "float": 1,
+          "quantized": 1
+        },
+        "database-stores": {
+          "float": 3,
+          "quantized": 3
+        },
+        "kafka-use": {
+          "float": 4,
+          "quantized": 4
+        },
+        "cloud-runtime": {
+          "float": 1,
+          "quantized": 1
+        },
+        "outbox-pattern": {
+          "float": 1,
+          "quantized": 1
+        },
+        "contract-operations": {
+          "float": 1,
+          "quantized": 1
+        },
+        "engine-duration": {
+          "float": 1,
+          "quantized": 1
+        }
+      }
+    }
+  }
+}

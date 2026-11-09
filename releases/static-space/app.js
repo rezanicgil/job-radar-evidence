@@ -1,7 +1,11 @@
 const el=id=>document.getElementById(id);
 const add=(parent,tag,text)=>{const node=document.createElement(tag);node.textContent=text;parent.append(node);return node};
 const words=text=>new Set(text.toLocaleLowerCase().match(/[\p{L}\p{N}+#]+/gu)||[]);
-let encoder;
+const encoders=new Map();
+const retrievalModels={
+  semantic:{repo:"Xenova/paraphrase-multilingual-MiniLM-L12-v2",revision:"2c4055b12046f11709e9df2c122e59ffbdc2f900",label:"Base semantic search"},
+  research:{repo:"rezanicgil/python-tr-en-retriever",revision:"813078062d92ba7d57487fd97b14af3acd620522",label:"Fine-tuned semantic search"}
+};
 let vocabulary;
 let concepts;
 function phraseText(text,language){
@@ -255,10 +259,14 @@ function hasTechnology(text,name){
   const tokens=text.toLowerCase().match(/[\p{L}\p{N}_+#]+/gu)||[];
   return (" "+tokens.join(" ")+" ").includes(" "+name.toLowerCase()+" ");
 }
-async function vectors(texts){
+async function vectors(texts,method){
   const {pipeline,env}=await import("https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2/dist/transformers.min.js");
   env.allowLocalModels=false;
-  encoder??=await pipeline("feature-extraction","Xenova/paraphrase-multilingual-MiniLM-L12-v2",{revision:"2c4055b12046f11709e9df2c122e59ffbdc2f900"});
+  const {repo,revision}=retrievalModels[method];
+  if(!encoders.has(method))encoders.set(method,pipeline("feature-extraction",repo,{revision,quantized:true}));
+  let encoder;
+  try{encoder=await encoders.get(method)}catch(error){encoders.delete(method);throw error}
+  if(method==="research")encoder.tokenizer.model_max_length=128;
   const all=[];
   for(let i=0;i<texts.length;i+=8)all.push(...(await encoder(texts.slice(i,i+8),{pooling:"mean",normalize:true})).tolist());
   return all;
@@ -443,6 +451,7 @@ function exportReview(format){
   const context=origin?"Selected requirements from "+origin.textContent+"\n"+origin.href+"\nCoverage applies only to the selected conditions.":"";
   const data={format:"job-radar-review-v1",exported_at:new Date().toISOString(),cv:reviewedSource,
     job:origin?{title:origin.textContent,url:origin.href}:null,method:el("method").value,
+    encoder:retrievalModels[el("method").value]||null,
     coverage:counts(rows.map(row=>row.label)),conditions:rows.map(({complete,...row})=>row)};
   const body=format==="json"?JSON.stringify(data,null,2):["Job Radar Evidence",el("source").textContent,context,heading,...rows.map(row=>
     [row.condition,"Assessment: "+row.label,...row.quotes.map(q=>"Page "+q.page+" · "+q.passage+
@@ -508,8 +517,10 @@ el("form").onsubmit=async event=>{
     if(!job.length||job.length>50)throw Error("Enter 1–50 distinct conditions, one per line.");
     if(lines.length>800)throw Error("Use a shorter CV with up to 800 passages.");
     el("status").textContent="Finding passages…";
-    const semantic=el("method").value==="semantic";
-    const vec=semantic?await vectors([...job,...lines.map(x=>x.text)]):null;
+    const method=el("method").value;
+    const semantic=Object.hasOwn(retrievalModels,method);
+    if(semantic)el("status").textContent="Loading the "+(method==="research"?"fine-tuned":"base")+" encoder and finding passages…";
+    const vec=semantic?await vectors([...job,...lines.map(x=>x.text)],method):null;
     if(!semantic&&!concepts){
       try{
         const response=await fetch("bilingual-concepts.json");
@@ -523,7 +534,7 @@ el("form").onsubmit=async event=>{
       }catch{/* Passage ranking is still available without the optional vocabulary. */}
     }
     if(version!==reviewVersion)return;
-    el("source").textContent=(file?file.name:"Pasted CV")+" · "+job.length+" job condition"+(job.length===1?"":"s")+" · "+(semantic?"Semantic search":"Shared terms");
+    el("source").textContent=(file?file.name:"Pasted CV")+" · "+job.length+" job condition"+(job.length===1?"":"s")+" · "+(semantic?retrievalModels[method].label:"Shared terms");
     job.forEach((condition,i)=>{
       const terms=words(condition);
       const translations=semantic?[]:translatedTerms(condition);
