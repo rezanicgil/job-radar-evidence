@@ -1,0 +1,25 @@
+{
+  "app_sha256": "f4a10998ad091297e0b684268d43043c172c0ec79060cd9af7956fc82bcc13fe",
+  "cases": [
+    {
+      "employer": "NovaTech",
+      "url": "https://novatechdanismanlik.com/kariyer/yazilim-gelistirici-net",
+      "posting_sha256": "4f2041c0c901523f7f2be847f619d7e0253ccd225e5335db2807d8716421811e",
+      "expected": 6,
+      "preferences": 0,
+      "correctly_typed": 6,
+      "missed": 0,
+      "extra": 20
+    },
+    {
+      "employer": "GİB",
+      "url": "https://teknoloji.gib.gov.tr/Kidemli_Net_Gelistirici.html",
+      "posting_sha256": "7e7f3686bec12f9c8735139a88328f72b71408d97da3a467dd055a9a6f83437f",
+      "expected": 15,
+      "preferences": 4,
+      "correctly_typed": 15,
+      "missed": 0,
+      "extra": 2
+    }
+  ]
+}

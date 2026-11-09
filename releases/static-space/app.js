@@ -82,7 +82,9 @@ function turkishCandidates(text){
     const key=line.toLocaleLowerCase("tr").replace(/[:?]\s*$/,"").trim();
     if(/^(genel nitelikler(?: ve iş tanımı)?|aranan (?:nitelikler|özellikler)|(?:asgari|minimum|teknik) (?:nitelikler|gereksinimler)|gereksinimler|yetkinlikler)$/.test(key)){section="qualification";continue}
     if(/^(?:tercihen|tercih edilen (?:nitelikler|özellikler)|tercih nedeni olabilecek ek nitelikler|ek nitelikler)$/.test(key)){section="preference";continue}
-    if(/^(?:iş tanımı|sorumluluklar|görev ve sorumluluklar|seni neler bekliyor|biz kimiz|yan haklar|başvur(?:u)?|hakkımızda)$/.test(key)||line.endsWith(":")){section="other";continue}
+    if(/^(?:iş tanımı|görev tanımı|sorumluluklar|görev ve sorumluluklar|seni neler bekliyor|biz kimiz|yan haklar|sunduğumuz olanaklar|başvur(?:u)?|başvuru süreci|iletişim|iletişime geçin|hakkımızda)$/.test(key)||line.endsWith(":")){section="other";continue}
+    if(/^(?:çalışma yeri|pozisyonun lokasyonu)\s/.test(key) ||
+       (/@/.test(key) && /gönder|başvur|ilet/.test(key)))continue;
     const optional=/tercihen|tercih (?:sebebi|nedenidir|edilir)|artı (?:olur|sayılır)/.test(key);
     if(section==="other" || (section==="unknown" && !optional && !/deneyim|tecrüb|hakimiyet|hâkimiyet|bilgi sahibi|zorunlu|aranmaktadır/.test(key)))continue;
     candidates.set(line,optional||section==="preference");
