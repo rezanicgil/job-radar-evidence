@@ -1,6 +1,7 @@
 """English CV evidence review demo. Run with python scripts/demo.py."""
 
 import os
+import logging
 import json
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -12,6 +13,11 @@ import torch
 
 from review_cv import read_passages, rank_passages
 from market_inventory import PATTERNS
+
+# Malformed PDFs can include applicant bytes in parser diagnostics.
+pdf_logger = logging.getLogger("pypdf")
+pdf_logger.addHandler(logging.NullHandler())
+pdf_logger.propagate = False
 
 app = Flask(__name__, template_folder="../templates")
 app.config["MAX_CONTENT_LENGTH"] = 3 * 1024 * 1024

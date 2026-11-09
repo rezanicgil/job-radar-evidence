@@ -16,6 +16,18 @@ python scripts/demo.py
 
 Open [the local demo](http://127.0.0.1:7860/) and try the fictional CV first. The [market view](http://127.0.0.1:7860/market) shows a dated snapshot with employer counts and source links. Model weights download on the first evidence search.
 
+### Where the CV goes
+
+The command-line reviewer reads the CV on your machine. In the web demo, the browser sends it to the server running the demo. Use the included fictional CV to try a hosted instance. The server extracts passages in a temporary directory and removes that directory on exit, including on a parsing error. The response contains matching passages and carries a `no-store` cache directive. Anyone reviewing a public deployment should also check its hosting and proxy logging settings.
+
+```mermaid
+flowchart LR
+  A[CV and posting] --> B[Extract passages]
+  B --> C[Rank passages for each requirement]
+  C --> D[Applicant reviews evidence]
+  D --> E[Required conditions confirmed]
+```
+
 ### Matching example
 
 > Java veya Kotlin ile üretim deneyimi şarttır.

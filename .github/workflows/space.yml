@@ -20,6 +20,11 @@ jobs:
           docker run --detach --name radar --publish 127.0.0.1:7860:7860 job-radar-space
           trap 'docker logs radar; docker rm --force radar' EXIT
           curl --silent --show-error --fail --retry 20 --retry-all-errors --max-time 5 --retry-delay 2 http://127.0.0.1:7860/ > /dev/null
+          printf 'XYZZY fictional invalid document' > "$RUNNER_TEMP/invalid.pdf"
+          status=$(curl --silent --show-error -o /dev/null -w '%{http_code}' -F "file=@$RUNNER_TEMP/invalid.pdf" -F 'posting=Docker' http://127.0.0.1:7860/)
+          test "$status" = "422"
+          docker logs radar > "$RUNNER_TEMP/parser.log" 2>&1
+          if grep -Fq 'XYZZY' "$RUNNER_TEMP/parser.log"; then exit 1; fi
           curl --silent --show-error --fail -F 'cv=Deployed billing software using Docker.' -F 'posting=Production Docker experience required.' http://127.0.0.1:7860/ > "$RUNNER_TEMP/review.html"
           grep -F '<li>Page 1 · Deployed billing software using Docker.</li>' "$RUNNER_TEMP/review.html"
           curl --silent --show-error --fail 'http://127.0.0.1:7860/market?area=Android' > "$RUNNER_TEMP/market.html"
