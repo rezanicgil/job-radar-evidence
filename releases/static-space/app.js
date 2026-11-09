@@ -63,6 +63,7 @@ function offerReviewedConditions(card,posting,conditions,preferences=[]){
     jobOrigin.append(". Coverage applies only to the conditions below.");
     el("posting").value="";
     el("candidates").replaceChildren();
+    el("conditionMessage").textContent="";
     el("append").hidden=true;
     invalidateReview();
     location.hash="review";
@@ -95,7 +96,7 @@ el("file").onchange=()=>{
   invalidateReview();
 };
 el("removeFile").onclick=()=>{el("file").value="";el("file").onchange()};
-el("posting").oninput=()=>{el("candidates").replaceChildren();el("append").hidden=true;el("example").hidden=Boolean(el("cv").value||el("job").value||el("file").files.length||el("posting").value)};
+el("posting").oninput=()=>{el("candidates").replaceChildren();el("conditionMessage").textContent="";el("append").hidden=true;el("example").hidden=Boolean(el("cv").value||el("job").value||el("file").files.length||el("posting").value)};
 el("postingLanguage").onchange=()=>el("posting").oninput();
 function mixedConditions(sentence,language){
   const english=language==="en";
@@ -205,27 +206,51 @@ el("suggest").onclick=async()=>{
       label.append((optional?" Optional · ":" ")+sentence);
     }
     el("append").hidden=!output.children.length;
-    if(!output.children.length)output.textContent="No suggestions found. Enter conditions below.";
-  }catch{output.textContent="Suggestions unavailable. Enter conditions below."}
+    if(!output.children.length)output.textContent="No suggestions found. Highlight a condition in the posting to add it.";
+  }catch{
+    if(el("posting").value.trim()===text&&el("postingLanguage").value===language)
+      output.textContent="Suggestions unavailable. Highlight a condition in the posting to add it.";
+  }
   finally{el("suggest").disabled=false}
 };
-el("append").onclick=()=>{
+function appendConditions(entries){
   const fields=el("job");
   const prior=conditionsFrom(fields.value);
-  const checked=[...el("candidates").querySelectorAll(":checked")];
-  const selected=checked.map(input=>input.value);
-  if(!selected.length)return;
-  const combined=new Set(conditionsFrom([...prior,...selected].join("\n")));
-  if(combined.size>50){el("status").textContent="Select up to 50 conditions.";return}
-  for(const input of checked){
-    const [condition]=conditionsFrom(input.value);
-    if(input.dataset.preference==="true")selectedPreferences.add(condition);
+  const message=el("conditionMessage");
+  const additions=new Map();
+  for(const [text,optional] of entries){
+    for(const condition of conditionsFrom(text))additions.set(condition,optional);
+  }
+  if(!additions.size){message.textContent="Select at least one condition.";return}
+  const combined=new Set([...prior,...additions.keys()]);
+  if(combined.size>50){message.textContent="Select up to 50 conditions.";return}
+  const changes=[...additions].filter(([condition,optional])=>!prior.includes(condition)||selectedPreferences.has(condition)!==optional);
+  if(!changes.length){message.textContent="Already included with the selected assessment type.";return}
+  for(const [condition,optional] of changes){
+    if(optional)selectedPreferences.add(condition);
     else selectedPreferences.delete(condition);
   }
   fields.value=[...combined].join("\n");
   clearJobOrigin();
   invalidateReview();
+  message.textContent=changes.length+" condition"+(changes.length===1?"":"s")+" added or updated.";
+}
+el("append").onclick=()=>{
+  const checked=[...el("candidates").querySelectorAll(":checked")];
+  appendConditions(checked.map(input=>[input.value,input.dataset.preference==="true"]));
 };
+function addHighlighted(optional){
+  const posting=el("posting");
+  const selection=posting.value.slice(posting.selectionStart,posting.selectionEnd).trim();
+  if(!selection){
+    el("conditionMessage").textContent="Highlight a condition in the full posting first.";
+    posting.focus();
+    return;
+  }
+  appendConditions([[selection,optional]]);
+}
+el("manualRequired").onclick=()=>addHighlighted(false);
+el("manualOptional").onclick=()=>addHighlighted(true);
 function hasTechnology(text,name){
   const tokens=text.toLowerCase().match(/[\p{L}\p{N}_+#]+/gu)||[];
   return (" "+tokens.join(" ")+" ").includes(" "+name.toLowerCase()+" ");
