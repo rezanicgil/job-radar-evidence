@@ -4,9 +4,15 @@ const words=text=>new Set(text.toLocaleLowerCase().match(/[\p{L}\p{N}+#]+/gu)||[
 let encoder;
 let vocabulary;
 let sentenceModel;
+const downloadReview=document.createElement("button");
+downloadReview.type="button";
+downloadReview.textContent="Download review (.txt)";
+downloadReview.hidden=true;
+el("status").after(downloadReview);
 let reviewVersion=0;
 function invalidateReview(){
   reviewVersion++;
+  downloadReview.hidden=true;
   el("example").hidden=Boolean(el("cv").value||el("job").value||el("file").files.length||el("posting").value);
   const hasReview=el("results").children.length||el("find").disabled;
   el("source").textContent="";
@@ -148,7 +154,7 @@ function durationComparison(card,condition,lines){
   const picker=add(add(panel,"label","CV passage "),"select","");
   picker.add(new Option("Select a passage",""));
   matches.forEach(({line},i)=>picker.add(new Option("Page "+line.page+" · "+line.text,String(i))));
-  const output=add(panel,"p","");output.setAttribute("aria-live","polite");
+  const output=add(panel,"p","");output.className="duration-result";output.setAttribute("aria-live","polite");
   picker.onchange=()=>{
     if(!picker.value){output.textContent="";return}
     const {line,duration}=matches[Number(picker.value)];
@@ -157,14 +163,65 @@ function durationComparison(card,condition,lines){
       (gap===0?"equal duration":Math.abs(gap)+" months "+(gap<0?"below":"above")+" the minimum")+".";
   };
 }
+function addEvidencePicker(card,lines,suggestions){
+  const panel=add(card,"div","");
+  panel.hidden=true;
+  add(panel,"p","Select the CV passage or passages that support this assessment.");
+  function addChoice(parent,line){
+    const label=add(parent,"label","");
+    const input=add(label,"input","");
+    input.type="checkbox";
+    input.className="evidence";
+    input.value="Page "+line.page+" · "+line.text;
+    label.append(" "+input.value);
+    input.onchange=coverage;
+  }
+  for(const line of suggestions)addChoice(panel,line);
+  const others=lines.filter(line=>!suggestions.includes(line));
+  if(others.length){
+    const details=add(panel,"details","");
+    add(details,"summary","Browse "+others.length+" other CV passages");
+    details.ontoggle=()=>{
+      if(!details.open)return;
+      details.ontoggle=null;
+      for(const line of others)addChoice(details,line);
+    };
+  }
+  return panel;
+}
+function assessmentRows(){
+  return [...el("results").querySelectorAll("article")].map(card=>{
+    const label=card.querySelector(".assessment").value;
+    const quotes=[...card.querySelectorAll(".evidence:checked")].map(input=>input.value);
+    const needsQuote=label==="partial"||label==="supported";
+    const note=card.querySelector(".gap-note");
+    return {condition:card.querySelector("h3").textContent,label,quotes,
+            note:note.disabled?"":note.value.trim(),duration:card.querySelector(".duration-result")?.textContent||"",
+            complete:Boolean(label)&&(!needsQuote||quotes.length>0)};
+  });
+}
+downloadReview.onclick=()=>{
+  const rows=assessmentRows();
+  if(!rows.length||rows.some(row=>!row.complete))return;
+  const heading=[...el("status").children].map(child=>child.textContent).join("\n")||el("status").textContent;
+  const body=["Job Radar Evidence",el("source").textContent,heading,...rows.map(row=>
+    [row.condition,"Assessment: "+row.label,...row.quotes,row.duration,
+     row.note?"Next CV edit: "+row.note:""].filter(Boolean).join("\n"))].join("\n\n");
+  const url=URL.createObjectURL(new Blob([body+"\n"],{type:"text/plain;charset=utf-8"}));
+  const link=document.createElement("a");
+  link.href=url;link.download="job-radar-review.txt";link.click();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+};
 function coverage(){
-  const values=[...el("results").querySelectorAll(".assessment")].map(s=>s.value);
+  const rows=assessmentRows();
+  const values=rows.map(row=>row.complete?row.label:"");
+  downloadReview.hidden=!values.length||values.includes("");
   const status=el("status");
   status.replaceChildren();
   if(values.includes("")){
     const completed=values.filter(Boolean).length;
     add(status,"strong",Math.round(100*completed/values.length)+"% reviewed");
-    add(status,"span",completed+" of "+values.length+" conditions reviewed. Assess each condition below to see required coverage.");
+    add(status,"span",completed+" of "+values.length+" conditions reviewed. Choose an assessment and attach evidence for supported or partial conditions.");
     return;
   }
   const n=values.filter(v=>v!=="skip").length,s=values.filter(v=>v==="supported").length;
@@ -175,6 +232,7 @@ function coverage(){
 }
 el("form").onsubmit=async event=>{
   event.preventDefault();el("find").disabled=true;el("results").replaceChildren();
+  downloadReview.hidden=true;
   const version=++reviewVersion;
   const file=el("file").files[0];
   el("source").textContent="";
@@ -202,10 +260,10 @@ el("form").onsubmit=async event=>{
       const ranked=lines.map((line,j)=>({line,score:semantic?vec[i].reduce((s,v,k)=>s+v*vec[job.length+j][k],0):[...words(line.text)].filter(t=>terms.has(t)).length}))
         .filter(x=>semantic||x.score>0).sort((a,b)=>b.score-a.score).slice(0,3);
       const card=add(el("results"),"article","");add(card,"h3",condition);
+      const visible=ranked.map(item=>item.line);
       for(const {line} of ranked)add(card,"p","Page "+line.page+" · "+line.text);
       if(semantic){
         const requested=(vocabulary||[]).filter(name=>hasTechnology(condition,name));
-        const visible=ranked.map(item=>item.line);
         for(const name of requested){
           if(visible.some(line=>hasTechnology(line.text,name)))continue;
           const mention=lines.find(line=>hasTechnology(line.text,name));
@@ -219,8 +277,16 @@ el("form").onsubmit=async event=>{
       const select=add(add(card,"label","Assessment "),"select","");
       select.className="assessment";
       for(const [value,label] of [["","Choose"],["supported","Required · supported"],["partial","Required · partial"],["unverified","Required · unverified"],["skip","Exclude from required coverage"]])select.add(new Option(label,value));
+      const picker=addEvidencePicker(card,lines,visible);
       const advice=add(card,"small","");
+      const noteLabel=add(card,"label","What could you clarify in your CV? (optional)");
+      const note=add(noteLabel,"textarea","");note.className="gap-note";
+      noteLabel.hidden=true;note.disabled=true;
       select.onchange=()=>{
+        picker.hidden=!(select.value==="supported"||select.value==="partial");
+        if(picker.hidden)for(const input of picker.querySelectorAll(":checked"))input.checked=false;
+        noteLabel.hidden=!(select.value==="partial"||select.value==="unverified");
+        note.disabled=noteLabel.hidden;
         advice.textContent=({partial:"Identify which part your CV demonstrates and which part needs an example.",unverified:"If you have relevant experience, describe the work you personally did."})[select.value]||"";
         coverage();
       };
