@@ -6,6 +6,8 @@ Job Radar helps an applicant answer “Which requirements can I demonstrate in m
 
 ## Example
 
+After reviewing two jobs, open [Compare job reviews](https://rezanicgil-job-radar-evidence.static.hf.space/compare.html) and choose the two exported JSON files. The browser checks whether the CV fingerprints match, recalculates coverage from the individual decisions and shows the required denominator and gaps for each job.
+
 Choose **Try a bilingual example** in the public Space. The fictional CV documents 30 months of C++ experience and Python test reporting. The job asks for 36 months of C++ and Python test reporting. Mark the first condition partial and the second supported, then select the relevant passages. The result is **50% coverage (1/2)**. The six-month shortfall and its source can travel with the exported report. This percentage counts fully documented conditions; hiring likelihood has not been measured.
 
 Shared-word search includes 24 reviewed English and Turkish algorithm and data structure labels from [Wikidata](https://www.wikidata.org/wiki/Wikidata:Licensing). For example, “random forest” can retrieve a passage containing “rastgele orman.” The app links each matched pair to its concept and leaves the assessment to the reviewer. Matching uses whole phrases and does not cover every Turkish inflection. [Inspect the glossary](releases/static-space/bilingual-concepts.json)

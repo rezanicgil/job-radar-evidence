@@ -1,3 +1,4 @@
+import {counts} from "./review-counts.js";
 const el=id=>document.getElementById(id);
 const add=(parent,tag,text)=>{const node=document.createElement(tag);node.textContent=text;parent.append(node);return node};
 const words=text=>new Set(text.toLocaleLowerCase().match(/[\p{L}\p{N}+#]+/gu)||[]);
@@ -32,6 +33,7 @@ const downloadReview=add(downloadControls,"button","Download review (.txt)");
 downloadReview.type="button";
 const downloadData=add(downloadControls,"button","Download review (.json)");
 downloadData.type="button";
+add(downloadControls,"a","Compare two saved reviews").href="compare.html";
 downloadControls.hidden=true;
 el("status").after(downloadControls);
 let reviewedSource;
@@ -446,13 +448,6 @@ function assessmentRows(){
             note:note.disabled?"":note.value.trim(),duration:card.querySelector(".duration-result")?.textContent||"",
             complete:Boolean(label)&&gap.validity.valid&&(!needsQuote||(quotes.length>0&&validQuotes))};
   });
-}
-function counts(values){
-  const required=values.filter(v=>v!=="skip").length;
-  const supported=values.filter(v=>v==="supported").length;
-  return {required,supported,partial:values.filter(v=>v==="partial").length,
-          unverified:values.filter(v=>v==="unverified").length,excluded:values.length-required,
-          percentage:required?Math.round(100*supported/required):null};
 }
 function exportReview(format){
   const rows=assessmentRows();

@@ -1,0 +1,12 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Compare job reviews · Job Radar</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font:1rem/1.55 system-ui;color:#17382f;background:#f5f4ed}main{max-width:60rem;margin:auto;padding:1.5rem}a{color:#135b48}h1{font-size:clamp(2rem,6vw,3.6rem);line-height:1.1}h2{font-size:1.2rem}label{display:block;font-weight:600}input{display:block;max-width:100%;margin:.6rem 0}.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}article,.file{background:white;border:1px solid #bccdc4;border-radius:.65rem;padding:1rem;overflow-wrap:anywhere}.metric{display:block;font-size:2rem;font-variant-numeric:tabular-nums}.note{font-weight:600}summary{cursor:pointer}li{margin:.7rem 0}small{display:block}
+@media(max-width:540px){.pair{grid-template-columns:1fr}main{padding:1rem}}
+</style>
+<main><a href="index.html#review">← CV review</a><h1>Compare job reviews</h1>
+<p>Choose two JSON files downloaded from CV review. The comparison runs in your browser.</p>
+<div class="pair"><label class="file">First review<input id="first" type="file" accept=".json,application/json"></label>
+<label class="file">Second review<input id="second" type="file" accept=".json,application/json"></label></div>
+<p id="message" class="note" role="status"></p><div id="comparison" class="pair"></div>
+</main><script type="module" src="compare.js"></script></html>

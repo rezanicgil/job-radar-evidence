@@ -1,0 +1,63 @@
+import {counts} from "./review-counts.js";
+const inputs=[document.getElementById("first"),document.getElementById("second")];
+const result=document.getElementById("comparison");
+const message=document.getElementById("message");
+let version=0;
+
+function add(parent,tag,text){
+  const node=document.createElement(tag);
+  node.textContent=text;
+  parent.append(node);
+  return node;
+}
+async function read(file){
+  const data=JSON.parse(await file.text());
+  if(data?.format!=="job-radar-review-v1"||!Array.isArray(data.conditions)||!data.conditions.length||
+     !data.conditions.every(r=>typeof r?.condition==="string"&&r.condition.trim()&&
+       ["supported","partial","unverified","skip"].includes(r.label))){
+    throw Error("Choose a JSON report downloaded from CV review.");
+  }
+  const summary=counts(data.conditions.map(r=>r.label));
+  if(Object.entries(summary).some(([k,v])=>v!==data.coverage?.[k])){
+    throw Error("The summary in "+file.name+" differs from its condition decisions. Export the review again.");
+  }
+  return {data,summary,file};
+}
+function show({data,summary,file}){
+  const card=add(result,"article","");
+  add(card,"h2",data.job?.title||file.name);
+  add(card,"strong",summary.percentage===null?"No required conditions":summary.percentage+"% coverage").className="metric";
+  add(card,"p",summary.supported+" of "+summary.required+" required conditions fully supported.");
+  add(card,"p",summary.partial+" partial · "+summary.unverified+" unverified · "+summary.excluded+" excluded");
+  const gaps=data.conditions.filter(r=>r.label==="partial"||r.label==="unverified");
+  if(gaps.length){
+    const panel=add(card,"details","");
+    add(panel,"summary","Conditions to revisit ("+gaps.length+")");
+    const list=add(panel,"ul","");
+    for(const row of gaps){
+      const item=add(list,"li",row.condition);
+      add(item,"small",row.label==="partial"?"Partially supported":"Unverified");
+      if(row.missing)add(item,"small","Wording to demonstrate: "+row.missing);
+      if(row.note)add(item,"small","Next CV edit: "+row.note);
+    }
+  }
+}
+async function compare(){
+  const request=++version;
+  result.replaceChildren();
+  const files=inputs.map(input=>input.files[0]);
+  if(files.some(f=>!f)){message.textContent="Choose both reports to compare.";return}
+  message.textContent="Reading reviews…";
+  try{
+    const reviews=await Promise.all(files.map(read));
+    if(request!==version)return;
+    const hashes=reviews.map(r=>r.data.cv?.sha256);
+    const valid=hashes.every(h=>typeof h==="string"&&/^[0-9a-f]{64}$/i.test(h));
+    message.textContent=!valid?"These reports do not both identify the CV input. Check the CV versions before comparing.":
+      hashes[0]===hashes[1]?"Both reports used the same CV input.":"These reports used different CV inputs. Differences may reflect changes to the CV as well as the job.";
+    reviews.forEach(show);
+  }catch(error){
+    if(request===version)message.textContent=error instanceof SyntaxError?"Choose valid review JSON files.":error.message;
+  }
+}
+inputs.forEach(input=>input.onchange=compare);
