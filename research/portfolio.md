@@ -10,7 +10,7 @@ The project combines Turkish and English evidence retrieval, PDF and TXT parsing
 
 The [public Hugging Face demo](https://huggingface.co/spaces/rezanicgil/job-radar-evidence) uses a Static Space. It processes documents in the visitor's browser and offers shared-term retrieval or optional multilingual semantic search. The server-based Docker build remains available for local deployments.
 
-The published research classifier trained on 69 synthetic pairs. A separate English job-sentence selector trained on 3,943 deduplicated SkillSpan sentences plus 390 weakly labelled employer bullets and reached 75.5% F1 on its 2,404-sentence test split. On November 9, 2026, 47 employer boards returned 417 Türkiye-location postings. The project obtained readable descriptions for all 108 postings selected by the technical title filter, spanning 23 employers. Python appeared in 48 postings from 16 employers. [Download the underlying observations](https://huggingface.co/datasets/rezanicgil/turkiye-software-job-market)
+The published research classifier trained on 69 synthetic pairs. A separate English job-sentence selector trained on 3,943 deduplicated SkillSpan sentences plus 390 weakly labelled employer bullets and reached 75.5% F1 on its 2,404-sentence test split. On November 9, 2026, 47 employer boards returned 417 Türkiye-location postings. The project obtained readable descriptions for all 115 postings selected by the technical title filter, spanning 23 employers. Python appeared in 50 postings from 16 employers. [Download the underlying observations](https://huggingface.co/datasets/rezanicgil/turkiye-software-job-market)
 
 ## A decision based on evaluation
 
@@ -29,6 +29,6 @@ Built and published a bilingual CV evidence-review tool on Hugging Face. Fine-tu
 - [Similarity baseline](../reports/similarity-challenge.json)
 - [Published classifier](https://huggingface.co/rezanicgil/job-radar-evidence-mentions-v3)
 - [Employer-sourced evaluation](../reports/source-pairs-dev.json)
-- [Market sources and counts](../reports/skill-mentions-2026-11-09T182408Z.md)
+- [Market sources and counts](../reports/skill-mentions-2026-11-09T193715669610Z.md)
 - [Public browser review workflow check](https://github.com/rezanicgil/job-radar-evidence/actions/runs/42670837783)
 - [Container verification](https://github.com/rezanicgil/job-radar-evidence/actions/runs/42670837616)

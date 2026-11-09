@@ -10,7 +10,7 @@ from urllib.parse import quote, urlsplit
 from urllib.request import Request, urlopen
 from urllib.error import URLError
 
-from market_inventory import ROOT, PATTERNS
+from market_inventory import ROOT, title_areas
 
 BOARD="https://kariyer.baykartech.com"
 API="/tr/basvuru/serializerProgram/"
@@ -78,7 +78,7 @@ def main():
             if kind!="İş" or not row["active"] or not row["visible"] or row["stop_application"]:
                 continue
             title=row["text"].strip()
-            areas={area for area,pattern in PATTERNS.items() if re.search(pattern,title,re.I)}
+            areas=set(title_areas(title))
             areas.update(area for area,pattern in EXTRA.items() if re.search(pattern,title,re.I))
             if areas:
                 selected.append(dict(id=row["id"],title=title,category=row["category"]["text"],

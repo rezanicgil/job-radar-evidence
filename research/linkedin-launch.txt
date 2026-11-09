@@ -4,7 +4,7 @@ I built Job Radar Evidence so applicants can compare a Turkish or English CV wit
 
 I trained a multilingual retriever on 1,027 English–Turkish Python documentation pairs. On 721 held-out pairs it found the Turkish translation first for 674 English queries, up from 669. I then tested both models on ten job conditions against 30 fictional CV passages. All ten target passages kept their original ranks. That result is why the demo lets applicants inspect and choose the passages themselves.
 
-The Türkiye market dataset is also public. In the November 9, 2026 sample, React Native appeared in 12 of 108 technical postings, all from one employer. You can inspect the postings behind each count and compare how widely a technology appears across employers.
+The Türkiye market dataset is also public. In the November 9, 2026 sample, React Native appeared in 12 of 115 technical postings, all from one employer. You can inspect the postings behind each count and compare how widely a technology appears across employers.
 
 If you work in software engineering, I'd welcome an independent judgment on one fictional CV passage. The review takes a label and the words you used to make your decision.
 

@@ -1,0 +1,3446 @@
+{
+  "collected_at": "2026-11-09T19:36:50.925543+00:00",
+  "sources": [
+    {
+      "source": "Agave Games",
+      "url": "https://api.ashbyhq.com/posting-api/job-board/agavegames",
+      "status": "ok",
+      "scanned": 3
+    },
+    {
+      "source": "AppNation",
+      "url": "https://api.lever.co/v0/postings/appnation?mode=json",
+      "status": "ok",
+      "scanned": 13
+    },
+    {
+      "source": "AppSamurai",
+      "url": "https://api.lever.co/v0/postings/appsamurai?mode=json",
+      "status": "ok",
+      "scanned": 5
+    },
+    {
+      "source": "Bigger Games",
+      "url": "https://api.ashbyhq.com/posting-api/job-board/biggergames",
+      "status": "ok",
+      "scanned": 14
+    },
+    {
+      "source": "Binance",
+      "url": "https://api.lever.co/v0/postings/binance?mode=json",
+      "status": "ok",
+      "scanned": 4
+    },
+    {
+      "source": "Bold Games",
+      "url": "https://api.ashbyhq.com/posting-api/job-board/boldgames",
+      "status": "ok",
+      "scanned": 3
+    },
+    {
+      "source": "Bybit",
+      "url": "https://boards-api.greenhouse.io/v1/boards/bybit/jobs",
+      "status": "ok",
+      "scanned": 151
+    },
+    {
+      "source": "Çiçeksepeti",
+      "url": "https://api.lever.co/v0/postings/ciceksepeti?mode=json",
+      "status": "ok",
+      "scanned": 1
+    },
+    {
+      "source": "Codeway",
+      "url": "https://api.ashbyhq.com/posting-api/job-board/codeway",
+      "status": "ok",
+      "scanned": 17
+    },
+    {
+      "source": "Commencis",
+      "url": "https://api.lever.co/v0/postings/commencis?mode=json",
+      "status": "ok",
+      "scanned": 5
+    },
+    {
+      "source": "Constructor Tech",
+      "url": "https://boards-api.greenhouse.io/v1/boards/constructortech/jobs",
+      "status": "ok",
+      "scanned": 29
+    },
+    {
+      "source": "Dataroid",
+      "url": "https://api.lever.co/v0/postings/dataroid?mode=json",
+      "status": "ok",
+      "scanned": 4
+    },
+    {
+      "source": "DoktorTakvimi",
+      "url": "https://api.ashbyhq.com/posting-api/job-board/doktortakvimi",
+      "status": "ok",
+      "scanned": 3
+    },
+    {
+      "source": "Dream Games",
+      "url": "https://api.lever.co/v0/postings/dreamgames?mode=json",
+      "status": "ok",
+      "scanned": 18
+    },
+    {
+      "source": "Good Job Games",
+      "url": "https://boards-api.greenhouse.io/v1/boards/goodjobgames/jobs",
+      "status": "ok",
+      "scanned": 28
+    },
+    {
+      "source": "Grand Games",
+      "url": "https://api.lever.co/v0/postings/grand?mode=json",
+      "status": "ok",
+      "scanned": 9
+    },
+    {
+      "source": "Hilbert's AI",
+      "url": "https://api.ashbyhq.com/posting-api/job-board/hilberts",
+      "status": "ok",
+      "scanned": 0
+    },
+    {
+      "source": "Insider One",
+      "url": "https://api.lever.co/v0/postings/insiderone?mode=json",
+      "status": "ok",
+      "scanned": 119
+    },
+    {
+      "source": "iyzico",
+      "url": "https://api.lever.co/v0/postings/iyzico?mode=json",
+      "status": "ok",
+      "scanned": 2
+    },
+    {
+      "source": "JumpCloud",
+      "url": "https://api.lever.co/v0/postings/jumpcloud?mode=json",
+      "status": "ok",
+      "scanned": 40
+    },
+    {
+      "source": "Loop Games",
+      "url": "https://api.lever.co/v0/postings/loopgames?mode=json",
+      "status": "ok",
+      "scanned": 3
+    },
+    {
+      "source": "Medsien",
+      "url": "https://boards-api.greenhouse.io/v1/boards/medsien/jobs",
+      "status": "ok",
+      "scanned": 30
+    },
+    {
+      "source": "Midas",
+      "url": "https://api.lever.co/v0/postings/getmidas?mode=json",
+      "status": "ok",
+      "scanned": 16
+    },
+    {
+      "source": "OKX",
+      "url": "https://boards-api.greenhouse.io/v1/boards/okx/jobs",
+      "status": "ok",
+      "scanned": 377
+    },
+    {
+      "source": "Peak",
+      "url": "https://api.lever.co/v0/postings/peakgames?mode=json",
+      "status": "ok",
+      "scanned": 20
+    },
+    {
+      "source": "Picus Security",
+      "url": "https://api.lever.co/v0/postings/picus?mode=json",
+      "status": "ok",
+      "scanned": 17
+    },
+    {
+      "source": "Sezzle",
+      "url": "https://boards-api.greenhouse.io/v1/boards/sezzle/jobs",
+      "status": "ok",
+      "scanned": 293
+    },
+    {
+      "source": "Spyke Games",
+      "url": "https://api.lever.co/v0/postings/spyke-games?mode=json",
+      "status": "ok",
+      "scanned": 4
+    },
+    {
+      "source": "Surpass Games",
+      "url": "https://api.lever.co/v0/postings/surpassgames?mode=json",
+      "status": "ok",
+      "scanned": 0
+    },
+    {
+      "source": "Trendyol",
+      "url": "https://api.lever.co/v0/postings/trendyol?mode=json",
+      "status": "ok",
+      "scanned": 49
+    },
+    {
+      "source": "Trendyol Go",
+      "url": "https://api.lever.co/v0/postings/trendyol-go?mode=json",
+      "status": "ok",
+      "scanned": 6
+    },
+    {
+      "source": "TrustLab",
+      "url": "https://api.ashbyhq.com/posting-api/job-board/trustlab",
+      "status": "ok",
+      "scanned": 0
+    },
+    {
+      "source": "Udemy",
+      "url": "https://boards-api.greenhouse.io/v1/boards/udemy/jobs",
+      "status": "ok",
+      "scanned": 3
+    },
+    {
+      "source": "Voodoo",
+      "url": "https://api.ashbyhq.com/posting-api/job-board/voodoo",
+      "status": "ok",
+      "scanned": 100
+    },
+    {
+      "source": "Zynga",
+      "url": "https://boards-api.greenhouse.io/v1/boards/zyngacareers/jobs",
+      "status": "ok",
+      "scanned": 48
+    },
+    {
+      "source": "Bosch Group",
+      "url": "https://api.smartrecruiters.com/v1/companies/BoschGroup/postings?country=tr&limit=100",
+      "status": "ok",
+      "scanned": 46
+    },
+    {
+      "source": "Renesas Electronics",
+      "url": "https://api.smartrecruiters.com/v1/companies/RenesasElectronics/postings?country=tr&limit=100",
+      "status": "ok",
+      "scanned": 3
+    },
+    {
+      "source": "Delivery Hero",
+      "url": "https://api.smartrecruiters.com/v1/companies/DeliveryHero/postings?country=tr&limit=100",
+      "status": "ok",
+      "scanned": 5
+    },
+    {
+      "source": "Brandefense",
+      "url": "https://api.smartrecruiters.com/v1/companies/BRANDEFENSE/postings?country=tr&limit=100",
+      "status": "ok",
+      "scanned": 2
+    },
+    {
+      "source": "Complead",
+      "url": "https://www.workable.com/api/accounts/complead?details=true",
+      "status": "ok",
+      "scanned": 8
+    },
+    {
+      "source": "Datasurgery",
+      "url": "https://www.workable.com/api/accounts/datasurgery-yazilim-ve-danismanlik-1?details=true",
+      "status": "ok",
+      "scanned": 2
+    },
+    {
+      "source": "Homa",
+      "url": "https://www.workable.com/api/accounts/homa-games?details=true",
+      "status": "ok",
+      "scanned": 39
+    },
+    {
+      "source": "Ace Games",
+      "url": "https://www.workable.com/api/accounts/ace-games?details=true",
+      "status": "ok",
+      "scanned": 3
+    },
+    {
+      "source": "Roof Stacks",
+      "url": "https://api.lever.co/v0/postings/roofstacks?mode=json",
+      "status": "ok",
+      "scanned": 23
+    },
+    {
+      "source": "ING",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR",
+      "status": "ok",
+      "scanned": 38
+    },
+    {
+      "source": "Mastercard",
+      "url": "https://mastercard.wd1.myworkdayjobs.com/en-US/CorporateCareers",
+      "status": "ok",
+      "scanned": 13
+    },
+    {
+      "source": "Analog Devices",
+      "url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External",
+      "status": "ok",
+      "scanned": 17
+    }
+  ],
+  "jobs": [
+    {
+      "employer": "Agave Games",
+      "title": "Game Developer",
+      "url": "https://jobs.ashbyhq.com/agavegames/f96db32e-0bf9-454a-841a-80f81da4c9ac",
+      "location": "İstanbul",
+      "areas": [
+        "Games"
+      ]
+    },
+    {
+      "employer": "Agave Games",
+      "title": "Growth Specialist (New Grad)",
+      "url": "https://jobs.ashbyhq.com/agavegames/8cb5ad0f-84de-415b-bf08-325c6acc72d6",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "Agave Games",
+      "title": "Product Specialist (New Grad)",
+      "url": "https://jobs.ashbyhq.com/agavegames/0d7f895c-9b8e-4c1f-9cf9-172adf097b13",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "AppNation",
+      "title": "Brand Manager",
+      "url": "https://jobs.lever.co/appnation/cf3b9d62-0017-41b2-90a2-b92c78a56fef",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "AppNation",
+      "title": "Head of Development",
+      "url": "https://jobs.lever.co/appnation/5caf2a1d-95c3-47cb-870e-ec623f56922f",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "AppNation",
+      "title": "Legal & Compliance Counsel",
+      "url": "https://jobs.lever.co/appnation/93b4261b-1632-4c03-b46b-bef2dc305c31",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "AppNation",
+      "title": "Marketing Manager",
+      "url": "https://jobs.lever.co/appnation/1e03a2b8-7b85-4501-80d4-50666c166ff4",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "AppNation",
+      "title": "Mid / Senior Product Manager",
+      "url": "https://jobs.lever.co/appnation/f4f69778-b861-4eb9-a53a-3f9e9b0c4499",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "AppNation",
+      "title": "Product Designer  - AI Apps Studio",
+      "url": "https://jobs.lever.co/appnation/4297af8e-44d8-4466-b13e-57c1ea03d6f9",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "AppNation",
+      "title": "Senior Android Developer / Platform",
+      "url": "https://jobs.lever.co/appnation/e24358a9-7a8c-4494-bd3e-0cd902bb65a6",
+      "location": "İstanbul",
+      "areas": [
+        "Android"
+      ]
+    },
+    {
+      "employer": "AppNation",
+      "title": "Senior ASO & ASA Manager / Platform",
+      "url": "https://jobs.lever.co/appnation/f420f2c9-6f98-4ffd-ab47-76829382a903",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "AppNation",
+      "title": "Senior DevOps Engineer",
+      "url": "https://jobs.lever.co/appnation/5b136345-11cd-475f-b512-b691ed9de8a3",
+      "location": "İstanbul",
+      "areas": [
+        "Platform and reliability"
+      ]
+    },
+    {
+      "employer": "AppNation",
+      "title": "Senior iOS Developer / Platform",
+      "url": "https://jobs.lever.co/appnation/b4105254-2ae5-47a3-b87c-d48800e2c319",
+      "location": "İstanbul",
+      "areas": [
+        "iOS"
+      ]
+    },
+    {
+      "employer": "AppNation",
+      "title": "Senior IT Specialist",
+      "url": "https://jobs.lever.co/appnation/ba2e4737-7a4f-41f8-85b1-43990396a16b",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "AppNation",
+      "title": "Senior Software Engineer (Backend)",
+      "url": "https://jobs.lever.co/appnation/ff11e33e-b92b-4c3c-810c-f3219b8b4bd5",
+      "location": "İstanbul",
+      "areas": [
+        "Backend",
+        "Software engineering (general)"
+      ]
+    },
+    {
+      "employer": "AppNation",
+      "title": "Software Engineer (Backend)",
+      "url": "https://jobs.lever.co/appnation/090895b2-15dd-4c50-a3ff-a5f0362a3a76",
+      "location": "İstanbul",
+      "areas": [
+        "Backend",
+        "Software engineering (general)"
+      ]
+    },
+    {
+      "employer": "Bigger Games",
+      "title": "Product Manager",
+      "url": "https://jobs.ashbyhq.com/biggergames/70478eff-1c45-437b-a000-15a2e3a37d1e",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Bigger Games",
+      "title": "Motion Graphics Designer | Marketing",
+      "url": "https://jobs.ashbyhq.com/biggergames/fddc7fcf-667b-4464-972b-360fee1ae947",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Bigger Games",
+      "title": "Game Developer",
+      "url": "https://jobs.ashbyhq.com/biggergames/107a1702-01e9-405e-9e32-fdd62c87d891",
+      "location": "Istanbul",
+      "areas": [
+        "Games"
+      ]
+    },
+    {
+      "employer": "Bigger Games",
+      "title": "Software Engineer",
+      "url": "https://jobs.ashbyhq.com/biggergames/0ce9aa65-7475-4359-9485-64e773d19ffa",
+      "location": "Istanbul",
+      "areas": [
+        "Software engineering (general)"
+      ]
+    },
+    {
+      "employer": "Bigger Games",
+      "title": "Senior Software Engineer",
+      "url": "https://jobs.ashbyhq.com/biggergames/e4dc9337-cd10-469f-8683-fe880d74615e",
+      "location": "Istanbul",
+      "areas": [
+        "Software engineering (general)"
+      ]
+    },
+    {
+      "employer": "Bigger Games",
+      "title": "Senior Game Developer",
+      "url": "https://jobs.ashbyhq.com/biggergames/28bcafc9-3e56-4c8e-8e5d-cc41b99a15f8",
+      "location": "Istanbul",
+      "areas": [
+        "Games"
+      ]
+    },
+    {
+      "employer": "Bigger Games",
+      "title": "Data Scientist",
+      "url": "https://jobs.ashbyhq.com/biggergames/81b0689f-3607-49b9-bb68-c561103ef34e",
+      "location": "Istanbul",
+      "areas": [
+        "Data and AI"
+      ]
+    },
+    {
+      "employer": "Bigger Games",
+      "title": "2D Game Animator",
+      "url": "https://jobs.ashbyhq.com/biggergames/3cf01539-89b6-4f80-9d38-561a20905df5",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Bigger Games",
+      "title": "Product Specialist",
+      "url": "https://jobs.ashbyhq.com/biggergames/024530f9-df2f-4138-8d21-e94494d7a3eb",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Bigger Games",
+      "title": "2D Artist",
+      "url": "https://jobs.ashbyhq.com/biggergames/9d46c0da-1eab-4ab1-ae90-8b6665edb01b",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Bigger Games",
+      "title": "Performance Marketing Manager",
+      "url": "https://jobs.ashbyhq.com/biggergames/149228bb-acd5-4c92-9b70-6cb4a512a885",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Bigger Games",
+      "title": "Software Engineer, Performance Marketing",
+      "url": "https://jobs.ashbyhq.com/biggergames/14511bd4-b8eb-4a5d-9b88-44fa9a48ada8",
+      "location": "Istanbul",
+      "areas": [
+        "Software engineering (general)"
+      ]
+    },
+    {
+      "employer": "Bigger Games",
+      "title": "Level Designer",
+      "url": "https://jobs.ashbyhq.com/biggergames/47a2b4a7-5691-4fac-9ff6-50b12ead4837",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Bigger Games",
+      "title": "Long-Term Intern",
+      "url": "https://jobs.ashbyhq.com/biggergames/35ff5531-e10f-45ea-8ace-04638a82c396",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Bold Games",
+      "title": "Product Specialist",
+      "url": "https://jobs.ashbyhq.com/boldgames/31afab42-07e0-41cf-b42c-8130b5130ee3",
+      "location": "Istanbul, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Bold Games",
+      "title": "Data Analyst",
+      "url": "https://jobs.ashbyhq.com/boldgames/8ad65476-a623-4033-80dc-a20614af39c6",
+      "location": "Istanbul, Turkey",
+      "areas": [
+        "Data and AI"
+      ]
+    },
+    {
+      "employer": "Bold Games",
+      "title": "Product Manager",
+      "url": "https://jobs.ashbyhq.com/boldgames/b6280229-4857-4721-9cd4-978f00596ffb",
+      "location": "Istanbul, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Bybit",
+      "title": "Senior Compliance Specialist",
+      "url": "https://job-boards.eu.greenhouse.io/bybit/jobs/4969826101",
+      "location": "Istanbul, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Çiçeksepeti",
+      "title": "Procurement Specialist / Sr. Specialist",
+      "url": "https://jobs.lever.co/ciceksepeti/4c67f811-193d-447a-b333-c326dece3c5f",
+      "location": "Zincirlikuyu, Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Codeway",
+      "title": "HR Operations Specialist",
+      "url": "https://jobs.ashbyhq.com/codeway/9eadc21d-6997-4be9-89ba-1bf934d24211",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Codeway",
+      "title": "Marketing Artist",
+      "url": "https://jobs.ashbyhq.com/codeway/e039f968-aa6a-4df6-8d90-1cb931aef5b3",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Codeway",
+      "title": "Mid/Senior HR Operations Specialist",
+      "url": "https://jobs.ashbyhq.com/codeway/69b88c96-32fe-408b-8888-595c33679e84",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Codeway",
+      "title": "Chief of Staff (Strategy and Operations)",
+      "url": "https://jobs.ashbyhq.com/codeway/bff2e1bc-591b-4ab2-a73b-2996f0c9935b",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Codeway",
+      "title": "Associate Growth Manager (Web)",
+      "url": "https://jobs.ashbyhq.com/codeway/bee0c35d-a3b8-47a8-a1ca-1de0fe245aed",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Codeway",
+      "title": "Growth Manager (Mid/Senior)",
+      "url": "https://jobs.ashbyhq.com/codeway/8091c12b-39be-45dc-b3c8-3fabde510db3",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Codeway",
+      "title": "Growth Manager (Web)",
+      "url": "https://jobs.ashbyhq.com/codeway/bd33431d-a58e-4dea-81fd-3774376166c1",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Codeway",
+      "title": "Growth Manager (Google Ads Search)",
+      "url": "https://jobs.ashbyhq.com/codeway/d1c8be35-9491-495f-bac7-a6fc045e7530",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Commencis",
+      "title": "Cloud Sales Intern",
+      "url": "https://jobs.lever.co/commencis/103bba3c-93c8-4b10-b95a-b797763e8e02",
+      "location": "Istanbul, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Commencis",
+      "title": "Commencis Cloud Camp 2027",
+      "url": "https://jobs.lever.co/commencis/a034ff92-231b-4f01-9154-57614a7804e9",
+      "location": "Istanbul, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Commencis",
+      "title": "Senior Backend Engineer",
+      "url": "https://jobs.lever.co/commencis/138e71e4-2c35-451b-9c7e-967a609e100d",
+      "location": "Istanbul, Turkey",
+      "areas": [
+        "Backend"
+      ]
+    },
+    {
+      "employer": "Commencis",
+      "title": "Senior Project Manager - Russian Speaking",
+      "url": "https://jobs.lever.co/commencis/884ce1d1-b239-48ce-999b-4b1344c91c23",
+      "location": "Istanbul, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Commencis",
+      "title": "Senior Sales & Account Manager",
+      "url": "https://jobs.lever.co/commencis/fdb46315-4b0e-4883-ac7e-dcd971d0d504",
+      "location": "Istanbul, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Constructor Tech",
+      "title": "Business Manager (to President for Türkiye & the Balkans) - Middle+/Senior-",
+      "url": "https://job-boards.eu.greenhouse.io/constructortech/jobs/4745787101",
+      "location": "Istanbul, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Constructor Tech",
+      "title": "Education Strategy & Development Analyst / Associate",
+      "url": "https://job-boards.eu.greenhouse.io/constructortech/jobs/5027520101",
+      "location": "Turkey, Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Constructor Tech",
+      "title": "Partner Manager ",
+      "url": "https://job-boards.eu.greenhouse.io/constructortech/jobs/4951588101",
+      "location": "Istanbul, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Constructor Tech",
+      "title": "Senior Product Manager (EdTech & AI)",
+      "url": "https://job-boards.eu.greenhouse.io/constructortech/jobs/4781093101",
+      "location": "Turkey, Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Dataroid",
+      "title": "Enterprise Sales Executive – Europe",
+      "url": "https://jobs.lever.co/dataroid/86343204-7284-42fb-9054-c12842fb6131",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Dataroid",
+      "title": "Senior Backend Engineer",
+      "url": "https://jobs.lever.co/dataroid/465b481e-26df-47e5-965e-bd622761c789",
+      "location": "Istanbul",
+      "areas": [
+        "Backend"
+      ]
+    },
+    {
+      "employer": "Dataroid",
+      "title": "Senior Product Manager",
+      "url": "https://jobs.lever.co/dataroid/12f585c4-68ca-47bd-8a0c-8354e25ab345",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "DoktorTakvimi",
+      "title": "Saha Satış Sorumlusu (İstanbul)",
+      "url": "https://jobs.ashbyhq.com/doktortakvimi/0a3b5ebf-7cc7-431d-8dd6-c56ba6c5998b",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "DoktorTakvimi",
+      "title": "Tele Satış Uzmanı (Tüm Türkiye)",
+      "url": "https://jobs.ashbyhq.com/doktortakvimi/47ae0a30-62d9-4e8c-b767-71b34764742b",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "DoktorTakvimi",
+      "title": "Product Support Specialist",
+      "url": "https://jobs.ashbyhq.com/doktortakvimi/31f8ce08-251b-4209-966a-0c7000b5f941",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Dream Games",
+      "title": "AI Content Producer",
+      "url": "https://jobs.lever.co/dreamgames/79b732cb-96d7-4792-b7bb-be5c48fa2218",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Dream Games",
+      "title": "AI Engineer, Performance Marketing",
+      "url": "https://jobs.lever.co/dreamgames/2a2c64d7-cc33-49a0-bf41-807b28933ca7",
+      "location": "Istanbul",
+      "areas": [
+        "Data and AI"
+      ]
+    },
+    {
+      "employer": "Dream Games",
+      "title": "Event Specialist, People",
+      "url": "https://jobs.lever.co/dreamgames/687ef59f-2424-4254-9d73-7f8e81f08fed",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Dream Games",
+      "title": "Executive Assistant",
+      "url": "https://jobs.lever.co/dreamgames/651c57dd-3705-4f5f-bc9f-7f9e4c4cab46",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Dream Games",
+      "title": "Game Developer",
+      "url": "https://jobs.lever.co/dreamgames/f16a1f7b-03e4-493a-b5bc-851f66e105cd",
+      "location": "Istanbul",
+      "areas": [
+        "Games"
+      ]
+    },
+    {
+      "employer": "Dream Games",
+      "title": "IT Manager",
+      "url": "https://jobs.lever.co/dreamgames/5be18f10-0ba2-4fec-b607-612487faf078",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Dream Games",
+      "title": "Marketing Illustrator",
+      "url": "https://jobs.lever.co/dreamgames/9905ab64-0fc7-4def-ac9b-a68c6c501a80",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Dream Games",
+      "title": "Product Specialist",
+      "url": "https://jobs.lever.co/dreamgames/42816904-a6cf-4cde-a5bd-89e755cf95f2",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Dream Games",
+      "title": "Product Specialist (New Grad)",
+      "url": "https://jobs.lever.co/dreamgames/dc798d6d-34a8-4784-aea7-e4c3c69d20bd",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Dream Games",
+      "title": "Senior Event Specialist, People",
+      "url": "https://jobs.lever.co/dreamgames/464546bc-67b4-4edd-beda-f334753faba4",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Dream Games",
+      "title": "Senior IT Specialist",
+      "url": "https://jobs.lever.co/dreamgames/12a19a00-30ad-4e34-aa4c-f9040fb31271",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Dream Games",
+      "title": "Senior Software Engineer",
+      "url": "https://jobs.lever.co/dreamgames/82f56330-c6c7-42d5-a438-731cda77dbd5",
+      "location": "Istanbul",
+      "areas": [
+        "Software engineering (general)"
+      ]
+    },
+    {
+      "employer": "Dream Games",
+      "title": "Software Engineer",
+      "url": "https://jobs.lever.co/dreamgames/ddd317b1-11f6-4477-9ca0-d35dd0a279fe",
+      "location": "Istanbul",
+      "areas": [
+        "Software engineering (general)"
+      ]
+    },
+    {
+      "employer": "Dream Games",
+      "title": "Software Engineer (New Grad)",
+      "url": "https://jobs.lever.co/dreamgames/0714caf0-4077-44f3-a1d4-8985b9baf1bc",
+      "location": "Istanbul",
+      "areas": [
+        "Software engineering (general)"
+      ]
+    },
+    {
+      "employer": "Dream Games",
+      "title": "Software Engineer (Part-time)",
+      "url": "https://jobs.lever.co/dreamgames/4c024afb-7daa-45ee-8d26-4d1212e2ad73",
+      "location": "Istanbul",
+      "areas": [
+        "Software engineering (general)"
+      ]
+    },
+    {
+      "employer": "Dream Games",
+      "title": "Software Engineer, Performance Marketing",
+      "url": "https://jobs.lever.co/dreamgames/2a650ecb-c187-4e06-a50a-ee23866a952e",
+      "location": "Istanbul",
+      "areas": [
+        "Software engineering (general)"
+      ]
+    },
+    {
+      "employer": "Dream Games",
+      "title": "Visual Development Artist",
+      "url": "https://jobs.lever.co/dreamgames/7d2e95ca-ef9c-4ff8-b856-319eedc12b66",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Dream Games",
+      "title": "Workplace Lead",
+      "url": "https://jobs.lever.co/dreamgames/aa34d0f0-09d7-4024-b34b-ef545e6c5543",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Good Job Games",
+      "title": "2D Animator, New Games ",
+      "url": "https://job-boards.greenhouse.io/goodjobgames/jobs/8032878003",
+      "location": "Sarıyer, Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Good Job Games",
+      "title": "2D Animator, Studio",
+      "url": "https://job-boards.greenhouse.io/goodjobgames/jobs/4968083003",
+      "location": "Sarıyer, Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Good Job Games",
+      "title": "2D Artist ",
+      "url": "https://job-boards.greenhouse.io/goodjobgames/jobs/5095371003",
+      "location": "Sarıyer, Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Good Job Games",
+      "title": "2D Artist, New Games",
+      "url": "https://job-boards.greenhouse.io/goodjobgames/jobs/7972949003",
+      "location": "Sarıyer, Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Good Job Games",
+      "title": "3D Animator, Marketing",
+      "url": "https://job-boards.greenhouse.io/goodjobgames/jobs/6296942003",
+      "location": "Sarıyer, Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Good Job Games",
+      "title": "3D Artist",
+      "url": "https://job-boards.greenhouse.io/goodjobgames/jobs/4303829003",
+      "location": "Sarıyer, Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Good Job Games",
+      "title": "3D Artist, Marketing",
+      "url": "https://job-boards.greenhouse.io/goodjobgames/jobs/6229125003",
+      "location": "Sarıyer, Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Good Job Games",
+      "title": "3D Artist, New Games",
+      "url": "https://job-boards.greenhouse.io/goodjobgames/jobs/7588887003",
+      "location": "Sarıyer, Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Good Job Games",
+      "title": "Accounting & Finance Specialist",
+      "url": "https://job-boards.greenhouse.io/goodjobgames/jobs/7661377003",
+      "location": "Sarıyer, Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Good Job Games",
+      "title": "AI Engineer ",
+      "url": "https://job-boards.greenhouse.io/goodjobgames/jobs/7489383003",
+      "location": "Sarıyer, Istanbul",
+      "areas": [
+        "Data and AI"
+      ]
+    },
+    {
+      "employer": "Good Job Games",
+      "title": "Data & Monetization Analyst",
+      "url": "https://job-boards.greenhouse.io/goodjobgames/jobs/7661366003",
+      "location": "Sarıyer, Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Good Job Games",
+      "title": "Game Developer ",
+      "url": "https://job-boards.greenhouse.io/goodjobgames/jobs/4221785003",
+      "location": "Sarıyer, Istanbul",
+      "areas": [
+        "Games"
+      ]
+    },
+    {
+      "employer": "Good Job Games",
+      "title": "Game Developer, New Games",
+      "url": "https://job-boards.greenhouse.io/goodjobgames/jobs/7972910003",
+      "location": "Sarıyer, Istanbul",
+      "areas": [
+        "Games"
+      ]
+    },
+    {
+      "employer": "Good Job Games",
+      "title": "Growth Manager ",
+      "url": "https://job-boards.greenhouse.io/goodjobgames/jobs/6625065003",
+      "location": "Sarıyer, Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Good Job Games",
+      "title": "Growth Manager - New Grad",
+      "url": "https://job-boards.greenhouse.io/goodjobgames/jobs/6103932003",
+      "location": "Sarıyer, Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Good Job Games",
+      "title": "Junior Game Developer",
+      "url": "https://job-boards.greenhouse.io/goodjobgames/jobs/5332845003",
+      "location": "Sarıyer, Istanbul",
+      "areas": [
+        "Games"
+      ]
+    },
+    {
+      "employer": "Good Job Games",
+      "title": "Junior Marketing Artist",
+      "url": "https://job-boards.greenhouse.io/goodjobgames/jobs/7715325003",
+      "location": "Sarıyer, Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Good Job Games",
+      "title": "Marketing Artist",
+      "url": "https://job-boards.greenhouse.io/goodjobgames/jobs/7451583003",
+      "location": "Sarıyer, Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Good Job Games",
+      "title": "Marketing Artist - Part Time",
+      "url": "https://job-boards.greenhouse.io/goodjobgames/jobs/7715335003",
+      "location": "Sarıyer, Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Good Job Games",
+      "title": "People & Culture Partner",
+      "url": "https://job-boards.greenhouse.io/goodjobgames/jobs/7661801003",
+      "location": "Sarıyer, İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "Good Job Games",
+      "title": "Product Specialist, New Games",
+      "url": "https://job-boards.greenhouse.io/goodjobgames/jobs/7972754003",
+      "location": "Sarıyer, Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Good Job Games",
+      "title": "Product Specialist - New Grad ",
+      "url": "https://job-boards.greenhouse.io/goodjobgames/jobs/6009136003",
+      "location": "Sarıyer, Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Good Job Games",
+      "title": "Senior 3D Artist",
+      "url": "https://job-boards.greenhouse.io/goodjobgames/jobs/7491067003",
+      "location": "Sarıyer, Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Good Job Games",
+      "title": "Senior Game Developer",
+      "url": "https://job-boards.greenhouse.io/goodjobgames/jobs/4668446003",
+      "location": "Sarıyer, Istanbul",
+      "areas": [
+        "Games"
+      ]
+    },
+    {
+      "employer": "Good Job Games",
+      "title": "Senior Software Engineer",
+      "url": "https://job-boards.greenhouse.io/goodjobgames/jobs/6284775003",
+      "location": "Sarıyer, Istanbul",
+      "areas": [
+        "Software engineering (general)"
+      ]
+    },
+    {
+      "employer": "Good Job Games",
+      "title": "Software Engineer",
+      "url": "https://job-boards.greenhouse.io/goodjobgames/jobs/6284774003",
+      "location": "Sarıyer, Istanbul",
+      "areas": [
+        "Software engineering (general)"
+      ]
+    },
+    {
+      "employer": "Good Job Games",
+      "title": "Software Engineer - New Grad",
+      "url": "https://job-boards.greenhouse.io/goodjobgames/jobs/7574002003",
+      "location": "Sarıyer, Istanbul",
+      "areas": [
+        "Software engineering (general)"
+      ]
+    },
+    {
+      "employer": "Good Job Games",
+      "title": "UI Artist ",
+      "url": "https://job-boards.greenhouse.io/goodjobgames/jobs/4618090003",
+      "location": "Sarıyer, Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Grand Games",
+      "title": "Game Developer",
+      "url": "https://jobs.lever.co/grand/800e31c8-10af-40eb-9026-701cce7b8c8a",
+      "location": "Istanbul",
+      "areas": [
+        "Games"
+      ]
+    },
+    {
+      "employer": "Grand Games",
+      "title": "Growth Manager",
+      "url": "https://jobs.lever.co/grand/31ed5794-58db-4791-baed-a97a5fe1312f",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Grand Games",
+      "title": "Product Manager - Level & Gameplay",
+      "url": "https://jobs.lever.co/grand/1775ba33-f1d5-454d-9c27-ad9c399ea27d",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Grand Games",
+      "title": "Senior 2D Artist",
+      "url": "https://jobs.lever.co/grand/2583f776-7aea-4923-a98c-cc76c3a53589",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Grand Games",
+      "title": "Senior 3D Artist",
+      "url": "https://jobs.lever.co/grand/424a74a8-1337-4eb9-9ffc-ed52eabba591",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Grand Games",
+      "title": "Senior 3D Marketing Artist",
+      "url": "https://jobs.lever.co/grand/f4facce6-b7d5-44de-9819-f9017cc43397",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Grand Games",
+      "title": "Senior Animator",
+      "url": "https://jobs.lever.co/grand/2d3bfaba-4adf-49b4-ba25-6c2a3ec75d1b",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Grand Games",
+      "title": "Senior Product Manager",
+      "url": "https://jobs.lever.co/grand/4e9fa2b2-abf8-47f3-a4e2-149c42f27a5f",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Grand Games",
+      "title": "VFX Artist",
+      "url": "https://jobs.lever.co/grand/90e8b0d1-f1a8-4452-a0ef-fb3c1d2393a4",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Insider One",
+      "title": "AI Product Manager - B2B SaaS (Martech) - Remote",
+      "url": "https://jobs.lever.co/insiderone/0ac29396-b964-4725-878c-6bac813280d6",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Insider One",
+      "title": "AI Transformation Engineer (Remote)",
+      "url": "https://jobs.lever.co/insiderone/49f7e3c9-2a0e-4f45-99bd-1af880b7615b",
+      "location": "Istanbul, Turkiye",
+      "areas": []
+    },
+    {
+      "employer": "Insider One",
+      "title": "Backend Software Developer (PHP/Laravel) – Remote",
+      "url": "https://jobs.lever.co/insiderone/97e2350d-5abc-4869-9337-07d3831e7841",
+      "location": "Turkey",
+      "areas": [
+        "Backend",
+        "Software engineering (general)"
+      ]
+    },
+    {
+      "employer": "Insider One",
+      "title": "Career Revolution: Hi-Tech (German Speaker)",
+      "url": "https://jobs.lever.co/insiderone/f509763c-6746-4e98-a5d7-ad3adc38691a",
+      "location": "Istanbul, Turkiye",
+      "areas": []
+    },
+    {
+      "employer": "Insider One",
+      "title": "Creative Director",
+      "url": "https://jobs.lever.co/insiderone/dd431b09-1ce0-47ec-a691-4f1758ec64d3",
+      "location": "Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Insider One",
+      "title": "Digital Sales Development Representative (Arabic Speaker)",
+      "url": "https://jobs.lever.co/insiderone/cb979347-3d29-44e7-8ae9-592abfe32fff",
+      "location": "Istanbul, Turkiye",
+      "areas": []
+    },
+    {
+      "employer": "Insider One",
+      "title": "Front-End Developer (Remote)",
+      "url": "https://jobs.lever.co/insiderone/11c5f0af-ed68-4ede-8c4e-9fc0dd56c517",
+      "location": "Istanbul, Turkiye",
+      "areas": [
+        "Frontend"
+      ]
+    },
+    {
+      "employer": "Insider One",
+      "title": "Genel Başvuru | Engelli Çalışan ( Yeni Mezun)",
+      "url": "https://jobs.lever.co/insiderone/508aa8d3-6be0-4e9b-a3d6-58c8ded11872",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Insider One",
+      "title": "Global Partner Marketing Manager - TR",
+      "url": "https://jobs.lever.co/insiderone/4221e581-84d0-4fc1-a5aa-95f3ece68c43",
+      "location": "Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Insider One",
+      "title": "Head of Finance",
+      "url": "https://jobs.lever.co/insiderone/ed49f8e6-676e-4d23-b9d5-b188b0510813",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Insider One",
+      "title": "Head of Finance Operations",
+      "url": "https://jobs.lever.co/insiderone/50654e8e-7f42-4652-80c7-d0bff9c4cb81",
+      "location": "Istanbul, Turkiye",
+      "areas": []
+    },
+    {
+      "employer": "Insider One",
+      "title": "Head of FP&A",
+      "url": "https://jobs.lever.co/insiderone/eb066bbe-f519-404e-8839-5c5c667ce06e",
+      "location": "Istanbul, Turkiye",
+      "areas": []
+    },
+    {
+      "employer": "Insider One",
+      "title": "Information Security Engineer  - (Remote)",
+      "url": "https://jobs.lever.co/insiderone/48999122-ba47-4d41-9934-647b826cafa4",
+      "location": "Turkey",
+      "areas": [
+        "Security"
+      ]
+    },
+    {
+      "employer": "Insider One",
+      "title": "IT Operations Lead/Manager",
+      "url": "https://jobs.lever.co/insiderone/0a8f7075-dc3a-4ff3-800b-429d2a3c4fac",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Insider One",
+      "title": "Junior Software Engineer (AI-Enabled) — Remote",
+      "url": "https://jobs.lever.co/insiderone/176f6234-e706-492e-a984-9eee80d28d22",
+      "location": "Turkey",
+      "areas": [
+        "Software engineering (general)"
+      ]
+    },
+    {
+      "employer": "Insider One",
+      "title": "People & Culture | Talent Attraction Specialist - (Global)",
+      "url": "https://jobs.lever.co/insiderone/460f88fa-dc6f-43b3-813e-0446f77567ef",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Insider One",
+      "title": "People Experience and Development Specialist",
+      "url": "https://jobs.lever.co/insiderone/900501c7-bf3b-40d6-997b-9505b76a2776",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Insider One",
+      "title": "Product Manager - B2B Software Platform",
+      "url": "https://jobs.lever.co/insiderone/08409a54-2c2c-45b6-a6af-f44d555e48a7",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Insider One",
+      "title": "Senior Designer, Brand & Web",
+      "url": "https://jobs.lever.co/insiderone/4f0f0c60-017f-4f17-b2a3-728c38c59d60",
+      "location": "Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Insider One",
+      "title": "Senior Digital Designer",
+      "url": "https://jobs.lever.co/insiderone/f050e033-5c83-4679-bef5-8b0ee954e0f1",
+      "location": "Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Insider One",
+      "title": "Senior Product Manager - (Remote)",
+      "url": "https://jobs.lever.co/insiderone/bb87ae79-f8d0-43ec-b84e-f0d54ed5006c",
+      "location": "Istanbul, Turkiye",
+      "areas": []
+    },
+    {
+      "employer": "Insider One",
+      "title": "Senior Security Engineer - Red Team (Remote)",
+      "url": "https://jobs.lever.co/insiderone/1838777d-1223-4a02-97cb-468886673d1c",
+      "location": "Istanbul, Turkiye",
+      "areas": [
+        "Security"
+      ]
+    },
+    {
+      "employer": "Insider One",
+      "title": "Software Engineer - (AI Native)",
+      "url": "https://jobs.lever.co/insiderone/ee932b8c-0e12-45c1-8c1a-1ec95c4e623c",
+      "location": "Turkey",
+      "areas": [
+        "Software engineering (general)"
+      ]
+    },
+    {
+      "employer": "Insider One",
+      "title": "Technical Support Specialist (German Speaker)",
+      "url": "https://jobs.lever.co/insiderone/8c54696c-3ee8-4305-a985-1f81b9b7b1fd",
+      "location": "Istanbul, Turkiye",
+      "areas": []
+    },
+    {
+      "employer": "iyzico",
+      "title": "Compliance Manager",
+      "url": "https://jobs.lever.co/iyzico/3369b757-8e80-460d-a84d-c833d1f1aff4",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "iyzico",
+      "title": "Senior Data Scientist",
+      "url": "https://jobs.lever.co/iyzico/dee3fbac-5a60-446b-89db-a7339d358409",
+      "location": "Istanbul",
+      "areas": [
+        "Data and AI"
+      ]
+    },
+    {
+      "employer": "Loop Games",
+      "title": "Marketing Artist (Motion Designer)",
+      "url": "https://jobs.lever.co/loopgames/8c069124-dda5-4dc1-9611-3d4eea90a312",
+      "location": "Ankara",
+      "areas": []
+    },
+    {
+      "employer": "Loop Games",
+      "title": "Product Manager",
+      "url": "https://jobs.lever.co/loopgames/feaebf6a-26d8-4151-9ee4-cb0c14c767de",
+      "location": "Ankara",
+      "areas": []
+    },
+    {
+      "employer": "Loop Games",
+      "title": "Product Specialist",
+      "url": "https://jobs.lever.co/loopgames/ac6d324c-a7e7-4e61-a3ad-04f946908a99",
+      "location": "Ankara",
+      "areas": []
+    },
+    {
+      "employer": "Medsien",
+      "title": "Back-End Developer",
+      "url": "https://job-boards.greenhouse.io/medsien/jobs/4557294007",
+      "location": "Istanbul, Turkey",
+      "areas": [
+        "Backend"
+      ]
+    },
+    {
+      "employer": "Medsien",
+      "title": "Central Support Specialist",
+      "url": "https://job-boards.greenhouse.io/medsien/jobs/5277963007",
+      "location": "Istanbul, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Medsien",
+      "title": "HR Operations Specialist",
+      "url": "https://job-boards.greenhouse.io/medsien/jobs/5271091007",
+      "location": "Istanbul, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Medsien",
+      "title": "Learning and Development Specialist",
+      "url": "https://job-boards.greenhouse.io/medsien/jobs/5217099007",
+      "location": "Istanbul, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Medsien",
+      "title": "Product Manager",
+      "url": "https://job-boards.greenhouse.io/medsien/jobs/5284373007",
+      "location": "Istanbul, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Medsien",
+      "title": "Senior Product Manager",
+      "url": "https://job-boards.greenhouse.io/medsien/jobs/5284366007",
+      "location": "Istanbul, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Medsien",
+      "title": "Senior QA Engineer / Senior Software Test Engineer",
+      "url": "https://job-boards.greenhouse.io/medsien/jobs/5233269007",
+      "location": "Istanbul, Turkey",
+      "areas": [
+        "QA and testing"
+      ]
+    },
+    {
+      "employer": "Medsien",
+      "title": "Senior Software Developer",
+      "url": "https://job-boards.greenhouse.io/medsien/jobs/5280032007",
+      "location": "Istanbul, Turkey",
+      "areas": [
+        "Software engineering (general)"
+      ]
+    },
+    {
+      "employer": "Medsien",
+      "title": "Software Engineering Manager",
+      "url": "https://job-boards.greenhouse.io/medsien/jobs/5202723007",
+      "location": "Istanbul, Turkey",
+      "areas": [
+        "Software engineering (general)"
+      ]
+    },
+    {
+      "employer": "Midas",
+      "title": "Analytics Manager",
+      "url": "https://jobs.lever.co/getmidas/ebd7df4f-afa5-42ea-a431-d51c1fdf50fa",
+      "location": "İstanbul, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Midas",
+      "title": "CEO Office",
+      "url": "https://jobs.lever.co/getmidas/06d7bba7-d5ce-40be-bf1c-5c105ef5e2d8",
+      "location": "İstanbul, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Midas",
+      "title": "Compliance Specialist",
+      "url": "https://jobs.lever.co/getmidas/eec4e898-29fe-40ac-bdd5-e1843d6dffa8",
+      "location": "İstanbul, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Midas",
+      "title": "Data Analyst, Performance Marketing",
+      "url": "https://jobs.lever.co/getmidas/00e534d8-5ed1-4de0-8f9b-43e9149523ec",
+      "location": "İstanbul, Turkey",
+      "areas": [
+        "Data and AI"
+      ]
+    },
+    {
+      "employer": "Midas",
+      "title": "Group IT Auditor",
+      "url": "https://jobs.lever.co/getmidas/33b1ecaa-2c38-4cea-83d2-38b372cc6328",
+      "location": "İstanbul, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Midas",
+      "title": "Join Midas - Talent & Culture",
+      "url": "https://jobs.lever.co/getmidas/933701c2-dfe7-4f46-b026-8e7d9131d3eb",
+      "location": "İstanbul, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Midas",
+      "title": "Midas Coders League",
+      "url": "https://jobs.lever.co/getmidas/dbb5fd25-e840-4780-b00c-b4a6c9d36e1b",
+      "location": "İstanbul, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Midas",
+      "title": "Product Manager",
+      "url": "https://jobs.lever.co/getmidas/ed388233-6400-4fc1-a1d1-9687324c1eb3",
+      "location": "İstanbul, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Midas",
+      "title": "Product Specialist",
+      "url": "https://jobs.lever.co/getmidas/0cc957ea-ceef-4609-88b1-024e301279fc",
+      "location": "İstanbul, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Midas",
+      "title": "Quantitative Developer",
+      "url": "https://jobs.lever.co/getmidas/06b3a906-b139-41b7-b3a2-b794992af3f2",
+      "location": "İstanbul, Turkey",
+      "areas": [
+        "Financial software"
+      ]
+    },
+    {
+      "employer": "Midas",
+      "title": "Senior Blockchain Engineer",
+      "url": "https://jobs.lever.co/getmidas/0f746779-a756-49b0-94f4-d1c5232ee94c",
+      "location": "Turkey",
+      "areas": [
+        "Financial software"
+      ]
+    },
+    {
+      "employer": "Midas",
+      "title": "Senior Growth Strategy",
+      "url": "https://jobs.lever.co/getmidas/28542a52-6354-45b6-8ba6-42879583da90",
+      "location": "İstanbul, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Midas",
+      "title": "Senior Software Engineer",
+      "url": "https://jobs.lever.co/getmidas/536b118f-21c2-4467-b893-c5dc3c90e9ca",
+      "location": "Turkey",
+      "areas": [
+        "Software engineering (general)"
+      ]
+    },
+    {
+      "employer": "Midas",
+      "title": "Software Engineer",
+      "url": "https://jobs.lever.co/getmidas/79cce898-6063-43b2-819a-2f4072dd8bcb",
+      "location": "İstanbul, Turkey",
+      "areas": [
+        "Software engineering (general)"
+      ]
+    },
+    {
+      "employer": "Midas",
+      "title": "Software Engineer, Atlas (Frontend)",
+      "url": "https://jobs.lever.co/getmidas/356a88af-cf73-4137-b843-e7b66c6929d0",
+      "location": "Turkey",
+      "areas": [
+        "Frontend",
+        "Software engineering (general)"
+      ]
+    },
+    {
+      "employer": "Midas",
+      "title": "Uyum Operasyon Uzmanı",
+      "url": "https://jobs.lever.co/getmidas/0bebdc52-9fdc-48d5-b927-460d6dad65e2",
+      "location": "İstanbul, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "OKX",
+      "title": "Business Development Manager",
+      "url": "https://job-boards.greenhouse.io/okx/jobs/7785523003",
+      "location": "Istanbul, Türkiye",
+      "areas": []
+    },
+    {
+      "employer": "OKX",
+      "title": "Compliance Analyst ",
+      "url": "https://job-boards.greenhouse.io/okx/jobs/8047102003",
+      "location": "Istanbul, Türkiye",
+      "areas": []
+    },
+    {
+      "employer": "OKX",
+      "title": "Head of Risk - Türkiye",
+      "url": "https://job-boards.greenhouse.io/okx/jobs/8006392003",
+      "location": "Istanbul, Türkiye",
+      "areas": []
+    },
+    {
+      "employer": "OKX",
+      "title": "Senior Compliance Analyst ",
+      "url": "https://job-boards.greenhouse.io/okx/jobs/7979052003",
+      "location": "Istanbul, Türkiye",
+      "areas": []
+    },
+    {
+      "employer": "Picus Security",
+      "title": "Senior Technology Risk & Audit Specialist",
+      "url": "https://jobs.lever.co/picus/3025ad8b-60a0-4e4d-8375-5a6954cf1e68",
+      "location": "Ankara, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Picus Security",
+      "title": "Solution Architect",
+      "url": "https://jobs.lever.co/picus/627faeeb-a649-4008-8bcc-ebe1e72028d8",
+      "location": "Ankara, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Sezzle",
+      "title": "Data Engineer II, Credit Reporting",
+      "url": "https://job-boards.greenhouse.io/sezzle/jobs/8061535003",
+      "location": "Türkiye",
+      "areas": [
+        "Data and AI"
+      ]
+    },
+    {
+      "employer": "Sezzle",
+      "title": "Fraud Operations Analyst (Turkey)",
+      "url": "https://job-boards.greenhouse.io/sezzle/jobs/8010086003",
+      "location": "Türkiye, Remote",
+      "areas": []
+    },
+    {
+      "employer": "Sezzle",
+      "title": "Fraud Operations Intern ",
+      "url": "https://job-boards.greenhouse.io/sezzle/jobs/8198862003",
+      "location": "Türkiye",
+      "areas": []
+    },
+    {
+      "employer": "Sezzle",
+      "title": "Junior Software Engineer with Accounting Experience ",
+      "url": "https://job-boards.greenhouse.io/sezzle/jobs/6668069003",
+      "location": "Türkiye, Remote",
+      "areas": [
+        "Software engineering (general)"
+      ]
+    },
+    {
+      "employer": "Sezzle",
+      "title": "Mobile Engineer (Turkey, All Levels)",
+      "url": "https://job-boards.greenhouse.io/sezzle/jobs/7541145003",
+      "location": "Türkiye",
+      "areas": [
+        "Mobile (general/cross-platform)"
+      ]
+    },
+    {
+      "employer": "Sezzle",
+      "title": "Principal Infrastructure Engineer",
+      "url": "https://job-boards.greenhouse.io/sezzle/jobs/7993260003",
+      "location": "Türkiye, Remote",
+      "areas": [
+        "Platform and reliability"
+      ]
+    },
+    {
+      "employer": "Sezzle",
+      "title": "Senior Database Reliability Engineer ",
+      "url": "https://job-boards.greenhouse.io/sezzle/jobs/7725285003",
+      "location": "Türkiye, Remote",
+      "areas": [
+        "Platform and reliability"
+      ]
+    },
+    {
+      "employer": "Sezzle",
+      "title": "Senior Data Engineer, Credit Reporting",
+      "url": "https://job-boards.greenhouse.io/sezzle/jobs/8060796003",
+      "location": "Türkiye",
+      "areas": [
+        "Data and AI"
+      ]
+    },
+    {
+      "employer": "Sezzle",
+      "title": "Senior Payments Engineer — Acquiring & Payment Processing",
+      "url": "https://job-boards.greenhouse.io/sezzle/jobs/7779221003",
+      "location": "Türkiye, Remote",
+      "areas": [
+        "Financial software"
+      ]
+    },
+    {
+      "employer": "Sezzle",
+      "title": "Senior Security Engineer, Detection & Response",
+      "url": "https://job-boards.greenhouse.io/sezzle/jobs/8031436003",
+      "location": "Türkiye, Remote",
+      "areas": [
+        "Security"
+      ]
+    },
+    {
+      "employer": "Sezzle",
+      "title": "Senior Security Engineer, Network & Zero Trust",
+      "url": "https://job-boards.greenhouse.io/sezzle/jobs/8032198003",
+      "location": "Türkiye, Remote",
+      "areas": [
+        "Security"
+      ]
+    },
+    {
+      "employer": "Sezzle",
+      "title": "Senior Site Reliability Engineer",
+      "url": "https://job-boards.greenhouse.io/sezzle/jobs/7612268003",
+      "location": "Türkiye, Remote",
+      "areas": [
+        "Platform and reliability"
+      ]
+    },
+    {
+      "employer": "Sezzle",
+      "title": "Senior Software Engineer, Security Platform",
+      "url": "https://job-boards.greenhouse.io/sezzle/jobs/8031665003",
+      "location": "Türkiye, Remote",
+      "areas": [
+        "Software engineering (general)"
+      ]
+    },
+    {
+      "employer": "Sezzle",
+      "title": "Senior Software Engineer (Turkey)",
+      "url": "https://job-boards.greenhouse.io/sezzle/jobs/6275711003",
+      "location": "Türkiye, Remote",
+      "areas": [
+        "Software engineering (general)"
+      ]
+    },
+    {
+      "employer": "Sezzle",
+      "title": "Senior Software Engineer with Accounting Experience ",
+      "url": "https://job-boards.greenhouse.io/sezzle/jobs/7527790003",
+      "location": "Türkiye, Remote",
+      "areas": [
+        "Software engineering (general)"
+      ]
+    },
+    {
+      "employer": "Sezzle",
+      "title": "Software Engineer II (Turkey)",
+      "url": "https://job-boards.greenhouse.io/sezzle/jobs/6503001003",
+      "location": "Türkiye, Remote",
+      "areas": [
+        "Software engineering (general)"
+      ]
+    },
+    {
+      "employer": "Sezzle",
+      "title": "Software Engineer II with Accounting Experience ",
+      "url": "https://job-boards.greenhouse.io/sezzle/jobs/7527806003",
+      "location": "Türkiye, Remote",
+      "areas": [
+        "Software engineering (general)"
+      ]
+    },
+    {
+      "employer": "Spyke Games",
+      "title": "Data Analyst",
+      "url": "https://jobs.lever.co/spyke-games/5ed2a2e8-c2f3-48e7-a6b7-8de049055960",
+      "location": "Istanbul",
+      "areas": [
+        "Data and AI"
+      ]
+    },
+    {
+      "employer": "Spyke Games",
+      "title": "Performance Marketing Specialist",
+      "url": "https://jobs.lever.co/spyke-games/8e5d6d79-2056-4c83-9c68-4de94e2a8890",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Spyke Games",
+      "title": "Product Specialist (Yarn Loop)",
+      "url": "https://jobs.lever.co/spyke-games/135e910b-b183-4114-a66e-6e37da46e7ab",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Spyke Games",
+      "title": "Senior Game Developer",
+      "url": "https://jobs.lever.co/spyke-games/2b9ed21c-b392-4d09-916d-fd8ecacc05b7",
+      "location": "Istanbul",
+      "areas": [
+        "Games"
+      ]
+    },
+    {
+      "employer": "Trendyol",
+      "title": "Accounting Professionals",
+      "url": "https://jobs.lever.co/trendyol/e8b39b27-d415-4925-8454-99c22b879a28",
+      "location": "Kocaeli / Çayırova",
+      "areas": []
+    },
+    {
+      "employer": "Trendyol",
+      "title": "Accounting Professionals (Sales & Collection)",
+      "url": "https://jobs.lever.co/trendyol/cd8320e1-4783-4bc6-a77f-a56b956a49af",
+      "location": "Istanbul / Maslak",
+      "areas": []
+    },
+    {
+      "employer": "Trendyol",
+      "title": "Administrative Affairs Professionals",
+      "url": "https://jobs.lever.co/trendyol/4163af9d-fa65-4ace-b84a-198900c25bea",
+      "location": "Istanbul / Maslak",
+      "areas": []
+    },
+    {
+      "employer": "Trendyol",
+      "title": "Brand Professionals - Trendyol Luxe",
+      "url": "https://jobs.lever.co/trendyol/d95a3624-45d2-4521-9a9e-3de517d4b5bd",
+      "location": "Istanbul / Maslak",
+      "areas": []
+    },
+    {
+      "employer": "Trendyol",
+      "title": "Business Audit Professional",
+      "url": "https://jobs.lever.co/trendyol/93e099d9-e3eb-4e70-b41c-51399f7f8662",
+      "location": "Istanbul / Maslak",
+      "areas": []
+    },
+    {
+      "employer": "Trendyol",
+      "title": "Buying Professionals - Kids",
+      "url": "https://jobs.lever.co/trendyol/1db1988b-fb21-401f-80f9-0ed5d9dba5de",
+      "location": "Istanbul / Maslak",
+      "areas": []
+    },
+    {
+      "employer": "Trendyol",
+      "title": "Cards Business Development Professionals",
+      "url": "https://jobs.lever.co/trendyol/0bee5d97-b522-4aa0-90ae-0fbde5b647b2",
+      "location": "Istanbul / Maslak",
+      "areas": []
+    },
+    {
+      "employer": "Trendyol",
+      "title": "Category Intelligence & Planning Leaders - TR 3P Nonfashion",
+      "url": "https://jobs.lever.co/trendyol/fe4e86f2-f576-4c32-9f99-3c10779a3775",
+      "location": "Istanbul / Maslak",
+      "areas": []
+    },
+    {
+      "employer": "Trendyol",
+      "title": "Category Intelligence & Planning Professionals",
+      "url": "https://jobs.lever.co/trendyol/ddc5a030-8138-4db9-ac8d-3a4c92c15f2e",
+      "location": "Istanbul / Maslak",
+      "areas": []
+    },
+    {
+      "employer": "Trendyol",
+      "title": "Category Professionals - Luxury",
+      "url": "https://jobs.lever.co/trendyol/3891c60b-cfda-49c1-a17b-9f3b39aa670e",
+      "location": "Istanbul / Maslak",
+      "areas": []
+    },
+    {
+      "employer": "Trendyol",
+      "title": "Central Planning & Optimization Data Analytics Professionals",
+      "url": "https://jobs.lever.co/trendyol/2cbead57-af7a-45ac-a3a6-ceda7d15bc9f",
+      "location": "Istanbul / Maslak",
+      "areas": []
+    },
+    {
+      "employer": "Trendyol",
+      "title": "CRM Analytics Professionals (Fintech Services)",
+      "url": "https://jobs.lever.co/trendyol/0c0401be-5b75-401d-88a7-caeb0a52b938",
+      "location": "Istanbul / Maslak",
+      "areas": []
+    },
+    {
+      "employer": "Trendyol",
+      "title": "Customer Experience Development Professionals -  Fintech",
+      "url": "https://jobs.lever.co/trendyol/fb889e81-7cf6-4ac8-b7de-5ce9eddef29f",
+      "location": "Istanbul / Maslak",
+      "areas": []
+    },
+    {
+      "employer": "Trendyol",
+      "title": "Data Engineer",
+      "url": "https://jobs.lever.co/trendyol/eaa523a4-5e9e-4b4a-b674-ee7906be309c",
+      "location": "Istanbul / Maslak",
+      "areas": [
+        "Data and AI"
+      ]
+    },
+    {
+      "employer": "Trendyol",
+      "title": "Data Science Professionals",
+      "url": "https://jobs.lever.co/trendyol/9ab5e4d0-1965-4a28-b8a6-7de57f163e8d",
+      "location": "Istanbul / Maslak",
+      "areas": [
+        "Data and AI"
+      ]
+    },
+    {
+      "employer": "Trendyol",
+      "title": "Data Scientist (Pre-Search)",
+      "url": "https://jobs.lever.co/trendyol/33c48e9f-762d-4081-ba43-ff7be9844310",
+      "location": "Istanbul / Maslak",
+      "areas": [
+        "Data and AI"
+      ]
+    },
+    {
+      "employer": "Trendyol",
+      "title": "Field Sales and Business Development Leader - İç Anadolu",
+      "url": "https://jobs.lever.co/trendyol/5a8362a1-3390-4697-96c4-38ce8e65cc80",
+      "location": "Ankara",
+      "areas": []
+    },
+    {
+      "employer": "Trendyol",
+      "title": "Growth, CRM Analyst",
+      "url": "https://jobs.lever.co/trendyol/8c935569-4d26-4f25-b015-a15366fa20cd",
+      "location": "Istanbul / Maslak",
+      "areas": []
+    },
+    {
+      "employer": "Trendyol",
+      "title": "HR System Development Professionals",
+      "url": "https://jobs.lever.co/trendyol/825bb61b-4121-4112-ba71-2d75c22e5897",
+      "location": "Istanbul / Maslak",
+      "areas": []
+    },
+    {
+      "employer": "Trendyol",
+      "title": "International Accounting Professionals",
+      "url": "https://jobs.lever.co/trendyol/3bdf695d-9823-474e-96cc-2d66e0886803",
+      "location": "Istanbul / Maslak",
+      "areas": []
+    },
+    {
+      "employer": "Trendyol",
+      "title": "Key Account Manager Professionals - Fintech",
+      "url": "https://jobs.lever.co/trendyol/6726304e-2dd4-4bc3-864b-007b94f1d6d9",
+      "location": "Istanbul / Maslak",
+      "areas": []
+    },
+    {
+      "employer": "Trendyol",
+      "title": "Operations Strategy and Business Intelligence Professionals",
+      "url": "https://jobs.lever.co/trendyol/e11c5931-6f4c-4086-b0ed-0b98c9abd2eb",
+      "location": "Kocaeli / Çayırova",
+      "areas": []
+    },
+    {
+      "employer": "Trendyol",
+      "title": "Organizational Development Professionals",
+      "url": "https://jobs.lever.co/trendyol/e9de4d3c-68a4-4ce4-b5e6-110f70b9968a",
+      "location": "Istanbul / Maslak",
+      "areas": []
+    },
+    {
+      "employer": "Trendyol",
+      "title": "Sales Operations Professionals - Fintech",
+      "url": "https://jobs.lever.co/trendyol/cc86c5ff-3b80-4db9-97fd-c4bad5ee8bef",
+      "location": "Istanbul / Maslak",
+      "areas": []
+    },
+    {
+      "employer": "Trendyol",
+      "title": "Software Engineer (Fintech Services)",
+      "url": "https://jobs.lever.co/trendyol/a12283f5-db1c-4765-880a-27a3c660505f",
+      "location": "Istanbul / Maslak",
+      "areas": [
+        "Software engineering (general)"
+      ]
+    },
+    {
+      "employer": "Trendyol",
+      "title": "Tax & Accounting Professionals - Fintech",
+      "url": "https://jobs.lever.co/trendyol/480f8aae-eb6a-4bf1-9c9d-c351e527b97d",
+      "location": "Istanbul / Maslak",
+      "areas": []
+    },
+    {
+      "employer": "Trendyol",
+      "title": "Treasury Professionals",
+      "url": "https://jobs.lever.co/trendyol/ab242d73-bfbf-4b93-adc4-d54c776c69a4",
+      "location": "Istanbul / Maslak",
+      "areas": []
+    },
+    {
+      "employer": "Trendyol",
+      "title": "Trendyol Express - Bölge Yöneticisi/Diyarbakır",
+      "url": "https://jobs.lever.co/trendyol/3715544f-449d-4b6c-a7b6-0cb8c98c09b6",
+      "location": "Diyarbakır",
+      "areas": []
+    },
+    {
+      "employer": "Trendyol",
+      "title": "Trendyol Express - Bölge Yöneticisi/Sivas",
+      "url": "https://jobs.lever.co/trendyol/6e2b3925-c5c1-43b9-af7a-1f1117d11051",
+      "location": "Sivas",
+      "areas": []
+    },
+    {
+      "employer": "Trendyol",
+      "title": "Trendyol Express - Dağıtım Merkezi Operasyon Yöneticisi (İzmir)",
+      "url": "https://jobs.lever.co/trendyol/56cf5f7e-43f8-49bd-bfaf-2168f1209850",
+      "location": "İzmir",
+      "areas": []
+    },
+    {
+      "employer": "Trendyol",
+      "title": "Trendyol Express - Şube Lideri - Edirne",
+      "url": "https://jobs.lever.co/trendyol/a8ed53ae-20d3-408c-b9b6-a00436805ab4",
+      "location": "Edirne",
+      "areas": []
+    },
+    {
+      "employer": "Trendyol",
+      "title": "Trendyol Express - Şube Lideri - Mardin",
+      "url": "https://jobs.lever.co/trendyol/89bc33ab-33ab-4569-9c5f-ed9abf57ba3b",
+      "location": "Mardin",
+      "areas": []
+    },
+    {
+      "employer": "Trendyol",
+      "title": "Trendyol Express - Şube Lideri - Nizip",
+      "url": "https://jobs.lever.co/trendyol/d3de1cfe-f46c-424d-be27-f69fc3cfeacd",
+      "location": "Gaziantep",
+      "areas": []
+    },
+    {
+      "employer": "Trendyol",
+      "title": "Trendyol Express - Şube Lideri - Van",
+      "url": "https://jobs.lever.co/trendyol/990d1389-71bd-42c3-8ae4-ac366f357e87",
+      "location": "Van",
+      "areas": []
+    },
+    {
+      "employer": "Trendyol Go",
+      "title": "Backend Developer",
+      "url": "https://jobs.lever.co/trendyol-go/cc14ebf0-e169-4f5b-a7ac-3441b76457b1",
+      "location": "İstanbul",
+      "areas": [
+        "Backend"
+      ]
+    },
+    {
+      "employer": "Trendyol Go",
+      "title": "Operations Professionals",
+      "url": "https://jobs.lever.co/trendyol-go/d400d700-e253-427c-a0a3-f96227fa9cb2",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "Trendyol Go",
+      "title": "Operations Professionals (İzmir)",
+      "url": "https://jobs.lever.co/trendyol-go/e2e4664d-d641-48c1-bc32-ddec14362426",
+      "location": "İzmir",
+      "areas": []
+    },
+    {
+      "employer": "Trendyol Go",
+      "title": "Outbound Sales Professionals",
+      "url": "https://jobs.lever.co/trendyol-go/c8d0f10f-8066-48c7-a74e-2a54aa0d7152",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "Trendyol Go",
+      "title": "Partner Business Development Professionals",
+      "url": "https://jobs.lever.co/trendyol-go/12a455dc-ca4b-42d2-99ab-f62a28022fa1",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "Trendyol Go",
+      "title": "Seller Engagement & Growth Professionals",
+      "url": "https://jobs.lever.co/trendyol-go/32b8f36e-4699-4d73-afad-4e245a3902a6",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "Voodoo",
+      "title": "Publishing Manager - Türkiye",
+      "url": "https://jobs.ashbyhq.com/voodoo/3638f84b-c3d2-4578-b246-590d24455a01",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Voodoo",
+      "title": "Senior Game Data Analyst - Paper.io 2",
+      "url": "https://jobs.ashbyhq.com/voodoo/1fbf08d4-9b69-48cb-bb06-08064d64d2cd",
+      "location": "Istanbul",
+      "areas": [
+        "Data and AI"
+      ]
+    },
+    {
+      "employer": "Voodoo",
+      "title": "Art Director - Draft Showdown",
+      "url": "https://jobs.ashbyhq.com/voodoo/57370d09-718f-4d9d-a43f-440aeb9be344",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Voodoo",
+      "title": "UI/UX Artist - Midcore Unit",
+      "url": "https://jobs.ashbyhq.com/voodoo/795c93a6-efdb-4264-96eb-3ca170e0cd35",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Voodoo",
+      "title": "Senior Game Developer (Game Feel, UI, Animations, VFX) - Paper.io2",
+      "url": "https://jobs.ashbyhq.com/voodoo/8f86c74e-7d06-447d-bd1b-ad268e46bb3e",
+      "location": "Istanbul",
+      "areas": [
+        "Games"
+      ]
+    },
+    {
+      "employer": "Voodoo",
+      "title": "Game Lead - Flappy Dunk",
+      "url": "https://jobs.ashbyhq.com/voodoo/216b6cc7-66e5-4dc9-bbd9-3e46a966acc2",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Voodoo",
+      "title": "General Manager - Live Studios (Hybrid-casual Games)",
+      "url": "https://jobs.ashbyhq.com/voodoo/ee013fb9-3719-430a-b07a-78a25b500370",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Voodoo",
+      "title": "Game Artist - Puzzle Games",
+      "url": "https://jobs.ashbyhq.com/voodoo/87ee72b6-7d8b-472b-90e9-30cdb3d131b2",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Voodoo",
+      "title": "Senior Product Manager - Paper.io 2",
+      "url": "https://jobs.ashbyhq.com/voodoo/c0f28476-2ff1-4206-b344-530c9f36a73a",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Voodoo",
+      "title": "Gameplay & UI Developer - Paper.io2",
+      "url": "https://jobs.ashbyhq.com/voodoo/1c428341-5d1f-4903-aacd-1ce05b04dc17",
+      "location": "Istanbul",
+      "areas": [
+        "Games"
+      ]
+    },
+    {
+      "employer": "Voodoo",
+      "title": "Product Manager - Helix Jump",
+      "url": "https://jobs.ashbyhq.com/voodoo/ef98588d-984f-489a-9944-7efaeafe7d60",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Voodoo",
+      "title": "Game Designer (Multiplayer Gameplay Modes) - Paper.io 2",
+      "url": "https://jobs.ashbyhq.com/voodoo/d633533c-ac08-440e-a6b6-33351b3ad005",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Voodoo",
+      "title": "Talent Acquisition Associate - Growth - Türkiye",
+      "url": "https://jobs.ashbyhq.com/voodoo/ab4f3ef3-bf29-4ec7-b8a2-1a0e67b48a44",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Voodoo",
+      "title": "Game Lead - Crazy Kick",
+      "url": "https://jobs.ashbyhq.com/voodoo/de2f9e66-cf05-47e1-9d2f-1368475068a0",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Voodoo",
+      "title": "Senior QA Tester - Paper.io 2",
+      "url": "https://jobs.ashbyhq.com/voodoo/256c76e9-4d4f-45c7-b4e0-978ff2328330",
+      "location": "Istanbul",
+      "areas": [
+        "QA and testing"
+      ]
+    },
+    {
+      "employer": "Voodoo",
+      "title": "Lead Game Developer - Woodturning",
+      "url": "https://jobs.ashbyhq.com/voodoo/9d7b5de1-4b5a-42fd-9473-7628b7f3da78",
+      "location": "Istanbul",
+      "areas": [
+        "Games"
+      ]
+    },
+    {
+      "employer": "Voodoo",
+      "title": "Product Manager - Puzzle Games",
+      "url": "https://jobs.ashbyhq.com/voodoo/8b7c1ea9-ed73-4ec7-bd1e-a687552f6ef6",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Voodoo",
+      "title": "2D Artist - Puzzle Unit",
+      "url": "https://jobs.ashbyhq.com/voodoo/9404c207-d940-457c-be6a-7bb70c912902",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Zynga",
+      "title": "Consumer Insights Manager",
+      "url": "https://job-boards.greenhouse.io/zyngacareers/jobs/6100058004",
+      "location": "Barcelona, Spain; Berlin, Germany; Dublin, Ireland; Helsinki, Finland; Istanbul, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Project Purchasing Engineer",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000160622864",
+      "location": "Bursa",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Purchasing Quality Engineer",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000160534969",
+      "location": "Bursa",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Smart Start Mechanical Design Engineer",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000160249358",
+      "location": "Bursa",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Smart Start Data Analytics & Digitalization Engineer",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000159887118",
+      "location": "Bursa",
+      "areas": [
+        "Data and AI"
+      ]
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Smart Start Surface Technology Engineer",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000159802962",
+      "location": "Bursa",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Purchasing Smart Start",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000159606940",
+      "location": "Bursa",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "SAP Process Expert  ",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000159297664",
+      "location": "Manisa",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Local Product Owner",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000158719009",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Power Tools Field Supervisor",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000157987214",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Smart Experience 2026 - Online Event",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000157814219",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Project Manager",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000157733324",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Smart Start Automation Engineer",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000157155355",
+      "location": "Bursa",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Smart Start Logistics Engineer",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000156772318",
+      "location": "Bursa",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Logistics Performance and Operations Coordinator",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000156719599",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Brand Manager",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000156470859",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Purchasing Engineering Smart Start",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000156232239",
+      "location": "Manisa",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Senior Development Engineer",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000155723739",
+      "location": "Manisa",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Fleet Operations Responsible",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000155032184",
+      "location": "İstanbul/Bursa",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Design Engineer",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000154921219",
+      "location": "Manisa",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Logistics Smart Start",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000154607269",
+      "location": "Manisa",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Operational Excellence Smart Start",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000154587099",
+      "location": "Manisa",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Product Development Engineer",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000154366219",
+      "location": "Bursa",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Controlling Smart Start",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000154087965",
+      "location": "Manisa",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Maintenance Engineer",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000154048569",
+      "location": "Manisa",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Senior Application Software Engineer",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000154037659",
+      "location": "Manisa",
+      "areas": [
+        "Software engineering (general)"
+      ]
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Elektrik Teknisyeni - Gebze",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000154005429",
+      "location": "Kocaeli",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Smart Start Controlling & Process Improvement",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000153755198",
+      "location": "Bursa",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Digitalization Smart Start",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000152593859",
+      "location": "Bursa",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Smart Start Work Planning Engineer",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000152395908",
+      "location": "Bursa",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Smart Start  Digital Image Processing Engineer",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000152330664",
+      "location": "Bursa",
+      "areas": [
+        "Data and AI"
+      ]
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Development Engineer",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000152111059",
+      "location": "Manisa",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Project Purchasing Smart Start",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000150288679",
+      "location": "Bursa",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Indirect Purchasing Smart Start - Recruitment Days",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000150015409",
+      "location": "Bursa",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Smart Start Marketing and Communication",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000149781159",
+      "location": "Bursa",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Smart Start Business Analyst",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000149779358",
+      "location": "Bursa",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Controlling Responsible",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000149653694",
+      "location": "Bursa",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Field Support Responsible (Antalya)",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000147225805",
+      "location": "Antalya",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Smart Start Series Support & Validation Engineer",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000146919008",
+      "location": "Bursa",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": " Plant Maintenance & Facility Management Engineer ",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000146409534",
+      "location": "Kocaeli",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Servis Teknisyeni (Mobile Hydraulic)-Gebze",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000142810479",
+      "location": "Kocaeli",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Human Resources Smart Start",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000142559915",
+      "location": "Bursa",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Logistics Smart Start",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000138606539",
+      "location": "Bursa",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Servis Teknisyeni (IHS) - Gebze",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000134698279",
+      "location": "Kocaeli",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Export Control Lead Expert",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000124356064",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "R&D Smart Start",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000124345989",
+      "location": "Yunusemre",
+      "areas": []
+    },
+    {
+      "employer": "Bosch Group",
+      "title": "Smart Start Production Engineer",
+      "url": "https://jobs.smartrecruiters.com/BoschGroup/744000118376502",
+      "location": "Bursa",
+      "areas": []
+    },
+    {
+      "employer": "Renesas Electronics",
+      "title": "Staff Analog Design Engineer",
+      "url": "https://jobs.smartrecruiters.com/RenesasElectronics/744000152135612",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Renesas Electronics",
+      "title": "AMS Verification Engineer",
+      "url": "https://jobs.smartrecruiters.com/RenesasElectronics/744000132827885",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Renesas Electronics",
+      "title": "Senior AMS Verification Engineer            ",
+      "url": "https://jobs.smartrecruiters.com/RenesasElectronics/744000131394195",
+      "location": "Istanbul",
+      "areas": []
+    },
+    {
+      "employer": "Delivery Hero",
+      "title": "Rider Senior Supervisor",
+      "url": "https://jobs.smartrecruiters.com/DeliveryHero/744000159367773",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "Delivery Hero",
+      "title": "Rider Senior Supervisor",
+      "url": "https://jobs.smartrecruiters.com/DeliveryHero/744000158030349",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "Delivery Hero",
+      "title": "Rider Senior Supervisor",
+      "url": "https://jobs.smartrecruiters.com/DeliveryHero/744000158030239",
+      "location": "Antalya",
+      "areas": []
+    },
+    {
+      "employer": "Delivery Hero",
+      "title": "Virtual Account Management Specialist",
+      "url": "https://jobs.smartrecruiters.com/DeliveryHero/744000154919539",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "Delivery Hero",
+      "title": "Rider Senior Supervisor",
+      "url": "https://jobs.smartrecruiters.com/DeliveryHero/744000148737319",
+      "location": "Ankara",
+      "areas": []
+    },
+    {
+      "employer": "Brandefense",
+      "title": "Digital Marketing Specialist",
+      "url": "https://jobs.smartrecruiters.com/BRANDEFENSE/743999956314083",
+      "location": "Ankara",
+      "areas": []
+    },
+    {
+      "employer": "Brandefense",
+      "title": "Customer Success Specialist",
+      "url": "https://jobs.smartrecruiters.com/BRANDEFENSE/743999954448623",
+      "location": "Ankara",
+      "areas": []
+    },
+    {
+      "employer": "Complead",
+      "title": "B2B Content & Growth Marketer",
+      "url": "https://apply.workable.com/complead/j/191B5A5D69/",
+      "location": "Üsküdar, İstanbul, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Complead",
+      "title": "Business Development Manager",
+      "url": "https://apply.workable.com/complead/j/36F1166A65/",
+      "location": "Üsküdar, İstanbul, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Complead",
+      "title": "Customer Success Specialist",
+      "url": "https://apply.workable.com/complead/j/4F889B6DC4/",
+      "location": "Üsküdar, İstanbul, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Complead",
+      "title": "Growth Specialist",
+      "url": "https://apply.workable.com/complead/j/7EF7CCCA3E/",
+      "location": "Üsküdar, İstanbul, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Complead",
+      "title": "Head of Global Sales",
+      "url": "https://apply.workable.com/complead/j/24E6AAFFC4/",
+      "location": "Üsküdar, İstanbul, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Complead",
+      "title": "Lead Product Manager",
+      "url": "https://apply.workable.com/complead/j/4D8E650572/",
+      "location": "Üsküdar, Kuzguncuk, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Complead",
+      "title": "Management Trainee",
+      "url": "https://apply.workable.com/complead/j/CD8087281D/",
+      "location": "Üsküdar, İstanbul, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Complead",
+      "title": "Product Owner",
+      "url": "https://apply.workable.com/complead/j/462AEB32F9/",
+      "location": "Üsküdar, İstanbul, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Datasurgery",
+      "title": "Go-to-Market (GTM) & Sales Specialist (HealthCare)",
+      "url": "https://apply.workable.com/datasurgery-yazilim-ve-danismanlik-1/j/95C08DA0D0/",
+      "location": "Istanbul, İstanbul, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Homa",
+      "title": "AI Creative Producer",
+      "url": "https://apply.workable.com/homa-games/j/B1DB7F2232/",
+      "location": "Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Homa",
+      "title": "Director of Product",
+      "url": "https://apply.workable.com/homa-games/j/8E9D124996/",
+      "location": "Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Homa",
+      "title": "Lead Product Manager",
+      "url": "https://apply.workable.com/homa-games/j/1FB4EAD7A6/",
+      "location": "Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Homa",
+      "title": "Senior 3D Generalist - Gameplay",
+      "url": "https://apply.workable.com/homa-games/j/DE453781D2/",
+      "location": "Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Homa",
+      "title": "Senior Level Designer",
+      "url": "https://apply.workable.com/homa-games/j/3BE60F71D9/",
+      "location": "Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Ace Games",
+      "title": "2D Game Animator",
+      "url": "https://apply.workable.com/ace-games/j/CE391E6314/",
+      "location": "Istanbul, İstanbul, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Ace Games",
+      "title": "Data Analyst",
+      "url": "https://apply.workable.com/ace-games/j/DD04083247/",
+      "location": "Istanbul, İstanbul, Turkey",
+      "areas": [
+        "Data and AI"
+      ]
+    },
+    {
+      "employer": "Ace Games",
+      "title": "Product Specialist",
+      "url": "https://apply.workable.com/ace-games/j/D08524F7AF/",
+      "location": "İstanbul, Turkey",
+      "areas": []
+    },
+    {
+      "employer": "Roof Stacks",
+      "title": "Bilgi Güvenliği Mühendisi (Bankacılık)",
+      "url": "https://jobs.lever.co/roofstacks/49e4f4cb-430d-4f93-bbbe-c2556b20f79c",
+      "location": "İstanbul",
+      "areas": [
+        "Security"
+      ]
+    },
+    {
+      "employer": "Roof Stacks",
+      "title": "BT Altyapı Mühendisi (Bankacılık)",
+      "url": "https://jobs.lever.co/roofstacks/fde1267c-de8b-4361-901b-f99925f6b257",
+      "location": "İstanbul",
+      "areas": [
+        "Platform and reliability"
+      ]
+    },
+    {
+      "employer": "Roof Stacks",
+      "title": "BT Dağıtım ve Operasyon Mühendisi (Bankacılık)",
+      "url": "https://jobs.lever.co/roofstacks/837087c6-8016-4ce3-8cd4-718b26d8435c",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "Roof Stacks",
+      "title": "Business Analyst (Card Payment Systems)",
+      "url": "https://jobs.lever.co/roofstacks/6b9b94d1-724d-479d-ad6a-d6fa685847ff",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "Roof Stacks",
+      "title": "Business Analyst (Core Banking)",
+      "url": "https://jobs.lever.co/roofstacks/539818ec-18ab-4cd7-bc0b-ebb884cc91f8",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "Roof Stacks",
+      "title": "DevOps Mühendisi (Bankacılık)",
+      "url": "https://jobs.lever.co/roofstacks/22286111-d965-4644-804a-792504b559b0",
+      "location": "İstanbul",
+      "areas": [
+        "Platform and reliability"
+      ]
+    },
+    {
+      "employer": "Roof Stacks",
+      "title": "Genel Başvuru- Engelli",
+      "url": "https://jobs.lever.co/roofstacks/b05f9d01-cc55-4fdb-83f4-ae7bf36f61d2",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "Roof Stacks",
+      "title": "İzleme ve Operasyon Mühendisi (Bankacılık)",
+      "url": "https://jobs.lever.co/roofstacks/e033364a-8990-4160-8dba-bc312cecc58f",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "Roof Stacks",
+      "title": "Kıdemli İş Analisti (Finansman)",
+      "url": "https://jobs.lever.co/roofstacks/6b626797-6f02-497d-acf8-7dba7b9ce2a8",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "Roof Stacks",
+      "title": "Kıdemli İş Analisti (Ödeme Sistemleri)",
+      "url": "https://jobs.lever.co/roofstacks/2b68be0e-e380-4051-b84b-85e580035825",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "Roof Stacks",
+      "title": "Kıdemli İş Analisti (Temel Bankacılık)",
+      "url": "https://jobs.lever.co/roofstacks/587d96d6-c2be-4910-8d0d-f59ab52e2939",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "Roof Stacks",
+      "title": "Kıdemli Uygulama Entegrasyon Mühendisi (Bankacılık)",
+      "url": "https://jobs.lever.co/roofstacks/70409613-03e9-48ba-a1f4-d96361a7b1f4",
+      "location": "İstanbul",
+      "areas": [
+        "Software engineering (general)"
+      ]
+    },
+    {
+      "employer": "Roof Stacks",
+      "title": "Platform Support Specialist",
+      "url": "https://jobs.lever.co/roofstacks/5746d31a-56cc-4dca-a8cf-79dee55fa5d2",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "Roof Stacks",
+      "title": "Saha Destek Mühendisi (Bankacılık)",
+      "url": "https://jobs.lever.co/roofstacks/ef8bd50d-20f2-4efb-807e-b63047cc5b8d",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "Roof Stacks",
+      "title": "Senior Backend Developer",
+      "url": "https://jobs.lever.co/roofstacks/3b558b4c-4521-4283-9543-ee8ba9220c41",
+      "location": "İstanbul",
+      "areas": [
+        "Backend"
+      ]
+    },
+    {
+      "employer": "Roof Stacks",
+      "title": "Senior Backend Developer (Card Payment Systems)",
+      "url": "https://jobs.lever.co/roofstacks/0848346f-8e70-4c08-aa18-5bd1626f801c",
+      "location": "İstanbul",
+      "areas": [
+        "Backend"
+      ]
+    },
+    {
+      "employer": "Roof Stacks",
+      "title": "Senior Business Analyst (Mobile Banking)",
+      "url": "https://jobs.lever.co/roofstacks/6dcb75fc-29bd-4f70-aa99-d27946f0e932",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "Roof Stacks",
+      "title": "Sistem Yöneticisi (Bankacılık)",
+      "url": "https://jobs.lever.co/roofstacks/828869ae-559c-471e-af29-7e29baf280e6",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "Roof Stacks",
+      "title": "Software Architect",
+      "url": "https://jobs.lever.co/roofstacks/8db245d8-a63d-4b71-aba1-c5496482454d",
+      "location": "İstanbul",
+      "areas": [
+        "Software engineering (general)"
+      ]
+    },
+    {
+      "employer": "Roof Stacks",
+      "title": "Software Architect",
+      "url": "https://jobs.lever.co/roofstacks/f0556c0d-afeb-4b0d-b608-04d29a4c7823",
+      "location": "İstanbul",
+      "areas": [
+        "Software engineering (general)"
+      ]
+    },
+    {
+      "employer": "Roof Stacks",
+      "title": "Uygulama Destek Mühendisi L2 (Bankacılık)",
+      "url": "https://jobs.lever.co/roofstacks/5ba542a1-8884-4f0d-ac5c-8218590135af",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "Roof Stacks",
+      "title": "Uygulama Yönetimi Mühendisi (Bankacılık)",
+      "url": "https://jobs.lever.co/roofstacks/e1d39791-d293-449e-b225-450142868184",
+      "location": "İstanbul",
+      "areas": []
+    },
+    {
+      "employer": "Roof Stacks",
+      "title": "Veritabanı Yöneticisi (Bankacılık)",
+      "url": "https://jobs.lever.co/roofstacks/31ea2349-542a-4661-b21c-fe5dedc09a06",
+      "location": "İstanbul",
+      "areas": [
+        "Platform and reliability"
+      ]
+    },
+    {
+      "title": "Digital Assets Compliance Engineer",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Digital-Assets-Compliance-Engineer_REQ-10120013",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": []
+    },
+    {
+      "title": "Chief Financial Officer (CFO)",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Chief-Financial-Officer--CFO-_REQ-10118522-2",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": []
+    },
+    {
+      "title": "Senior E2E Test Engineer",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Senior-E2E-Test-Engineer_REQ-10123616-1",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "QA and testing"
+      ]
+    },
+    {
+      "title": "Senior Data Analyst (GenAI)",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Senior-Data-Analyst--GenAI-_REQ-10122952",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "Data and AI"
+      ]
+    },
+    {
+      "title": "Business Analyst",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Business-Analyst_REQ-10121914-1",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": []
+    },
+    {
+      "title": "DevOps Engineer",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/DevOps-Engineer_REQ-10121531",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "Platform and reliability"
+      ]
+    },
+    {
+      "title": "Product Manager (Analytics)",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Product-Manager--Analytics-_REQ-10104973-1",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": []
+    },
+    {
+      "title": "Chapter Lead Solution Architect",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Chapter-Lead-Solution-Architect_REQ-10117420",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": []
+    },
+    {
+      "title": "Customer Journey Expert - Payments",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Customer-Journey-Expert---Payments_REQ-10122783",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": []
+    },
+    {
+      "title": "Customer Journey Expert - Channels",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Customer-Journey-Expert---Channels_REQ-10122776",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": []
+    },
+    {
+      "title": "HR Business Partner",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/HR-Business-Partner--Talent---Learning-Lead_REQ-10122303",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": []
+    },
+    {
+      "title": "Senior Data Analyst – Wholesale Banking & Advanced Analytics",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Senior-Data-Analyst---Wholesale-Banking---Advanced-Analytics_REQ-10121641",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "Data and AI"
+      ]
+    },
+    {
+      "title": "Executive Assistant to CEO",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Executive-Assistant-to-CEO_REQ-10120445-1",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": []
+    },
+    {
+      "title": "Senior AI/LLM Data Scientist in Agentic AI",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Job-Posting-Title-Senior-AI-LLM-Data-Scientist-in-Agentic-AI_REQ-10122273",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "Data and AI"
+      ]
+    },
+    {
+      "title": "Backend Engineer",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Backend-Engineer_REQ-10121529",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "Backend"
+      ]
+    },
+    {
+      "title": "Blockchain Security Engineer",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Backend-Engineer-with-Security-knowhow_REQ-10121530",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "Financial software",
+        "Security"
+      ]
+    },
+    {
+      "title": "Blockchain Ops Engineer",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Blockchain-Ops-Engineer_REQ-10121532",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "Financial software"
+      ]
+    },
+    {
+      "title": "Blockchain Customer Journey Expert",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Blockchain-Customer-Journey-Expert_REQ-10121535-1",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": []
+    },
+    {
+      "title": "Chapter Lead AI/LLM Data Scientist in Agentic AI",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Data-Science-Chapter-Lead--Wholesale-Banking-_REQ-10112768-1",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "Data and AI"
+      ]
+    },
+    {
+      "title": "Blockchain Engineer",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Blockchain-Engineer_REQ-10121533",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "Financial software"
+      ]
+    },
+    {
+      "title": "Senior Agentic AI Engineer",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Senior-Agentic-AI-Engineer_REQ-10121379",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "Data and AI"
+      ]
+    },
+    {
+      "title": "Data Science Team Manager",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Data-Science-Team-Manager_REQ-10120369",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "Data and AI"
+      ]
+    },
+    {
+      "title": "Engel Tanımayan Kariyer - İşe Alım Operasyonları Uzmanı",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Engel-Tanmayan-Kariyer---e-Alm-Operasyonlar-Uzman_REQ-10119910",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": []
+    },
+    {
+      "title": "Agentic AI Data Scientist – KYC & Wholesale Banking",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Agentic-AI-Data-Scientist--Wholesale-Banking-_REQ-10112451",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "Data and AI"
+      ]
+    },
+    {
+      "title": "Senior NLP/LLM/LLMOps Data Scientist",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Senior-NLP-Data-Scientist_REQ-10104971-1",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "Data and AI"
+      ]
+    },
+    {
+      "title": "Solution Architect",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Solution-Architect_REQ-10118169",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": []
+    },
+    {
+      "title": "Senior Product Manager (Consumer Lending Analytics)",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Product-Manager--Consumer-Lending-Analytics-_REQ-10109741",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": []
+    },
+    {
+      "title": "Principal Data Scientist",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Principal-Data-Scientist_REQ-10104321-1",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "Data and AI"
+      ]
+    },
+    {
+      "title": "SRE Engineer",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/SRE-Engineer_REQ-10117175",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "Platform and reliability"
+      ]
+    },
+    {
+      "title": "Data & AI Chapter Lead Engineer",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Data---AI-Chapter-Lead-Engineer_REQ-10115980-1",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "Data and AI"
+      ]
+    },
+    {
+      "title": "Devops Engineer-2",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Devops-Engineer-2_REQ-10110288",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "Platform and reliability"
+      ]
+    },
+    {
+      "title": "Business Analyst",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Business-Analyst_REQ-10109596",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": []
+    },
+    {
+      "title": "Devops Engineer-1",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Devops-Engineer-1_REQ-10110287-2",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "Platform and reliability"
+      ]
+    },
+    {
+      "title": "Java Engineer",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Java-Engineer_REQ-10107157",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "Software engineering (general)"
+      ]
+    },
+    {
+      "title": "IT Integrator",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/IT-Integrator_REQ-10110286-1",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": []
+    },
+    {
+      "title": "IT Business Analyst with Payment System Experience",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/IT-Business-Analyst-with-Payment-System-Experience_REQ-10107375",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": []
+    },
+    {
+      "title": "Senior Test Engineer",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Senior-Test-Engineer_REQ-10104461-1",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "QA and testing"
+      ]
+    },
+    {
+      "title": "Principal Frontend Developer",
+      "url": "https://ing.wd3.myworkdayjobs.com/en-US/ICSGBLCOR/job/Istanbul-VADI-ISTANBUL-PARK/Principal-Frontend-Developer_REQ-10104460",
+      "location": "Istanbul (VADI ISTANBUL PARK)",
+      "employer": "ING",
+      "areas": [
+        "Frontend"
+      ]
+    },
+    {
+      "title": "Director, Eastern Europe Division Lead, Security Solutions",
+      "url": "https://mastercard.wd1.myworkdayjobs.com/en-US/CorporateCareers/job/Besiktas-Istanbul-Turkey/Director--Eastern-Europe-Division-Lead--Security-Solutions_R-294318",
+      "location": "Besiktas, Istanbul Turkey",
+      "employer": "Mastercard",
+      "areas": []
+    },
+    {
+      "title": "Motion Designer, Advisors Creative Desk",
+      "url": "https://mastercard.wd1.myworkdayjobs.com/en-US/CorporateCareers/job/Besiktas-Istanbul-Turkey/Motion-Designer--Advisors-Creative-Desk_R-292673",
+      "location": "Besiktas, Istanbul Turkey",
+      "employer": "Mastercard",
+      "areas": []
+    },
+    {
+      "title": "Director, SME",
+      "url": "https://mastercard.wd1.myworkdayjobs.com/en-US/CorporateCareers/job/Besiktas-Istanbul-Turkey/Director--SME_R-288602",
+      "location": "Besiktas, Istanbul Turkey",
+      "employer": "Mastercard",
+      "areas": []
+    },
+    {
+      "title": "Art Director, Advisors Creative Desk",
+      "url": "https://mastercard.wd1.myworkdayjobs.com/en-US/CorporateCareers/job/Besiktas-Istanbul-Turkey/Art-Director--Advisors-Creative-Desk_R-294212",
+      "location": "Besiktas, Istanbul Turkey",
+      "employer": "Mastercard",
+      "areas": []
+    },
+    {
+      "title": "Creative Associate Project Manager",
+      "url": "https://mastercard.wd1.myworkdayjobs.com/en-US/CorporateCareers/job/Besiktas-Istanbul-Turkey/Creative-Associate-Project-Manager_R-294076",
+      "location": "Besiktas, Istanbul Turkey",
+      "employer": "Mastercard",
+      "areas": []
+    },
+    {
+      "title": "Managing Consultant, Customer Services Development",
+      "url": "https://mastercard.wd1.myworkdayjobs.com/en-US/CorporateCareers/job/Besiktas-Istanbul-Turkey/Managing-Consultant--Customer-Services-Development_R-293368",
+      "location": "Besiktas, Istanbul Turkey",
+      "employer": "Mastercard",
+      "areas": []
+    },
+    {
+      "title": "Manager, Fraud Attack Response & Insights - EEMEA",
+      "url": "https://mastercard.wd1.myworkdayjobs.com/en-US/CorporateCareers/job/Besiktas-Istanbul-Turkey/Manager--Fraud-Attack-Response---Insights---EEMEA_R-293807",
+      "location": "Besiktas, Istanbul Turkey",
+      "employer": "Mastercard",
+      "areas": []
+    },
+    {
+      "title": "Cyber Risk Quantification Product Manager",
+      "url": "https://mastercard.wd1.myworkdayjobs.com/en-US/CorporateCareers/job/Besiktas-Istanbul-Turkey/Cyber-Risk-Quantification-Product-Manager_R-287126",
+      "location": "3 Locations",
+      "employer": "Mastercard",
+      "areas": []
+    },
+    {
+      "title": "Global Markets, Account Management & Product Management, Summer Internship Program – 2027, Istanbul, Türkiye",
+      "url": "https://mastercard.wd1.myworkdayjobs.com/en-US/CorporateCareers/job/Besiktas-Istanbul-Turkey/Global-Markets--Account-Management---Product-Management--Summer-Internship-Program---2027--Istanbul--Trkiye_R-292561-2",
+      "location": "Besiktas, Istanbul Turkey",
+      "employer": "Mastercard",
+      "areas": []
+    },
+    {
+      "title": "Global Markets, Account Management & Product Management, Launch Program (Rotational) – 2027, Istanbul, Türkiye",
+      "url": "https://mastercard.wd1.myworkdayjobs.com/en-US/CorporateCareers/job/Besiktas-Istanbul-Turkey/Global-Markets--Account-Management---Product-Management--Launch-Program--Rotational----2027--Istanbul--Trkiye_R-292562-2",
+      "location": "Besiktas, Istanbul Turkey",
+      "employer": "Mastercard",
+      "areas": []
+    },
+    {
+      "title": "Associate Consultant Intern, Summer Internship Program – 2027, Istanbul, Türkiye",
+      "url": "https://mastercard.wd1.myworkdayjobs.com/en-US/CorporateCareers/job/Besiktas-Istanbul-Turkey/Associate-Consultant-Intern--Summer-Internship-Program---2027--Istanbul--Trkiye_R-287590-2",
+      "location": "Besiktas, Istanbul Turkey",
+      "employer": "Mastercard",
+      "areas": []
+    },
+    {
+      "title": "Associate Consultant, Launch Graduate Program – 2027, Istanbul, Türkiye",
+      "url": "https://mastercard.wd1.myworkdayjobs.com/en-US/CorporateCareers/job/Besiktas-Istanbul-Turkey/Associate-Consultant--Launch-Graduate-Program---2027--Istanbul--Trkiye_R-287583-2",
+      "location": "Besiktas, Istanbul Turkey",
+      "employer": "Mastercard",
+      "areas": []
+    },
+    {
+      "title": "Partnerships Enablement Specialist",
+      "url": "https://mastercard.wd1.myworkdayjobs.com/en-US/CorporateCareers/job/Besiktas-Istanbul-Turkey/Partnerships-Enablement-Specialist_R-287842",
+      "location": "Besiktas, Istanbul Turkey",
+      "employer": "Mastercard",
+      "areas": []
+    },
+    {
+      "title": "Associate Engineer, Product Applications",
+      "url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External/job/Turkey-Istanbul-Bilisim-Vadisi/Associate-Engineer--Product-Applications_R266035",
+      "location": "Turkey, Istanbul, Bilisim Vadisi",
+      "employer": "Analog Devices",
+      "areas": []
+    },
+    {
+      "title": "Engineer, Analog Design Engineering",
+      "url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External/job/Turkey-Istanbul-Bilisim-Vadisi/Engineer--Analog-Design-Engineering_R268140-1",
+      "location": "Turkey, Istanbul, Bilisim Vadisi",
+      "employer": "Analog Devices",
+      "areas": []
+    },
+    {
+      "title": "RF Design Engineering Intern",
+      "url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External/job/Turkey-Istanbul-Bilisim-Vadisi/RF-Design-Engineering-Intern_R266998",
+      "location": "Turkey, Istanbul, Bilisim Vadisi",
+      "employer": "Analog Devices",
+      "areas": []
+    },
+    {
+      "title": "RF Design Engineering Summer Intern",
+      "url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External/job/Turkey-Istanbul-Bilisim-Vadisi/RF-Design-Engineering-Summer-Intern_R266999-1",
+      "location": "Turkey, Istanbul, Bilisim Vadisi",
+      "employer": "Analog Devices",
+      "areas": []
+    },
+    {
+      "title": "Staff RFIC Design Engineer",
+      "url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External/job/Turkey-Istanbul-Bilisim-Vadisi/Staff-RFIC-Design-Engineer_R268398",
+      "location": "Turkey, Istanbul, Bilisim Vadisi",
+      "employer": "Analog Devices",
+      "areas": []
+    },
+    {
+      "title": "Engineer, Firmware Engineering",
+      "url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External/job/Turkey-Istanbul-Bilisim-Vadisi/Engineer--Firmware-Engineering_R268143",
+      "location": "Turkey, Istanbul, Bilisim Vadisi",
+      "employer": "Analog Devices",
+      "areas": [
+        "Embedded and firmware"
+      ]
+    },
+    {
+      "title": "Software Engineer Intern",
+      "url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External/job/Turkey-Istanbul-Bilisim-Vadisi/Software-Engineer-Intern_R267005",
+      "location": "Turkey, Istanbul, Bilisim Vadisi",
+      "employer": "Analog Devices",
+      "areas": [
+        "Software engineering (general)"
+      ]
+    },
+    {
+      "title": "Staff Engineer, Digital Design Engineering",
+      "url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External/job/Spain-Valencia-Cortes-Valencianas/Staff-Engineer--Digital-Design-Engineering_R268083",
+      "location": "2 Locations",
+      "employer": "Analog Devices",
+      "areas": []
+    },
+    {
+      "title": "Project Manager",
+      "url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External/job/Turkey-Istanbul-Bilisim-Vadisi/Project-Manager_R267083",
+      "location": "Turkey, Istanbul, Bilisim Vadisi",
+      "employer": "Analog Devices",
+      "areas": []
+    },
+    {
+      "title": "Principal  RF Application Engineer",
+      "url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External/job/Turkey-Istanbul-Bilisim-Vadisi/Principal--RF-Application-Engineer_R267537",
+      "location": "Turkey, Istanbul, Bilisim Vadisi",
+      "employer": "Analog Devices",
+      "areas": []
+    },
+    {
+      "title": "Senior DevSecOps Engineer– Medical Devices",
+      "url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External/job/Turkey-Istanbul-Bilisim-Vadisi/Senior-Cloud-Security-Engineer--Healthcare-Platform_R266631",
+      "location": "Turkey, Istanbul, Bilisim Vadisi",
+      "employer": "Analog Devices",
+      "areas": [
+        "Platform and reliability",
+        "Security"
+      ]
+    },
+    {
+      "title": "Associate Designer, Layout",
+      "url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External/job/Turkey-Istanbul-Bilisim-Vadisi/Associate-Engineer--Design-Evaluation-Engineering_R266034",
+      "location": "Turkey, Istanbul, Bilisim Vadisi",
+      "employer": "Analog Devices",
+      "areas": []
+    },
+    {
+      "title": "Associate Engineer, RF Design Engineering",
+      "url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External/job/Turkey-Istanbul-Bilisim-Vadisi/Associate-Engineer--RF-Design-Engineering_R266033-1",
+      "location": "Turkey, Istanbul, Bilisim Vadisi",
+      "employer": "Analog Devices",
+      "areas": []
+    },
+    {
+      "title": "Staff Embedded Software Engineer, Digital Healthcare",
+      "url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External/job/Turkey-Istanbul-Bilisim-Vadisi/Staff-Embedded-Software-Engineer--Digital-Healthcare_R265906",
+      "location": "Turkey, Istanbul, Bilisim Vadisi",
+      "employer": "Analog Devices",
+      "areas": [
+        "Embedded and firmware",
+        "Software engineering (general)"
+      ]
+    },
+    {
+      "title": "Senior Product Engineer - RF",
+      "url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External/job/Turkey-Istanbul-Bilisim-Vadisi/Senior-Product-Engineer---RF_R266068",
+      "location": "Turkey, Istanbul, Bilisim Vadisi",
+      "employer": "Analog Devices",
+      "areas": []
+    },
+    {
+      "title": "Senior Account Manager, Field Sales",
+      "url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External/job/Turkey-Istanbul-Bilisim-Vadisi/Senior-Account-Manager--Field-Sales_R265546",
+      "location": "Turkey, Istanbul, Bilisim Vadisi",
+      "employer": "Analog Devices",
+      "areas": []
+    },
+    {
+      "title": "Senior Embedded Software Engineer",
+      "url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External/job/Turkey-Istanbul-Bilisim-Vadisi/Senior-Embedded-Software-Engineer_R265610-1",
+      "location": "Turkey, Istanbul, Bilisim Vadisi",
+      "employer": "Analog Devices",
+      "areas": [
+        "Embedded and firmware",
+        "Software engineering (general)"
+      ]
+    }
+  ]
+}

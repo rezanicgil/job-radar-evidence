@@ -18,7 +18,9 @@ configs:
 
 Use this dataset to compare how often a technology appears in postings and how widely it appears across employers in the Job Radar panel. Every observation has a collection date. Choose a single date before computing shares. A posting can appear on several dates.
 
-The November 9, 2026 collection includes 417 Türkiye-location posting URLs from 47 employer boards. The title filter selected 108 technical roles from 23 employers. All 108 descriptions were readable. Python appeared in 48 of those postings across 16 employers. React Native appeared in 12 postings from one employer. [Explore the report](https://rezanicgil-job-radar-evidence.static.hf.space/#market)
+The November 9, 2026 collection includes 417 Türkiye-location posting URLs from 47 employer boards. The title filter selected 115 technical roles from 23 employers. All 115 descriptions were readable. Python appeared in 50 of those postings across 16 employers. React Native appeared in 12 postings from one employer. [Explore the report](https://rezanicgil-job-radar-evidence.static.hf.space/#market)
+
+The 22:37 Türkiye-time collection expands the technical title filter to cover seven previously unselected postings. These include Java engineering, digital image processing, blockchain operations and DevSecOps. The earlier collection on the same date selected 108 postings. This change in coverage reflects a filter revision.
 
 ## Reproduce a percentage
 
@@ -38,7 +40,7 @@ The postings configuration contains one row per employer posting URL per date. I
 
 The technologies configuration contains one row per tracked name per date, including zero counts. Both denominators use readable technical postings. A mention can come from duties, required qualifications, preferences or company context. A role can have multiple categories. The sample depends on panel membership, board availability and title matching. Separately reviewed employer pages in the Space are outside these counts.
 
-The technology rows also identify the employer with the most postings mentioning that technology. Ties use employer name order. To recompute the share after excluding that employer, divide `other_employer_mentions` by `other_employer_postings` when the denominator is positive. These fields are null for a technology with no mentions. In the November 9 snapshot, excluding Sezzle removes all 12 React Native mentions and leaves 93 readable postings from other employers.
+The technology rows also identify the employer with the most postings mentioning that technology. Ties use employer name order. To recompute the share after excluding that employer, divide `other_employer_mentions` by `other_employer_postings` when the denominator is positive. These fields are null for a technology with no mentions. In the November 9 snapshot, excluding Sezzle removes all 12 React Native mentions and leaves 100 readable postings from other employers.
 
 For selected Workday postings, `source_requisition` and `source_listed_date` preserve the employer's requisition ID and Workday start date when available. Rows without these fields have null values. The snapshot date records when this project observed the posting.
 

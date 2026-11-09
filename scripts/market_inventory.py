@@ -18,17 +18,22 @@ PATTERNS = {
     "Backend": r"back.?end|arka uç",
     "Frontend": r"front.?end|ön yüz",
     "Full stack": r"full.?stack",
-    "Software engineering (general)": r"software (?:developer|engineer|architect)|yazılım (?:geliştirici|mühendis|mimarı)|uygulama entegrasyon mühendisi",
-    "Data and AI": r"data (?:engineer|scien|analyst|architect)|machine learning|yapay zeka|veri mühendis|\bml engineer|\bai (?:engineer|researcher)",
-    "Platform and reliability": r"devops|platform engineer|cloud engineer|infrastructure engineer|(?:site|database) reliability|\bsre\b|bt altyapı mühendisi|veritabanı yöneticisi",
-    "Financial software": r"quantitative developer|payments engineer|blockchain engineer",
-    "Security": r"security engineer|penetration test|siber güvenlik|bilgi güvenliği mühendisi|security analyst",
+    "Software engineering (general)": r"software (?:developer|engineer|architect)|yazılım (?:geliştirici|mühendis|mimarı)|uygulama entegrasyon mühendisi|\b(?:java|python|c\+\+|kotlin|swift) (?:engineer|developer)\b",
+    "Data and AI": r"data (?:engineer|scien|analyst|architect)|machine learning|yapay zeka|veri mühendis|\bml engineer|\bai (?:engineer|researcher)|image processing engineer|data analytics & digitalization engineer|data & ai chapter lead engineer",
+    "Platform and reliability": r"dev(?:sec)?ops|platform engineer|cloud engineer|infrastructure engineer|(?:site|database) reliability|\bsre\b|bt altyapı mühendisi|veritabanı yöneticisi",
+    "Financial software": r"quantitative developer|payments engineer|blockchain (?:ops |security )?engineer",
+    "Security": r"security engineer|devsecops engineer|penetration test|siber güvenlik|bilgi güvenliği mühendisi|security analyst",
     "QA and testing": r"\bqa\b|test (?:automation|engineer)|quality assurance",
     "Games": r"(?:game|gameplay(?: & UI)?|unity|unreal) (?:software )?(?:engineer|developer|programmer)|oyun geliştirici",
     "Robotics and controls": r"robotics|robotik|control systems",
     "Networking and systems": r"network engineer|systems programmer|kernel engineer|network software",
 }
 TR_LOCATION = re.compile(r"\b(?:turkey|türkiye|turkiye|istanbul|i̇stanbul|ankara|izmir|i̇zmir|bursa|kocaeli|antalya)\b", re.I)
+
+
+def title_areas(title):
+    normalized = " ".join(title.split())
+    return [area for area, pattern in PATTERNS.items() if re.search(pattern, normalized, re.I)]
 
 
 def in_turkiye(country, location):
@@ -50,7 +55,7 @@ def fetch(source, *, retry_timeout=True):
             jobs=workday_board.listing_rows(slug,in_turkiye)
             for job in jobs:
                 job["employer"]=source["name"]
-                job["areas"]=[area for area,pattern in PATTERNS.items() if re.search(pattern,job["title"],re.I)]
+                job["areas"]=title_areas(job["title"])
             return dict(source=source["name"],url=url,status="ok",scanned=len(jobs)),jobs
         request = Request(url, headers={"User-Agent":"JobRadar/1.0 (+https://github.com/rezanicgil/job-radar-evidence)", "Accept":"application/json"})
         with urlopen(request if ats in {"ashby","workable"} else url, timeout=15) as response:
@@ -102,7 +107,7 @@ def fetch(source, *, retry_timeout=True):
                 country, location = None, row["location"]["name"]
             if in_turkiye(country, location):
                 jobs.append(dict(employer=source["name"], title=title, url=link, location=location,
-                                 areas=[area for area, pattern in PATTERNS.items() if re.search(pattern,title,re.I)]))
+                                 areas=title_areas(title)))
         return dict(source=source["name"], url=url, status="ok", scanned=len(rows)), jobs
     except (URLError, TimeoutError, ValueError, KeyError, TypeError) as exc:
         if retry_timeout and isinstance(getattr(exc,"reason",exc),TimeoutError):
