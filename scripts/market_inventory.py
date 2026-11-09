@@ -1,7 +1,7 @@
 """Inventory all titles at configured boards. Preserve uncategorized roles for review."""
 
 from concurrent.futures import ThreadPoolExecutor
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 import json
 from pathlib import Path
 import re
@@ -29,6 +29,10 @@ PATTERNS = {
     "Networking and systems": r"network engineer|systems programmer|kernel engineer|network software",
 }
 TR_LOCATION = re.compile(r"\b(?:turkey|türkiye|turkiye|istanbul|i̇stanbul|ankara|izmir|i̇zmir|bursa|kocaeli|antalya)\b", re.I)
+
+
+def observation_date(timestamp):
+    return datetime.fromisoformat(timestamp).astimezone(timezone(timedelta(hours=3))).date().isoformat()
 
 
 def title_areas(title):

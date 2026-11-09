@@ -16,6 +16,51 @@ configs:
     data_files:
       - split: observations
         path: direct/observations.jsonl
+dataset_info:
+  - config_name: technologies
+    features:
+      - name: date
+        dtype: string
+      - name: technology
+        dtype: string
+      - name: postings_mentioning
+        dtype: int64
+      - name: readable_postings
+        dtype: int64
+      - name: employers_mentioning
+        dtype: int64
+      - name: represented_employers
+        dtype: int64
+      - name: top_employer
+        dtype: string
+      - name: distinct_descriptions
+        dtype: int64
+      - name: distinct_descriptions_mentioning
+        dtype: int64
+      - name: top_employer_mentions
+        dtype: int64
+      - name: other_employer_mentions
+        dtype: int64
+      - name: other_employer_postings
+        dtype: int64
+      - name: compared_with_date
+        dtype: string
+      - name: new_board
+        dtype: int64
+      - name: recovered_board
+        dtype: int64
+      - name: entered_sample
+        dtype: int64
+      - name: gained_on_shared
+        dtype: int64
+      - name: removed_board
+        dtype: int64
+      - name: unavailable_board
+        dtype: int64
+      - name: left_sample
+        dtype: int64
+      - name: lost_on_shared
+        dtype: int64
 ---
 
 # Türkiye software job market observations
@@ -33,6 +78,8 @@ The 23:15 collection measures qualification sections in 46 of the 129 readable p
 The 23:53 collection includes the Accenture Türkiye board. The embedded and firmware selection now includes eight readable postings at two employers. Ten additional vocabulary entries cover embedded and Android platform technologies. Earlier observations only measure names in their original vocabulary.
 
 The `direct_employer_observations` configuration records 13 dated listings from eight employer sites. Its selected qualifications, preferences and source links can support manual CV review. Several positions may share a careers-page URL. These observations remain outside the automated posting and employer denominators.
+
+On November 10 at 00:00 Türkiye time the panel was collected again, about seven minutes after the November 9 observation at 23:53. All 141 technical URLs were readable at both times and all 60 technology counts were unchanged. Select one date to estimate prevalence. Stacking the two dates repeats the same listings.
 
 ## Reproduce a percentage
 
@@ -55,6 +102,8 @@ The technologies configuration contains one row per tracked name per date, inclu
 The same rows contain `distinct_descriptions_mentioning` and `distinct_descriptions`. Divide the former by the latter to count a repeated description once within an employer. Both fields are null when any readable posting on that date lacks a digest. For the November 9 cross-platform mobile selection, Flutter occurs in 6/7 posting URLs (85.7%) and 2/3 distinct descriptions (66.7%). Role-specific figures use the postings configuration.
 
 The technology rows also identify the employer with the most postings mentioning that technology. Ties use employer name order. To recompute the share after excluding that employer, divide `other_employer_mentions` by `other_employer_postings` when the denominator is positive. These fields are null for a technology with no mentions. In the November 9 snapshot, excluding Sezzle removes all 12 React Native mentions and leaves 126 readable postings from other employers.
+
+For a technology measured on two successive observation dates, the technology row stores the earlier date in `compared_with_date`. The eight count fields describe URLs entering or leaving the readable sample, or gaining or losing the mention on a URL readable on both dates. New, removed, recovered and unavailable boards are distinguished from changes on continuing boards. Adding gains and subtracting losses reproduces the change in posting mentions. These fields are null on the first date or when the technology was not measured on both dates. A listing can leave the sample because of changes in source availability, location or title filtering.
 
 For Lever and Ashby, `location_scope = listed_alternative` identifies Türkiye in an explicitly listed secondary location. Other entries leave this field null. `description_sha256` is a SHA-256 digest of the measured description text with whitespace normalized. Group by employer and this digest to examine repeated copy. Older observations without a digest leave the field null.
 

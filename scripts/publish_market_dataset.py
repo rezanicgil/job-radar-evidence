@@ -54,6 +54,13 @@ def daily_rows(day, folder):
                                  top_employer_mentions=mentioning[top] if top else None,
                                  other_employer_mentions=counts[skill]-mentioning[top] if top else None,
                                  other_employer_postings=len(readable)-employer_totals[top] if top else None))
+    comparison=day.get("comparison")
+    for row in technologies:
+        changes=comparison["changes"].get(row["technology"]) if comparison else None
+        row["compared_with_date"]=comparison["previous_date"] if changes is not None else None
+        for field in ("new_board","recovered_board","entered_sample","gained_on_shared","removed_board",
+                      "unavailable_board","left_sample","lost_on_shared"):
+            row[field]=changes.get(field,0) if changes is not None else None
     return postings, technologies
 
 

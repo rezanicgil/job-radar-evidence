@@ -12,7 +12,7 @@ from waitress import serve
 import torch
 
 from review_cv import read_passages, rank_passages
-from market_inventory import PATTERNS
+from market_inventory import PATTERNS, observation_date
 
 # Malformed PDFs can include applicant bytes in parser diagnostics.
 pdf_logger = logging.getLogger("pypdf")
@@ -77,7 +77,7 @@ def market():
         for skill in set(posting["skills"]):
             groups.setdefault(skill, []).append(posting)
     skills = sorted(groups.items(), key=lambda pair: (-len(pair[1]),pair[0]))
-    return render_template("market.html",date=snapshot["collected_at"][:10],areas=PATTERNS,area=area,
+    return render_template("market.html",date=observation_date(snapshot["collected_at"]),areas=PATTERNS,area=area,
                            total=len(selected),readable=len(readable),skills=skills)
 
 

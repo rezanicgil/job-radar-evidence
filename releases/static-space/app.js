@@ -867,7 +867,7 @@ try{
       }
       const url=URL.createObjectURL(new Blob([report.join("\n")+"\n"],{type:"text/plain;charset=utf-8"}));
       const link=document.createElement("a");
-      link.href=url;link.download="turkiye-market-"+market.collected_at.slice(0,10)+".txt";link.click();
+      link.href=url;link.download="turkiye-market-"+market.observation_date+".txt";link.click();
       setTimeout(()=>URL.revokeObjectURL(url),1000);
     };
     if(!records.length)return;
@@ -955,7 +955,7 @@ try{
       if(positions.length){
         const panel=add(boardListings,"details","");
         add(panel,"summary",employerBoard.employer+" · "+positions.length+" employment listings · location unconfirmed");
-        add(panel,"p","Listed on "+employerBoard.collected_at.slice(0,10)+". The board omits job locations. These listings are outside the Türkiye technology percentages.");
+        add(panel,"p","Listed on "+(employerBoard.observation_date||employerBoard.collected_at.slice(0,10))+". The board omits job locations. These listings are outside the Türkiye technology percentages.");
         for(const p of positions){
           const entry=add(panel,"div","");
           add(add(entry,"p",""),"a",p.title).href=p.url;
@@ -967,7 +967,7 @@ try{
         }
       }
     }
-    el("scope").textContent=market.collected_at.slice(0,10)+" · "+records.length+" readable descriptions of "+group.length+" selected postings. Counts include mentions in preferences and company context.";
+    el("scope").textContent=market.observation_date+" · "+records.length+" readable descriptions of "+group.length+" selected postings. Counts include mentions in preferences and company context.";
     if(records.length&&records.every(p=>p.description_sha256)){
       const unique=new Set(records.map(p=>JSON.stringify([p.employer,p.description_sha256]))).size;
       el("scope").textContent+=" These postings contain "+unique+" distinct descriptions when counted within employers.";
@@ -998,13 +998,38 @@ try{
   const days=add(container,"div","");
   function showHistory(){
     days.replaceChildren();
-    for(const day of [...history].reverse()){
+    for(let i=history.length-1;i>=0;i--){
+      const day=history[i];
       const count=day.mentions[picker.value]||0;
       const share=day.readable?(100*count/day.readable).toFixed(1)+"%":"Unavailable";
       const row=add(days,"article","");
       const measured=(day.vocabulary||Object.keys(day.mentions)).includes(picker.value);
       add(row,"strong",day.date+" · "+(measured?share+" · "+count+"/"+day.readable+" readable postings":"Not tracked on this date"));
       add(row,"p",day.employers+" employers represented · "+day.boards_ok+"/"+day.boards_total+" boards responded · "+day.readable+"/"+day.selected+" descriptions readable");
+      const comparison=day.comparison;
+      if(comparison){
+        const minutes=Math.round((Date.parse(day.collected_at)-Date.parse(comparison.previous_collected_at))/60000);
+        add(row,"small","Compared with "+comparison.previous_date+" ("+minutes+" minutes between collections) · "+comparison.shared_readable+" readable URLs on both dates, "+
+          comparison.entered_readable+" entered the sample and "+comparison.left_readable+" left it.");
+        const change=comparison.changes[picker.value];
+        if(change){
+          const prior=history[i-1];
+          if(prior?.date===comparison.previous_date&&prior.readable&&day.readable){
+            const priorCount=prior.mentions[picker.value]||0;
+            const difference=100*(count/day.readable-priorCount/prior.readable);
+            add(row,"small","Posting share changed by "+(difference>0?"+":"")+difference.toFixed(1)+
+              " percentage points ("+priorCount+"/"+prior.readable+" to "+count+"/"+day.readable+").");
+          }
+          const labels={new_board:"Entered with a new board",recovered_board:"Entered with a responding board",
+            entered_sample:"Entered on an existing board",gained_on_shared:"Mention gained on a shared URL",
+            removed_board:"Left with a removed board",unavailable_board:"Left with an unavailable board",
+            left_sample:"Left on an existing board",lost_on_shared:"Mention lost on a shared URL"};
+          if(Object.keys(change).length){
+            const list=add(row,"ul","");
+            for(const [key,value] of Object.entries(change))add(list,"li",labels[key]+" · "+value);
+          }else add(row,"small","No change in the URLs mentioning this technology.");
+        }else if(measured)add(row,"small","This technology was not measured on the previous date.");
+      }
       add(row,"a","Inspect source records").href="https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/"+encodeURIComponent(day.file);
     }
   }

@@ -5,7 +5,7 @@ import json
 import shutil
 import tempfile
 from pathlib import Path
-from market_inventory import ROOT, PATTERNS
+from market_inventory import ROOT, PATTERNS, observation_date
 from market_history import daily_history
 
 
@@ -30,6 +30,7 @@ def main():
     shutil.copyfile(ROOT / "reports/language-switch.json",dest / "model-languages.json")
     history=daily_history(ROOT/"reports")
     snapshot = json.loads((ROOT/"reports"/history[-1]["file"]).read_text(encoding="utf-8"))
+    snapshot["observation_date"]=history[-1]["date"]
     inventory = json.loads((ROOT / "reports" / snapshot["inventory"]).read_text(encoding="utf-8"))
     snapshot["boards"] = [{"employer":source["source"], "available":source["status"] == "ok"}
                           for source in inventory["sources"]]
@@ -38,19 +39,22 @@ def main():
     for line in (ROOT / "data/role_reviews.jsonl").read_text(encoding="utf-8").splitlines():
         review = json.loads(line)
         posting = postings.get(review["source_url"])
-        if posting and review["review_date"] <= snapshot["collected_at"][:10]:
+        if posting and review["review_date"] <= snapshot["observation_date"]:
             reviews.append(dict(review, title=posting["title"], employer=posting["employer"]))
             if review["area"] not in posting["areas"]:
                 posting["areas"].append(review["area"])
     direct = [json.loads(line) for line in (ROOT / "data/reviewed_employer_postings.jsonl").read_text(encoding="utf-8").splitlines()]
-    snapshot["direct"] = [row for row in direct if row["observed_on"] <= snapshot["collected_at"][:10]]
+    snapshot["direct"] = [row for row in direct if row["observed_on"] <= snapshot["observation_date"]]
     snapshot["reviews"] = reviews
     snapshot["areas"] = sorted(set(PATTERNS) | {r["area"] for r in reviews} |
                                {a for row in snapshot["direct"] for a in row["areas"]})
     (dest / "market.json").write_text(json.dumps(snapshot,ensure_ascii=False),encoding="utf-8")
     (dest / "market-history.json").write_text(json.dumps(history,ensure_ascii=False),encoding="utf-8")
     boards=sorted((ROOT/"reports").glob("baykar-roles-*.json"))
-    if boards:shutil.copyfile(boards[-1],dest/"employer-board.json")
+    if boards:
+        board=json.loads(boards[-1].read_text(encoding="utf8"))
+        board["observation_date"]=observation_date(board["collected_at"])
+        (dest/"employer-board.json").write_text(json.dumps(board,ensure_ascii=False),encoding="utf8")
     print(dest)
 
 

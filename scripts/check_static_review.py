@@ -325,6 +325,7 @@ def check(page, origin):
     assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
     page.locator("#area").select_option("")
     snapshot=page.request.get(urljoin(origin,"market.json")).json()
+    expect(page.locator("#scope")).to_contain_text(snapshot["observation_date"])
     records=[r for r in snapshot["postings"] if r["status"]=="readable"]
     if records and all(r.get("description_sha256") for r in records):
         distinct=len({(r["employer"],r["description_sha256"]) for r in records})
@@ -343,6 +344,7 @@ def check(page, origin):
             expect(page.locator("#counts summary")).to_contain_text(f"{unique(mentioning)}/{unique(subset)} distinct descriptions")
             with page.expect_download() as event:
                 page.locator("#marketExport").click()
+            assert event.value.suggested_filename=="turkiye-market-"+snapshot["observation_date"]+".txt"
             exported=event.value.path().read_text(encoding="utf-8")
             assert "Role: Mobile (general/cross-platform)" in exported and "Technology filter: Flutter" in exported
             assert f"({unique(mentioning)}/{unique(subset)})" in exported
@@ -414,6 +416,13 @@ def check(page, origin):
     if "https://jobs.smartrecruiters.com/BoschGroup/744000152330664" in review_urls:
         expect(examples).to_have_count(1)
         expect(examples).to_contain_text("Other programming languages can qualify")
+    history=page.request.get(urljoin(origin,"market-history.json")).json()
+    expect(page.locator("#history article")).to_have_count(len(history))
+    for day in history:
+        if "comparison" in day:
+            comp=day["comparison"]
+            row=page.locator("#history article").filter(has=page.locator("strong").filter(has_text=day["date"]))
+            expect(row).to_contain_text(str(comp["shared_readable"])+" readable URLs on both dates")
     case_id="source-pilot-android-1"
     page.goto(urljoin(origin,"annotate.html?case="+case_id))
     expect(page.locator("#caseLink")).to_have_attribute("href",page.url)

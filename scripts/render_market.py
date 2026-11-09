@@ -3,7 +3,7 @@
 import json
 from html import escape
 from pathlib import Path
-from market_inventory import PATTERNS, ROOT
+from market_inventory import PATTERNS, ROOT, observation_date
 
 
 def source_link(url, title):
@@ -26,7 +26,7 @@ def main(inventory=None):
         rows.append(f'<details><summary><span>{escape(area)}</span><meter min="0" max="{maximum}" value="{len(group)}"></meter>'
                     f'<b>{len(group)}</b><b>{employers}</b></summary>'
                     + (f'<ul>{links}</ul>' if links else '<p>No title matches in this snapshot.</p>') + '</details>')
-    date = data["collected_at"][:10]
+    date = observation_date(data["collected_at"])
     reviewed = [json.loads(s) for s in (ROOT / "data/reviewed_employer_postings.jsonl").read_text(encoding="utf-8").splitlines()]
     separate = "".join(f'<li>{source_link(r["source_url"], r["employer"]+" · "+r["title"])} · observed {escape(r["observed_on"])}</li>'
                        for r in reviewed if r["observed_on"] <= date)
