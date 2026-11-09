@@ -1,0 +1,13 @@
+If a job asks for production experience with Docker, does “Dockerized a personal API and ran it locally” meet the requirement?
+
+I built Job Radar Evidence to help applicants inspect questions like this before they apply. Paste a Turkish or English job requirement, open a CV, and the demo surfaces candidate passages with page references. You decide which requirements the CV supports. The public demo processes your CV in your browser.
+
+I also fine-tuned multilingual encoders on 54 fictional requirement–CV pairs. One failure shaped the product: a model credited simulator work toward a physical-device debugging requirement, yet missed a candidate who had actually debugged a board. The adapted model got 3 of 9 development cases right. That small experiment is why the live demo asks the applicant to confirm the score.
+
+The market view lets you inspect 61 software job descriptions from a Türkiye snapshot and see how many different employers mention a technology. Each count links back to the postings behind it.
+
+Try the fictional example first. If you work in mobile, embedded systems or another software field, what requirement could look convincing on a CV while still missing a crucial detail? A made-up passage and the phrase that changes your judgment would help shape the next evaluation set.
+
+Demo: https://huggingface.co/spaces/rezanicgil/job-radar-evidence
+Dataset: https://huggingface.co/datasets/rezanicgil/job-radar-match-pilot
+Code and experiments: https://github.com/rezanicgil/job-radar-evidence

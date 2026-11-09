@@ -6,6 +6,8 @@ An applicant comparing their CV with a software vacancy can inspect relevant CV 
 
 The project combines Turkish and English evidence retrieval, PDF and TXT parsing, a Flask review interface, public job-board ingestion and repeatable CPU fine-tuning experiments. The Space container has passed a Linux build and HTTP inference check in GitHub Actions.
 
+The [public Hugging Face demo](https://huggingface.co/spaces/rezanicgil/job-radar-evidence) uses a Static Space. It processes documents in the visitor's browser and offers shared-term retrieval or optional multilingual semantic search. The server-based Docker build remains available for local deployments.
+
 The synthetic training release contains 54 examples from 18 scenario families. The first broader technology snapshot includes 61 readable descriptions from title-tagged postings. Readers can inspect source links and employer counts. The snapshot reflects the tracked sources on November 9, 2026.
 
 ## A decision based on evaluation
