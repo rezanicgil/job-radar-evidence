@@ -40,6 +40,7 @@ def main():
     shutil.copyfile(ROOT / "LICENSE",destination / "LICENSE")
     shutil.copyfile(ROOT / "data/match_source_dev.jsonl",destination / "source_validation.jsonl")
     shutil.copyfile(ROOT / "data/match_duration_weak.jsonl",destination / "duration_weak.jsonl")
+    shutil.copyfile(ROOT / "data/match_employer_training.jsonl",destination / "employer_tr.jsonl")
 
 
 if __name__ == "__main__":

@@ -20,6 +20,10 @@ configs:
     data_files:
       - split: train
         path: duration_weak.jsonl
+  - config_name: employer_tr
+    data_files:
+      - split: train
+        path: employer_tr.jsonl
 ---
 
 # Job Radar · Bilingual CV evidence pilot
@@ -40,6 +44,10 @@ For the requirement “Package and run a backend service with Docker”, listing
 `family` identifies related cases. `requirement` describes an employer's condition. `cv_passage` contains the fictional applicant's statement. `label` is the author's judgment of the passage. Supported means the passage establishes the condition, partial means it establishes a relevant component, and unverified means the condition has no supporting evidence in that passage.
 
 ## Provenance and evaluation
+
+The optional `employer_tr` configuration adds 36 training pairs across 12 Turkish requirements informed by four employer pages. Source URLs and qualification versus preference scope accompany each record. CV passages are fictional and include Turkish and English. Labels are project judgments. The training experiment combines these records with the 69 default training pairs. None of these four source employers appear among the ten employers in the source-grounded development split.
+
+At seed 17, the expanded classifier produced the same predicted labels as mentions-v3 on both development splits (9/18 and 14/30 correct). It recovered none of the 16 partial examples across those splits. [Experiment output](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/employer-tr.json)
 
 The project assistant authored the examples and initial labels during dataset development. The pilot covers English, Turkish and cross-language matching. The data has no independent human adjudication. Developers have inspected validation outcomes during model development. The balanced distribution was intentional and does not estimate real-world class frequencies.
 
