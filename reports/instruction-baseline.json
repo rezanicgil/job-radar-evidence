@@ -1,0 +1,263 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "orders": [
+    [
+      "supported",
+      "partial",
+      "unverified"
+    ],
+    [
+      "unverified",
+      "partial",
+      "supported"
+    ]
+  ],
+  "correct": [
+    10,
+    10
+  ],
+  "changed": 2,
+  "cases": [
+    {
+      "source_fingerprint": "af6680e0720205a2dd1d2412ef1850b477ea3a0494f10c2d423be3b92400c759",
+      "expected": "supported",
+      "predictions": [
+        "partial",
+        "partial"
+      ]
+    },
+    {
+      "source_fingerprint": "af6680e0720205a2dd1d2412ef1850b477ea3a0494f10c2d423be3b92400c759",
+      "expected": "partial",
+      "predictions": [
+        "partial",
+        "partial"
+      ]
+    },
+    {
+      "source_fingerprint": "af6680e0720205a2dd1d2412ef1850b477ea3a0494f10c2d423be3b92400c759",
+      "expected": "unverified",
+      "predictions": [
+        "partial",
+        "partial"
+      ]
+    },
+    {
+      "source_fingerprint": "41e32e9942cb140338ec9a1b5fef563485d0aeb06ae7aaa151c7f952643a78fe",
+      "expected": "supported",
+      "predictions": [
+        "partial",
+        "partial"
+      ]
+    },
+    {
+      "source_fingerprint": "41e32e9942cb140338ec9a1b5fef563485d0aeb06ae7aaa151c7f952643a78fe",
+      "expected": "partial",
+      "predictions": [
+        "partial",
+        "partial"
+      ]
+    },
+    {
+      "source_fingerprint": "41e32e9942cb140338ec9a1b5fef563485d0aeb06ae7aaa151c7f952643a78fe",
+      "expected": "unverified",
+      "predictions": [
+        "partial",
+        "partial"
+      ]
+    },
+    {
+      "source_fingerprint": "0ccda75cb94770f724b72b1002ebe46c1e5f275f648e10e24691111c4206f491",
+      "expected": "supported",
+      "predictions": [
+        "partial",
+        "partial"
+      ]
+    },
+    {
+      "source_fingerprint": "0ccda75cb94770f724b72b1002ebe46c1e5f275f648e10e24691111c4206f491",
+      "expected": "partial",
+      "predictions": [
+        "partial",
+        "partial"
+      ]
+    },
+    {
+      "source_fingerprint": "0ccda75cb94770f724b72b1002ebe46c1e5f275f648e10e24691111c4206f491",
+      "expected": "unverified",
+      "predictions": [
+        "partial",
+        "partial"
+      ]
+    },
+    {
+      "source_fingerprint": "509180d2b8f09e277e5076f1bb413641a9bfcba8a18bdf2655b0b7d78b26da82",
+      "expected": "supported",
+      "predictions": [
+        "partial",
+        "partial"
+      ]
+    },
+    {
+      "source_fingerprint": "509180d2b8f09e277e5076f1bb413641a9bfcba8a18bdf2655b0b7d78b26da82",
+      "expected": "partial",
+      "predictions": [
+        "partial",
+        "partial"
+      ]
+    },
+    {
+      "source_fingerprint": "509180d2b8f09e277e5076f1bb413641a9bfcba8a18bdf2655b0b7d78b26da82",
+      "expected": "unverified",
+      "predictions": [
+        "partial",
+        "partial"
+      ]
+    },
+    {
+      "source_fingerprint": "e630e34b302fbeda850f2d8b06ff79d570249c7d0462c8b866750da28dde1f3b",
+      "expected": "supported",
+      "predictions": [
+        "partial",
+        "partial"
+      ]
+    },
+    {
+      "source_fingerprint": "e630e34b302fbeda850f2d8b06ff79d570249c7d0462c8b866750da28dde1f3b",
+      "expected": "partial",
+      "predictions": [
+        "partial",
+        "partial"
+      ]
+    },
+    {
+      "source_fingerprint": "e630e34b302fbeda850f2d8b06ff79d570249c7d0462c8b866750da28dde1f3b",
+      "expected": "unverified",
+      "predictions": [
+        "partial",
+        "partial"
+      ]
+    },
+    {
+      "source_fingerprint": "61805093e33587d7f8f8d1aecb17c95705518d7a8085f1edf007e152f1bc2aad",
+      "expected": "supported",
+      "predictions": [
+        "partial",
+        "partial"
+      ]
+    },
+    {
+      "source_fingerprint": "61805093e33587d7f8f8d1aecb17c95705518d7a8085f1edf007e152f1bc2aad",
+      "expected": "partial",
+      "predictions": [
+        "partial",
+        "partial"
+      ]
+    },
+    {
+      "source_fingerprint": "61805093e33587d7f8f8d1aecb17c95705518d7a8085f1edf007e152f1bc2aad",
+      "expected": "unverified",
+      "predictions": [
+        "partial",
+        "partial"
+      ]
+    },
+    {
+      "source_fingerprint": "45cb759c4b46debe02c7633e363483dbe73ab2cd32ee634cb1eaa407211ede8a",
+      "expected": "supported",
+      "predictions": [
+        "partial",
+        "partial"
+      ]
+    },
+    {
+      "source_fingerprint": "45cb759c4b46debe02c7633e363483dbe73ab2cd32ee634cb1eaa407211ede8a",
+      "expected": "partial",
+      "predictions": [
+        "partial",
+        "partial"
+      ]
+    },
+    {
+      "source_fingerprint": "45cb759c4b46debe02c7633e363483dbe73ab2cd32ee634cb1eaa407211ede8a",
+      "expected": "unverified",
+      "predictions": [
+        "unverified",
+        "partial"
+      ]
+    },
+    {
+      "source_fingerprint": "60df205c6b75b1df8853da95e19ec0f8f4b90f3400013a8c4a1db206e0aa7717",
+      "expected": "supported",
+      "predictions": [
+        "partial",
+        "partial"
+      ]
+    },
+    {
+      "source_fingerprint": "60df205c6b75b1df8853da95e19ec0f8f4b90f3400013a8c4a1db206e0aa7717",
+      "expected": "partial",
+      "predictions": [
+        "partial",
+        "partial"
+      ]
+    },
+    {
+      "source_fingerprint": "60df205c6b75b1df8853da95e19ec0f8f4b90f3400013a8c4a1db206e0aa7717",
+      "expected": "unverified",
+      "predictions": [
+        "partial",
+        "partial"
+      ]
+    },
+    {
+      "source_fingerprint": "1cc5e8cc8e13a9113bab4d56c229ea1f1abddb129238ce29d741803c86fda06a",
+      "expected": "supported",
+      "predictions": [
+        "partial",
+        "partial"
+      ]
+    },
+    {
+      "source_fingerprint": "1cc5e8cc8e13a9113bab4d56c229ea1f1abddb129238ce29d741803c86fda06a",
+      "expected": "partial",
+      "predictions": [
+        "unverified",
+        "partial"
+      ]
+    },
+    {
+      "source_fingerprint": "1cc5e8cc8e13a9113bab4d56c229ea1f1abddb129238ce29d741803c86fda06a",
+      "expected": "unverified",
+      "predictions": [
+        "partial",
+        "partial"
+      ]
+    },
+    {
+      "source_fingerprint": "b2cd81fecbbe313a8d5b69c751fc92b68d2d88019ced1939dddc00bd72ff2c21",
+      "expected": "supported",
+      "predictions": [
+        "partial",
+        "partial"
+      ]
+    },
+    {
+      "source_fingerprint": "b2cd81fecbbe313a8d5b69c751fc92b68d2d88019ced1939dddc00bd72ff2c21",
+      "expected": "partial",
+      "predictions": [
+        "partial",
+        "partial"
+      ]
+    },
+    {
+      "source_fingerprint": "b2cd81fecbbe313a8d5b69c751fc92b68d2d88019ced1939dddc00bd72ff2c21",
+      "expected": "unverified",
+      "predictions": [
+        "partial",
+        "partial"
+      ]
+    }
+  ]
+}

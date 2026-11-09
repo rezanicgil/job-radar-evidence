@@ -5,6 +5,11 @@ let encoder;
 let vocabulary;
 let sentenceModel;
 const selectedPreferences=new Set();
+function conditionsFrom(text){
+  const lines=text.split(/[\r\n]+/).map(line=>line.normalize("NFC").trim()
+    .replace(/^(?:[•*–-]|\d{1,2}[.)])\s+/u,"").replace(/\s+/gu," ").trim());
+  return [...new Set(lines.filter(Boolean))];
+}
 const downloadReview=document.createElement("button");
 downloadReview.type="button";
 downloadReview.textContent="Download review (.txt)";
@@ -16,7 +21,7 @@ el("job").parentElement.before(jobOrigin);
 function clearJobOrigin(){jobOrigin.replaceChildren()}
 el("job").addEventListener("input",()=>{
   clearJobOrigin();
-  const present=new Set(el("job").value.split(/\n/).map(s=>s.trim()));
+  const present=new Set(conditionsFrom(el("job").value));
   for(const s of selectedPreferences)if(!present.has(s))selectedPreferences.delete(s);
 });
 function offerReviewedConditions(card,posting,conditions){
@@ -132,15 +137,16 @@ el("suggest").onclick=async()=>{
 };
 el("append").onclick=()=>{
   const fields=el("job");
-  const prior=fields.value.split(/\n/).map(s=>s.trim()).filter(Boolean);
+  const prior=conditionsFrom(fields.value);
   const checked=[...el("candidates").querySelectorAll(":checked")];
   const selected=checked.map(input=>input.value);
   if(!selected.length)return;
-  const combined=new Set([...(fields.value===fields.defaultValue?[]:prior),...selected]);
+  const combined=new Set(conditionsFrom([...prior,...selected].join("\n")));
   if(combined.size>50){el("status").textContent="Select up to 50 conditions.";return}
   for(const input of checked){
-    if(input.dataset.preference==="true")selectedPreferences.add(input.value);
-    else selectedPreferences.delete(input.value);
+    const [condition]=conditionsFrom(input.value);
+    if(input.dataset.preference==="true")selectedPreferences.add(condition);
+    else selectedPreferences.delete(condition);
   }
   fields.value=[...combined].join("\n");
   clearJobOrigin();
@@ -301,7 +307,7 @@ function assessmentRows(){
 downloadReview.onclick=()=>{
   const rows=assessmentRows();
   if(!rows.length||rows.some(row=>!row.complete))return;
-  const heading=[...el("status").children].map(child=>child.textContent).join("\n")||el("status").textContent;
+  const heading=el("status").innerText;
   const origin=jobOrigin.querySelector("a");
   const context=origin?"Selected requirements from "+origin.textContent+"\n"+origin.href+"\nCoverage applies only to the selected conditions.":"";
   const body=["Job Radar Evidence",el("source").textContent,context,heading,...rows.map(row=>
@@ -328,7 +334,18 @@ function coverage(){
   if(!n){status.textContent="No required conditions selected.";return}
   add(status,"strong",Math.round(100*s/n)+"% coverage");
   add(status,"span",s+" of "+n+" required conditions fully supported by your CV, as reviewed.");
-  add(status,"span",values.filter(v=>v==="partial").length+" partial · "+values.filter(v=>v==="unverified").length+" unverified · "+(values.length-n)+" excluded");
+  for(const [label,title] of [["partial","Partially supported"],["unverified","Unverified"]]){
+    const count=values.filter(value=>value===label).length;
+    add(status,"span",title+" · "+count+"/"+n+" ("+Math.round(100*count/n)+"%)");
+  }
+  add(status,"span",(values.length-n)+" excluded from coverage");
+  const gaps=rows.filter(row=>row.label==="partial"||row.label==="unverified");
+  if(gaps.length){
+    add(status,"b","Conditions to revisit");
+    const list=add(status,"ul","");
+    for(const row of gaps)add(list,"li",row.condition+" — "+(row.note||
+      (row.label==="partial"?"Clarify the part your evidence does not cover.":"Add a specific example if you have one.")));
+  }
 }
 el("form").onsubmit=async event=>{
   event.preventDefault();el("find").disabled=true;el("results").replaceChildren();
@@ -342,7 +359,7 @@ el("form").onsubmit=async event=>{
     if(version!==reviewVersion)return;
     const isPdf=/\.pdf$/i.test(file?.name || "");
     const lines=pages.flatMap((p,i)=>pagePassages(p,isPdf).map(text=>({text,page:i+1})));
-    const job=[...new Set(el("job").value.split(/[\r\n]+/).map(x=>x.trim()).filter(Boolean))];
+    const job=conditionsFrom(el("job").value);
     if(!lines.length)throw Error("Enter CV text or choose a PDF with selectable text.");
     if(!job.length||job.length>50)throw Error("Enter 1–50 distinct conditions, one per line.");
     if(lines.length>800)throw Error("Use a shorter CV with up to 800 passages.");
@@ -388,6 +405,7 @@ el("form").onsubmit=async event=>{
       const advice=add(card,"small","");
       const noteLabel=add(card,"label","What could you clarify in your CV? (optional)");
       const note=add(noteLabel,"textarea","");note.className="gap-note";
+      note.oninput=coverage;
       noteLabel.hidden=true;note.disabled=true;
       select.onchange=()=>{
         picker.hidden=!(select.value==="supported"||select.value==="partial");

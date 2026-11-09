@@ -20,6 +20,9 @@ def check(page, origin):
     for card in cards.all():
         card.locator(".evidence").first.check()
     expect(page.locator("#status")).to_contain_text("50% coverage")
+    expect(page.locator("#status")).to_contain_text("Partially supported · 1/2 (50%)")
+    cards.first.locator(".gap-note").fill("Document the duration of the control software project.")
+    expect(page.locator("#status")).to_contain_text("Document the duration")
     report=page.get_by_role("button",name="Download review (.txt)")
     editor=cards.first.locator(".quote-editor")
     editor.locator("summary").click()
@@ -31,6 +34,7 @@ def check(page, origin):
         report.click()
     exported=event.value.path().read_text(encoding="utf-8")
     assert "1 of 2 required conditions" in exported and "Page 1" in exported
+    assert "Conditions to revisit" in exported and "Document the duration" in exported
     assert "Highlighted wording: 30 ay" in exported and "motor kontrol yazılımı geliştirdim" in exported
     cards.first.locator(".assessment").select_option("skip")
     expect(page.locator("#status")).to_contain_text("100% coverage")
@@ -39,6 +43,10 @@ def check(page, origin):
     expect(cards).to_have_count(0)
     expect(report).to_be_hidden()
     expect(page.locator("#status")).not_to_contain_text("coverage")
+    page.locator("#job").fill("• C++ and Python\n1. C++  and Python\nC++ and Python")
+    page.locator("#find").click()
+    expect(cards).to_have_count(1)
+    expect(cards.first.locator("h3")).to_have_text("C++ and Python")
     page.get_by_text("Find conditions in a job posting").click()
     page.locator("#postingLanguage").select_option("tr")
     page.locator("#posting").fill("Aranan Nitelikler:\nPython ile geliştirme deneyimi.\nTercihen Kotlin bilgisi.\nYan haklar:\nYemek kartı.")
