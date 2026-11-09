@@ -19,6 +19,8 @@ This encoder retrieves parallel passages from Python documentation. We adapted t
 
 The documentation evaluation uses ten held-out files. The base model's pretraining may include related material. In the separate CV diagnostic the target passage appeared in the first three for nine of ten conditions with either encoder. All ten target ranks stayed the same. The evaluation covers one training run and author-assigned CV targets. Applicant suitability and hiring outcomes were not measured.
 
+The same ten job conditions were also tested in four translated job/CV language combinations. In Turkish/Turkish retrieval, one target moved from fourth to third and another from first to second. In Turkish/English retrieval, one target moved from fifth to sixth. The two English-query views kept all ten original ranks within each view.
+
 ```python
 import torch
 from transformers import AutoModel, AutoTokenizer
