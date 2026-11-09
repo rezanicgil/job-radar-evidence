@@ -343,6 +343,7 @@ function addEvidencePicker(card,lines,suggestions){
       }
       coverage();
     };
+    return choice;
   }
   for(const line of suggestions)addChoice(panel,line);
   const others=lines.filter(line=>!suggestions.includes(line));
@@ -352,7 +353,27 @@ function addEvidencePicker(card,lines,suggestions){
     details.ontoggle=()=>{
       if(!details.open)return;
       details.ontoggle=null;
-      for(const line of others)addChoice(details,line);
+      const search=add(add(details,"label","Filter other passages by words"),"input","");
+      search.type="search";
+      const count=add(details,"small","");
+      count.setAttribute("role","status");
+      const normalize=text=>text.normalize("NFKD").replace(/\p{M}/gu,"").toLowerCase().replaceAll("ı","i");
+      const choices=others.map(line=>({
+        node:addChoice(details,line),text:normalize(line.text)
+      }));
+      function filter(){
+        const terms=normalize(search.value).split(/\s+/).filter(Boolean);
+        let matches=0;
+        for(const {node,text} of choices){
+          const match=terms.every(term=>text.includes(term));
+          if(match)matches++;
+          node.hidden=!match&&!node.querySelector(".evidence").checked;
+        }
+        count.textContent=matches+" of "+choices.length+" passages match. Selected passages stay visible.";
+      }
+      search.oninput=filter;
+      details.addEventListener("change",filter);
+      filter();
     };
   }
   return panel;

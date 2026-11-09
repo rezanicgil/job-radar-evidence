@@ -110,6 +110,18 @@ def check(page, origin):
     page.locator("#job").fill("İkili arama ağacı kullanarak arama geliştirmek.")
     page.locator("#find").click()
     expect(cards.first.get_by_role("link",name="binary search tree / İkili arama ağacı")).to_be_visible()
+    page.locator("#cv").fill("Veritabanı sorgularını iyileştirdim.\nMobil uygulama geliştirdim.")
+    page.locator("#job").fill("Improve database query performance")
+    page.locator("#find").click()
+    cards.first.locator(".assessment").select_option("partial")
+    cards.first.get_by_text("Browse 2 other CV passages").click()
+    search=cards.first.get_by_role("searchbox")
+    search.fill("veritabani sorgu")
+    expect(cards.first.locator(".evidence:visible")).to_have_count(1)
+    cards.first.locator(".evidence:visible").check()
+    search.fill("absent")
+    expect(cards.first.locator(".evidence:visible:checked")).to_have_count(1)
+    expect(page.locator("#status")).to_contain_text("0% coverage")
     assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
 
 
