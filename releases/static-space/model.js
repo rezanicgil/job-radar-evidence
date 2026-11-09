@@ -12,6 +12,25 @@ try{
   const correct=examples.filter(r=>r.prediction===r.label).length;
   el("score").textContent=correct+"/"+examples.length+" predictions matched the reference label ("+(100*correct/examples.length).toFixed(1)+"%) on this synthetic development set.";
   let translations=[];
+  const requested=new URLSearchParams(location.search);
+  function exampleLinks(parent,row){
+    const url=new URL(location.pathname,location.origin);
+    url.searchParams.set("family",row.family);
+    url.searchParams.set("reference",row.label);
+    if(row.job_language && row.cv_language){
+      url.searchParams.set("job",row.job_language);
+      url.searchParams.set("cv",row.cv_language);
+    }
+    url.hash="example-"+row.family+"-"+row.label;
+    const links=write(parent,"p","");
+    write(links,"a","Link to this example").href=url.href;
+    links.append(" · ");
+    const draft=new URL("https://github.com/rezanicgil/job-radar-evidence/issues/new");
+    draft.search=new URLSearchParams({template:"evidence_feedback.yml",title:"[Feedback] "+row.family+" prediction",
+      area:"Research model prediction",version:model,example:url.href+"\nRequirement: "+row.requirement+"\nFictional CV: "+row.cv_passage,
+      difference:"Observed: "+row.prediction+". Project reference: "+row.label+".\nMy expected result and supporting phrase: "}).toString();
+    write(links,"a","Draft feedback on GitHub").href=draft.href;
+  }
   function compareLanguages(card,row){
     const views=translations.filter(v=>v.family===row.family&&v.label===row.label);
     const original=views.find(v=>v.original);
@@ -26,6 +45,10 @@ try{
     }
     const job=languagePicker("Job language",original.job_language);
     const cv=languagePicker("CV language",original.cv_language);
+    if(requested.get("family")===row.family && requested.get("reference")===row.label &&
+       views.some(v=>v.job_language===requested.get("job")&&v.cv_language===requested.get("cv"))){
+      job.value=requested.get("job");cv.value=requested.get("cv");panel.open=true;
+    }
     const result=write(panel,"div","");
     result.setAttribute("aria-live","polite");
     function show(){
@@ -37,6 +60,7 @@ try{
       const message=view.original?"Original wording.":view.prediction===original.prediction?
         "Same prediction as the original wording.":"Prediction changed from "+original.prediction+" to "+view.prediction+".";
       write(result,"p",message);
+      exampleLinks(result,view);
     }
     job.onchange=show;cv.onchange=show;show();
   }
@@ -56,8 +80,10 @@ try{
     write(section,"a",selected[0].source.employer+" · "+selected[0].source.title).href=selected[0].source.url;
     for(const row of selected){
       const card=write(section,"article","");
+      card.id="example-"+row.family+"-"+row.label;
       write(card,"p",row.cv_passage);
       write(card,"strong","Model: "+row.prediction+" · Reference: "+row.label);
+      exampleLinks(card,row);
       compareLanguages(card,row);
     }
   }
@@ -70,6 +96,9 @@ try{
     render();
   }
   el("filter").onchange=update;el("family").onchange=render;update();
+  if(examples.some(r=>r.family===requested.get("family")&&r.label===requested.get("reference"))){
+    el("family").value=requested.get("family");render();
+  }
   try{
     const res=await fetch("model-languages.json");
     if(!res.ok)throw Error();
@@ -78,5 +107,6 @@ try{
     translations=report.records;
     el("language-note").textContent="Predictions varied across translations in "+report.changed_across_translations+" of "+report.unique_pairs+" cases. Open a passage to compare its four recorded language combinations. Filters use original wording.";
     render();
+    document.getElementById(location.hash.slice(1))?.scrollIntoView();
   }catch{el("language-note").textContent="Translation comparisons are unavailable."}
 }catch{el("score").textContent="Model results unavailable. Reload to retry."}

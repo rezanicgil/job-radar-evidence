@@ -11,6 +11,7 @@ body:
       label: Which result needs review?
       options:
         - CV evidence retrieval
+        - Research model prediction
         - Dataset annotation
         - Market role or skill count
         - Source coverage
