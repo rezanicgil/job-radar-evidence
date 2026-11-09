@@ -26,9 +26,9 @@ def indexed(path):
     return rows
 
 
-def review(path, packet, packet_hash):
+def review(path, packet, packet_hash, allow_partial=False):
     rows = indexed(path)
-    if rows.keys() != packet.keys():
+    if rows.keys()-packet.keys() or (not allow_partial and rows.keys() != packet.keys()):
         raise ValueError(f"{path.name}: missing {sorted(packet.keys()-rows.keys())}, unexpected {sorted(rows.keys()-packet.keys())}")
     for key, row in rows.items():
         if ("packet_sha256" in row or path.is_dir()) and row.get("packet_sha256") != packet_hash:
@@ -43,19 +43,24 @@ def review(path, packet, packet_hash):
     return rows
 
 
-def compare(packet_path, first_path, second_path):
+def compare(packet_path, first_path, second_path, allow_partial=False):
     if first_path.samefile(second_path):
         raise ValueError("Supply two separate review files")
     packet = indexed(packet_path)
     packet_hash = hashlib.sha256(packet_path.read_bytes()).hexdigest()
-    a = review(first_path, packet, packet_hash)
-    b = review(second_path, packet, packet_hash)
-    n = len(packet)
-    a_counts = Counter(r["label"] for r in a.values())
-    b_counts = Counter(r["label"] for r in b.values())
+    a = review(first_path, packet, packet_hash, allow_partial)
+    b = review(second_path, packet, packet_hash, allow_partial)
+    shared = a.keys() & b.keys()
+    n = len(shared)
+    if not n:
+        raise ValueError("The reviewers did not assess any common examples")
+    a_counts = Counter(a[key]["label"] for key in shared)
+    b_counts = Counter(b[key]["label"] for key in shared)
     disagreements = []
     different_quotes = []
     for key, case in packet.items():
+        if key not in shared:
+            continue
         first, second = a[key], b[key]
         if first["label"] == second["label"] and first.get("evidence") == second.get("evidence"):
             continue
@@ -68,7 +73,8 @@ def compare(packet_path, first_path, second_path):
     observed = (n-len(disagreements))/n
     chance = sum(a_counts[l]*b_counts[l] for l in LABELS)/(n*n)
     verified_versions = all("packet_sha256" in row for rows in (a,b) for row in rows.values())
-    return dict(records=n,packet_sha256=packet_hash,all_review_versions_verified=verified_versions,
+    return dict(records=n,packet_records=len(packet),first_reviewed=len(a),second_reviewed=len(b),
+                packet_sha256=packet_hash,all_review_versions_verified=verified_versions,
                 agreement=observed,kappa=None if chance == 1 else (observed-chance)/(1-chance),
                 first_label_counts=a_counts,second_label_counts=b_counts,disagreements=disagreements,
                 same_label_different_excerpt=different_quotes)
@@ -78,8 +84,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     for arg in ("packet","first","second"):
         parser.add_argument(arg,type=Path)
+    parser.add_argument("--allow-partial",action="store_true",help="Compare only the examples both reviewers assessed")
     args = parser.parse_args()
     try:
-        print(json.dumps(compare(args.packet,args.first,args.second),ensure_ascii=False,indent=2))
+        print(json.dumps(compare(args.packet,args.first,args.second,args.allow_partial),ensure_ascii=False,indent=2))
     except (ValueError,OSError) as exc:
         parser.exit(2,f"{exc}\n")

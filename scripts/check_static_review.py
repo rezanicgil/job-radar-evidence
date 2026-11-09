@@ -7,6 +7,7 @@ from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from threading import Thread
+from urllib.parse import urljoin
 
 from playwright.sync_api import expect, sync_playwright
 
@@ -135,6 +136,21 @@ def check(page, origin):
     expect(cards.first.locator(".evidence:visible:checked")).to_have_count(1)
     expect(page.locator("#status")).to_contain_text("0% coverage")
     assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
+    case_id="source-pilot-android-1"
+    page.goto(urljoin(origin,"annotate.html?case="+case_id))
+    expect(page.locator("#caseLink")).to_have_attribute("href",page.url)
+    expect(page.locator("#export")).to_be_disabled()
+    page.locator("input[value=supported]").check()
+    passage=page.locator("#passage").inner_text()
+    page.locator("#quote").fill(passage)
+    page.locator("#save").click()
+    with page.expect_download() as event:
+        page.get_by_role("button",name="Download 1 saved decision").click()
+    row=json.loads(event.value.path().read_text(encoding="utf-8"))
+    assert event.value.suggested_filename=="job-radar-review-1-of-12.jsonl"
+    assert row["id"]==case_id and row["evidence"]==passage
+    packet=Path(__file__).resolve().parents[1]/"research/source_grounded_candidates.jsonl"
+    assert row["packet_sha256"]==sha256(packet.read_bytes()).hexdigest()
 
 
 def main():

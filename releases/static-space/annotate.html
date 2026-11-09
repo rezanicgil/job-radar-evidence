@@ -3,7 +3,7 @@
 <style>
 *{box-sizing:border-box}body{background:#f5f4ed;color:#17382f;font:1rem/1.5 system-ui;margin:0}main{max-width:48rem;margin:auto;padding:1.25rem}a{color:#135b48}article{background:white;padding:1rem 1.25rem;border:1px solid #bccdc4;border-radius:.65rem}h1{line-height:1.15}h2{font-size:1rem;margin-bottom:.3rem}blockquote{margin:.3rem 0 1.25rem}label{display:block;margin:.6rem 0}textarea{font:inherit;width:100%;padding:.5rem}button{font:inherit;padding:.5rem .8rem;margin:.5rem .25rem .5rem 0;cursor:pointer}button:disabled{cursor:default}#save{background:#18513d;color:white;border:1px solid #18513d}#message{min-height:1.5em}
 </style><main><a href="index.html">← Job Radar</a><h1>Review dataset examples</h1>
-<p>Compare each job condition with a fictional CV passage. Your decisions stay in this browser until you download and share them.</p>
+<p>Compare a job condition with a fictional CV passage. You can download one saved decision or continue reviewing. Your decisions stay in this browser until you share the file.</p>
 <p id="progress">Loading examples…</p><article id="case" hidden>
 <h2>Job condition</h2><p id="condition"></p><h2>CV passage</h2><blockquote id="passage"></blockquote>
 <fieldset><legend>What does this passage establish?</legend>
@@ -11,7 +11,7 @@
 <label><input type="radio" name="label" value="partial"> Partial · the passage establishes a relevant part</label>
 <label><input type="radio" name="label" value="unverified"> Unverified · no supporting evidence in the passage</label></fieldset>
 <label>Exact words from the CV that explain your decision<textarea id="quote" rows="2"></textarea></label>
-<small>A quote is optional for an unverified condition.</small><div><button id="previous">Previous</button><button id="save">Save decision</button><button id="next">Next</button></div></article>
-<p id="message" role="status"></p><button id="export" disabled>Download completed review</button>
+<small>A quote is optional for an unverified condition.</small><div><button id="previous">Previous</button><button id="save">Save decision</button><button id="next">Next</button></div><a id="caseLink">Link to this example</a></article>
+<p id="message" role="status"></p><button id="export" disabled>Download saved decisions</button>
 <p>To contribute, share the downloaded JSONL file through the <a href="https://huggingface.co/datasets/rezanicgil/job-radar-match-pilot/discussions">dataset community</a>.</p>
 </main><script type="module" src="annotate.js"></script></html>

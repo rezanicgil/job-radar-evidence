@@ -12,6 +12,8 @@ Two reviewers independently label a sample before adjudication. Record class cou
 
 Reviewers each save private JSONL rows with an `id`, `label` and verbatim `evidence` from the supplied CV passage. Use null evidence for an unverified case when no relevant passage exists. Compare the completed files locally using `python scripts/reviewer_agreement.py packet.jsonl first.jsonl second.jsonl`. The script reports raw agreement, Cohen's kappa and disagreements for adjudication. A null kappa indicates that the expected chance agreement is one. Place private review outputs under the ignored `runs/` directory.
 
+The web form also exports a single saved decision. Share the example link so another reviewer can assess the same passage independently. Add `--allow-partial` to compare incomplete files. The report shows how many examples each reviewer assessed and how many they have in common. Agreement uses only the overlap. Report the count alongside the proportion because people who stop early may review a different mix of cases.
+
 ## Comparisons and selection
 
 To collect decisions interactively, run `python scripts/label_packet.py packet.jsonl runs/reviewer-a`. Each completed answer is saved immediately. The same command resumes an interrupted review. Give the second reviewer a separate directory. The agreement script accepts these directories in place of JSONL files.

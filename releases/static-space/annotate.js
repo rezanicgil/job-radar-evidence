@@ -22,6 +22,8 @@ for(let i=rows.length-1;i>0;i--){
   [rows[i],rows[j]]=[rows[j],rows[i]];
 }
 let index=Math.max(0,rows.findIndex(row=>!decisions.has(row.id)));
+const requested=rows.findIndex(row=>row.id===new URLSearchParams(location.search).get("case"));
+if(requested>=0)index=requested;
 function render(){
   const row=rows[index],answer=decisions.get(row.id);
   el("case").hidden=false;
@@ -32,7 +34,11 @@ function render(){
   el("progress").textContent="Example "+(index+1)+" of "+rows.length+" · "+decisions.size+" saved";
   el("previous").disabled=index===0;
   el("next").disabled=index===rows.length-1;
-  el("export").disabled=decisions.size!==rows.length;
+  el("export").disabled=decisions.size===0;
+  el("export").textContent="Download "+decisions.size+" saved decision"+(decisions.size===1?"":"s");
+  const link=new URL(location.href);
+  link.searchParams.set("case",row.id);
+  el("caseLink").href=link.href;
 }
 function move(step){
   const answer=decisions.get(rows[index].id);
@@ -57,7 +63,7 @@ el("save").onclick=()=>{
 el("export").onclick=()=>{
   const body=[...decisions.values()].map(answer=>JSON.stringify(answer)).join("\n")+"\n";
   const url=URL.createObjectURL(new Blob([body],{type:"application/x-ndjson"}));
-  const a=document.createElement("a");a.href=url;a.download="job-radar-independent-review.jsonl";a.click();
+  const a=document.createElement("a");a.href=url;a.download="job-radar-review-"+decisions.size+"-of-"+rows.length+".jsonl";a.click();
   setTimeout(()=>URL.revokeObjectURL(url),1000);
 };
 render();
