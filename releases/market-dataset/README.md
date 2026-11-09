@@ -24,6 +24,8 @@ The 22:37 Türkiye-time collection expands the technical title filter to cover s
 
 The 23:00 Türkiye-time collection adds Yassir, CRENNO and Lucida AI. Seven readable postings explicitly list Türkiye as an alternative location. The 129 URLs contain 124 distinct employer and normalized-description pairs. Five Lucida AI Flutter URLs share one description. A URL count measures published listings and does not establish headcount.
 
+The 23:15 collection measures qualification sections in 46 of the 129 readable postings and preference sections in 13. The CRENNO mobile posting mentions Flutter under qualifications and Git under additional skills. Section-specific shares use only the postings with that type of measured section.
+
 ## Reproduce a percentage
 
 ```python
@@ -50,6 +52,6 @@ For Lever and Ashby, `location_scope = listed_alternative` identifies Türkiye i
 
 For selected Workday postings, `source_requisition` and `source_listed_date` preserve the employer's requisition ID and Workday start date when available. Rows without these fields have null values. The snapshot date records when this project observed the posting.
 
-The `sections` field contains recognized qualification and preference headings from structured Lever descriptions, along with the technology names found under each heading. A null value means the posting was not measured by this parser. An empty list means it found no recognized heading. For a section-specific percentage, count each posting once and use only postings with that section type as the denominator. A qualification may list alternatives or give examples. Its heading alone cannot establish that every technology mentioned is mandatory.
+The `sections` field contains recognized qualification and preference headings from structured Lever descriptions and the reviewed Lucida AI (Workable) and CRENNO (SmartRecruiters) layouts, along with the technology names found under each heading. An explicitly marked preference within a CRENNO qualification list is grouped under its preference phrase. A null value means the posting was not measured by this parser. An empty list means it found no recognized heading. For a section-specific percentage, count each posting once and use only postings with that section type as the denominator. A qualification may list alternatives or give examples. Its heading alone cannot establish that every technology mentioned is mandatory.
 
 The last collected snapshot on each Türkiye calendar day supplies the records. Collection dates record when the job board was observed. They do not establish publication dates, hiring outcomes or total demand in Türkiye. The release contains factual listing metadata and project-generated classifications. The descriptions remain on the linked employer websites. [Collection code and dated source files](https://github.com/rezanicgil/job-radar-evidence)

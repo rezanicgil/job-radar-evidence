@@ -19,13 +19,13 @@ PATTERNS = {s:re.compile(r"(?<![\w+#])"+re.escape(s)+r"(?![\w+#])",re.I) for s i
 HEADINGS = {
     "qualifications": {"requirements","job requirements","qualifications","expected qualifications",
                        "qualifications & experience","what we're looking for","what you will need",
-                       "what you'll bring","aranan nitelikler","genel nitelikler"},
+                       "what you'll bring","about your experience","aranan nitelikler","genel nitelikler"},
     "preferences": {"nice to have","nice-to-have","nice to haves","preferred qualifications",
                     "preferred skills","bonus points","tercih edilen nitelikler","tercihen"},
 }
 
 
-def lever_sections(lists):
+def headed_sections(lists):
     sections=[]
     for item in lists:
         heading=item["text"].strip()
@@ -36,6 +36,35 @@ def lever_sections(lists):
             sections.append(dict(kind=kind,heading=heading,skills=[
                 skill for skill,pattern in PATTERNS.items() if pattern.search(text)]))
     return sections
+
+
+def lucida_sections(description):
+    lists=[dict(text=heading.strip(),content=items)
+           for heading,items in re.findall(r"<h3>([^<]*)</h3>\s*<ul>(.*?)</ul>",description,re.S|re.I)]
+    return headed_sections(lists)
+
+
+def crenno_sections(html):
+    grouped={}
+    kind=None
+    for tag,body in re.findall(r"<(p|li)\b[^>]*>(.*?)</\1>",html,re.I|re.S):
+        text=" ".join(unescape(re.sub("<[^>]+>"," ",body)).replace("\u200b","").split())
+        if tag.lower()=="p":
+            heading=text.rstrip(":?").strip()
+            if heading=="Ne arıyoruz":
+                kind="qualifications"
+            elif heading in {"Hangi ek beceriler öne çıkmana yardımcı olacak",
+                             "Hangi ek beceriler öne çıkmanıza yardımcı olacak"}:
+                kind="preferences"
+            else:
+                kind=None
+            continue
+        if kind and text:
+            inline=re.search(r"\((tercih sebebi|artı değer olarak değerlendirilir)\)",text,re.I)
+            key=("preferences",inline[1]) if inline else (kind,heading)
+            grouped.setdefault(key,[]).append(text)
+    return [dict(kind=k,heading=h,skills=[s for s,p in PATTERNS.items() if any(p.search(t) for t in items)])
+            for (k,h),items in grouped.items()]
 
 
 @lru_cache(maxsize=64)
@@ -75,19 +104,24 @@ def inspect(job, *, retry_timeout=True):
             job=dict(job,source_requisition=info.get("jobReqId"),source_listed_date=info.get("startDate"))
         elif url.hostname == "apply.workable.com":
             body = workable_descriptions(board)[key]
+            if board=="lucida-ai":
+                job=dict(job,sections=lucida_sections(body))
         elif url.hostname == "jobs.ashbyhq.com":
             body = ashby_descriptions(board)[job["url"]]
         else:
             with urlopen(api, timeout=15) as response:
                 j = json.load(response)
         if url.hostname == "jobs.lever.co":
-            job=dict(job,sections=lever_sections(j["lists"]))
+            job=dict(job,sections=headed_sections(j["lists"]))
             body = " ".join([j.get("descriptionPlain") or "", *(s["content"] for s in j["lists"]),
                              j.get("additionalPlain") or ""])
         elif url.hostname == "job-boards.greenhouse.io":
             body = j["content"]
         elif url.hostname == "jobs.smartrecruiters.com":
-            body = " ".join(s.get("text","") for s in j["jobAd"]["sections"].values())
+            sections=j["jobAd"]["sections"]
+            if board=="CRENNO":
+                job=dict(job,sections=crenno_sections(sections.get("qualifications",{}).get("text","")))
+            body = " ".join(s.get("text","") for s in sections.values())
         plain = unescape(re.sub("<[^>]+>", " ", unescape(body)))
         if not plain.strip():
             return dict(**job,status="empty description")

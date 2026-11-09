@@ -783,7 +783,7 @@ try{
         "Showing "+visible.length+" of "+measured.length+" mentioned technologies.");
     const sectionName=scope==="preferences"?"preference":"qualification";
     el("skillCount").textContent=(scope==="all"?"":records.length+" of "+readable.length+
-      " readable postings have a recognized Lever "+sectionName+" heading. Shares use these postings and their "+employers+" represented employers. ")+description;
+      " readable postings have a measured "+sectionName+" heading. Shares use these postings and their "+employers+" represented employers. ")+description;
     el("allSkills").hidden=!records.length||Boolean(query)||measured.length<=8;
     el("allSkills").textContent=showAll?"Show top 8":"Show all "+measured.length+" technologies";
     const exportButton=el("marketExport");

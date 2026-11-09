@@ -320,6 +320,18 @@ def check(page, origin):
         outside=sum(r["employer"]!=employer for r in records)
         expect(chart).to_contain_text(f"0% (0/{outside} postings)" if outside else "no postings remain")
     page.locator("#mentionScope").select_option("preferences")
+    mobile=next((p for p in records if p["url"].endswith("744000109926925")),None)
+    if mobile and mobile.get("sections") is not None:
+        page.locator("#area").select_option("Mobile (general/cross-platform)")
+        page.locator("#skillSearch").fill("Git")
+        chart=page.locator("#counts details").filter(has=page.get_by_text("Git",exact=True)).first
+        chart.locator("summary").click()
+        expect(chart.get_by_role("link",name=mobile["title"],exact=True)).to_be_visible()
+        page.locator("#mentionScope").select_option("qualifications")
+        chart.locator("summary").click()
+        expect(chart.get_by_role("link",name=mobile["title"],exact=True)).to_have_count(0)
+        page.locator("#mentionScope").select_option("preferences")
+        page.locator("#area").select_option("")
     preference_rows=[p for p in records if any(s["kind"]=="preferences" for s in p.get("sections") or [])]
     expect(page.locator("#skillCount")).to_contain_text(f"{len(preference_rows)} of {len(records)} readable postings")
     if preference_rows:
