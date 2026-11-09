@@ -7,6 +7,10 @@
 <main><nav><a href="#review">CV review</a><a href="#market">Türkiye market</a><a href="https://huggingface.co/datasets/rezanicgil/job-radar-match-pilot">Dataset</a><a href="https://huggingface.co/rezanicgil/job-radar-evidence-mentions-v3">Research model</a><a href="https://github.com/rezanicgil/job-radar-evidence/issues/new?template=evidence_feedback.yml">Give feedback</a></nav>
 <section id="review"><h1>CV evidence review</h1><form id="form"><label>CV text<textarea id="cv">I deployed the billing API to production with Docker.
 I wrote SQL reports for the support team.</textarea></label><label>Or open a PDF or TXT file <input id="file" type="file" accept=".txt,.pdf"></label>
+<details><summary>Find skill sentences in an English posting</summary>
+<label>English posting<textarea id="posting"></textarea></label><button type="button" id="suggest">Suggest sentences</button>
+<div id="candidates" aria-live="polite"></div><button type="button" id="append" hidden>Add selected sentences</button>
+<p>Suggestions may include preferences. Select the sentences you want to review. Trained on <a href="https://huggingface.co/datasets/jjzha/skillspan">SkillSpan</a>.</p></details>
 <label>Job conditions · one per line<textarea id="job">Production experience with Docker is required.
 Experience with Kubernetes is preferred.</textarea></label><label>Retrieval <select id="method"><option value="terms">Shared terms</option><option value="semantic">Multilingual semantic search (model download)</option></select></label><p>CV and job text stay in your browser.</p><button id="find">Find evidence</button></form><output id="status" aria-live="polite"></output><div id="results"></div></section>
 <section id="market"><h1>Türkiye market snapshot</h1><label>Role family <select id="area"></select></label><p id="scope"></p><h2>Technology mentions</h2><div id="counts"></div><div id="verified"></div><div id="direct"></div></section></main><script type="module" src="app.js"></script></html>

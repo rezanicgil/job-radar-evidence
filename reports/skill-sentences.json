@@ -1,0 +1,62 @@
+{
+  "dataset": "jjzha/skillspan",
+  "revision": "33062e6bd0e03a5e01ae299ce0518f4613ef4298",
+  "base": "MoritzLaurer/multilingual-MiniLMv2-L6-mnli-xnli",
+  "base_revision": "0a71e92a985b6e1ad1828cf67ce9c459639c1dca",
+  "seed": 31,
+  "epochs": 1,
+  "max_tokens": 96,
+  "batch_size": 32,
+  "splits": {
+    "train": {
+      "source_rows": 4800,
+      "unique_used": 3943,
+      "positive": 1552,
+      "sha256": "5e884c3426087d14fc437d328eb72132082edbfe1e776292ae0e6e9b36c1e1f6"
+    },
+    "dev": {
+      "source_rows": 3174,
+      "unique_used": 2438,
+      "positive": 900,
+      "sha256": "3732937c6869fe191c749b4efe7ffd597ce84eea1192f09b7fe3bd1eb459e2b4",
+      "adapted": {
+        "tp": 164,
+        "fp": 142,
+        "fn": 736,
+        "precision": 0.5359477124183006,
+        "recall": 0.18222222222222223,
+        "f1": 0.27197346600331673
+      },
+      "technology_dictionary": {
+        "tp": 114,
+        "fp": 38,
+        "fn": 786,
+        "precision": 0.75,
+        "recall": 0.12666666666666668,
+        "f1": 0.21673003802281368
+      }
+    },
+    "test": {
+      "source_rows": 3569,
+      "unique_used": 2404,
+      "positive": 882,
+      "sha256": "8438eda34939a5877b984ea5daf9e6ff39b2d5c7e3d73cca0499d3de3784d24a",
+      "adapted": {
+        "tp": 146,
+        "fp": 129,
+        "fn": 736,
+        "precision": 0.5309090909090909,
+        "recall": 0.1655328798185941,
+        "f1": 0.25237683664649957
+      },
+      "technology_dictionary": {
+        "tp": 97,
+        "fp": 22,
+        "fn": 785,
+        "precision": 0.8151260504201681,
+        "recall": 0.10997732426303855,
+        "f1": 0.1938061938061938
+      }
+    }
+  }
+}

@@ -3,6 +3,43 @@ const add=(parent,tag,text)=>{const node=document.createElement(tag);node.textCo
 const words=text=>new Set(text.toLocaleLowerCase().match(/[\p{L}\p{N}+#]+/gu)||[]);
 let encoder;
 let vocabulary;
+let sentenceModel;
+el("suggest").onclick=async()=>{
+  const output=el("candidates");
+  output.replaceChildren();
+  el("append").hidden=true;
+  const text=el("posting").value.trim();
+  if(!text || text.length>100000){output.textContent="Enter an English posting of up to 100,000 characters.";return}
+  el("suggest").disabled=true;
+  try{
+    if(!sentenceModel){
+      const response=await fetch("skill-sentences.json");
+      if(!response.ok)throw Error();
+      sentenceModel=await response.json();
+    }
+    const sentences=new Set(text.split(/\n+|(?<=[.!?])\s+/).map(s=>s.trim()).filter(Boolean));
+    for(const sentence of sentences){
+      const terms=sentence.toLowerCase().match(/[\p{L}\p{N}_+#]+/gu)||[];
+      const value=terms.reduce((sum,term)=>sum+(Object.hasOwn(sentenceModel.weights,term)?sentenceModel.weights[term]:0),sentenceModel.bias);
+      if(value<sentenceModel.threshold)continue;
+      const label=add(output,"label","");
+      const input=add(label,"input","");input.type="checkbox";input.value=sentence;
+      label.append(" "+sentence);
+    }
+    el("append").hidden=!output.children.length;
+    if(!output.children.length)output.textContent="No suggestions found. Enter conditions below.";
+  }catch{output.textContent="Suggestions unavailable. Enter conditions below."}
+  finally{el("suggest").disabled=false}
+};
+el("append").onclick=()=>{
+  const fields=el("job");
+  const prior=fields.value.split(/\n/).map(s=>s.trim()).filter(Boolean);
+  const selected=[...el("candidates").querySelectorAll(":checked")].map(input=>input.value);
+  if(!selected.length)return;
+  const combined=new Set([...(fields.value===fields.defaultValue?[]:prior),...selected]);
+  if(combined.size>50){el("status").textContent="Select up to 50 conditions.";return}
+  fields.value=[...combined].join("\n");
+};
 function hasTechnology(text,name){
   const tokens=text.toLowerCase().match(/[\p{L}\p{N}_+#]+/gu)||[];
   return (" "+tokens.join(" ")+" ").includes(" "+name.toLowerCase()+" ");
