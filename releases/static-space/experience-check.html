@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Experience evidence check · Job Radar</title>
+<style>
+:root{font:17px/1.5 system-ui;color:#172e37;background:#f2f6f5}main{max-width:43rem;margin:2rem auto;padding:1.6rem;background:white;border-radius:1rem}label{display:block;font-weight:600;margin-top:1rem}textarea,select,input,button{font:inherit;max-width:100%;box-sizing:border-box}textarea,select{width:100%;padding:.45rem}input{width:8rem}button{padding:.5rem 1rem;background:#065b55;color:white;border:0;border-radius:.35rem}output{display:block;padding:1rem;background:#e6f4ef;margin:1rem 0}small{color:#41575f}
+</style>
+<main><small>JOB RADAR / EVIDENCE REVIEW</small><h1>Check an experience requirement</h1>
+<p>Compare a minimum duration with one CV passage. Use English or Turkish quotes. You verify the evidence; the page does the arithmetic. Nothing you enter leaves this page.</p>
+<form id="review"><label for="req">Exact requirement</label><textarea id="req" required></textarea>
+<label for="cv">Exact CV passage</label><textarea id="cv" required></textarea>
+<label for="min">Minimum months in the requirement</label><input id="min" type="number" required min="1" step="1">
+<label for="scope">Whose work and which skill does this duration describe?</label>
+<select id="scope"><option value="">Unclear or unstated</option><option value="self">My own work performing the required task</option><option value="team">Someone else's work</option><option value="other">A different skill or responsibility</option></select>
+<label for="months">Months explicitly documented for that work</label><input id="months" type="number" min="0" step="1" disabled>
+<p><button type="submit">Check evidence</button> <button type="button" id="example">Load bilingual example</button></p></form>
+<output id="result" aria-live="polite">Enter one requirement and one passage to start.</output><small>This checks one condition. It does not estimate hiring probability. Missing evidence does not mean missing experience.</small></main>
+<script>
+function assess(scope,min,months){
+ if(scope!=='self'||months===null)return 'Unverified: no duration can be credited to your own work on this task from this passage.';
+ return months>=min ? 'Documented: '+months+' months against a minimum of '+min+'.' : 'Partial: '+months+' of '+min+' months documented. '+(min-months)+' additional months need evidence.';
+}
+const el=id=>document.getElementById(id);
+function sync(){el('months').disabled=el('scope').value!=='self';if(el('months').disabled)el('months').value='';el('result').textContent='Check the updated evidence.'}
+el('review').oninput=sync;
+el('example').onclick=()=>{el('req').value='At least three years developing Android apps with Kotlin.';el('cv').value='Android ödeme ekranımızı on sekiz ay boyunca Kotlin ile geliştirdim.';el('min').value=36;el('scope').value='self';sync();el('months').value=18;el('review').requestSubmit()};
+el('review').onsubmit=e=>{e.preventDefault();if(!el('req').value.trim()||!el('cv').value.trim()){el('result').textContent='Enter both source quotes.';return}
+el('result').textContent=assess(el('scope').value,el('min').valueAsNumber,el('months').value===''?null:el('months').valueAsNumber)};
+</script></html>
