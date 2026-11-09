@@ -1,0 +1,9 @@
+{"family":"container-service","requirement":"Package and run a backend service with Docker.","cv_passage":"Docker ile sipariş servisi için imaj oluşturdum ve servisi konteynerde çalıştırdım.","label":"supported"}
+{"family":"container-service","requirement":"Package and run a backend service with Docker.","cv_passage":"Teknik beceriler: Docker, Git, SQL.","label":"partial"}
+{"family":"container-service","requirement":"Package and run a backend service with Docker.","cv_passage":"Docker eğitimine katılacak ekip için toplantı odasını ayırdım.","label":"unverified"}
+{"family":"infra-module","requirement":"Provision cloud resources using Terraform.","cv_passage":"Wrote Terraform modules to provision our cloud networks.","label":"supported"}
+{"family":"infra-module","requirement":"Provision cloud resources using Terraform.","cv_passage":"Tools: Terraform, AWS.","label":"partial"}
+{"family":"infra-module","requirement":"Provision cloud resources using Terraform.","cv_passage":"Prepared attendee badges for a Terraform meetup.","label":"unverified"}
+{"family":"metrics-alert","requirement":"Üretim servisi için Prometheus alarmı kurmak.","cv_passage":"Üretimde ödeme servisinin hata oranı için Prometheus alarmı kurdum.","label":"supported"}
+{"family":"metrics-alert","requirement":"Üretim servisi için Prometheus alarmı kurmak.","cv_passage":"İzleme araçları: Prometheus ve Grafana.","label":"partial"}
+{"family":"metrics-alert","requirement":"Üretim servisi için Prometheus alarmı kurmak.","cv_passage":"Prometheus toplantısına katılanların seyahatlerini ayarladım.","label":"unverified"}

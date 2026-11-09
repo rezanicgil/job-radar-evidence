@@ -1,0 +1,178 @@
+{
+  "base": "MoritzLaurer/multilingual-MiniLMv2-L6-mnli-xnli",
+  "revision": "0a71e92a985b6e1ad1828cf67ce9c459639c1dca",
+  "training_rows": 69,
+  "seed": 17,
+  "file_hashes": {
+    "match_training_v1": "5fe9f5b776ec51e75865ade095290845ca8564a8df17311b073bcdd92eae7eb1",
+    "match_contrasts_v2": "85b908fc98aac0b16b1258a176d76ca9c08140defedc59cf7a4c68301d56afe7",
+    "match_mentions_train": "754dad00a12b81ad8d5154ddf2ad2ad7d6cab1478188df45b12b3c67e35048bb",
+    "match_challenge_dev": "f0c8c3e9f3882c3bfd7e2a12dc3ab8a145f8ddfad6e981147cc43cd124dba6e0",
+    "match_mentions_dev": "1308d7d5ce0b219a66872a814f33aefbdb0f1e79c210d7bad3303265a27f4646"
+  },
+  "synthetic_development_only": true,
+  "records": [
+    {
+      "family": "ios-native",
+      "requirement": "Ship iOS features using SwiftUI.",
+      "cv_passage": "SwiftUI ile sipariş geçmişini geliştirip App Store sürümünde yayımladım.",
+      "label": "supported",
+      "split": "challenge",
+      "previous": "unverified",
+      "adapted": "unverified"
+    },
+    {
+      "family": "ios-native",
+      "requirement": "Ship iOS features using SwiftUI.",
+      "cv_passage": "SwiftUI ile kişisel bir prototip hazırladım.",
+      "label": "partial",
+      "split": "challenge",
+      "previous": "unverified",
+      "adapted": "unverified"
+    },
+    {
+      "family": "ios-native",
+      "requirement": "Ship iOS features using SwiftUI.",
+      "cv_passage": "I managed the office budget.",
+      "label": "unverified",
+      "split": "challenge",
+      "previous": "unverified",
+      "adapted": "unverified"
+    },
+    {
+      "family": "android-ui",
+      "requirement": "Kotlin ve Jetpack Compose ile Android uygulaması geliştirme deneyimi.",
+      "cv_passage": "I built Kotlin Android screens with Jetpack Compose.",
+      "label": "supported",
+      "split": "challenge",
+      "previous": "supported",
+      "adapted": "supported"
+    },
+    {
+      "family": "android-ui",
+      "requirement": "Kotlin ve Jetpack Compose ile Android uygulaması geliştirme deneyimi.",
+      "cv_passage": "I used Kotlin on an Android app with XML layouts.",
+      "label": "partial",
+      "split": "challenge",
+      "previous": "unverified",
+      "adapted": "unverified"
+    },
+    {
+      "family": "android-ui",
+      "requirement": "Kotlin ve Jetpack Compose ile Android uygulaması geliştirme deneyimi.",
+      "cv_passage": "Developed billing reports with SQL.",
+      "label": "unverified",
+      "split": "challenge",
+      "previous": "unverified",
+      "adapted": "unverified"
+    },
+    {
+      "family": "firmware-debug",
+      "requirement": "Experience debugging firmware on physical microcontrollers.",
+      "cv_passage": "Kart üzerinde STM32 firmware hatalarını JTAG ile ayıkladım.",
+      "label": "supported",
+      "split": "challenge",
+      "previous": "unverified",
+      "adapted": "unverified"
+    },
+    {
+      "family": "firmware-debug",
+      "requirement": "Experience debugging firmware on physical microcontrollers.",
+      "cv_passage": "I debugged microcontroller firmware exclusively in a simulator.",
+      "label": "partial",
+      "split": "challenge",
+      "previous": "supported",
+      "adapted": "supported"
+    },
+    {
+      "family": "firmware-debug",
+      "requirement": "Experience debugging firmware on physical microcontrollers.",
+      "cv_passage": "Mobil uygulamanın ürün yol haritasını yönettim.",
+      "label": "unverified",
+      "split": "challenge",
+      "previous": "supported",
+      "adapted": "unverified"
+    },
+    {
+      "family": "container-service",
+      "requirement": "Package and run a backend service with Docker.",
+      "cv_passage": "Docker ile sipariş servisi için imaj oluşturdum ve servisi konteynerde çalıştırdım.",
+      "label": "supported",
+      "split": "mention",
+      "previous": "supported",
+      "adapted": "supported"
+    },
+    {
+      "family": "container-service",
+      "requirement": "Package and run a backend service with Docker.",
+      "cv_passage": "Teknik beceriler: Docker, Git, SQL.",
+      "label": "partial",
+      "split": "mention",
+      "previous": "unverified",
+      "adapted": "unverified"
+    },
+    {
+      "family": "container-service",
+      "requirement": "Package and run a backend service with Docker.",
+      "cv_passage": "Docker eğitimine katılacak ekip için toplantı odasını ayırdım.",
+      "label": "unverified",
+      "split": "mention",
+      "previous": "supported",
+      "adapted": "supported"
+    },
+    {
+      "family": "infra-module",
+      "requirement": "Provision cloud resources using Terraform.",
+      "cv_passage": "Wrote Terraform modules to provision our cloud networks.",
+      "label": "supported",
+      "split": "mention",
+      "previous": "supported",
+      "adapted": "supported"
+    },
+    {
+      "family": "infra-module",
+      "requirement": "Provision cloud resources using Terraform.",
+      "cv_passage": "Tools: Terraform, AWS.",
+      "label": "partial",
+      "split": "mention",
+      "previous": "unverified",
+      "adapted": "unverified"
+    },
+    {
+      "family": "infra-module",
+      "requirement": "Provision cloud resources using Terraform.",
+      "cv_passage": "Prepared attendee badges for a Terraform meetup.",
+      "label": "unverified",
+      "split": "mention",
+      "previous": "unverified",
+      "adapted": "unverified"
+    },
+    {
+      "family": "metrics-alert",
+      "requirement": "Üretim servisi için Prometheus alarmı kurmak.",
+      "cv_passage": "Üretimde ödeme servisinin hata oranı için Prometheus alarmı kurdum.",
+      "label": "supported",
+      "split": "mention",
+      "previous": "supported",
+      "adapted": "supported"
+    },
+    {
+      "family": "metrics-alert",
+      "requirement": "Üretim servisi için Prometheus alarmı kurmak.",
+      "cv_passage": "İzleme araçları: Prometheus ve Grafana.",
+      "label": "partial",
+      "split": "mention",
+      "previous": "unverified",
+      "adapted": "unverified"
+    },
+    {
+      "family": "metrics-alert",
+      "requirement": "Üretim servisi için Prometheus alarmı kurmak.",
+      "cv_passage": "Prometheus toplantısına katılanların seyahatlerini ayarladım.",
+      "label": "unverified",
+      "split": "mention",
+      "previous": "unverified",
+      "adapted": "unverified"
+    }
+  ]
+}
