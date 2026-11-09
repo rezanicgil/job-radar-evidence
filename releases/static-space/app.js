@@ -4,6 +4,31 @@ const words=text=>new Set(text.toLocaleLowerCase().match(/[\p{L}\p{N}+#]+/gu)||[
 let encoder;
 let vocabulary;
 let sentenceModel;
+let reviewVersion=0;
+function invalidateReview(){
+  reviewVersion++;
+  el("example").hidden=Boolean(el("cv").value||el("job").value||el("file").files.length||el("posting").value);
+  const hasReview=el("results").children.length||el("find").disabled;
+  el("source").textContent="";
+  el("results").replaceChildren();
+  el("status").textContent=hasReview?"Inputs changed. Find evidence again to update the review.":"";
+}
+for(const id of ["cv","job"])el(id).addEventListener("input",invalidateReview);
+el("method").addEventListener("change",invalidateReview);
+el("file").onchange=()=>{
+  const usingFile=Boolean(el("file").files[0]);
+  el("cv").disabled=usingFile;
+  el("removeFile").hidden=!usingFile;
+  invalidateReview();
+};
+el("removeFile").onclick=()=>{el("file").value="";el("file").onchange()};
+el("posting").oninput=()=>{el("candidates").replaceChildren();el("append").hidden=true;el("example").hidden=Boolean(el("cv").value||el("job").value||el("file").files.length||el("posting").value)};
+el("example").onclick=()=>{
+  el("cv").value="C++ ile 30 ay boyunca motor kontrol yazılımı geliştirdim.\nPython ile test raporları hazırladım.";
+  el("job").value="At least 36 months developing control software with C++.\nWrite test reports using Python.";
+  invalidateReview();
+  el("form").requestSubmit();
+};
 el("suggest").onclick=async()=>{
   const output=el("candidates");
   output.replaceChildren();
@@ -17,6 +42,7 @@ el("suggest").onclick=async()=>{
       if(!response.ok)throw Error();
       sentenceModel=await response.json();
     }
+    if(el("posting").value.trim()!==text)return;
     const sentences=new Set(text.split(/\n+|(?<=[.!?])\s+/).map(s=>s.trim()).filter(Boolean));
     for(const sentence of sentences){
       const terms=sentence.toLowerCase().match(/[\p{L}\p{N}_+#]+/gu)||[];
@@ -39,6 +65,7 @@ el("append").onclick=()=>{
   const combined=new Set([...(fields.value===fields.defaultValue?[]:prior),...selected]);
   if(combined.size>50){el("status").textContent="Select up to 50 conditions.";return}
   fields.value=[...combined].join("\n");
+  invalidateReview();
 };
 function hasTechnology(text,name){
   const tokens=text.toLowerCase().match(/[\p{L}\p{N}_+#]+/gu)||[];
@@ -90,8 +117,48 @@ function pagePassages(page,isPdf){
   flush();
   return chunks.flatMap(chunk=>chunk.split(/(?<=[.!?])\s+/)).filter(text=>!sectionTitle.test(text));
 }
+const numberWords=new Map(Object.entries({
+  one:1,two:2,three:3,four:4,five:5,six:6,ten:10,thirty:30,
+  bir:1,iki:2,"üç":3,"dört":4,"beş":5,"altı":6,on:10,otuz:30
+}));
+function statedDuration(text){
+  // Skip ranges, approximations and compound amounts rather than picking one endpoint.
+  if(/\d\s*[-–]\s*\d|\b(?:about|nearly|almost|roughly|approximately|between|less than|up to)\b|yaklaşık|yaklasik|arasında|en fazla/i.test(text))return null;
+  const pattern=/(?<![\p{L}\p{N}.,])([\p{L}]+|\d+(?:[.,]\d+)?)(\s+(?:buçuk|and a half))?\s*\+?\s+(years?|months?|yıl(?:lık)?|sene(?:lik)?|ay(?:lık)?)(?!\p{L})/giu;
+  const matches=[...text.matchAll(pattern)];
+  if(matches.length!==1)return null;
+  const [match]=matches;
+  const word=match[1].toLowerCase();
+  const preceding=text.slice(0,match.index).trimEnd().split(/\s+/).pop()?.toLowerCase();
+  if(numberWords.has(preceding)||/(?:[-–]|\b(?:twenty|thirty|forty|fifty|sixty|yirmi|kırk|elli)|\d+\s+to)\s*$/iu.test(text.slice(0,match.index)))return null;
+  const value=numberWords.get(word)??Number(word.replace(",","."));
+  if(!Number.isFinite(value)||value<=0)return null;
+  const years=/^(year|yıl|sene)/iu.test(match[3]);
+  return {phrase:match[0],months:Math.round((value+(match[2]?0.5:0))*(years?12:1)*100)/100};
+}
+function durationComparison(card,condition,lines){
+  const target=statedDuration(condition);
+  if(!target)return;
+  const matches=lines.filter(line=>!/(?:\d\s*\+|\bat least\b|\bmore than\b|en az|üzeri(?!\p{L})|yılı aşkın)/iu.test(line.text))
+    .map(line=>({line,duration:statedDuration(line.text)})).filter(x=>x.duration);
+  if(!matches.length)return;
+  const panel=add(card,"details","");
+  add(panel,"summary","Compare stated durations");
+  add(panel,"p","Use this comparison when the condition specifies a minimum. Choose a CV passage about the same work.");
+  const picker=add(add(panel,"label","CV passage "),"select","");
+  picker.add(new Option("Select a passage",""));
+  matches.forEach(({line},i)=>picker.add(new Option("Page "+line.page+" · "+line.text,String(i))));
+  const output=add(panel,"p","");output.setAttribute("aria-live","polite");
+  picker.onchange=()=>{
+    if(!picker.value){output.textContent="";return}
+    const {line,duration}=matches[Number(picker.value)];
+    const gap=Math.round((duration.months-target.months)*100)/100;
+    output.textContent="Page "+line.page+" · "+line.text+" | CV: "+duration.months+" months · minimum: "+target.months+" months · "+
+      (gap===0?"equal duration":Math.abs(gap)+" months "+(gap<0?"below":"above")+" the minimum")+".";
+  };
+}
 function coverage(){
-  const values=[...el("results").querySelectorAll("select")].map(s=>s.value);
+  const values=[...el("results").querySelectorAll(".assessment")].map(s=>s.value);
   const status=el("status");
   status.replaceChildren();
   if(values.includes("")){
@@ -108,12 +175,19 @@ function coverage(){
 }
 el("form").onsubmit=async event=>{
   event.preventDefault();el("find").disabled=true;el("results").replaceChildren();
+  const version=++reviewVersion;
+  const file=el("file").files[0];
+  el("source").textContent="";
+  el("status").textContent="Reading CV…";
   try{
-    const pages=await readPages(el("file").files[0]);
-    const isPdf=/\.pdf$/i.test(el("file").files[0]?.name || "");
+    const pages=await readPages(file);
+    if(version!==reviewVersion)return;
+    const isPdf=/\.pdf$/i.test(file?.name || "");
     const lines=pages.flatMap((p,i)=>pagePassages(p,isPdf).map(text=>({text,page:i+1})));
     const job=[...new Set(el("job").value.split(/[\r\n]+/).map(x=>x.trim()).filter(Boolean))];
-    if(!lines.length||!job.length||job.length>50||lines.length>800)throw Error("Use a readable CV and 1–50 conditions.");
+    if(!lines.length)throw Error("Enter CV text or choose a PDF with selectable text.");
+    if(!job.length||job.length>50)throw Error("Enter 1–50 distinct conditions, one per line.");
+    if(lines.length>800)throw Error("Use a shorter CV with up to 800 passages.");
     el("status").textContent="Finding passages…";
     const semantic=el("method").value==="semantic";
     const vec=semantic?await vectors([...job,...lines.map(x=>x.text)]):null;
@@ -121,6 +195,8 @@ el("form").onsubmit=async event=>{
       const response=await fetch("technologies.json");
       if(response.ok)vocabulary=await response.json();
     }
+    if(version!==reviewVersion)return;
+    el("source").textContent=(file?file.name:"Pasted CV")+" · "+job.length+" job condition"+(job.length===1?"":"s")+" · "+(semantic?"Semantic search":"Shared terms");
     job.forEach((condition,i)=>{
       const terms=words(condition);
       const ranked=lines.map((line,j)=>({line,score:semantic?vec[i].reduce((s,v,k)=>s+v*vec[job.length+j][k],0):[...words(line.text)].filter(t=>terms.has(t)).length}))
@@ -139,11 +215,17 @@ el("form").onsubmit=async event=>{
         }
       }
       if(!ranked.length)add(card,"p","No shared terms found. Review the CV directly.");
+      durationComparison(card,condition,lines);
       const select=add(add(card,"label","Assessment "),"select","");
+      select.className="assessment";
       for(const [value,label] of [["","Choose"],["supported","Required · supported"],["partial","Required · partial"],["unverified","Required · unverified"],["skip","Exclude from required coverage"]])select.add(new Option(label,value));
-      select.onchange=coverage;
+      const advice=add(card,"small","");
+      select.onchange=()=>{
+        advice.textContent=({partial:"Identify which part your CV demonstrates and which part needs an example.",unverified:"If you have relevant experience, describe the work you personally did."})[select.value]||"";
+        coverage();
+      };
     });coverage();
-  }catch(error){el("status").textContent=error.message+" If semantic search is unavailable, choose Shared terms."}
+  }catch(error){if(version===reviewVersion){el("results").replaceChildren();el("source").textContent="";el("status").textContent=error.message}}
   finally{el("find").disabled=false}
 };
 try{
