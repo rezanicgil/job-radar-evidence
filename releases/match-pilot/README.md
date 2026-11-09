@@ -78,6 +78,10 @@ configs:
         path: python-translation-index-train.jsonl
       - split: validation
         path: python-translation-index-validation.jsonl
+  - config_name: duration_scope_retrieval
+    data_files:
+      - split: validation
+        path: duration_scope_retrieval.jsonl
   - config_name: duration_weak
     data_files:
       - split: train
@@ -199,6 +203,12 @@ The mentions-v3 checkpoint recovered 4/6 supported examples (66.7%), 0/6 partial
 The next collection batch contains 12 unlabeled fictional passages paired with requirements adapted from three source postings. They are available for review outside these splits. Further collection should sample independent employers and requirements across software specialties, include all four Turkish/English language directions, and prioritize passages that share a technology name while differing in responsibility or deployment experience. [Review candidates](https://github.com/rezanicgil/job-radar-evidence/blob/a7f1a6d/research/source_grounded_candidates.jsonl)
 
 Reviewers can save one decision or a full packet in the [blind review form](https://rezanicgil-job-radar-evidence.static.hf.space/annotate.html). Once two people have independently reviewed shared examples, the local comparison tool can evaluate the frozen classifier against each set of decisions and identify disputed labels. Results on agreed cases carry their own denominator. [Command and interpretation](https://github.com/rezanicgil/job-radar-evidence/blob/main/research/methodology.md)
+
+### Retrieving experience duration in context
+
+Four authored job families each include a requirement and three fictitious CV passages in English and Turkish. The passage labeled `direct_work` describes the applicant's own work in the requested technology and states its duration. It can document experience below the minimum. The alternatives describe a longer period in another technology or a responsibility other than doing the requested work. Four language directions per family give 16 related retrieval comparisons. Count a success only when the direct passage uniquely ranks first.
+
+BM25 retrieved that passage first in 5/16 comparisons. The multilingual base encoder, the released Python translation retriever and a one-epoch contrastive candidate each achieved 1/16. The candidate updated the last encoder layer using 96 template-derived triples with six other target technologies. These diagnostic examples remain separate from training. This small authored sample measures ranking on these constructions and has no hiring outcome labels. [Per-case rankings and pinned checkpoints](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/duration-scope-retrieval.json)
 
 ### Duration augmentation
 

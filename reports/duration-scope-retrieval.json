@@ -1,0 +1,489 @@
+{
+  "packet_sha256": "d4c29dd224c2a873d94944a70503e8b897cb0cec3fdb351435d0cf0304066468",
+  "checkpoints": {
+    "base": [
+      "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+      "e8f8c211226b894fcb81acc59f3b34ba3efd5f42"
+    ],
+    "fine_tuned": [
+      "rezanicgil/python-tr-en-retriever",
+      "813078062d92ba7d57487fd97b14af3acd620522"
+    ]
+  },
+  "models": {
+    "bm25": {
+      "unique_first": 5,
+      "comparisons": 16,
+      "cases": [
+        {
+          "family": "android",
+          "direction": "en-en",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "android",
+          "direction": "en-tr",
+          "first": [
+            "direct_work"
+          ]
+        },
+        {
+          "family": "android",
+          "direction": "tr-en",
+          "first": [
+            "direct_work"
+          ]
+        },
+        {
+          "family": "android",
+          "direction": "tr-tr",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "firmware",
+          "direction": "en-en",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "firmware",
+          "direction": "en-tr",
+          "first": [
+            "direct_work"
+          ]
+        },
+        {
+          "family": "firmware",
+          "direction": "tr-en",
+          "first": [
+            "direct_work"
+          ]
+        },
+        {
+          "family": "firmware",
+          "direction": "tr-tr",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "database",
+          "direction": "en-en",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "database",
+          "direction": "en-tr",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "database",
+          "direction": "tr-en",
+          "first": [
+            "direct_work"
+          ]
+        },
+        {
+          "family": "database",
+          "direction": "tr-tr",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "cloud",
+          "direction": "en-en",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "cloud",
+          "direction": "en-tr",
+          "first": [
+            "direct_work",
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "cloud",
+          "direction": "tr-en",
+          "first": [
+            "direct_work",
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "cloud",
+          "direction": "tr-tr",
+          "first": [
+            "other_responsibility"
+          ]
+        }
+      ]
+    },
+    "base": {
+      "unique_first": 1,
+      "comparisons": 16,
+      "cases": [
+        {
+          "family": "android",
+          "direction": "en-en",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "android",
+          "direction": "en-tr",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "android",
+          "direction": "tr-en",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "android",
+          "direction": "tr-tr",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "firmware",
+          "direction": "en-en",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "firmware",
+          "direction": "en-tr",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "firmware",
+          "direction": "tr-en",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "firmware",
+          "direction": "tr-tr",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "database",
+          "direction": "en-en",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "database",
+          "direction": "en-tr",
+          "first": [
+            "other_technology"
+          ]
+        },
+        {
+          "family": "database",
+          "direction": "tr-en",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "database",
+          "direction": "tr-tr",
+          "first": [
+            "other_technology"
+          ]
+        },
+        {
+          "family": "cloud",
+          "direction": "en-en",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "cloud",
+          "direction": "en-tr",
+          "first": [
+            "direct_work"
+          ]
+        },
+        {
+          "family": "cloud",
+          "direction": "tr-en",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "cloud",
+          "direction": "tr-tr",
+          "first": [
+            "other_responsibility"
+          ]
+        }
+      ]
+    },
+    "fine_tuned": {
+      "unique_first": 1,
+      "comparisons": 16,
+      "cases": [
+        {
+          "family": "android",
+          "direction": "en-en",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "android",
+          "direction": "en-tr",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "android",
+          "direction": "tr-en",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "android",
+          "direction": "tr-tr",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "firmware",
+          "direction": "en-en",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "firmware",
+          "direction": "en-tr",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "firmware",
+          "direction": "tr-en",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "firmware",
+          "direction": "tr-tr",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "database",
+          "direction": "en-en",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "database",
+          "direction": "en-tr",
+          "first": [
+            "other_technology"
+          ]
+        },
+        {
+          "family": "database",
+          "direction": "tr-en",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "database",
+          "direction": "tr-tr",
+          "first": [
+            "other_technology"
+          ]
+        },
+        {
+          "family": "cloud",
+          "direction": "en-en",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "cloud",
+          "direction": "en-tr",
+          "first": [
+            "direct_work"
+          ]
+        },
+        {
+          "family": "cloud",
+          "direction": "tr-en",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "cloud",
+          "direction": "tr-tr",
+          "first": [
+            "other_responsibility"
+          ]
+        }
+      ]
+    },
+    "scope_candidate": {
+      "unique_first": 1,
+      "comparisons": 16,
+      "cases": [
+        {
+          "family": "android",
+          "direction": "en-en",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "android",
+          "direction": "en-tr",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "android",
+          "direction": "tr-en",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "android",
+          "direction": "tr-tr",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "firmware",
+          "direction": "en-en",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "firmware",
+          "direction": "en-tr",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "firmware",
+          "direction": "tr-en",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "firmware",
+          "direction": "tr-tr",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "database",
+          "direction": "en-en",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "database",
+          "direction": "en-tr",
+          "first": [
+            "other_technology"
+          ]
+        },
+        {
+          "family": "database",
+          "direction": "tr-en",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "database",
+          "direction": "tr-tr",
+          "first": [
+            "other_technology"
+          ]
+        },
+        {
+          "family": "cloud",
+          "direction": "en-en",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "cloud",
+          "direction": "en-tr",
+          "first": [
+            "direct_work"
+          ]
+        },
+        {
+          "family": "cloud",
+          "direction": "tr-en",
+          "first": [
+            "other_responsibility"
+          ]
+        },
+        {
+          "family": "cloud",
+          "direction": "tr-tr",
+          "first": [
+            "other_responsibility"
+          ]
+        }
+      ]
+    }
+  }
+}
