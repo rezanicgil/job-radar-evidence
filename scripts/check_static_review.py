@@ -154,6 +154,12 @@ def check(page, origin):
     expect(cards).to_have_count(3)
     expect(cards.last.locator(".assessment")).to_have_value("")
     dataset=Path(__file__).resolve().parents[1]/"releases/match-pilot/posting_modality.jsonl"
+    page.locator("#postingLanguage").select_option("tr")
+    page.locator("#posting").fill("Deneyimli bir geliştirici arıyoruz.\nAranan\u00a0Nitelikler: Java bilgisi.\nTercihen Docker deneyimi.\nYan haklar:\nEğitim bütçesi.")
+    page.locator("#suggest").click()
+    expect(suggestions).to_have_count(2)
+    expect(suggestions.first).to_have_value("Java bilgisi.")
+    expect(suggestions.last).to_have_attribute("data-preference","true")
     for line in dataset.read_text(encoding="utf-8").splitlines():
         case=json.loads(line)
         page.locator("#postingLanguage").select_option(case["language"])

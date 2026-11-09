@@ -138,15 +138,25 @@ function mixedConditions(sentence,language){
   return parts.some(([,optional])=>optional)&&parts.some(([,optional])=>!optional)?parts:null;
 }
 function turkishCandidates(text){
-  let section="unknown";
+  const qualifications=/^(?:genel nitelikler(?: ve iş tanımı)?|aranan (?:nitelikler|özellikler)|(?:asgari|minimum|teknik) (?:nitelikler|gereksinimler)|gereksinimler|yetkinlikler|iletişim becerileri|takım çalışması beklentileri)$/u;
+  const preferences=/^(?:tercihen|tercih edilen (?:nitelikler|özellikler)|tercih nedeni olabilecek ek nitelikler|ek nitelikler)$/u;
+  const other=/^(?:iş tanımı|görev tanımı|(?:temel )?sorumluluklar|görev ve sorumluluklar|seni neler bekliyor|biz kimiz|yan haklar|sunduğumuz olanaklar|başvur(?:u)?|başvuru süreci|iletişim|iletişime geçin|hakkımızda)$/u;
+  const lines=text.split(/\r?\n/).map(raw=>raw.trim().replace(/^[•*–-]\s*/,""));
+  function headingOf(line){
+    return line.split(":",1)[0].normalize("NFC").toLocaleLowerCase("tr").replace(/\?$/,"").trim().replace(/\s+/gu," ");
+  }
+  let section=lines.some(line=>qualifications.test(headingOf(line)))?"other":"unknown";
   const candidates=new Map();
-  for(const raw of text.split(/\r?\n/)){
-    const line=raw.trim().replace(/^[•*–-]\s*/,"");
+  for(let line of lines){
+    const heading=headingOf(line);
+    const next=qualifications.test(heading)?"qualification":preferences.test(heading)?"preference":other.test(heading)?"other":null;
+    if(next){
+      section=next;
+      const colon=line.indexOf(":");
+      line=colon<0?"":line.slice(colon+1).trim();
+    }else if(line.endsWith(":")){section="other";continue}
     if(!line)continue;
-    const key=line.toLocaleLowerCase("tr").replace(/[:?]\s*$/,"").trim();
-    if(/^(genel nitelikler(?: ve iş tanımı)?|aranan (?:nitelikler|özellikler)|(?:asgari|minimum|teknik) (?:nitelikler|gereksinimler)|gereksinimler|yetkinlikler)$/.test(key)){section="qualification";continue}
-    if(/^(?:tercihen|tercih edilen (?:nitelikler|özellikler)|tercih nedeni olabilecek ek nitelikler|ek nitelikler)$/.test(key)){section="preference";continue}
-    if(/^(?:iş tanımı|görev tanımı|sorumluluklar|görev ve sorumluluklar|seni neler bekliyor|biz kimiz|yan haklar|sunduğumuz olanaklar|başvur(?:u)?|başvuru süreci|iletişim|iletişime geçin|hakkımızda)$/.test(key)||line.endsWith(":")){section="other";continue}
+    const key=line.toLocaleLowerCase("tr").replace(/\s+/gu," ").trim();
     if(/^(?:çalışma yeri|pozisyonun lokasyonu)\s/.test(key) ||
        (/@/.test(key) && /gönder|başvur|ilet/.test(key)))continue;
     const mixed=section!=="other"&&mixedConditions(line,"tr");

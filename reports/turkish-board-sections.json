@@ -1,0 +1,97 @@
+{
+  "baseline_revision": "97e5336",
+  "before": [
+    {
+      "url": "https://jobs.lever.co/roofstacks/49e4f4cb-430d-4f93-bbbe-c2556b20f79c",
+      "source_sha256": "01161cba7acc92949074d20cd244a5be4e666f22e925a67b48f76875c5ec689c",
+      "expected": 16,
+      "preferred": 0,
+      "correctly_typed": 3,
+      "missed": 13,
+      "extra": 1
+    },
+    {
+      "url": "https://jobs.lever.co/roofstacks/fde1267c-de8b-4361-901b-f99925f6b257",
+      "source_sha256": "6c78b9e691c66b481ff9102c6a2bac8b2925377efcbc594565b93f64f121ce92",
+      "expected": 21,
+      "preferred": 1,
+      "correctly_typed": 4,
+      "missed": 17,
+      "extra": 1
+    },
+    {
+      "url": "https://jobs.lever.co/roofstacks/22286111-d965-4644-804a-792504b559b0",
+      "source_sha256": "9480ba564d2d41173f00337f9165e19629bccf25ce61c211bec6ba8d1195bb65",
+      "expected": 21,
+      "preferred": 0,
+      "correctly_typed": 6,
+      "missed": 15,
+      "extra": 1
+    },
+    {
+      "url": "https://jobs.lever.co/roofstacks/70409613-03e9-48ba-a1f4-d96361a7b1f4",
+      "source_sha256": "189c05679058920e9a51d4eb9dfcfc9cf57196921ea9b724087b48205ef3a698",
+      "expected": 22,
+      "preferred": 1,
+      "correctly_typed": 5,
+      "missed": 17,
+      "extra": 1
+    },
+    {
+      "url": "https://jobs.lever.co/roofstacks/31ea2349-542a-4661-b21c-fe5dedc09a06",
+      "source_sha256": "54709f22cf541734fac867d7b886ec6512f3da5fe73f75d6070015970f3ad202",
+      "expected": 16,
+      "preferred": 0,
+      "correctly_typed": 3,
+      "missed": 13,
+      "extra": 1
+    }
+  ],
+  "after": [
+    {
+      "url": "https://jobs.lever.co/roofstacks/49e4f4cb-430d-4f93-bbbe-c2556b20f79c",
+      "source_sha256": "01161cba7acc92949074d20cd244a5be4e666f22e925a67b48f76875c5ec689c",
+      "expected": 16,
+      "preferred": 0,
+      "correctly_typed": 16,
+      "missed": 0,
+      "extra": 0
+    },
+    {
+      "url": "https://jobs.lever.co/roofstacks/fde1267c-de8b-4361-901b-f99925f6b257",
+      "source_sha256": "6c78b9e691c66b481ff9102c6a2bac8b2925377efcbc594565b93f64f121ce92",
+      "expected": 21,
+      "preferred": 1,
+      "correctly_typed": 21,
+      "missed": 0,
+      "extra": 0
+    },
+    {
+      "url": "https://jobs.lever.co/roofstacks/22286111-d965-4644-804a-792504b559b0",
+      "source_sha256": "9480ba564d2d41173f00337f9165e19629bccf25ce61c211bec6ba8d1195bb65",
+      "expected": 21,
+      "preferred": 0,
+      "correctly_typed": 21,
+      "missed": 0,
+      "extra": 0
+    },
+    {
+      "url": "https://jobs.lever.co/roofstacks/70409613-03e9-48ba-a1f4-d96361a7b1f4",
+      "source_sha256": "189c05679058920e9a51d4eb9dfcfc9cf57196921ea9b724087b48205ef3a698",
+      "expected": 22,
+      "preferred": 1,
+      "correctly_typed": 22,
+      "missed": 0,
+      "extra": 0
+    },
+    {
+      "url": "https://jobs.lever.co/roofstacks/31ea2349-542a-4661-b21c-fe5dedc09a06",
+      "source_sha256": "54709f22cf541734fac867d7b886ec6512f3da5fe73f75d6070015970f3ad202",
+      "expected": 16,
+      "preferred": 0,
+      "correctly_typed": 16,
+      "missed": 0,
+      "extra": 0
+    }
+  ]
+}
