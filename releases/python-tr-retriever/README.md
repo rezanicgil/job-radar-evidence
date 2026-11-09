@@ -63,3 +63,7 @@ with torch.inference_mode():
 ```
 
 [Training code](https://github.com/rezanicgil/job-radar-evidence/blob/main/scripts/train_translation_retrieval.py) · [Per-condition ranks and split details](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/translation-retrieval.json) · [Python Turkish translators and source texts](https://github.com/python/python-docs-tr/tree/caa8b1e08b8534a1e1344a82889fc6c820768a91)
+
+## External Git translation retrieval
+
+Git’s Turkish localization catalog supplied 3,039 distinct evaluation pairs. Each message was retrieved against the entire opposite-language pool. The checkpoint and base model were frozen. Top-three retrieval rose from 2,151 to 2,204 in English-to-Turkish search and from 2,165 to 2,190 in Turkish-to-English search. The task tests exact technical translation retrieval. The separate job-condition experiments describe the model’s behavior on CV passages. [Source index](https://huggingface.co/datasets/rezanicgil/job-radar-match-pilot/viewer/git_localization_index/validation) · [Scores and pairwise changes](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/git-localization-retrieval.json)

@@ -1,0 +1,63 @@
+{
+  "revision": "0a961ebf01737f50c491ce12f7be3998a7f73fd1",
+  "catalog_sha256": "a6b929ac2a78c2acdf3238db00558175748637f8c6bc427db0a21e79ddc2149b",
+  "catalog_entries": 6478,
+  "pairs": 3039,
+  "index_sha256": "6bf240d8299b60b9abd6148b9bffec91a5ae76b7c0f009730fce85eebd50f228",
+  "methods": {
+    "base": {
+      "repo": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+      "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+      "views": {
+        "en-tr": {
+          "top1": 1738,
+          "top3": 2151,
+          "top10": 2450
+        },
+        "tr-en": {
+          "top1": 1754,
+          "top3": 2165,
+          "top10": 2481
+        }
+      }
+    },
+    "adapted": {
+      "repo": "rezanicgil/python-tr-en-retriever",
+      "revision": "813078062d92ba7d57487fd97b14af3acd620522",
+      "views": {
+        "en-tr": {
+          "top1": 1805,
+          "top3": 2204,
+          "top10": 2499
+        },
+        "tr-en": {
+          "top1": 1791,
+          "top3": 2190,
+          "top10": 2505
+        }
+      }
+    }
+  },
+  "top3_changes": {
+    "en-tr": {
+      "gained": 74,
+      "lost": 21
+    },
+    "tr-en": {
+      "gained": 48,
+      "lost": 23
+    }
+  },
+  "shared_words": {
+    "en-tr": {
+      "top1": 397,
+      "top3": 624,
+      "top10": 767
+    },
+    "tr-en": {
+      "top1": 459,
+      "top3": 721,
+      "top10": 937
+    }
+  }
+}

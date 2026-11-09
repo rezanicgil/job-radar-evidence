@@ -52,6 +52,10 @@ configs:
     data_files:
       - split: validation
         path: connective_actors.jsonl
+  - config_name: git_localization_index
+    data_files:
+      - split: validation
+        path: git_localization_index.jsonl
   - config_name: progit_section_index
     data_files:
       - split: validation
@@ -116,6 +120,10 @@ In `connective_actors`, each of 18 project-authored fictional CV passages mentio
 The `turkish_section_index` configuration contains 96 source pointers from five technical postings on one employer's board. Section headings distinguish qualifications, communication skills and teamwork expectations. Two bullets begin with “Tercihen” and are labelled as preferences. Each row contains its source URL, line number, document fingerprint and whitespace-normalized line fingerprint. Several postings repeat the same wording. These examples were used to develop the parsing rules and represent section-based references rather than independent human judgments. [Before and after counts](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/turkish-board-sections.json)
 
 The `turkish_crenno_sections` split indexes 94 qualification-section items across seven Turkish CRENNO postings, including mobile, frontend, backend and .NET roles. Employer subheadings and explicit preference phrases identify 38 optional items. Each row contains a source URL, one-based block position within the qualification section, digest of the normalized wording and expected preference status. Repeated items in different postings are separate references. The reviewed layout informed the parser update, so this diagnostic measures behavior on that layout. [Before](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/crenno-before.json) · [After](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/crenno-after.json)
+
+The `git_localization_index` contains 3,039 English–Turkish message pairs from the Git project's translation catalog. Emir SARI is credited for the Turkish translation. Each row identifies an upstream catalog entry by pinned URL, starting line and two SHA-256 digests. To reconstruct the texts, run `scripts/check_git_localization_retrieval.py` with the project's retrieval dependencies and polib 1.2.0. The catalog is distributed under Git’s license. This release publishes pointers and hashes. The catalog was used only for evaluation, and it contributes no job postings or applicant labels.
+
+The evaluation keeps translated, current singular entries with 3–24 words in each language, a single line and no percent sign. It drops identical or ambiguous messages after case folding and excludes exact hashes in both published Python translation splits and the Pro Git heading index. Each query competes with all 3,039 opposite-language candidates. An equal score uses the less favorable rank. Other close paraphrases can be valid translations even when their catalog entry differs. [Pinned source](https://github.com/git/git/blob/0a961ebf01737f50c491ce12f7be3998a7f73fd1/po/tr.po) · [Source license](https://github.com/git/git/blob/0a961ebf01737f50c491ce12f7be3998a7f73fd1/COPYING) · [Evaluation results](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/git-localization-retrieval.json)
 
 The `progit_section_index` is an external retrieval evaluation using 154 heading pairs from 79 matching files in the English and Turkish editions of *Pro Git* by Scott Chacon, Ben Straub and contributors. The upstream texts are licensed under CC BY-NC-SA 3.0. This index publishes source pointers, section keys and hashes. Book text and model training examples are not included. Each row pairs the first heading in the same source file or a heading with the same explicit section anchor in both editions. Identical case-folded headings and ambiguous repeated titles are excluded. Ranks in the report follow index order. Source alignment is structural and has not been independently adjudicated. [Original book and license](https://git-scm.com/book/tr/v2) · [Evaluation code](https://github.com/rezanicgil/job-radar-evidence/blob/main/scripts/check_progit_retrieval.py) · [Ranks](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/progit-section-retrieval.json)
 
