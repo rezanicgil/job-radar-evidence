@@ -21,7 +21,37 @@ def load_encoder():
     return tokenizer, model
 
 
-def read_passages(path):
+SECTION_TITLE = re.compile(
+    r"(?:(?:professional |work |relevant )?experience|(?:technical )?skills|"
+    r"(?:professional )?summary|education(?: & additional)?|projects|certifications|"
+    r"languages|iş deneyimi|deneyim|eğitim|projeler|teknik beceriler|yetenekler|özet|diller)\s*:?",
+    re.IGNORECASE,
+)
+
+
+def cv_page_chunks(page, is_pdf):
+    current = ""
+    for raw in page.splitlines():
+        line = raw.strip()
+        if not line or SECTION_TITLE.fullmatch(line):
+            if current:
+                yield current
+            current = ""
+            continue
+        content = re.sub(r"^(?:[•▪●]\s*|[-–]\s+)", "", line)
+        if not content:
+            continue
+        if is_pdf and current and content == line and content[0].islower() and current[-1] not in ".!?:":
+            current += " " + content
+        else:
+            if current:
+                yield current
+            current = content
+    if current:
+        yield current
+
+
+def read_passages(path, *, posting=False):
     if path.suffix.lower() == ".pdf":
         from pypdf import PdfReader
         pages = [page.extract_text() or "" for page in PdfReader(path).pages]
@@ -29,8 +59,9 @@ def read_passages(path):
         pages = [path.read_text(encoding="utf-8-sig")]
     else:
         raise ValueError("Choose a text PDF or a UTF-8 TXT file.")
-    passages = [(number, line.strip()) for number, page in enumerate(pages, 1)
-                for line in re.split(r"[\r\n]+|(?<=[.!?])\s+", page) if line.strip()]
+    passages = [(number, sentence.strip()) for number, page in enumerate(pages, 1)
+                for chunk in (page.splitlines() if posting else cv_page_chunks(page, path.suffix.lower() == ".pdf"))
+                for sentence in re.split(r"(?<=[.!?])\s+", chunk) if sentence.strip()]
     if not passages:
         raise ValueError("No readable text found. Export a text PDF or paste the CV into a TXT file.")
     return passages
@@ -53,7 +84,7 @@ def rank_passages(passages, requirements):
 
 
 def review_posting(passages, path):
-    statements = list(dict.fromkeys(line for _, line in read_passages(path)))
+    statements = list(dict.fromkeys(line for _, line in read_passages(path, posting=True)))
     ranked = rank_passages(passages, statements)
     confirmed = required = 0
     for statement, candidates in zip(statements, ranked, strict=True):
