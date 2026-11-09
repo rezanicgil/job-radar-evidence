@@ -1,0 +1,32 @@
+{
+  "annotations_sha256": "a39df6dc4fb6041edb2a29e766401bcdfa82cc89fe2d63f6aa3481b2dd4a6ca5",
+  "component_predictions_by_actor": {
+    "pair-mentions-v3": {
+      "applicant": {
+        "supported": 18
+      },
+      "other": {
+        "supported": 5,
+        "unverified": 1
+      },
+      "not_stated": {
+        "unverified": 4,
+        "supported": 8
+      }
+    },
+    "pair-switch-tr": {
+      "applicant": {
+        "supported": 17,
+        "unverified": 1
+      },
+      "other": {
+        "supported": 5,
+        "unverified": 1
+      },
+      "not_stated": {
+        "unverified": 5,
+        "supported": 7
+      }
+    }
+  }
+}
