@@ -1,0 +1,12 @@
+{"language":"en","posting":"Java is required, but Kotlin is preferred.","required":["Java is required"],"preferred":["Kotlin is preferred."]}
+{"language":"en","posting":"SwiftUI is preferred while Swift is mandatory.","required":["Swift is mandatory."],"preferred":["SwiftUI is preferred"]}
+{"language":"en","posting":"C and C++ are required; Rust is a plus.","required":["C and C++ are required"],"preferred":["Rust is a plus."]}
+{"language":"en","posting":"Python is required, SQL is essential, and Spark is optional.","required":["Python is required","SQL is essential"],"preferred":["Spark is optional."]}
+{"language":"en","posting":"Requirements:\nUse OAuth2 or JWT.","required":["Use OAuth2 or JWT."],"preferred":[]}
+{"language":"en","posting":"Kubernetes experience is not required.","required":[],"preferred":["Kubernetes experience is not required."]}
+{"language":"tr","posting":"Java zorunludur, ancak Kotlin tercih edilir.","required":["Java zorunludur"],"preferred":["Kotlin tercih edilir."]}
+{"language":"tr","posting":"SwiftUI tercih sebebidir fakat Swift şarttır.","required":["Swift şarttır."],"preferred":["SwiftUI tercih sebebidir"]}
+{"language":"tr","posting":"C ve C++ gereklidir; Rust artı sayılır.","required":["C ve C++ gereklidir"],"preferred":["Rust artı sayılır."]}
+{"language":"tr","posting":"Python zorunlu, SQL şart ve Spark tercih nedenidir.","required":["Python zorunlu","SQL şart"],"preferred":["Spark tercih nedenidir."]}
+{"language":"tr","posting":"Aranan nitelikler:\nOAuth2 veya JWT kullanma deneyimi.","required":["OAuth2 veya JWT kullanma deneyimi."],"preferred":[]}
+{"language":"tr","posting":"Kubernetes deneyimi zorunlu değildir.","required":[],"preferred":["Kubernetes deneyimi zorunlu değildir."]}

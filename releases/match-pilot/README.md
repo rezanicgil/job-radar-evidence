@@ -16,6 +16,10 @@ configs:
     data_files:
       - split: validation
         path: source_validation.jsonl
+  - config_name: posting_modality
+    data_files:
+      - split: validation
+        path: posting_modality.jsonl
   - config_name: duration_weak
     data_files:
       - split: train
@@ -57,6 +61,8 @@ The default configuration contains 69 training pairs from 23 families and 18 dev
 The validation file begins with nine general challenge examples and ends with nine examples about Docker, Terraform and Prometheus. A passage can name the right technology while describing event logistics rather than engineering work. The [experiment predictions](https://github.com/rezanicgil/job-radar-evidence/blob/dba6189/reports/pair-mentions-v3.json) show where the model confused the two. The [original 54-row release](https://huggingface.co/datasets/rezanicgil/job-radar-match-pilot/tree/cb96ff522186ae77a3b9f1bada3ee32842d91b15) remains available for earlier experiments.
 
 ## How to read a row
+
+The `posting_modality` view contains twelve project-authored diagnostic inputs in English and Turkish. Each row records the expected required and optional wording from the posting. The examples cover reversed clause order, groups of languages, alternatives and explicit exemption from a requirement. The paired examples in the two languages represent six constructions. These examples were written alongside the extraction rules and serve as regression checks. They do not estimate accuracy on employer postings.
 
 The `compound_evidence` test split contains 12 fictional cases from four additional requirements covering Android uploads, firmware updates, payments and iOS accessibility. Each requirement has two necessary components and three passages. A clause classifier trained on 144 distinct clause–requirement pairs found 4/6 partial matches in the original diagnostic and 1/4 in this new split. Overall accuracy on the new split was 5/12, versus 7/12 for the released classifier. The labels come from the project authors. [Predictions per case](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/clause-attribution.json)
 

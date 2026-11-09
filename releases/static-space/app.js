@@ -80,6 +80,25 @@ el("file").onchange=()=>{
 el("removeFile").onclick=()=>{el("file").value="";el("file").onchange()};
 el("posting").oninput=()=>{el("candidates").replaceChildren();el("append").hidden=true;el("example").hidden=Boolean(el("cv").value||el("job").value||el("file").files.length||el("posting").value)};
 el("postingLanguage").onchange=()=>el("posting").oninput();
+function mixedConditions(sentence,language){
+  const english=language==="en";
+  const required=english?/\b(?:required|mandatory|essential)[.!]?$/i:/(?:zorunlu(?:dur)?|şart(?:tır)?|gereklidir)[.!]?$/iu;
+  const preferred=english?/\b(?:preferred|optional|a plus|nice to have|not required)[.!]?$/i:/(?:tercih (?:edilir|sebebidir|nedenidir)|artı (?:olur|sayılır)|zorunlu değil(?:dir)?)[.!]?$/iu;
+  const separator=english?/\s*[,;]\s*(?:(?:but|and|while)\s+)?|\s+(?:but|and|while)\s+/gi:/\s*[,;]\s*(?:(?:ancak|fakat|ve)\s+)?|\s+(?:ancak|fakat|ve)\s+/giu;
+  const parts=[];
+  let start=0;
+  for(const match of sentence.matchAll(separator)){
+    const clause=sentence.slice(start,match.index).trim();
+    if(required.test(clause)||preferred.test(clause)){
+      parts.push([clause,preferred.test(clause)]);
+      start=match.index+match[0].length;
+    }
+  }
+  const last=sentence.slice(start).trim();
+  if(!parts.length||!(required.test(last)||preferred.test(last)))return null;
+  parts.push([last,preferred.test(last)]);
+  return parts.some(([,optional])=>optional)&&parts.some(([,optional])=>!optional)?parts:null;
+}
 function turkishCandidates(text){
   let section="unknown";
   const candidates=new Map();
@@ -92,7 +111,12 @@ function turkishCandidates(text){
     if(/^(?:iş tanımı|görev tanımı|sorumluluklar|görev ve sorumluluklar|seni neler bekliyor|biz kimiz|yan haklar|sunduğumuz olanaklar|başvur(?:u)?|başvuru süreci|iletişim|iletişime geçin|hakkımızda)$/.test(key)||line.endsWith(":")){section="other";continue}
     if(/^(?:çalışma yeri|pozisyonun lokasyonu)\s/.test(key) ||
        (/@/.test(key) && /gönder|başvur|ilet/.test(key)))continue;
-    const optional=/tercihen|tercih (?:sebebi|nedenidir|edilir)|artı (?:olur|sayılır)/.test(key);
+    const mixed=section!=="other"&&mixedConditions(line,"tr");
+    if(mixed){
+      for(const [clause,optional] of mixed)candidates.set(clause,optional&&candidates.get(clause)!==false);
+      continue;
+    }
+    const optional=/tercihen|tercih (?:sebebi|nedenidir|edilir)|artı (?:olur|sayılır)|zorunlu değil/.test(key);
     if(section==="other" || (section==="unknown" && !optional && !/deneyim|tecrüb|hakimiyet|hâkimiyet|bilgi sahibi|zorunlu|aranmaktadır/.test(key)))continue;
     candidates.set(line,optional||section==="preference");
   }
@@ -119,7 +143,12 @@ function englishCandidates(text,model){
     if(line.endsWith(":")){section="unknown";continue}
     if(section==="other")continue;
     for(const sentence of line.split(/(?<=[.!?])\s+/)){
-      const optional=section==="preferred"||/^(?:preferred|optional|nice[- ]to[- ]have|bonus points)\s*[:–-]|\b(?:would be|is|are) (?:a plus|an asset|preferred|desirable|nice to have)\b/i.test(sentence);
+      const mixed=mixedConditions(sentence,"en");
+      if(mixed){
+        for(const [clause,optional] of mixed)candidates.set(clause,optional&&candidates.get(clause)!==false);
+        continue;
+      }
+      const optional=section==="preferred"||/^(?:preferred|optional|nice[- ]to[- ]have|bonus points)\s*[:–-]|\b(?:would be|is|are) (?:a plus|an asset|preferred|desirable|nice to have)\b|\bnot required\b/i.test(sentence);
       if(section!=="required"&&!optional){
         const terms=sentence.toLowerCase().match(/[\p{L}\p{N}_+#]+/gu)||[];
         const value=terms.reduce((sum,term)=>sum+(Object.hasOwn(model.weights,term)?model.weights[term]:0),model.bias);
@@ -156,7 +185,7 @@ el("suggest").onclick=async()=>{
       const label=add(output,"label","");
       const input=add(label,"input","");input.type="checkbox";input.value=sentence;
       input.dataset.preference=String(optional);
-      label.append((optional?" Preference · ":" ")+sentence);
+      label.append((optional?" Optional · ":" ")+sentence);
     }
     el("append").hidden=!output.children.length;
     if(!output.children.length)output.textContent="No suggestions found. Enter conditions below.";
@@ -410,7 +439,7 @@ el("form").onsubmit=async event=>{
       const ranked=lines.map((line,j)=>({line,score:semantic?vec[i].reduce((s,v,k)=>s+v*vec[job.length+j][k],0):[...words(line.text)].filter(t=>terms.has(t)).length}))
         .filter(x=>semantic||x.score>0).sort((a,b)=>b.score-a.score).slice(0,3);
       const card=add(el("results"),"article","");add(card,"h3",condition);
-      if(selectedPreferences.has(condition))add(card,"small","Employer preference · excluded from required coverage by default");
+      if(selectedPreferences.has(condition))add(card,"small","Optional condition · excluded from required coverage by default");
       const visible=ranked.map(item=>item.line);
       for(const {line} of ranked)add(card,"p","Page "+line.page+" · "+line.text);
       if(!ranked.length)add(card,"p","No shared terms found. Review the CV directly.");

@@ -1,6 +1,7 @@
 """Exercise evidence selection, coverage, export and invalidation in the staged Space."""
 
 import argparse
+import json
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -69,7 +70,7 @@ def check(page, origin):
     page.locator("#find").click()
     expect(cards).to_have_count(3)
     expect(cards.last.locator(".assessment")).to_have_value("skip")
-    expect(cards.last).to_contain_text("Employer preference")
+    expect(cards.last).to_contain_text("Optional condition")
     for card in cards.all()[:2]:
         card.locator(".assessment").select_option("unverified")
     expect(page.locator("#status")).to_contain_text("0 of 2 required")
@@ -89,6 +90,16 @@ def check(page, origin):
     expect(cards.last.locator(".assessment")).to_have_value("skip")
     cards.first.locator(".assessment").select_option("unverified")
     expect(page.locator("#status")).to_contain_text("0 of 1 required")
+    dataset=Path(__file__).resolve().parents[1]/"releases/match-pilot/posting_modality.jsonl"
+    for line in dataset.read_text(encoding="utf-8").splitlines():
+        case=json.loads(line)
+        page.locator("#postingLanguage").select_option(case["language"])
+        page.locator("#posting").fill(case["posting"])
+        page.locator("#suggest").click()
+        expect(suggestions).to_have_count(len(case["required"])+len(case["preferred"]))
+        for key,flag in [("required","false"),("preferred","true")]:
+            items=page.locator(f'#candidates input[data-preference="{flag}"]')
+            assert items.evaluate_all("(items)=>items.map(i=>i.value)")==case[key], case["posting"]
     assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
 
 
