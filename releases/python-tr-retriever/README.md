@@ -21,6 +21,14 @@ The documentation evaluation uses ten held-out files. The base model's pretraini
 
 The same ten job conditions were also tested in four translated job/CV language combinations. In Turkish/Turkish retrieval, one target moved from fourth to third and another from first to second. In Turkish/English retrieval, one target moved from fifth to sixth. The two English-query views kept all ten original ranks within each view.
 
+## Try a requirement against your own CV
+
+In the Job Radar checkout, use a text PDF or a UTF-8 TXT file. The command downloads the pinned encoder on first use and processes the CV locally. It prints up to three passages with page references. For an interactive review of multiple requirements, use `--posting job.txt` in place of the quoted requirement. [Local review CLI](https://github.com/rezanicgil/job-radar-evidence/blob/main/scripts/review_cv.py)
+
+```console
+python scripts/review_cv.py my-cv.pdf "Diagnose slow SQL queries using execution plans." --encoder fine-tuned
+```
+
 ## External whole-document ranking
 
 We tested all 1,759 held-out CV/job pairs in an English-language external dataset. Within each CV, we compared pairs of jobs with different source labels and counted how often the model placed the higher-labelled job first. Ties earned half credit. The table gives each eligible CV or job equal weight.
