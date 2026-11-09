@@ -1,5 +1,5 @@
 {
-  "packet_sha256": "d4c29dd224c2a873d94944a70503e8b897cb0cec3fdb351435d0cf0304066468",
+  "packet_sha256": "60abf3bf3c12975f9cc700f13df059c62000f9ffd3faeec231bff341b0c9829c",
   "checkpoints": {
     "base": [
       "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",

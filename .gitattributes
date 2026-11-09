@@ -1,2 +1,3 @@
 research/source_grounded_candidates.jsonl text eol=lf
 releases/static-space/span-review-packet.json text eol=lf
+releases/match-pilot/duration_scope_retrieval.jsonl text eol=lf
