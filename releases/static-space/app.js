@@ -2,6 +2,11 @@ const el=id=>document.getElementById(id);
 const add=(parent,tag,text)=>{const node=document.createElement(tag);node.textContent=text;parent.append(node);return node};
 const words=text=>new Set(text.toLocaleLowerCase().match(/[\p{L}\p{N}+#]+/gu)||[]);
 let encoder;
+let vocabulary;
+function hasTechnology(text,name){
+  const tokens=text.toLowerCase().match(/[\p{L}\p{N}_+#]+/gu)||[];
+  return (" "+tokens.join(" ")+" ").includes(" "+name.toLowerCase()+" ");
+}
 async function vectors(texts){
   const {pipeline,env}=await import("https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2/dist/transformers.min.js");
   env.allowLocalModels=false;
@@ -65,12 +70,27 @@ el("form").onsubmit=async event=>{
     el("status").textContent="Finding passages…";
     const semantic=el("method").value==="semantic";
     const vec=semantic?await vectors([...job,...lines.map(x=>x.text)]):null;
+    if(semantic && !vocabulary){
+      const response=await fetch("technologies.json");
+      if(response.ok)vocabulary=await response.json();
+    }
     job.forEach((condition,i)=>{
       const terms=words(condition);
       const ranked=lines.map((line,j)=>({line,score:semantic?vec[i].reduce((s,v,k)=>s+v*vec[job.length+j][k],0):[...words(line.text)].filter(t=>terms.has(t)).length}))
         .filter(x=>semantic||x.score>0).sort((a,b)=>b.score-a.score).slice(0,3);
       const card=add(el("results"),"article","");add(card,"h3",condition);
       for(const {line} of ranked)add(card,"p","Page "+line.page+" · "+line.text);
+      if(semantic){
+        const requested=(vocabulary||[]).filter(name=>hasTechnology(condition,name));
+        const visible=ranked.map(item=>item.line);
+        for(const name of requested){
+          if(visible.some(line=>hasTechnology(line.text,name)))continue;
+          const mention=lines.find(line=>hasTechnology(line.text,name));
+          if(!mention)continue;
+          add(card,"small",name+" mentioned on page "+mention.page+" · "+mention.text);
+          visible.push(mention);
+        }
+      }
       if(!ranked.length)add(card,"p","No shared terms found. Review the CV directly.");
       const select=add(add(card,"label","Assessment "),"select","");
       for(const [value,label] of [["","Choose"],["supported","Required · supported"],["partial","Required · partial"],["unverified","Required · unverified"],["skip","Exclude from required coverage"]])select.add(new Option(label,value));

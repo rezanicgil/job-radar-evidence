@@ -11,10 +11,7 @@ from urllib.parse import urlsplit
 from urllib.request import urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
-SKILLS = ("Python", "Java", "JavaScript", "TypeScript", "SQL", "PostgreSQL", "C++", "C#",
-          "Kotlin", "Swift", "SwiftUI", "Jetpack Compose", "Flutter", "React", "Unity",
-          "Docker", "Kubernetes", "Terraform", "Kafka", "Spark", "Simulink", "FreeRTOS",
-          "STM32", "PyTorch", "AWS", "Azure", "Redis", "Linux", "Rust", "Git")
+SKILLS = json.loads((ROOT / "releases/static-space/technologies.json").read_text(encoding="utf-8"))
 PATTERNS = {s:re.compile(r"(?<![\w+#])"+re.escape(s)+r"(?![\w+#])",re.I) for s in SKILLS}
 
 
