@@ -2,5 +2,8 @@
   "Python", "Java", "JavaScript", "TypeScript", "SQL", "PostgreSQL", "C++", "C#",
   "Kotlin", "Swift", "SwiftUI", "Jetpack Compose", "Flutter", "React", "Unity",
   "Docker", "Kubernetes", "Terraform", "Kafka", "Spark", "Simulink", "FreeRTOS",
-  "STM32", "PyTorch", "AWS", "Azure", "Redis", "Linux", "Rust", "Git"
+  "STM32", "PyTorch", "AWS", "Azure", "Redis", "Linux", "Rust", "Git",
+  "React Native", "Dart", "UIKit", "Xcode", "Android SDK", "Gradle",
+  "RTOS", "Zephyr", "ARM Cortex", "CAN bus", "CAN FD", "I2C", "SPI", "UART", "FPGA",
+  "MATLAB", "ROS 2", "QML", "Unreal Engine", "OpenCV"
 ]

@@ -440,7 +440,7 @@ try{
   add(container,"h2","Daily observations · all tracked roles");
   add(container,"p",history.length===1?"One collection date is available.":"Each date uses the last collection that day in Türkiye. Source coverage can change between dates.");
   const picker=add(add(container,"label","Technology "),"select","");
-  const technologies=[...new Set(history.flatMap(day=>Object.keys(day.mentions)))].sort();
+  const technologies=[...new Set(history.flatMap(day=>day.vocabulary||Object.keys(day.mentions)))].sort();
   for(const name of technologies)picker.add(new Option(name,name));
   if(technologies.includes("Python"))picker.value="Python";
   const days=add(container,"div","");
@@ -450,7 +450,8 @@ try{
       const count=day.mentions[picker.value]||0;
       const share=day.readable?(100*count/day.readable).toFixed(1)+"%":"Unavailable";
       const row=add(days,"article","");
-      add(row,"strong",day.date+" · "+share+" · "+count+"/"+day.readable+" readable postings");
+      const measured=(day.vocabulary||Object.keys(day.mentions)).includes(picker.value);
+      add(row,"strong",day.date+" · "+(measured?share+" · "+count+"/"+day.readable+" readable postings":"Not tracked on this date"));
       add(row,"p",day.employers+" employers represented · "+day.boards_ok+"/"+day.boards_total+" boards responded · "+day.readable+"/"+day.selected+" descriptions readable");
       add(row,"a","Inspect source records").href="https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/"+encodeURIComponent(day.file);
     }

@@ -3,8 +3,10 @@
 from collections import Counter
 from datetime import datetime, timedelta, timezone
 import json
+from pathlib import Path
 
 TURKIYE = timezone(timedelta(hours=3))
+LEGACY_NAMES = json.loads((Path(__file__).resolve().parents[1]/"data/market_vocabulary_v1.json").read_text(encoding="utf-8"))
 
 
 def daily_history(folder):
@@ -27,5 +29,6 @@ def daily_history(folder):
                            boards_total=len(inventory["sources"]),
                            boards_ok=sum(s["status"]=="ok" for s in inventory["sources"]),
                            employers=len({row["employer"] for row in readable}),
-                           readable=len(readable),selected=len(rows),mentions=dict(sorted(counts.items()))))
+                           readable=len(readable),selected=len(rows),vocabulary=snapshot.get("vocabulary",LEGACY_NAMES),
+                           mentions=dict(sorted(counts.items()))))
     return result

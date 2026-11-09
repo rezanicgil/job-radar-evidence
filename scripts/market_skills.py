@@ -67,12 +67,12 @@ def main():
     readable = [r for r in rows if r["status"]=="readable"]
     now = datetime.now(timezone.utc)
     prefix = f"skill-mentions-{now:%Y-%m-%dT%H%M%SZ}"
-    output = dict(inventory=inventory.name,collected_at=now.isoformat(),postings=rows)
+    output = dict(inventory=inventory.name,collected_at=now.isoformat(),vocabulary=SKILLS,postings=rows)
     (folder / (prefix+".json")).write_text(json.dumps(output,ensure_ascii=False,indent=2),encoding="utf-8")
     lines = ["# Technologies mentioned in Türkiye software postings", "",
              f"Description retrieval: {now.isoformat(timespec='seconds')}. Inventory: [{inventory.name}]({inventory.name}).",
              f"Readable descriptions: {len(readable)} of {len(rows)} title-tagged postings.",
-             "Mentions include requirements, preferences and organization context. The fixed vocabulary tracks 30 names.",
+             f"Mentions include requirements, preferences and organization context. This snapshot tracks {len(SKILLS)} names.",
              "Counts use distinct posting URLs. A repeated mention contributes once per posting.",
              "", "| Technology | Postings | Employers |", "| --- | ---: | ---: |"]
     counts = [(s, [r for r in readable if s in r["skills"]]) for s in SKILLS]

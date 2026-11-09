@@ -9,7 +9,11 @@ from huggingface_hub import hf_hub_download
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
 from train_pair_encoder import BASE, REVISION, ROOT
-from market_skills import PATTERNS
+from market_skills import PATTERNS as CURRENT_PATTERNS
+
+# Keep the originally evaluated dictionary fixed as the market vocabulary grows.
+PATTERNS = {name:CURRENT_PATTERNS[name] for name in
+            json.loads((ROOT/"data/market_vocabulary_v1.json").read_text(encoding="utf-8"))}
 
 DATA = "jjzha/skillspan"
 VERSION = "33062e6bd0e03a5e01ae299ce0518f4613ef4298"
