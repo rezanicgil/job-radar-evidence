@@ -12,19 +12,27 @@ configs:
     data_files:
       - split: observations
         path: technologies/*.jsonl
+  - config_name: direct_employer_observations
+    data_files:
+      - split: observations
+        path: direct/observations.jsonl
 ---
 
 # Türkiye software job market observations
 
 Use this dataset to compare how often a technology appears in postings and how widely it appears across employers in the Job Radar panel. Every observation has a collection date. Choose a single date before computing shares. A posting can appear on several dates.
 
-The November 9, 2026 collection includes 443 Türkiye-location posting URLs from 50 employer boards. The title filter selected 129 technical roles from 26 employers. All 129 descriptions were readable. Python appeared in 51 of those postings across 17 employers. React Native appeared in 12 postings from one employer. [Explore the report](https://rezanicgil-job-radar-evidence.static.hf.space/#market)
+The November 9, 2026 collection includes 461 Türkiye-location posting URLs from 51 employer boards. The title filter selected 141 technical roles from 27 employers. All 141 descriptions were readable. Python appeared in 59 of those postings across 18 employers. React Native appeared in 12 postings from one employer. [Explore the report](https://rezanicgil-job-radar-evidence.static.hf.space/#market)
 
 The 22:37 Türkiye-time collection expands the technical title filter to cover seven previously unselected postings. These include Java engineering, digital image processing, blockchain operations and DevSecOps. The earlier collection on the same date selected 108 postings. This change in coverage reflects a filter revision.
 
 The 23:00 Türkiye-time collection adds Yassir, CRENNO and Lucida AI. Seven readable postings explicitly list Türkiye as an alternative location. The 129 URLs contain 124 distinct employer and normalized-description pairs. Five Lucida AI Flutter URLs share one description. A URL count measures published listings and does not establish headcount.
 
 The 23:15 collection measures qualification sections in 46 of the 129 readable postings and preference sections in 13. The CRENNO mobile posting mentions Flutter under qualifications and Git under additional skills. Section-specific shares use only the postings with that type of measured section.
+
+The 23:53 collection includes the Accenture Türkiye board. The embedded and firmware selection now includes eight readable postings at two employers. Ten additional vocabulary entries cover embedded and Android platform technologies. Earlier observations only measure names in their original vocabulary.
+
+The `direct_employer_observations` configuration records 13 dated listings from eight employer sites. Its selected qualifications, preferences and source links can support manual CV review. Several positions may share a careers-page URL. These observations remain outside the automated posting and employer denominators.
 
 ## Reproduce a percentage
 
@@ -46,7 +54,7 @@ The technologies configuration contains one row per tracked name per date, inclu
 
 The same rows contain `distinct_descriptions_mentioning` and `distinct_descriptions`. Divide the former by the latter to count a repeated description once within an employer. Both fields are null when any readable posting on that date lacks a digest. For the November 9 cross-platform mobile selection, Flutter occurs in 6/7 posting URLs (85.7%) and 2/3 distinct descriptions (66.7%). Role-specific figures use the postings configuration.
 
-The technology rows also identify the employer with the most postings mentioning that technology. Ties use employer name order. To recompute the share after excluding that employer, divide `other_employer_mentions` by `other_employer_postings` when the denominator is positive. These fields are null for a technology with no mentions. In the November 9 snapshot, excluding Sezzle removes all 12 React Native mentions and leaves 114 readable postings from other employers.
+The technology rows also identify the employer with the most postings mentioning that technology. Ties use employer name order. To recompute the share after excluding that employer, divide `other_employer_mentions` by `other_employer_postings` when the denominator is positive. These fields are null for a technology with no mentions. In the November 9 snapshot, excluding Sezzle removes all 12 React Native mentions and leaves 126 readable postings from other employers.
 
 For Lever and Ashby, `location_scope = listed_alternative` identifies Türkiye in an explicitly listed secondary location. Other entries leave this field null. `description_sha256` is a SHA-256 digest of the measured description text with whitespace normalized. Group by employer and this digest to examine repeated copy. Older observations without a digest leave the field null.
 

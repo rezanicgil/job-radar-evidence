@@ -10,7 +10,7 @@ The project combines Turkish and English evidence retrieval, PDF and TXT parsing
 
 The [public Hugging Face demo](https://huggingface.co/spaces/rezanicgil/job-radar-evidence) uses a Static Space. It processes documents in the visitor's browser and offers shared-term retrieval or optional multilingual semantic search. The server-based Docker build remains available for local deployments.
 
-The published research classifier trained on 69 synthetic pairs. A separate English job-sentence selector trained on 3,943 deduplicated SkillSpan sentences plus 390 weakly labelled employer bullets and reached 75.5% F1 on its 2,404-sentence test split. On November 9, 2026, 50 employer boards returned 443 Türkiye-location postings. The project obtained readable descriptions for all 129 postings selected by the technical title filter, spanning 26 employers. Python appeared in 51 postings from 17 employers. [Download the underlying observations](https://huggingface.co/datasets/rezanicgil/turkiye-software-job-market)
+The published research classifier trained on 69 synthetic pairs. A separate English job-sentence selector trained on 3,943 deduplicated SkillSpan sentences plus 390 weakly labelled employer bullets and reached 75.5% F1 on its 2,404-sentence test split. On November 9, 2026, 51 employer boards returned 461 Türkiye-location postings. The project obtained readable descriptions for all 141 postings selected by the technical title filter, spanning 27 employers. Python appeared in 59 postings from 18 employers. [Download the underlying observations](https://huggingface.co/datasets/rezanicgil/turkiye-software-job-market)
 
 ## A decision based on evaluation
 

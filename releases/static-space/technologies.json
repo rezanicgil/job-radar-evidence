@@ -5,5 +5,6 @@
   "STM32", "PyTorch", "AWS", "Azure", "Redis", "Linux", "Rust", "Git",
   "React Native", "Dart", "UIKit", "Xcode", "Android SDK", "Gradle",
   "RTOS", "Zephyr", "ARM Cortex", "CAN bus", "CAN FD", "I2C", "SPI", "UART", "FPGA",
-  "MATLAB", "ROS 2", "QML", "Unreal Engine", "OpenCV"
+  "MATLAB", "ROS 2", "QML", "Unreal Engine", "OpenCV",
+  "Yocto", "BitBake", "U-Boot", "Buildroot", "QNX", "AUTOSAR", "AOSP", "AAOS", "Gerrit", "SELinux"
 ]
