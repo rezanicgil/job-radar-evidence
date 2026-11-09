@@ -83,6 +83,8 @@ On November 10 at 00:00 Türkiye time the panel was collected again, about seven
 
 At 00:59 Türkiye time on November 10 the panel covered 145 readable roles at 27 employers. Recognizing SDET, SAP ABAP developer, low-code application developer and system administrator titles added four previously excluded URLs from the same 461-posting inventory. Python appeared in 60/145 (41.4%) compared with 59/141 (41.8%) before the title filter changed. This difference reflects the selection rule. Percentages describe the sampled boards. Dated report filenames use UTC.
 
+At 01:04 Türkiye time on November 10, the PlusMinusOne BambooHR board contributed seven Istanbul listings, including readable iOS and backend engineering roles. The expanded panel contains 147 readable technical postings across 28 employers. Three separately reviewed Avva Mobile postings link to employer-published iOS, Android and Flutter requirements in the direct observations file.
+
 ## Reproduce a percentage
 
 ```python

@@ -95,6 +95,8 @@ def inspect(job, *, retry_timeout=True):
         api = f"https://boards-api.greenhouse.io/v1/boards/{board}/jobs/{key}"
     elif url.hostname == "jobs.smartrecruiters.com":
         api = f"https://api.smartrecruiters.com/v1/companies/{board}/postings/{key}"
+    elif url.hostname.endswith(".bamboohr.com"):
+        api = Request(job["url"] + "/detail", headers={"User-Agent":"JobRadar/1.0 (+https://github.com/rezanicgil/job-radar-evidence)", "Accept":"application/json"})
     elif url.hostname not in {"jobs.ashbyhq.com","apply.workable.com"} and not url.hostname.endswith(".myworkdayjobs.com"):
         return dict(**job,status="unsupported source")
     try:
@@ -115,6 +117,11 @@ def inspect(job, *, retry_timeout=True):
             job=dict(job,sections=headed_sections(j["lists"]))
             body = " ".join([j.get("descriptionPlain") or "", *(s["content"] for s in j["lists"]),
                              j.get("additionalPlain") or ""])
+        elif url.hostname.endswith(".bamboohr.com"):
+            opening = j["result"]["jobOpening"]
+            if opening["jobOpeningName"].casefold() != job["title"].casefold():
+                raise ValueError("Posting title changed since inventory")
+            body = opening["description"]
         elif url.hostname == "job-boards.greenhouse.io":
             body = j["content"]
         elif url.hostname == "jobs.smartrecruiters.com":

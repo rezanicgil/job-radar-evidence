@@ -49,6 +49,7 @@ def in_turkiye(country, location):
 def fetch(source, *, retry_timeout=True):
     ats, slug = source["ats"], source["slug"]
     url = {"workday": f"https://{slug.split('/')[0]}.myworkdayjobs.com/en-US/{slug.split('/')[-1]}",
+           "bamboohr": f"https://{slug}.bamboohr.com/careers/list",
            "lever": f"https://api.lever.co/v0/postings/{slug}?mode=json",
            "ashby": f"https://api.ashbyhq.com/posting-api/job-board/{slug}",
            "greenhouse": f"https://boards-api.greenhouse.io/v1/boards/{slug}/jobs",
@@ -62,7 +63,7 @@ def fetch(source, *, retry_timeout=True):
                 job["areas"]=title_areas(job["title"])
             return dict(source=source["name"],url=url,status="ok",scanned=len(jobs)),jobs
         request = Request(url, headers={"User-Agent":"JobRadar/1.0 (+https://github.com/rezanicgil/job-radar-evidence)", "Accept":"application/json"})
-        with urlopen(request if ats in {"ashby","workable"} else url, timeout=15) as response:
+        with urlopen(request if ats in {"ashby","workable","bamboohr"} else url, timeout=15) as response:
             payload = json.load(response)
         if ats == "smartrecruiters":
             rows = payload["content"]
@@ -72,6 +73,10 @@ def fetch(source, *, retry_timeout=True):
                 if not page or page[0]["id"] == rows[0]["id"]:
                     raise ValueError("Incomplete SmartRecruiters pagination")
                 rows.extend(page)
+        elif ats == "bamboohr":
+            rows = payload["result"]
+            if len({str(row["id"]) for row in rows}) != payload["meta"]["totalCount"]:
+                raise ValueError("Incomplete BambooHR board")
         else:
             rows = payload if ats == "lever" else payload["jobs"]
         jobs = []
@@ -88,6 +93,14 @@ def fetch(source, *, retry_timeout=True):
                 country = place.get("countryCode") or place.get("country")
                 location = ", ".join(dict.fromkeys(filter(None,[place.get("city"),
                     place.get("region") or place.get("state"), place.get("country") or country])))
+            elif ats == "bamboohr":
+                title = row["jobOpeningName"]
+                link = f"https://{slug}.bamboohr.com/careers/{row['id']}"
+                place = row.get("location") or {}
+                ats_place = row.get("atsLocation") or {}
+                country = place.get("addressCountry") or ats_place.get("country")
+                location = ", ".join(dict.fromkeys(filter(None, (place.get("city") or ats_place.get("city"),
+                                                                  place.get("state"), country))))
             elif ats == "lever":
                 title, link = row["text"], row["hostedUrl"]
                 country, location = row.get("country"), row["categories"].get("location", "")
