@@ -20,6 +20,10 @@ configs:
     data_files:
       - split: validation
         path: posting_modality.jsonl
+  - config_name: turkish_crenno_sections
+    data_files:
+      - split: validation
+        path: turkish_crenno_sections.jsonl
   - config_name: mobile_section_index
     data_files:
       - split: validation
@@ -100,6 +104,8 @@ In `connective_actors`, each of 18 project-authored fictional CV passages mentio
 
 
 The `turkish_section_index` configuration contains 96 source pointers from five technical postings on one employer's board. Section headings distinguish qualifications, communication skills and teamwork expectations. Two bullets begin with “Tercihen” and are labelled as preferences. Each row contains its source URL, line number, document fingerprint and whitespace-normalized line fingerprint. Several postings repeat the same wording. These examples were used to develop the parsing rules and represent section-based references rather than independent human judgments. [Before and after counts](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/turkish-board-sections.json)
+
+The `turkish_crenno_sections` split indexes 94 qualification-section items across seven Turkish CRENNO postings, including mobile, frontend, backend and .NET roles. Employer subheadings and explicit preference phrases identify 38 optional items. Each row contains a source URL, one-based block position within the qualification section, digest of the normalized wording and expected preference status. Repeated items in different postings are separate references. The reviewed layout informed the parser update, so this diagnostic measures behavior on that layout. [Before](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/crenno-before.json) · [After](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/crenno-after.json)
 
 The `mobile_section_index` contains 40 distinct English bullets referenced by 114 pointers to seven Yassir and Lucida AI mobile job URLs. Each row records the normalized-text digest, original heading, one-based list position and source URL. It excludes exact text present in the section training index or SkillSpan and external reference data. Employer headings provide weak labels, not human annotation. The same Flutter copy occurs on several URLs. The source pages may change. [Held-out evaluation](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/mobile-section-transfer.json)
 

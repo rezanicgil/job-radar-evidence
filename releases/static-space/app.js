@@ -158,12 +158,12 @@ function mixedConditions(sentence,language){
   return parts.some(([,optional])=>optional)&&parts.some(([,optional])=>!optional)?parts:null;
 }
 function turkishCandidates(text){
-  const qualifications=/^(?:genel nitelikler(?: ve iş tanımı)?|aranan (?:nitelikler|özellikler)|(?:asgari|minimum|teknik) (?:nitelikler|gereksinimler)|gereksinimler|yetkinlikler|iletişim becerileri|takım çalışması beklentileri)$/u;
-  const preferences=/^(?:tercihen|tercih edilen (?:nitelikler|özellikler)|tercih nedeni olabilecek ek nitelikler|ek nitelikler)$/u;
-  const other=/^(?:iş tanımı|görev tanımı|(?:temel )?sorumluluklar|görev ve sorumluluklar|seni neler bekliyor|biz kimiz|yan haklar|sunduğumuz olanaklar|başvur(?:u)?|başvuru süreci|iletişim|iletişime geçin|hakkımızda)$/u;
+  const qualifications=/^(?:nitelikler|ne arıyoruz|genel nitelikler(?: ve iş tanımı)?|aranan (?:nitelikler|özellikler)|(?:asgari|minimum|teknik) (?:nitelikler|gereksinimler)|gereksinimler|yetkinlikler|iletişim becerileri|takım çalışması beklentileri)$/u;
+  const preferences=/^(?:hangi ek beceriler öne çıkma(?:na|nıza) yardımcı olacak|ek beceriler|tercihen|tercih edilen (?:nitelikler|özellikler)|tercih nedeni olabilecek ek nitelikler|ek nitelikler)$/u;
+  const other=/^(?:şirket tanımı|ek bilgiler|neler sunuyoruz|neler yapacaksın|iş tanımı|görev tanımı|(?:temel )?sorumluluklar|görev ve sorumluluklar|seni neler bekliyor|biz kimiz|yan haklar|sunduğumuz olanaklar|başvur(?:u)?|başvuru süreci|iletişim|iletişime geçin|hakkımızda)$/u;
   const lines=text.split(/\r?\n/).map(raw=>raw.trim().replace(/^[•*–-]\s*/,""));
   function headingOf(line){
-    return line.split(":",1)[0].normalize("NFC").toLocaleLowerCase("tr").replace(/\?$/,"").trim().replace(/\s+/gu," ");
+    return line.split(":",1)[0].replace(/\u200b/gu,"").normalize("NFC").toLocaleLowerCase("tr").replace(/\?$/,"").trim().replace(/\s+/gu," ");
   }
   let section=lines.some(line=>qualifications.test(headingOf(line)))?"other":"unknown";
   const candidates=new Map();
@@ -184,7 +184,7 @@ function turkishCandidates(text){
       for(const [clause,optional] of mixed)candidates.set(clause,optional&&candidates.get(clause)!==false);
       continue;
     }
-    const optional=/tercihen|tercih (?:sebebi|nedenidir|edilir)|artı (?:olur|sayılır)|zorunlu değil/.test(key);
+    const optional=/tercihen|tercih (?:sebebi|nedenidir|edilir)|artı (?:olur|sayılır|değer olarak değerlendirilir)|zorunlu değil/.test(key);
     if(section==="other" || (section==="unknown" && !optional && !/deneyim|tecrüb|hakimiyet|hâkimiyet|bilgi sahibi|zorunlu|aranmaktadır/.test(key)))continue;
     candidates.set(line,optional||section==="preference");
   }
