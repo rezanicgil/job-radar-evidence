@@ -466,6 +466,16 @@ def check(page, origin):
     packet=Path(__file__).resolve().parents[1]/"research/source_grounded_candidates.jsonl"
     assert row["packet_sha256"]==sha256(packet.read_bytes()).hexdigest()
 
+    page.goto(urljoin(origin,"model.html#knowledge"))
+    page.locator("#knowledgeFamily").select_option("visualization")
+    page.locator("#knowledgeLanguage").select_option("tr")
+    panel=page.locator("#knowledgeResult")
+    expect(panel.locator("p").last.locator("mark")).to_have_text(["Power BI","Tableau"])
+    expect(panel.locator("p").first).to_have_text(panel.locator("p").last.inner_text())
+    expect(panel.get_by_role("link",name="Employer posting")).to_have_count(1)
+    page.locator("#knowledgeFamily").select_option("benefits")
+    expect(panel.locator("p").last.locator("mark")).to_have_count(0)
+    expect(panel.get_by_role("link",name="Employer posting")).to_have_count(0)
     page.goto(urljoin(origin,"annotate.html?packet=git"))
     expect(page.locator("#packetTitle")).to_have_text("Cross-language Git evidence")
     expect(page.locator("#progress")).to_contain_text("of 30 · 0 saved")

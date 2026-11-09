@@ -1,0 +1,61 @@
+{
+  "dataset": "jjzha/skillspan",
+  "data_revision": "33062e6bd0e03a5e01ae299ce0518f4613ef4298",
+  "source_hashes": {
+    "train": "5e884c3426087d14fc437d328eb72132082edbfe1e776292ae0e6e9b36c1e1f6",
+    "dev": "3732937c6869fe191c749b4efe7ffd597ce84eea1192f09b7fe3bd1eb459e2b4",
+    "test": "8438eda34939a5877b984ea5daf9e6ff39b2d5c7e3d73cca0499d3de3784d24a"
+  },
+  "base": "MoritzLaurer/multilingual-MiniLMv2-L6-mnli-xnli",
+  "base_revision": "0a71e92a985b6e1ad1828cf67ce9c459639c1dca",
+  "seed": 43,
+  "epochs": 2,
+  "max_tokens": 128,
+  "batch_size": 24,
+  "learning_rate": 5e-05,
+  "train_tag_counts": {
+    "O": 81700,
+    "B": 2941,
+    "I": 2561
+  },
+  "rows": {
+    "train": 3943,
+    "dev": 2438,
+    "test": 2404
+  },
+  "dev_epochs": [
+    {
+      "tp": 0,
+      "fp": 0,
+      "fn": 1078,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    {
+      "tp": 477,
+      "fp": 2855,
+      "fn": 601,
+      "precision": 0.14315726290516206,
+      "recall": 0.4424860853432282,
+      "f1": 0.2163265306122449
+    }
+  ],
+  "selected_epoch": 2,
+  "test": {
+    "tp": 418,
+    "fp": 2854,
+    "fn": 576,
+    "precision": 0.12775061124694376,
+    "recall": 0.42052313883299797,
+    "f1": 0.19596812001875294
+  },
+  "memorized_phrases": {
+    "tp": 501,
+    "fp": 3772,
+    "fn": 493,
+    "precision": 0.11724783524455885,
+    "recall": 0.5040241448692153,
+    "f1": 0.19024112397949497
+  }
+}

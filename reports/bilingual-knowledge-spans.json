@@ -1,0 +1,312 @@
+{
+  "summary": {
+    "en": {
+      "tp": 14,
+      "fp": 4,
+      "fn": 4,
+      "f1": 0.7777777777777778
+    },
+    "tr": {
+      "tp": 14,
+      "fp": 4,
+      "fn": 4,
+      "f1": 0.7777777777777778
+    }
+  },
+  "cases": [
+    {
+      "family": "android",
+      "language": "en",
+      "predicted": [
+        {
+          "start": 27,
+          "end": 33,
+          "text": "Kotlin"
+        },
+        {
+          "start": 38,
+          "end": 45,
+          "text": "Jetpack"
+        },
+        {
+          "start": 46,
+          "end": 53,
+          "text": "Compose"
+        }
+      ]
+    },
+    {
+      "family": "android",
+      "language": "tr",
+      "predicted": [
+        {
+          "start": 8,
+          "end": 14,
+          "text": "Kotlin"
+        },
+        {
+          "start": 18,
+          "end": 25,
+          "text": "Jetpack"
+        },
+        {
+          "start": 26,
+          "end": 33,
+          "text": "Compose"
+        }
+      ]
+    },
+    {
+      "family": "ios",
+      "language": "en",
+      "predicted": [
+        {
+          "start": 33,
+          "end": 38,
+          "text": "Swift"
+        },
+        {
+          "start": 43,
+          "end": 50,
+          "text": "SwiftUI"
+        }
+      ]
+    },
+    {
+      "family": "ios",
+      "language": "tr",
+      "predicted": [
+        {
+          "start": 10,
+          "end": 15,
+          "text": "Swift"
+        },
+        {
+          "start": 19,
+          "end": 26,
+          "text": "SwiftUI"
+        }
+      ]
+    },
+    {
+      "family": "firmware",
+      "language": "en",
+      "predicted": [
+        {
+          "start": 27,
+          "end": 32,
+          "text": "Yocto"
+        },
+        {
+          "start": 37,
+          "end": 44,
+          "text": "BitBake"
+        }
+      ]
+    },
+    {
+      "family": "firmware",
+      "language": "tr",
+      "predicted": [
+        {
+          "start": 25,
+          "end": 30,
+          "text": "Yocto"
+        },
+        {
+          "start": 34,
+          "end": 41,
+          "text": "BitBake"
+        }
+      ]
+    },
+    {
+      "family": "toolchain",
+      "language": "en",
+      "predicted": [
+        {
+          "start": 23,
+          "end": 26,
+          "text": "SQL"
+        },
+        {
+          "start": 28,
+          "end": 31,
+          "text": "Git"
+        },
+        {
+          "start": 36,
+          "end": 42,
+          "text": "Docker"
+        }
+      ]
+    },
+    {
+      "family": "toolchain",
+      "language": "tr",
+      "predicted": [
+        {
+          "start": 0,
+          "end": 3,
+          "text": "SQL"
+        },
+        {
+          "start": 5,
+          "end": 8,
+          "text": "Git"
+        },
+        {
+          "start": 12,
+          "end": 18,
+          "text": "Docker"
+        }
+      ]
+    },
+    {
+      "family": "mobile",
+      "language": "en",
+      "predicted": []
+    },
+    {
+      "family": "mobile",
+      "language": "tr",
+      "predicted": []
+    },
+    {
+      "family": "visualization",
+      "language": "en",
+      "predicted": [
+        {
+          "start": 18,
+          "end": 23,
+          "text": "Power"
+        },
+        {
+          "start": 24,
+          "end": 26,
+          "text": "BI"
+        },
+        {
+          "start": 30,
+          "end": 37,
+          "text": "Tableau"
+        }
+      ]
+    },
+    {
+      "family": "visualization",
+      "language": "tr",
+      "predicted": [
+        {
+          "start": 10,
+          "end": 15,
+          "text": "Power"
+        },
+        {
+          "start": 16,
+          "end": 18,
+          "text": "BI"
+        },
+        {
+          "start": 24,
+          "end": 31,
+          "text": "Tableau"
+        }
+      ]
+    },
+    {
+      "family": "systems",
+      "language": "en",
+      "predicted": [
+        {
+          "start": 16,
+          "end": 17,
+          "text": "C"
+        },
+        {
+          "start": 22,
+          "end": 25,
+          "text": "C++"
+        }
+      ]
+    },
+    {
+      "family": "systems",
+      "language": "tr",
+      "predicted": [
+        {
+          "start": 28,
+          "end": 29,
+          "text": "C"
+        },
+        {
+          "start": 33,
+          "end": 36,
+          "text": "C++"
+        }
+      ]
+    },
+    {
+      "family": "open-list",
+      "language": "en",
+      "predicted": [
+        {
+          "start": 35,
+          "end": 41,
+          "text": "Python"
+        },
+        {
+          "start": 43,
+          "end": 46,
+          "text": "C++"
+        },
+        {
+          "start": 50,
+          "end": 52,
+          "text": "C#"
+        }
+      ]
+    },
+    {
+      "family": "open-list",
+      "language": "tr",
+      "predicted": [
+        {
+          "start": 0,
+          "end": 6,
+          "text": "Python"
+        },
+        {
+          "start": 8,
+          "end": 11,
+          "text": "C++"
+        },
+        {
+          "start": 17,
+          "end": 19,
+          "text": "C#"
+        }
+      ]
+    },
+    {
+      "family": "benefits",
+      "language": "en",
+      "predicted": []
+    },
+    {
+      "family": "benefits",
+      "language": "tr",
+      "predicted": []
+    },
+    {
+      "family": "location",
+      "language": "en",
+      "predicted": []
+    },
+    {
+      "family": "location",
+      "language": "tr",
+      "predicted": []
+    }
+  ]
+}

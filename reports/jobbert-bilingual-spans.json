@@ -1,0 +1,336 @@
+{
+  "summary": {
+    "en": {
+      "tp": 18,
+      "fp": 2,
+      "fn": 0,
+      "f1": 0.9473684210526315
+    },
+    "tr": {
+      "tp": 9,
+      "fp": 12,
+      "fn": 9,
+      "f1": 0.46153846153846156
+    }
+  },
+  "cases": [
+    {
+      "family": "android",
+      "language": "en",
+      "predicted": [
+        {
+          "start": 27,
+          "end": 33,
+          "text": "Kotlin"
+        },
+        {
+          "start": 38,
+          "end": 53,
+          "text": "Jetpack Compose"
+        }
+      ]
+    },
+    {
+      "family": "android",
+      "language": "tr",
+      "predicted": [
+        {
+          "start": 8,
+          "end": 14,
+          "text": "Kotlin"
+        },
+        {
+          "start": 18,
+          "end": 25,
+          "text": "Jetpack"
+        },
+        {
+          "start": 34,
+          "end": 44,
+          "text": "kullanarak"
+        }
+      ]
+    },
+    {
+      "family": "ios",
+      "language": "en",
+      "predicted": [
+        {
+          "start": 33,
+          "end": 38,
+          "text": "Swift"
+        },
+        {
+          "start": 43,
+          "end": 50,
+          "text": "SwiftUI"
+        }
+      ]
+    },
+    {
+      "family": "ios",
+      "language": "tr",
+      "predicted": []
+    },
+    {
+      "family": "firmware",
+      "language": "en",
+      "predicted": [
+        {
+          "start": 27,
+          "end": 32,
+          "text": "Yocto"
+        },
+        {
+          "start": 37,
+          "end": 44,
+          "text": "BitBake"
+        },
+        {
+          "start": 49,
+          "end": 69,
+          "text": "platform development"
+        }
+      ]
+    },
+    {
+      "family": "firmware",
+      "language": "tr",
+      "predicted": []
+    },
+    {
+      "family": "toolchain",
+      "language": "en",
+      "predicted": [
+        {
+          "start": 23,
+          "end": 26,
+          "text": "SQL"
+        },
+        {
+          "start": 28,
+          "end": 31,
+          "text": "Git"
+        },
+        {
+          "start": 36,
+          "end": 42,
+          "text": "Docker"
+        }
+      ]
+    },
+    {
+      "family": "toolchain",
+      "language": "tr",
+      "predicted": [
+        {
+          "start": 0,
+          "end": 3,
+          "text": "SQL"
+        },
+        {
+          "start": 5,
+          "end": 8,
+          "text": "Git"
+        },
+        {
+          "start": 9,
+          "end": 11,
+          "text": "ve"
+        },
+        {
+          "start": 12,
+          "end": 18,
+          "text": "Docker"
+        },
+        {
+          "start": 19,
+          "end": 27,
+          "text": "hakkında"
+        },
+        {
+          "start": 28,
+          "end": 38,
+          "text": "uygulamalı"
+        },
+        {
+          "start": 39,
+          "end": 44,
+          "text": "bilgi"
+        },
+        {
+          "start": 45,
+          "end": 55,
+          "text": "gereklidir"
+        }
+      ]
+    },
+    {
+      "family": "mobile",
+      "language": "en",
+      "predicted": [
+        {
+          "start": 4,
+          "end": 11,
+          "text": "Flutter"
+        },
+        {
+          "start": 51,
+          "end": 58,
+          "text": "Gitflow"
+        }
+      ]
+    },
+    {
+      "family": "mobile",
+      "language": "tr",
+      "predicted": [
+        {
+          "start": 48,
+          "end": 55,
+          "text": "Gitflow"
+        },
+        {
+          "start": 56,
+          "end": 63,
+          "text": "bilgisi"
+        }
+      ]
+    },
+    {
+      "family": "visualization",
+      "language": "en",
+      "predicted": [
+        {
+          "start": 18,
+          "end": 26,
+          "text": "Power BI"
+        },
+        {
+          "start": 30,
+          "end": 37,
+          "text": "Tableau"
+        }
+      ]
+    },
+    {
+      "family": "visualization",
+      "language": "tr",
+      "predicted": [
+        {
+          "start": 0,
+          "end": 9,
+          "text": "Raporları"
+        },
+        {
+          "start": 10,
+          "end": 18,
+          "text": "Power BI"
+        },
+        {
+          "start": 19,
+          "end": 23,
+          "text": "veya"
+        },
+        {
+          "start": 24,
+          "end": 31,
+          "text": "Tableau"
+        }
+      ]
+    },
+    {
+      "family": "systems",
+      "language": "en",
+      "predicted": [
+        {
+          "start": 16,
+          "end": 17,
+          "text": "C"
+        },
+        {
+          "start": 22,
+          "end": 25,
+          "text": "C++"
+        },
+        {
+          "start": 30,
+          "end": 50,
+          "text": "embedded development"
+        }
+      ]
+    },
+    {
+      "family": "systems",
+      "language": "tr",
+      "predicted": []
+    },
+    {
+      "family": "open-list",
+      "language": "en",
+      "predicted": [
+        {
+          "start": 35,
+          "end": 41,
+          "text": "Python"
+        },
+        {
+          "start": 43,
+          "end": 46,
+          "text": "C++"
+        },
+        {
+          "start": 50,
+          "end": 52,
+          "text": "C#"
+        }
+      ]
+    },
+    {
+      "family": "open-list",
+      "language": "tr",
+      "predicted": [
+        {
+          "start": 8,
+          "end": 11,
+          "text": "C++"
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "text": "veya"
+        },
+        {
+          "start": 17,
+          "end": 19,
+          "text": "C#"
+        },
+        {
+          "start": 52,
+          "end": 58,
+          "text": "bilmek"
+        }
+      ]
+    },
+    {
+      "family": "benefits",
+      "language": "en",
+      "predicted": []
+    },
+    {
+      "family": "benefits",
+      "language": "tr",
+      "predicted": []
+    },
+    {
+      "family": "location",
+      "language": "en",
+      "predicted": []
+    },
+    {
+      "family": "location",
+      "language": "tr",
+      "predicted": []
+    }
+  ]
+}

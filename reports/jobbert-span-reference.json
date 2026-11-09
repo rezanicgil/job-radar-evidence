@@ -1,0 +1,26 @@
+{
+  "repo": "jjzha/jobbert_knowledge_extraction",
+  "revision": "9dea9759b7e290413cb4d92e8cae338affab9be4",
+  "test": {
+    "tp": 701,
+    "fp": 547,
+    "fn": 293,
+    "precision": 0.561698717948718,
+    "recall": 0.7052313883299799,
+    "f1": 0.6253345227475469
+  },
+  "bilingual": {
+    "en": {
+      "tp": 18,
+      "fp": 2,
+      "fn": 0,
+      "f1": 0.9473684210526315
+    },
+    "tr": {
+      "tp": 9,
+      "fp": 12,
+      "fn": 9,
+      "f1": 0.46153846153846156
+    }
+  }
+}

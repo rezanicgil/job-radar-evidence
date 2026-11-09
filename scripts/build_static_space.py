@@ -28,6 +28,16 @@ def main():
         for r in sorted(git_cases,key=lambda r:r["id"])).encode())
     shutil.copyfile(ROOT / "reports/source-pairs-dev.json",dest / "model-examples.json")
     shutil.copyfile(ROOT / "reports/language-switch.json",dest / "model-languages.json")
+    knowledge=json.loads((ROOT/"reports/bilingual-knowledge-spans.json").read_text("utf8"))
+    examples=[json.loads(line) for line in (ROOT/"releases/match-pilot/bilingual_knowledge_spans.jsonl").read_text("utf8").splitlines()]
+    predictions={(r["family"],r["language"]):r["predicted"] for r in knowledge["cases"]}
+    reference=json.loads((ROOT/"reports/jobbert-bilingual-spans.json").read_text("utf8"))
+    jobbert={(r["family"],r["language"]):r["predicted"] for r in reference["cases"]}
+    for row in examples:
+        key=(row["family"],row["language"])
+        row["predicted"]=predictions[key]
+        row["jobbert"]=jobbert[key]
+    (dest/"knowledge-examples.json").write_text(json.dumps(examples,ensure_ascii=False),encoding="utf8")
     history=daily_history(ROOT/"reports")
     snapshot = json.loads((ROOT/"reports"/history[-1]["file"]).read_text(encoding="utf-8"))
     snapshot["observation_date"]=history[-1]["date"]
