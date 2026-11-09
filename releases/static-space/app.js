@@ -411,7 +411,10 @@ function durationComparison(card,condition,lines){
   if(!target)return;
   const matches=lines.filter(line=>!/(?:\d\s*\+|\bat least\b|\bmore than\b|en az|üzeri(?!\p{L})|yılı aşkın)/iu.test(line.text))
     .map(line=>({line,duration:statedDuration(line.text)})).filter(x=>x.duration);
-  if(!matches.length)return;
+  if(!matches.length){
+    add(card,"small","The condition mentions "+target.months+" months. The CV has no exact duration this tool can compare. Check dates and experience for the specific work.");
+    return;
+  }
   const panel=add(card,"details","");
   add(panel,"summary","Compare stated durations");
   add(panel,"p","Use this comparison when the condition specifies a minimum. Choose a CV passage about the same work.");

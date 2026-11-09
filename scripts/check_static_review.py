@@ -213,6 +213,11 @@ def check(page, origin):
     page.locator("#job").fill("İkili arama ağacı kullanarak arama geliştirmek.")
     page.locator("#find").click()
     expect(cards.first.get_by_role("link",name="binary search tree / İkili arama ağacı")).to_be_visible()
+    page.locator("#cv").fill("Nearly four years building production APIs.")
+    page.locator("#job").fill("Flutter geliştirme deneyimi (2+ yıl)")
+    page.locator("#find").click()
+    expect(cards.first).to_contain_text("The condition mentions 24 months.")
+    expect(cards.first.locator(".assessment")).to_have_value("")
     grouped=Path(__file__).resolve().parents[1]/"releases/match-pilot/technology_connectives.jsonl"
     cases={r["family"]:r for line in grouped.read_text(encoding="utf-8").splitlines() if (r:=json.loads(line))}
     ambiguous=["Use Kafka and RabbitMQ or a managed alternative.","Experience with Java, Kotlin or another language."]
