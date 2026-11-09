@@ -93,6 +93,13 @@ function showConditionComparison(first,second){
         const row=review.indexed.get(key);
         if(!row)continue;
         add(item,"small",name+" review · "+assessmentLabel(row));
+        const source=row.posting_reference;
+        if(source&&Number.isInteger(source.line)&&source.line>0&&typeof source.source_text==="string"){
+          const ref=add(item,"details","");
+          add(ref,"summary","Posting line "+source.line+(source.heading?" · "+source.heading:""));
+          add(ref,"p",(source.suggested_type?"Suggested "+source.suggested_type:"Manually selected")+" · added as "+source.selected_type);
+          add(ref,"blockquote",source.source_text);
+        }
         const quotes=row.preference_review?.quotes||row.quotes;
         if(Array.isArray(quotes))for(const quote of quotes){
           const passage=quote?.excerpt||quote?.passage;

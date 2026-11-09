@@ -133,6 +133,20 @@ def check(page, origin):
     page.locator("#append").click()
     expect(page.locator("#job")).to_have_value("C++ and Python\nFlutter ile uygulama geliştirdin.")
     expect(page.locator("#conditionPreview")).to_contain_text("1 required · 1 optional")
+    page.locator("#find").click()
+    for card in cards.all():
+        if card.locator(".assessment").input_value()!="skip":
+            card.locator(".assessment").select_option("unverified")
+    with page.expect_download() as event:
+        data_button.click()
+    saved=json.loads(event.value.path().read_text(encoding="utf-8"))
+    reference=saved["conditions"][1]["posting_reference"]
+    assert reference["heading"].strip("\u200b")=="Ne arıyoruz?" and reference["line"]==4
+    assert reference["source_text"]=="Flutter ile uygulama geliştirdin."
+    assert (reference["suggested_type"],reference["selected_type"])==("required","optional")
+    with page.expect_download() as event:
+        report.click()
+    assert "suggested required · added as optional" in event.value.path().read_text(encoding="utf8")
     page.locator("#job").fill("C++ and Python")
     page.locator("#posting").fill("Aranan Nitelikler:\nPython ile geliştirme deneyimi.\nTercihen Kotlin bilgisi.\nYan haklar:\nYemek kartı.")
     page.locator("#suggest").click()

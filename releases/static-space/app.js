@@ -25,6 +25,7 @@ function translatedTerms(text){
 }
 let sentenceModel;
 const selectedPreferences=new Set();
+const postingReferences=new Map();
 function conditionsFrom(text){
   const lines=text.split(/[\r\n]+/).map(line=>line.normalize("NFC").trim()
     .replace(/^(?:[•*–-]|\d{1,2}[.)])\s+/u,"").replace(/\s+/gu," ").trim());
@@ -65,6 +66,7 @@ el("job").addEventListener("input",()=>{
   clearJobOrigin();
   const present=new Set(conditionsFrom(el("job").value));
   for(const s of selectedPreferences)if(!present.has(s))selectedPreferences.delete(s);
+  for(const s of postingReferences.keys())if(!present.has(s))postingReferences.delete(s);
 });
 function reviewedConditions(review){
   return [review.requirement_evidence,...(review.additional_required||[])];
@@ -84,6 +86,7 @@ function offerReviewedConditions(card,posting,conditions,preferences=[]){
     replace.hidden=true;
     el("job").value=text;
     selectedPreferences.clear();
+    postingReferences.clear();
     const required=new Set(conditionsFrom(conditions.join("\n")));
     for(const line of conditionsFrom(preferences.join("\n")))if(!required.has(line))selectedPreferences.add(line);
     clearJobOrigin();
@@ -157,6 +160,10 @@ function mixedConditions(sentence,language){
   parts.push([last,preferred.test(last)]);
   return parts.some(([,optional])=>optional)&&parts.some(([,optional])=>!optional)?parts:null;
 }
+function recordCandidate(candidates,sentence,optional,heading,line){
+  const prior=candidates.get(sentence);
+  if(!prior||(prior.optional&&!optional))candidates.set(sentence,{optional,heading,line});
+}
 function turkishCandidates(text){
   const qualifications=/^(?:nitelikler|ne arıyoruz|genel nitelikler(?: ve iş tanımı)?|aranan (?:nitelikler|özellikler)|(?:asgari|minimum|teknik) (?:nitelikler|gereksinimler)|gereksinimler|yetkinlikler|iletişim becerileri|takım çalışması beklentileri)$/u;
   const preferences=/^(?:hangi ek beceriler öne çıkma(?:na|nıza) yardımcı olacak|ek beceriler|tercihen|tercih edilen (?:nitelikler|özellikler)|tercih nedeni olabilecek ek nitelikler|ek nitelikler)$/u;
@@ -167,26 +174,29 @@ function turkishCandidates(text){
   }
   let section=lines.some(line=>qualifications.test(headingOf(line)))?"other":"unknown";
   const candidates=new Map();
-  for(let line of lines){
+  let sourceHeading=null;
+  for(const [index,raw] of lines.entries()){
+    let line=raw;
     const heading=headingOf(line);
     const next=qualifications.test(heading)?"qualification":preferences.test(heading)?"preference":other.test(heading)?"other":null;
     if(next){
       section=next;
+      sourceHeading=line.split(":",1)[0].trim();
       const colon=line.indexOf(":");
       line=colon<0?"":line.slice(colon+1).trim();
-    }else if(line.endsWith(":")){section="other";continue}
+    }else if(line.endsWith(":")){section="other";sourceHeading=null;continue}
     if(!line)continue;
     const key=line.toLocaleLowerCase("tr").replace(/\s+/gu," ").trim();
     if(/^(?:çalışma yeri|pozisyonun lokasyonu)\s/.test(key) ||
        (/@/.test(key) && /gönder|başvur|ilet/.test(key)))continue;
     const mixed=section!=="other"&&mixedConditions(line,"tr");
     if(mixed){
-      for(const [clause,optional] of mixed)candidates.set(clause,optional&&candidates.get(clause)!==false);
+      for(const [clause,optional] of mixed)recordCandidate(candidates,clause,optional,sourceHeading,index+1);
       continue;
     }
     const optional=/tercihen|tercih (?:sebebi|nedenidir|edilir)|artı (?:olur|sayılır|değer olarak değerlendirilir)|zorunlu değil/.test(key);
     if(section==="other" || (section==="unknown" && !optional && !/deneyim|tecrüb|hakimiyet|hâkimiyet|bilgi sahibi|zorunlu|aranmaktadır/.test(key)))continue;
-    candidates.set(line,optional||section==="preference");
+    recordCandidate(candidates,line,optional||section==="preference",sourceHeading,index+1);
   }
   return candidates;
 }
@@ -197,7 +207,8 @@ function englishCandidates(text,model){
   const required=/^(?:(?:(?:minimum|required|basic|essential|technical|expected|job) )?(?:skills|qualifications(?: & experience)?|requirements)|must[- ]haves?|about your experience|what you(?:['’]ll| will) (?:need|bring)|what we['’]re looking for|the profile we['’]re looking for)$/i;
   const other=/^(?:benefits(?: and perks)?|compensation & benefits|perks(?: and benefits)?|more about perks of working with us|what we offer|why (?:you should )?join(?: [^:?!]+)?|about (?:us|the company)|how (?:to apply|we work)|position overview)$/i;
   const duties=/^(?:(?:key |job )?responsibilities|what you(?:['’]ll| will) do)$/i;
-  for(const raw of text.split(/\r?\n/)){
+  let sourceHeading=null;
+  for(const [index,raw] of text.split(/\r?\n/).entries()){
     let line=raw.trim().replace(/^[•*–-]\s*/,"");
     if(!line)continue;
     const colon=line.indexOf(":");
@@ -205,15 +216,16 @@ function englishCandidates(text,model){
     const nextSection=preferred.test(heading)?"preferred":required.test(heading)?"required":other.test(heading)?"other":duties.test(heading)?"unknown":null;
     if(nextSection){
       section=nextSection;
+      sourceHeading=(colon<0?line:line.slice(0,colon)).trim();
       line=colon<0?"":line.slice(colon+1).trim();
       if(!line)continue;
     }
-    if(line.endsWith(":")){section="unknown";continue}
+    if(line.endsWith(":")){section="unknown";sourceHeading=null;continue}
     if(section==="other")continue;
     for(const sentence of line.split(/(?<=[.!?])\s+/)){
       const mixed=mixedConditions(sentence,"en");
       if(mixed){
-        for(const [clause,optional] of mixed)candidates.set(clause,optional&&candidates.get(clause)!==false);
+        for(const [clause,optional] of mixed)recordCandidate(candidates,clause,optional,sourceHeading,index+1);
         continue;
       }
       const optional=section==="preferred"||/^(?:preferred|optional|nice[- ]to[- ]have|bonus points)\s*[:–-]|\b(?:would be|is|are) (?:a plus|an asset|preferred|desirable|nice to have)\b|\bnot required\b/i.test(sentence);
@@ -222,13 +234,13 @@ function englishCandidates(text,model){
         const value=terms.reduce((sum,term)=>sum+(Object.hasOwn(model.weights,term)?model.weights[term]:0),model.bias);
         if(value<model.threshold)continue;
       }
-      candidates.set(sentence,optional && candidates.get(sentence)!==false);
+      recordCandidate(candidates,sentence,optional,sourceHeading,index+1);
     }
   }
   return candidates;
 }
 el("example").onclick=()=>{
-  clearJobOrigin();resetManualSource();
+  clearJobOrigin();resetManualSource();selectedPreferences.clear();postingReferences.clear();
   el("cv").value="C++ ile 30 ay boyunca motor kontrol yazılımı geliştirdim.\nPython ile test raporları hazırladım.";
   el("job").value="At least 36 months developing control software with C++.\nWrite test reports using Python.";
   invalidateReview();
@@ -238,9 +250,9 @@ el("suggest").onclick=async()=>{
   const output=el("candidates");
   output.replaceChildren();
   el("append").hidden=true;
-  const text=el("posting").value.trim();
+  const text=el("posting").value;
   const language=el("postingLanguage").value;
-  if(!text || text.length>100000){output.textContent="Enter a posting of up to 100,000 characters.";return}
+  if(!text.trim() || text.length>100000){output.textContent="Enter a posting of up to 100,000 characters.";return}
   el("suggest").disabled=true;
   try{
     if(language==="en" && !sentenceModel){
@@ -248,13 +260,16 @@ el("suggest").onclick=async()=>{
       if(!response.ok)throw Error();
       sentenceModel=await response.json();
     }
-    if(el("posting").value.trim()!==text||el("postingLanguage").value!==language)return;
+    if(el("posting").value!==text||el("postingLanguage").value!==language)return;
     const suggestions=language==="tr"?turkishCandidates(text):englishCandidates(text,sentenceModel);
-    for(const [sentence,optional] of suggestions){
+    const sourceLines=text.split(/\r?\n/);
+    for(const [sentence,{optional,heading,line}] of suggestions){
       const row=add(output,"div","");
       const label=add(row,"label","");
       const input=add(label,"input","");input.type="checkbox";input.value=sentence;
       input.dataset.preference=String(optional);
+      input.dataset.source=JSON.stringify({heading,line,source_text:sourceLines[line-1],suggested_type:optional?"optional":"required"});
+      add(row,"small","Posting line "+line+(heading?" · "+heading:""));
       const wording=add(label,"span",(optional?" Optional · ":" Required · ")+sentence);
       const typeLabel=add(row,"label","Count as ");
       typeLabel.hidden=true;
@@ -270,7 +285,7 @@ el("suggest").onclick=async()=>{
     el("append").hidden=!output.children.length;
     if(!output.children.length)output.textContent="No suggestions found. Highlight a condition in the posting to add it.";
   }catch{
-    if(el("posting").value.trim()===text&&el("postingLanguage").value===language)
+    if(el("posting").value===text&&el("postingLanguage").value===language)
       output.textContent="Suggestions unavailable. Highlight a condition in the posting to add it.";
   }
   finally{el("suggest").disabled=false}
@@ -280,15 +295,17 @@ function appendConditions(entries){
   const prior=conditionsFrom(fields.value);
   const message=el("conditionMessage");
   const additions=new Map();
-  for(const [text,optional] of entries){
-    for(const condition of conditionsFrom(text))additions.set(condition,optional);
+  for(const [text,optional,source] of entries){
+    for(const condition of conditionsFrom(text))additions.set(condition,{optional,source:source&&{...source,selected_type:optional?"optional":"required"}});
   }
   if(!additions.size){message.textContent="Select at least one condition.";return}
   const combined=new Set([...prior,...additions.keys()]);
   if(combined.size>50){message.textContent="Select up to 50 conditions.";return}
-  const changes=[...additions].filter(([condition,optional])=>!prior.includes(condition)||selectedPreferences.has(condition)!==optional);
+  const changes=[...additions].filter(([condition,{optional,source}])=>!prior.includes(condition)||
+    selectedPreferences.has(condition)!==optional||Boolean(source&&JSON.stringify(postingReferences.get(condition))!==JSON.stringify(source)));
   if(!changes.length){message.textContent="Already included with the selected assessment type.";return}
-  for(const [condition,optional] of changes){
+  for(const [condition,{optional,source}] of changes){
+    if(source)postingReferences.set(condition,source);
     if(optional)selectedPreferences.add(condition);
     else selectedPreferences.delete(condition);
   }
@@ -299,7 +316,7 @@ function appendConditions(entries){
 }
 el("append").onclick=()=>{
   const checked=[...el("candidates").querySelectorAll("input:checked")];
-  appendConditions(checked.map(input=>[input.value,input.dataset.preference==="true"]));
+  appendConditions(checked.map(input=>[input.value,input.dataset.preference==="true",JSON.parse(input.dataset.source)]));
 };
 function addHighlighted(optional){
   const posting=el("posting");
@@ -309,7 +326,11 @@ function addHighlighted(optional){
     posting.focus();
     return;
   }
-  appendConditions([[selection,optional]]);
+  const start=posting.value.slice(0,posting.selectionStart).split("\n").length;
+  const lines=posting.value.split("\n");
+  const selected=posting.value.slice(posting.selectionStart,posting.selectionEnd).split("\n");
+  appendConditions(selected.map((line,i)=>[line,optional,{heading:null,line:start+i,
+    source_text:lines[start+i-1],suggested_type:null}]));
 }
 el("manualRequired").onclick=()=>addHighlighted(false);
 el("manualOptional").onclick=()=>addHighlighted(true);
@@ -531,10 +552,16 @@ function assessmentRows(){
     const missing=gap.disabled?"":gap.value.trim();
     const advice=note.disabled?"":note.value.trim();
     const preference_review=optional?{label:decision,quotes,missing,note:advice,next_edit:nextEdit({label:decision,note:advice})||null}:null;
-    return {condition:card.querySelector("h3").textContent,label,quotes:optional?[]:quotes,preference_review,
+    const condition=card.querySelector("h3").textContent;
+    return {condition,label,quotes:optional?[]:quotes,preference_review,
+            posting_reference:postingReferences.get(condition)||null,
             missing:optional?"":missing,note:optional?"":advice,duration:card.querySelector(".duration-result")?.textContent||"",
             complete:Boolean(label)&&gap.validity.valid&&(!needsQuote||(quotes.length>0&&validQuotes))};
   });
+}
+function referenceText(source){
+  return "Posting line "+source.line+(source.heading?" · "+source.heading:"")+
+    (source.suggested_type?" · suggested "+source.suggested_type:" · manually selected")+" · added as "+source.selected_type;
 }
 function nextEdit(row){
   if(row.label!=="partial"&&row.label!=="unverified")return "";
@@ -557,7 +584,7 @@ function exportReview(format){
     encoder:retrievalModels[el("method").value]||null,
     coverage:counts(rows.map(row=>row.label)),conditions:rows.map(({complete,...row})=>({...row,next_edit:nextEdit(row)||null}))};
   const body=format==="json"?JSON.stringify(data,null,2):["Job Radar Evidence",el("source").textContent,context,heading,...rows.map(row=>
-    [row.condition,row.preference_review?"Optional assessment: "+row.preference_review.label:"Assessment: "+row.label,...(row.preference_review?.quotes||row.quotes).map(q=>"Page "+q.page+" · "+q.passage+
+    [row.condition,row.posting_reference?referenceText(row.posting_reference)+"\nSource wording: "+row.posting_reference.source_text:"",row.preference_review?"Optional assessment: "+row.preference_review.label:"Assessment: "+row.label,...(row.preference_review?.quotes||row.quotes).map(q=>"Page "+q.page+" · "+q.passage+
       (q.search_rank?"\nSearch rank: "+q.search_rank:"")+(q.excerpt?"\nHighlighted wording: "+q.excerpt:"")),row.duration,
      (row.preference_review?.missing||row.missing)?"Requirement still to demonstrate: "+(row.preference_review?.missing||row.missing):"",
      nextEdit(row.preference_review||row)?"Next CV edit: "+nextEdit(row.preference_review||row):""].filter(Boolean).join("\n"))].join("\n\n");
@@ -682,6 +709,8 @@ el("form").onsubmit=async event=>{
       const ranks=new Map(ordered.map(({line},index)=>[line,index+1]));
       const ranked=ordered.slice(0,3);
       const card=add(el("results"),"article","");add(card,"h3",condition);
+      const reference=postingReferences.get(condition);
+      if(reference)add(card,"small",referenceText(reference));
       const wording=technologyWording(condition,vocabulary||[]);
       if(wording)add(card,"small",(wording.mode==="any"?"Alternative technologies · evidence for one listed option can meet this part: ":
         "Combined technologies · look for evidence covering each listed item: ")+wording.items.join(", ")+". Check which work the CV attributes to the applicant.");
