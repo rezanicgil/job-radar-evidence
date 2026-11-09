@@ -12,9 +12,9 @@ def source_link(url, title):
     return f'<a href="{escape(url,quote=True)}">{escape(title)}</a>'
 
 
-def main():
-    folder = ROOT / "reports"
-    inventory = max(folder.glob("inventory-*T*.json"))
+def main(inventory=None):
+    inventory = inventory or max((ROOT/"reports").glob("inventory-*T*.json"))
+    folder = inventory.parent
     data = json.loads(inventory.read_text(encoding="utf-8"))
     jobs = data["jobs"]
     areas = {area:[p for p in jobs if area in p["areas"]] for area in PATTERNS}
@@ -47,6 +47,7 @@ summary{{padding:.6rem 0;cursor:pointer;border-top:1px solid #ccd4d1}}meter{{wid
     target = folder / f"market-coverage-{inventory.stem.removeprefix('inventory-')}.html"
     target.write_text(html,encoding="utf-8")
     print(target)
+    return target
 
 
 if __name__ == "__main__":

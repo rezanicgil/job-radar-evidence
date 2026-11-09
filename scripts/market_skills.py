@@ -74,15 +74,15 @@ def inspect(job):
         return dict(**job,status=str(exc))
 
 
-def main():
-    folder = ROOT / "reports"
-    inventory = max(folder.glob("inventory-*T*.json"))
+def main(inventory=None):
+    inventory = inventory or max((ROOT/"reports").glob("inventory-*T*.json"))
+    folder = inventory.parent
     snapshot = json.loads(inventory.read_text(encoding="utf-8"))
     with ThreadPoolExecutor(5) as pool:
         rows = list(pool.map(inspect,(j for j in snapshot["jobs"] if j["areas"])))
     readable = [r for r in rows if r["status"]=="readable"]
     now = datetime.now(timezone.utc)
-    prefix = f"skill-mentions-{now:%Y-%m-%dT%H%M%SZ}"
+    prefix = f"skill-mentions-{now:%Y-%m-%dT%H%M%S%fZ}"
     output = dict(inventory=inventory.name,collected_at=now.isoformat(),vocabulary=SKILLS,postings=rows)
     (folder / (prefix+".json")).write_text(json.dumps(output,ensure_ascii=False,indent=2),encoding="utf-8")
     lines = ["# Technologies mentioned in Türkiye software postings", "",
@@ -98,6 +98,7 @@ def main():
     (folder / (prefix+".md")).write_text("\n".join(lines)+"\n",encoding="utf-8")
     print("\n".join(lines[:16]))
     print(prefix)
+    return folder/(prefix+".json")
 
 
 if __name__ == "__main__":

@@ -108,20 +108,21 @@ def fetch(source):
         return dict(source=source["name"], url=url, status=f"{type(exc).__name__}: {exc}"), []
 
 
-def main():
+def main(folder=None):
     sources = json.loads((ROOT / "data/market_sources.json").read_text(encoding="utf-8"))
     with ThreadPoolExecutor(6) as pool:
         results = list(pool.map(fetch, sources))
     jobs = {job["url"]:job for _, rows in results for job in rows}
     now = datetime.now(timezone.utc)
     inventory = dict(collected_at=now.isoformat(), sources=[s for s,_ in results], jobs=list(jobs.values()))
-    target = ROOT / "reports" / f"inventory-{now:%Y-%m-%dT%H%M%S%fZ}.json"
+    target = (folder or ROOT/"reports") / f"inventory-{now:%Y-%m-%dT%H%M%S%fZ}.json"
     target.parent.mkdir(exist_ok=True)
     target.write_text(json.dumps(inventory,ensure_ascii=False,indent=2),encoding="utf-8")
     print("Boards responding:", sum(s["status"]=="ok" for s,_ in results), "/", len(results))
     print("TR-location records:", len(jobs), "with role tags:",sum(bool(j["areas"]) for j in jobs.values()))
     for area in PATTERNS:
         print(area, sum(area in j["areas"] for j in jobs.values()))
+    return target
 
 
 if __name__ == "__main__":
