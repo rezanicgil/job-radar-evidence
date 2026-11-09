@@ -332,6 +332,8 @@ try{
         const card=add(direct,"article","");
         add(card,"a",row.employer+" · "+row.title).href=row.source_url;
         add(card,"p",row.location+" · Observed "+row.observed_on);
+        if(row.minimum_technical?.length)add(card,"p","Selected minimum qualifications: "+row.minimum_technical.join("; "));
+        if(row.preferred_technical?.length)add(card,"p","Selected preferences: "+row.preferred_technical.join("; "));
       }
     }
     el("scope").textContent=market.collected_at.slice(0,10)+" · "+records.length+" readable descriptions of "+group.length+" selected postings. Counts include mentions in preferences and company context.";
