@@ -612,6 +612,58 @@ try{
   }
   el("area").add(new Option("All tracked roles",""));
   for(const a of market.areas)el("area").add(new Option(a,a));
+  let showAll=false;
+  function drawTechnologies(records){
+    const byEmployer=el("basis").value==="employers";
+    const employers=new Set(records.map(p=>p.employer)).size;
+    const skills=new Map();
+    for(const p of records)for(const s of new Set(p.skills)){
+      if(!skills.has(s))skills.set(s,[]);
+      skills.get(s).push(p);
+    }
+    const query=el("skillSearch").value.trim().toLowerCase();
+    const names=query?(market.vocabulary||[...skills.keys()]):[...skills.keys()];
+    const measured=names.filter(name=>name.toLowerCase().includes(query)).map(name=>{
+      const postings=skills.get(name)||[];
+      const grouped=new Map();
+      for(const p of postings){
+        if(!grouped.has(p.employer))grouped.set(p.employer,[]);
+        grouped.get(p.employer).push(p);
+      }
+      return {name,postings,grouped,count:byEmployer?grouped.size:postings.length};
+    }).sort((a,b)=>b.count-a.count||a.name.localeCompare(b.name));
+    el("counts").replaceChildren();
+    const visible=showAll||query?measured:measured.slice(0,8);
+    el("skillCount").textContent=!records.length?"No readable descriptions for this role selection.":
+      !measured.length?(query?"No tracked technology matches this search.":"No tracked technologies mentioned."):
+      (query?measured.length+" matching "+(measured.length===1?"technology.":"technologies."):
+        "Showing "+visible.length+" of "+measured.length+" mentioned technologies.");
+    el("allSkills").hidden=!records.length||Boolean(query)||measured.length<=8;
+    el("allSkills").textContent=showAll?"Show top 8":"Show all "+measured.length+" technologies";
+    if(!records.length)return;
+    for(const {name,postings,grouped} of visible){
+      const d=add(el("counts"),"details","");
+      const summary=add(d,"summary","");
+      add(summary,"strong",name);
+      for(const [label,count,total] of [["postings",postings.length,records.length],["employers",grouped.size,employers]]){
+        const share=add(summary,"span","");
+        share.className="share "+label;
+        add(share,"b",(Math.round(1000*count/total)/10)+"%");
+        const bar=add(share,"progress","");bar.max=total;bar.value=count;bar.setAttribute("aria-hidden","true");
+        add(share,"small",count+"/"+total+" "+label);
+      }
+      if(!postings.length)add(d,"p","No mentions in the selected readable descriptions.");
+      const list=add(d,"div","");list.className="employer-list";
+      for(const [employer,items] of [...grouped].sort((a,b)=>b[1].length-a[1].length||a[0].localeCompare(b[0]))){
+        add(list,"b",employer+" · "+items.length);
+        const links=add(list,"ul","");
+        for(const p of items){
+          const a=add(add(links,"li",""),"a",p.title);
+          if(p.url.startsWith("https://"))a.href=p.url;
+        }
+      }
+    }
+  }
   function render(){
     const group=market.postings.filter(p=>!el("area").value||p.areas.includes(el("area").value));
     const records=group.filter(p=>p.status==="readable");
@@ -665,28 +717,12 @@ try{
       }
     }
     el("scope").textContent=market.collected_at.slice(0,10)+" · "+records.length+" readable descriptions of "+group.length+" selected postings. Counts include mentions in preferences and company context.";
-    const skills=new Map();
-    for(const p of records)for(const s of new Set(p.skills)){if(!skills.has(s))skills.set(s,[]);skills.get(s).push(p)}
-    el("counts").replaceChildren();
-    const byEmployer=el("basis").value==="employers";
-    const employers=new Set(records.map(p=>p.employer)).size;
-    const denominator=byEmployer?employers:records.length;
-    const measured=[...skills].map(([name,postings])=>{
-      const represented=new Set(postings.map(p=>p.employer)).size;
-      return {name,postings,represented,count:byEmployer?represented:postings.length};
-    });
-    measured.sort((a,b)=>b.count-a.count||a.name.localeCompare(b.name));
-    for(const {name,postings,represented,count} of measured){
-      const d=add(el("counts"),"details","");
-      const share=Math.round(1000*count/denominator)/10;
-      const postShare=postings.length+"/"+records.length+" postings";
-      const employerShare=represented+"/"+employers+" employers";
-      const summary=add(d,"summary",name+" · "+share+"% · "+(byEmployer?employerShare+" · "+postShare:postShare+" · "+employerShare));
-      const bar=add(summary,"progress","");bar.max=denominator;bar.value=count;bar.setAttribute("aria-hidden","true");
-      for(const p of postings){const a=add(add(d,"p",""),"a",p.employer+" · "+p.title);if(p.url.startsWith("https://"))a.href=p.url}
-    }
-    if(!skills.size)add(el("counts"),"p","No tracked mentions in this selection.");
-  }el("area").onchange=render;el("basis").onchange=render;render();
+    const redraw=()=>drawTechnologies(records);
+    el("basis").onchange=redraw;
+    el("skillSearch").oninput=redraw;
+    el("allSkills").onclick=()=>{showAll=!showAll;redraw()};
+    redraw();
+  }el("area").onchange=()=>{showAll=false;render()};render();
   try{
     const feed=await fetch("employer-board.json");
     if(feed.ok){employerBoard=await feed.json();render()}

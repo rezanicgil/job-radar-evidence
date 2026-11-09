@@ -155,6 +155,19 @@ def check(page, origin):
     expect(cards.first.locator(".evidence:visible:checked")).to_have_count(1)
     expect(page.locator("#status")).to_contain_text("0% coverage")
     assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
+    page.locator("#area").select_option("")
+    snapshot=page.request.get(urljoin(origin,"market.json")).json()
+    records=[r for r in snapshot["postings"] if r["status"]=="readable"]
+    users=[r for r in records if "React Native" in r["skills"]]
+    page.locator("#skillSearch").fill("React Native")
+    chart=page.locator("#counts details")
+    expect(chart).to_have_count(1)
+    expect(chart.locator("summary")).to_contain_text(f"{len(users)}/{len(records)} postings")
+    employers={r["employer"] for r in records}
+    expect(chart.locator("summary")).to_contain_text(f"{len({r['employer'] for r in users})}/{len(employers)} employers")
+    chart.locator("summary").click()
+    expect(chart.locator("li a")).to_have_count(len(users))
+    assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
     case_id="source-pilot-android-1"
     page.goto(urljoin(origin,"annotate.html?case="+case_id))
     expect(page.locator("#caseLink")).to_have_attribute("href",page.url)
