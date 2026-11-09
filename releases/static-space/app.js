@@ -59,6 +59,9 @@ el("job").addEventListener("input",()=>{
   const present=new Set(conditionsFrom(el("job").value));
   for(const s of selectedPreferences)if(!present.has(s))selectedPreferences.delete(s);
 });
+function reviewedConditions(review){
+  return [review.requirement_evidence,...(review.additional_required||[])];
+}
 function offerReviewedConditions(card,posting,conditions,preferences=[]){
   const button=add(card,"button","Review these conditions with my CV");
   button.type="button";
@@ -689,6 +692,7 @@ el("form").onsubmit=async event=>{
 };
 try{
   const market=await (await fetch("market.json")).json();
+  const reviewByUrl=new Map((market.reviews||[]).map(review=>[review.source_url,review]));
   let employerBoard;
   const boardListings=add(el("direct").parentElement,"section","");
   el("direct").after(boardListings);
@@ -769,6 +773,9 @@ try{
         for(const p of items){
           const a=add(add(links,"li",""),"a",p.title);
           if(p.url.startsWith("https://"))a.href=p.url;
+          const review=reviewByUrl.get(p.url);
+          if(review)offerReviewedConditions(a.parentElement,{...review,employer:p.employer,title:p.title},
+            reviewedConditions(review),review.preferred_technical);
           if(scope!=="all")add(a.parentElement,"small",p.sections.filter(s=>s.skills.includes(name)).map(s=>s.heading).join(" · "));
         }
       }
@@ -787,10 +794,11 @@ try{
         const card=add(evidence,"article","");
         const link=add(card,"a",review.employer+" · "+review.title);
         link.href=review.source_url;
-        add(card,"p",review.required_skills.join(review.skill_relation==="all_of"?" + ":" or "));
-        add(card,"blockquote",review.requirement_evidence);
+        if(review.skill_relation==="examples")add(card,"p","Example languages · "+review.example_skills.join(", ")+". Other programming languages can qualify.");
+        else add(card,"p",review.required_skills.join(review.skill_relation==="all_of"?" + ":" or "));
+        for(const condition of reviewedConditions(review))add(card,"blockquote",condition);
         if(review.preferred_technical?.length)add(card,"p","Selected preferences: "+review.preferred_technical.join(" "));
-        offerReviewedConditions(card,review,[review.requirement_evidence],review.preferred_technical);
+        offerReviewedConditions(card,review,reviewedConditions(review),review.preferred_technical);
       }
     }
     const direct=el("direct");

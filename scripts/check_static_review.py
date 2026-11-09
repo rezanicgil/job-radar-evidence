@@ -238,6 +238,30 @@ def check(page, origin):
             row=page.locator("#counts details").filter(has=page.get_by_text(sample,exact=True)).first
             expect(row.locator("summary")).to_contain_text(f"{len(matched)}/{len(preference_rows)} postings")
     assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
+    page.locator("#mentionScope").select_option("all")
+    page.locator("#skillSearch").fill("Python")
+    python_chart=page.locator("#counts details").filter(has=page.get_by_text("Python",exact=True))
+    python_chart.locator("summary").click()
+    listing=python_chart.locator("li").filter(has_text="Smart Start Data Analytics & Digitalization Engineer")
+    review_urls={r["source_url"] for r in snapshot["reviews"]}
+    if "https://jobs.smartrecruiters.com/BoschGroup/744000159887118" in review_urls:
+        expect(listing).to_have_count(1)
+        cv=page.locator("#cv").input_value()
+        listing.get_by_role("button",name="Review these conditions with my CV").click()
+        listing.get_by_role("button",name="Replace conditions").click()
+        expect(page.locator("#cv")).to_have_value(cv)
+        expect(page.locator("#conditionPreview")).to_contain_text("2 required · 1 optional")
+        assert page.locator("#job").input_value().splitlines()==[
+            "Familiarity with Power BI or Tableau for data visualization and reporting",
+            "Basic knowledge of Python, SQL, and data modeling",
+            "Familiarity with Agentic AI concepts or applications is an asset"]
+        page.locator("#find").click()
+        expect(cards).to_have_count(3)
+        expect(cards.last.locator(".assessment")).to_have_value("skip")
+    examples=page.locator("#verified article").filter(has_text="Digital Image Processing Engineer")
+    if "https://jobs.smartrecruiters.com/BoschGroup/744000152330664" in review_urls:
+        expect(examples).to_have_count(1)
+        expect(examples).to_contain_text("Other programming languages can qualify")
     case_id="source-pilot-android-1"
     page.goto(urljoin(origin,"annotate.html?case="+case_id))
     expect(page.locator("#caseLink")).to_have_attribute("href",page.url)
