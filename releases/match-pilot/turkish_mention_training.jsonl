@@ -1,0 +1,200 @@
+{"text": "React kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 5, "name": "React"}], "origin": "authored_template"}
+{"text": "Adayın React konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 12, "name": "React"}], "origin": "authored_template"}
+{"text": "Ekip içinde React ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 17, "name": "React"}], "origin": "authored_template"}
+{"text": "React ve Yocto ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 5, "name": "React"}, {"start": 9, "end": 14, "name": "Yocto"}], "origin": "authored_template"}
+{"text": "ARM Cortex bilgisinin yanı sıra React kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 10, "name": "ARM Cortex"}, {"start": 32, "end": 37, "name": "React"}], "origin": "authored_template"}
+{"text": "PyTorch kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 7, "name": "PyTorch"}], "origin": "authored_template"}
+{"text": "Adayın PyTorch konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 14, "name": "PyTorch"}], "origin": "authored_template"}
+{"text": "Ekip içinde PyTorch ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 19, "name": "PyTorch"}], "origin": "authored_template"}
+{"text": "PyTorch ve ARM Cortex ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 7, "name": "PyTorch"}, {"start": 11, "end": 21, "name": "ARM Cortex"}], "origin": "authored_template"}
+{"text": "Python bilgisinin yanı sıra PyTorch kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 6, "name": "Python"}, {"start": 28, "end": 35, "name": "PyTorch"}], "origin": "authored_template"}
+{"text": "C# kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 2, "name": "C#"}], "origin": "authored_template"}
+{"text": "Adayın C# konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 9, "name": "C#"}], "origin": "authored_template"}
+{"text": "Ekip içinde C# ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 14, "name": "C#"}], "origin": "authored_template"}
+{"text": "C# ve Python ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 2, "name": "C#"}, {"start": 6, "end": 12, "name": "Python"}], "origin": "authored_template"}
+{"text": "FreeRTOS bilgisinin yanı sıra C# kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 8, "name": "FreeRTOS"}, {"start": 30, "end": 32, "name": "C#"}], "origin": "authored_template"}
+{"text": "Terraform kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 9, "name": "Terraform"}], "origin": "authored_template"}
+{"text": "Adayın Terraform konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 16, "name": "Terraform"}], "origin": "authored_template"}
+{"text": "Ekip içinde Terraform ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 21, "name": "Terraform"}], "origin": "authored_template"}
+{"text": "Terraform ve FreeRTOS ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 9, "name": "Terraform"}, {"start": 13, "end": 21, "name": "FreeRTOS"}], "origin": "authored_template"}
+{"text": "RTOS bilgisinin yanı sıra Terraform kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 4, "name": "RTOS"}, {"start": 26, "end": 35, "name": "Terraform"}], "origin": "authored_template"}
+{"text": "Yocto kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 5, "name": "Yocto"}], "origin": "authored_template"}
+{"text": "Adayın Yocto konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 12, "name": "Yocto"}], "origin": "authored_template"}
+{"text": "Ekip içinde Yocto ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 17, "name": "Yocto"}], "origin": "authored_template"}
+{"text": "Yocto ve RTOS ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 5, "name": "Yocto"}, {"start": 9, "end": 13, "name": "RTOS"}], "origin": "authored_template"}
+{"text": "React Native bilgisinin yanı sıra Yocto kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 12, "name": "React Native"}, {"start": 34, "end": 39, "name": "Yocto"}], "origin": "authored_template"}
+{"text": "ARM Cortex kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 10, "name": "ARM Cortex"}], "origin": "authored_template"}
+{"text": "Adayın ARM Cortex konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 17, "name": "ARM Cortex"}], "origin": "authored_template"}
+{"text": "Ekip içinde ARM Cortex ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 22, "name": "ARM Cortex"}], "origin": "authored_template"}
+{"text": "ARM Cortex ve React Native ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 10, "name": "ARM Cortex"}, {"start": 14, "end": 26, "name": "React Native"}], "origin": "authored_template"}
+{"text": "Unity bilgisinin yanı sıra ARM Cortex kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 5, "name": "Unity"}, {"start": 27, "end": 37, "name": "ARM Cortex"}], "origin": "authored_template"}
+{"text": "Python kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 6, "name": "Python"}], "origin": "authored_template"}
+{"text": "Adayın Python konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 13, "name": "Python"}], "origin": "authored_template"}
+{"text": "Ekip içinde Python ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 18, "name": "Python"}], "origin": "authored_template"}
+{"text": "Python ve Unity ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 6, "name": "Python"}, {"start": 10, "end": 15, "name": "Unity"}], "origin": "authored_template"}
+{"text": "BitBake bilgisinin yanı sıra Python kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 7, "name": "BitBake"}, {"start": 29, "end": 35, "name": "Python"}], "origin": "authored_template"}
+{"text": "FreeRTOS kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 8, "name": "FreeRTOS"}], "origin": "authored_template"}
+{"text": "Adayın FreeRTOS konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 15, "name": "FreeRTOS"}], "origin": "authored_template"}
+{"text": "Ekip içinde FreeRTOS ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 20, "name": "FreeRTOS"}], "origin": "authored_template"}
+{"text": "FreeRTOS ve BitBake ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 8, "name": "FreeRTOS"}, {"start": 12, "end": 19, "name": "BitBake"}], "origin": "authored_template"}
+{"text": "SwiftUI bilgisinin yanı sıra FreeRTOS kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 7, "name": "SwiftUI"}, {"start": 29, "end": 37, "name": "FreeRTOS"}], "origin": "authored_template"}
+{"text": "RTOS kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 4, "name": "RTOS"}], "origin": "authored_template"}
+{"text": "Adayın RTOS konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 11, "name": "RTOS"}], "origin": "authored_template"}
+{"text": "Ekip içinde RTOS ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 16, "name": "RTOS"}], "origin": "authored_template"}
+{"text": "RTOS ve SwiftUI ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 4, "name": "RTOS"}, {"start": 8, "end": 15, "name": "SwiftUI"}], "origin": "authored_template"}
+{"text": "AAOS bilgisinin yanı sıra RTOS kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 4, "name": "AAOS"}, {"start": 26, "end": 30, "name": "RTOS"}], "origin": "authored_template"}
+{"text": "React Native kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 12, "name": "React Native"}], "origin": "authored_template"}
+{"text": "Adayın React Native konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 19, "name": "React Native"}], "origin": "authored_template"}
+{"text": "Ekip içinde React Native ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 24, "name": "React Native"}], "origin": "authored_template"}
+{"text": "React Native ve AAOS ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 12, "name": "React Native"}, {"start": 16, "end": 20, "name": "AAOS"}], "origin": "authored_template"}
+{"text": "Azure bilgisinin yanı sıra React Native kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 5, "name": "Azure"}, {"start": 27, "end": 39, "name": "React Native"}], "origin": "authored_template"}
+{"text": "Unity kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 5, "name": "Unity"}], "origin": "authored_template"}
+{"text": "Adayın Unity konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 12, "name": "Unity"}], "origin": "authored_template"}
+{"text": "Ekip içinde Unity ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 17, "name": "Unity"}], "origin": "authored_template"}
+{"text": "Unity ve Azure ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 5, "name": "Unity"}, {"start": 9, "end": 14, "name": "Azure"}], "origin": "authored_template"}
+{"text": "AWS bilgisinin yanı sıra Unity kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 3, "name": "AWS"}, {"start": 25, "end": 30, "name": "Unity"}], "origin": "authored_template"}
+{"text": "BitBake kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 7, "name": "BitBake"}], "origin": "authored_template"}
+{"text": "Adayın BitBake konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 14, "name": "BitBake"}], "origin": "authored_template"}
+{"text": "Ekip içinde BitBake ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 19, "name": "BitBake"}], "origin": "authored_template"}
+{"text": "BitBake ve AWS ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 7, "name": "BitBake"}, {"start": 11, "end": 14, "name": "AWS"}], "origin": "authored_template"}
+{"text": "Jetpack Compose bilgisinin yanı sıra BitBake kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 15, "name": "Jetpack Compose"}, {"start": 37, "end": 44, "name": "BitBake"}], "origin": "authored_template"}
+{"text": "SwiftUI kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 7, "name": "SwiftUI"}], "origin": "authored_template"}
+{"text": "Adayın SwiftUI konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 14, "name": "SwiftUI"}], "origin": "authored_template"}
+{"text": "Ekip içinde SwiftUI ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 19, "name": "SwiftUI"}], "origin": "authored_template"}
+{"text": "SwiftUI ve Jetpack Compose ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 7, "name": "SwiftUI"}, {"start": 11, "end": 26, "name": "Jetpack Compose"}], "origin": "authored_template"}
+{"text": "QNX bilgisinin yanı sıra SwiftUI kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 3, "name": "QNX"}, {"start": 25, "end": 32, "name": "SwiftUI"}], "origin": "authored_template"}
+{"text": "AAOS kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 4, "name": "AAOS"}], "origin": "authored_template"}
+{"text": "Adayın AAOS konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 11, "name": "AAOS"}], "origin": "authored_template"}
+{"text": "Ekip içinde AAOS ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 16, "name": "AAOS"}], "origin": "authored_template"}
+{"text": "AAOS ve QNX ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 4, "name": "AAOS"}, {"start": 8, "end": 11, "name": "QNX"}], "origin": "authored_template"}
+{"text": "Zephyr bilgisinin yanı sıra AAOS kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 6, "name": "Zephyr"}, {"start": 28, "end": 32, "name": "AAOS"}], "origin": "authored_template"}
+{"text": "Azure kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 5, "name": "Azure"}], "origin": "authored_template"}
+{"text": "Adayın Azure konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 12, "name": "Azure"}], "origin": "authored_template"}
+{"text": "Ekip içinde Azure ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 17, "name": "Azure"}], "origin": "authored_template"}
+{"text": "Azure ve Zephyr ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 5, "name": "Azure"}, {"start": 9, "end": 15, "name": "Zephyr"}], "origin": "authored_template"}
+{"text": "Linux bilgisinin yanı sıra Azure kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 5, "name": "Linux"}, {"start": 27, "end": 32, "name": "Azure"}], "origin": "authored_template"}
+{"text": "AWS kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 3, "name": "AWS"}], "origin": "authored_template"}
+{"text": "Adayın AWS konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 10, "name": "AWS"}], "origin": "authored_template"}
+{"text": "Ekip içinde AWS ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 15, "name": "AWS"}], "origin": "authored_template"}
+{"text": "AWS ve Linux ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 3, "name": "AWS"}, {"start": 7, "end": 12, "name": "Linux"}], "origin": "authored_template"}
+{"text": "Gerrit bilgisinin yanı sıra AWS kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 6, "name": "Gerrit"}, {"start": 28, "end": 31, "name": "AWS"}], "origin": "authored_template"}
+{"text": "Jetpack Compose kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 15, "name": "Jetpack Compose"}], "origin": "authored_template"}
+{"text": "Adayın Jetpack Compose konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 22, "name": "Jetpack Compose"}], "origin": "authored_template"}
+{"text": "Ekip içinde Jetpack Compose ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 27, "name": "Jetpack Compose"}], "origin": "authored_template"}
+{"text": "Jetpack Compose ve Gerrit ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 15, "name": "Jetpack Compose"}, {"start": 19, "end": 25, "name": "Gerrit"}], "origin": "authored_template"}
+{"text": "Spark bilgisinin yanı sıra Jetpack Compose kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 5, "name": "Spark"}, {"start": 27, "end": 42, "name": "Jetpack Compose"}], "origin": "authored_template"}
+{"text": "QNX kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 3, "name": "QNX"}], "origin": "authored_template"}
+{"text": "Adayın QNX konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 10, "name": "QNX"}], "origin": "authored_template"}
+{"text": "Ekip içinde QNX ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 15, "name": "QNX"}], "origin": "authored_template"}
+{"text": "QNX ve Spark ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 3, "name": "QNX"}, {"start": 7, "end": 12, "name": "Spark"}], "origin": "authored_template"}
+{"text": "I2C bilgisinin yanı sıra QNX kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 3, "name": "I2C"}, {"start": 25, "end": 28, "name": "QNX"}], "origin": "authored_template"}
+{"text": "Zephyr kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 6, "name": "Zephyr"}], "origin": "authored_template"}
+{"text": "Adayın Zephyr konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 13, "name": "Zephyr"}], "origin": "authored_template"}
+{"text": "Ekip içinde Zephyr ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 18, "name": "Zephyr"}], "origin": "authored_template"}
+{"text": "Zephyr ve I2C ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 6, "name": "Zephyr"}, {"start": 10, "end": 13, "name": "I2C"}], "origin": "authored_template"}
+{"text": "Dart bilgisinin yanı sıra Zephyr kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 4, "name": "Dart"}, {"start": 26, "end": 32, "name": "Zephyr"}], "origin": "authored_template"}
+{"text": "Linux kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 5, "name": "Linux"}], "origin": "authored_template"}
+{"text": "Adayın Linux konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 12, "name": "Linux"}], "origin": "authored_template"}
+{"text": "Ekip içinde Linux ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 17, "name": "Linux"}], "origin": "authored_template"}
+{"text": "Linux ve Dart ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 5, "name": "Linux"}, {"start": 9, "end": 13, "name": "Dart"}], "origin": "authored_template"}
+{"text": "Xcode bilgisinin yanı sıra Linux kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 5, "name": "Xcode"}, {"start": 27, "end": 32, "name": "Linux"}], "origin": "authored_template"}
+{"text": "Gerrit kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 6, "name": "Gerrit"}], "origin": "authored_template"}
+{"text": "Adayın Gerrit konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 13, "name": "Gerrit"}], "origin": "authored_template"}
+{"text": "Ekip içinde Gerrit ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 18, "name": "Gerrit"}], "origin": "authored_template"}
+{"text": "Gerrit ve Xcode ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 6, "name": "Gerrit"}, {"start": 10, "end": 15, "name": "Xcode"}], "origin": "authored_template"}
+{"text": "SPI bilgisinin yanı sıra Gerrit kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 3, "name": "SPI"}, {"start": 25, "end": 31, "name": "Gerrit"}], "origin": "authored_template"}
+{"text": "Spark kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 5, "name": "Spark"}], "origin": "authored_template"}
+{"text": "Adayın Spark konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 12, "name": "Spark"}], "origin": "authored_template"}
+{"text": "Ekip içinde Spark ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 17, "name": "Spark"}], "origin": "authored_template"}
+{"text": "Spark ve SPI ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 5, "name": "Spark"}, {"start": 9, "end": 12, "name": "SPI"}], "origin": "authored_template"}
+{"text": "Gradle bilgisinin yanı sıra Spark kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 6, "name": "Gradle"}, {"start": 28, "end": 33, "name": "Spark"}], "origin": "authored_template"}
+{"text": "I2C kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 3, "name": "I2C"}], "origin": "authored_template"}
+{"text": "Adayın I2C konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 10, "name": "I2C"}], "origin": "authored_template"}
+{"text": "Ekip içinde I2C ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 15, "name": "I2C"}], "origin": "authored_template"}
+{"text": "I2C ve Gradle ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 3, "name": "I2C"}, {"start": 7, "end": 13, "name": "Gradle"}], "origin": "authored_template"}
+{"text": "QML bilgisinin yanı sıra I2C kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 3, "name": "QML"}, {"start": 25, "end": 28, "name": "I2C"}], "origin": "authored_template"}
+{"text": "Dart kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 4, "name": "Dart"}], "origin": "authored_template"}
+{"text": "Adayın Dart konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 11, "name": "Dart"}], "origin": "authored_template"}
+{"text": "Ekip içinde Dart ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 16, "name": "Dart"}], "origin": "authored_template"}
+{"text": "Dart ve QML ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 4, "name": "Dart"}, {"start": 8, "end": 11, "name": "QML"}], "origin": "authored_template"}
+{"text": "U-Boot bilgisinin yanı sıra Dart kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 6, "name": "U-Boot"}, {"start": 28, "end": 32, "name": "Dart"}], "origin": "authored_template"}
+{"text": "Xcode kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 5, "name": "Xcode"}], "origin": "authored_template"}
+{"text": "Adayın Xcode konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 12, "name": "Xcode"}], "origin": "authored_template"}
+{"text": "Ekip içinde Xcode ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 17, "name": "Xcode"}], "origin": "authored_template"}
+{"text": "Xcode ve U-Boot ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 5, "name": "Xcode"}, {"start": 9, "end": 15, "name": "U-Boot"}], "origin": "authored_template"}
+{"text": "Kubernetes bilgisinin yanı sıra Xcode kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 10, "name": "Kubernetes"}, {"start": 32, "end": 37, "name": "Xcode"}], "origin": "authored_template"}
+{"text": "SPI kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 3, "name": "SPI"}], "origin": "authored_template"}
+{"text": "Adayın SPI konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 10, "name": "SPI"}], "origin": "authored_template"}
+{"text": "Ekip içinde SPI ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 15, "name": "SPI"}], "origin": "authored_template"}
+{"text": "SPI ve Kubernetes ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 3, "name": "SPI"}, {"start": 7, "end": 17, "name": "Kubernetes"}], "origin": "authored_template"}
+{"text": "SQL bilgisinin yanı sıra SPI kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 3, "name": "SQL"}, {"start": 25, "end": 28, "name": "SPI"}], "origin": "authored_template"}
+{"text": "Gradle kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 6, "name": "Gradle"}], "origin": "authored_template"}
+{"text": "Adayın Gradle konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 13, "name": "Gradle"}], "origin": "authored_template"}
+{"text": "Ekip içinde Gradle ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 18, "name": "Gradle"}], "origin": "authored_template"}
+{"text": "Gradle ve SQL ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 6, "name": "Gradle"}, {"start": 10, "end": 13, "name": "SQL"}], "origin": "authored_template"}
+{"text": "CAN bus bilgisinin yanı sıra Gradle kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 7, "name": "CAN bus"}, {"start": 29, "end": 35, "name": "Gradle"}], "origin": "authored_template"}
+{"text": "QML kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 3, "name": "QML"}], "origin": "authored_template"}
+{"text": "Adayın QML konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 10, "name": "QML"}], "origin": "authored_template"}
+{"text": "Ekip içinde QML ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 15, "name": "QML"}], "origin": "authored_template"}
+{"text": "QML ve CAN bus ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 3, "name": "QML"}, {"start": 7, "end": 14, "name": "CAN bus"}], "origin": "authored_template"}
+{"text": "Redis bilgisinin yanı sıra QML kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 5, "name": "Redis"}, {"start": 27, "end": 30, "name": "QML"}], "origin": "authored_template"}
+{"text": "U-Boot kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 6, "name": "U-Boot"}], "origin": "authored_template"}
+{"text": "Adayın U-Boot konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 13, "name": "U-Boot"}], "origin": "authored_template"}
+{"text": "Ekip içinde U-Boot ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 18, "name": "U-Boot"}], "origin": "authored_template"}
+{"text": "U-Boot ve Redis ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 6, "name": "U-Boot"}, {"start": 10, "end": 15, "name": "Redis"}], "origin": "authored_template"}
+{"text": "ROS 2 bilgisinin yanı sıra U-Boot kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 5, "name": "ROS 2"}, {"start": 27, "end": 33, "name": "U-Boot"}], "origin": "authored_template"}
+{"text": "Kubernetes kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 10, "name": "Kubernetes"}], "origin": "authored_template"}
+{"text": "Adayın Kubernetes konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 17, "name": "Kubernetes"}], "origin": "authored_template"}
+{"text": "Ekip içinde Kubernetes ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 22, "name": "Kubernetes"}], "origin": "authored_template"}
+{"text": "Kubernetes ve ROS 2 ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 10, "name": "Kubernetes"}, {"start": 14, "end": 19, "name": "ROS 2"}], "origin": "authored_template"}
+{"text": "Swift bilgisinin yanı sıra Kubernetes kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 5, "name": "Swift"}, {"start": 27, "end": 37, "name": "Kubernetes"}], "origin": "authored_template"}
+{"text": "SQL kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 3, "name": "SQL"}], "origin": "authored_template"}
+{"text": "Adayın SQL konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 10, "name": "SQL"}], "origin": "authored_template"}
+{"text": "Ekip içinde SQL ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 15, "name": "SQL"}], "origin": "authored_template"}
+{"text": "SQL ve Swift ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 3, "name": "SQL"}, {"start": 7, "end": 12, "name": "Swift"}], "origin": "authored_template"}
+{"text": "JavaScript bilgisinin yanı sıra SQL kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 10, "name": "JavaScript"}, {"start": 32, "end": 35, "name": "SQL"}], "origin": "authored_template"}
+{"text": "CAN bus kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 7, "name": "CAN bus"}], "origin": "authored_template"}
+{"text": "Adayın CAN bus konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 14, "name": "CAN bus"}], "origin": "authored_template"}
+{"text": "Ekip içinde CAN bus ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 19, "name": "CAN bus"}], "origin": "authored_template"}
+{"text": "CAN bus ve JavaScript ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 7, "name": "CAN bus"}, {"start": 11, "end": 21, "name": "JavaScript"}], "origin": "authored_template"}
+{"text": "Git bilgisinin yanı sıra CAN bus kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 3, "name": "Git"}, {"start": 25, "end": 32, "name": "CAN bus"}], "origin": "authored_template"}
+{"text": "Redis kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 5, "name": "Redis"}], "origin": "authored_template"}
+{"text": "Adayın Redis konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 12, "name": "Redis"}], "origin": "authored_template"}
+{"text": "Ekip içinde Redis ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 17, "name": "Redis"}], "origin": "authored_template"}
+{"text": "Redis ve Git ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 5, "name": "Redis"}, {"start": 9, "end": 12, "name": "Git"}], "origin": "authored_template"}
+{"text": "UART bilgisinin yanı sıra Redis kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 4, "name": "UART"}, {"start": 26, "end": 31, "name": "Redis"}], "origin": "authored_template"}
+{"text": "ROS 2 kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 5, "name": "ROS 2"}], "origin": "authored_template"}
+{"text": "Adayın ROS 2 konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 12, "name": "ROS 2"}], "origin": "authored_template"}
+{"text": "Ekip içinde ROS 2 ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 17, "name": "ROS 2"}], "origin": "authored_template"}
+{"text": "ROS 2 ve UART ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 5, "name": "ROS 2"}, {"start": 9, "end": 13, "name": "UART"}], "origin": "authored_template"}
+{"text": "Android SDK bilgisinin yanı sıra ROS 2 kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 11, "name": "Android SDK"}, {"start": 33, "end": 38, "name": "ROS 2"}], "origin": "authored_template"}
+{"text": "Swift kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 5, "name": "Swift"}], "origin": "authored_template"}
+{"text": "Adayın Swift konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 12, "name": "Swift"}], "origin": "authored_template"}
+{"text": "Ekip içinde Swift ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 17, "name": "Swift"}], "origin": "authored_template"}
+{"text": "Swift ve Android SDK ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 5, "name": "Swift"}, {"start": 9, "end": 20, "name": "Android SDK"}], "origin": "authored_template"}
+{"text": "STM32 bilgisinin yanı sıra Swift kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 5, "name": "STM32"}, {"start": 27, "end": 32, "name": "Swift"}], "origin": "authored_template"}
+{"text": "JavaScript kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 10, "name": "JavaScript"}], "origin": "authored_template"}
+{"text": "Adayın JavaScript konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 17, "name": "JavaScript"}], "origin": "authored_template"}
+{"text": "Ekip içinde JavaScript ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 22, "name": "JavaScript"}], "origin": "authored_template"}
+{"text": "JavaScript ve STM32 ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 10, "name": "JavaScript"}, {"start": 14, "end": 19, "name": "STM32"}], "origin": "authored_template"}
+{"text": "React bilgisinin yanı sıra JavaScript kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 5, "name": "React"}, {"start": 27, "end": 37, "name": "JavaScript"}], "origin": "authored_template"}
+{"text": "Git kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 3, "name": "Git"}], "origin": "authored_template"}
+{"text": "Adayın Git konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 10, "name": "Git"}], "origin": "authored_template"}
+{"text": "Ekip içinde Git ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 15, "name": "Git"}], "origin": "authored_template"}
+{"text": "Git ve React ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 3, "name": "Git"}, {"start": 7, "end": 12, "name": "React"}], "origin": "authored_template"}
+{"text": "PyTorch bilgisinin yanı sıra Git kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 7, "name": "PyTorch"}, {"start": 29, "end": 32, "name": "Git"}], "origin": "authored_template"}
+{"text": "UART kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 4, "name": "UART"}], "origin": "authored_template"}
+{"text": "Adayın UART konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 11, "name": "UART"}], "origin": "authored_template"}
+{"text": "Ekip içinde UART ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 16, "name": "UART"}], "origin": "authored_template"}
+{"text": "UART ve PyTorch ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 4, "name": "UART"}, {"start": 8, "end": 15, "name": "PyTorch"}], "origin": "authored_template"}
+{"text": "C# bilgisinin yanı sıra UART kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 2, "name": "C#"}, {"start": 24, "end": 28, "name": "UART"}], "origin": "authored_template"}
+{"text": "Android SDK kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 11, "name": "Android SDK"}], "origin": "authored_template"}
+{"text": "Adayın Android SDK konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 18, "name": "Android SDK"}], "origin": "authored_template"}
+{"text": "Ekip içinde Android SDK ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 23, "name": "Android SDK"}], "origin": "authored_template"}
+{"text": "Android SDK ve C# ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 11, "name": "Android SDK"}, {"start": 15, "end": 17, "name": "C#"}], "origin": "authored_template"}
+{"text": "Terraform bilgisinin yanı sıra Android SDK kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 9, "name": "Terraform"}, {"start": 31, "end": 42, "name": "Android SDK"}], "origin": "authored_template"}
+{"text": "STM32 kullanarak üretim sorunlarını araştırabilmek.", "template": 0, "mentions": [{"start": 0, "end": 5, "name": "STM32"}], "origin": "authored_template"}
+{"text": "Adayın STM32 konusunda deneyimli olması beklenir.", "template": 1, "mentions": [{"start": 7, "end": 12, "name": "STM32"}], "origin": "authored_template"}
+{"text": "Ekip içinde STM32 ile geliştirme yapmış olmak tercih sebebidir.", "template": 2, "mentions": [{"start": 12, "end": 17, "name": "STM32"}], "origin": "authored_template"}
+{"text": "STM32 ve Terraform ile çalışan servislerin bakımını üstlenmek.", "template": 3, "mentions": [{"start": 0, "end": 5, "name": "STM32"}, {"start": 9, "end": 18, "name": "Terraform"}], "origin": "authored_template"}
+{"text": "Yocto bilgisinin yanı sıra STM32 kullanımına aşina olmak.", "template": 4, "mentions": [{"start": 0, "end": 5, "name": "Yocto"}, {"start": 27, "end": 32, "name": "STM32"}], "origin": "authored_template"}

@@ -24,6 +24,14 @@ configs:
     data_files:
       - split: validation
         path: turkish_crenno_sections.jsonl
+  - config_name: turkish_technology_mentions
+    data_files:
+      - split: validation
+        path: turkish_technology_mentions.jsonl
+  - config_name: turkish_mention_training
+    data_files:
+      - split: train
+        path: turkish_mention_training.jsonl
   - config_name: bilingual_knowledge_spans
     data_files:
       - split: validation
@@ -130,6 +138,10 @@ The `git_localization_index` contains 3,039 English–Turkish message pairs from
 The evaluation keeps translated, current singular entries with 3–24 words in each language, a single line and no percent sign. It drops identical or ambiguous messages after case folding and excludes exact hashes in both published Python translation splits and the Pro Git heading index. Each query competes with all 3,039 opposite-language candidates. An equal score uses the less favorable rank. Other close paraphrases can be valid translations even when their catalog entry differs. [Pinned source](https://github.com/git/git/blob/0a961ebf01737f50c491ce12f7be3998a7f73fd1/po/tr.po) · [Source license](https://github.com/git/git/blob/0a961ebf01737f50c491ce12f7be3998a7f73fd1/COPYING) · [Evaluation results](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/git-localization-retrieval.json)
 
 The `progit_section_index` is an external retrieval evaluation using 154 heading pairs from 79 matching files in the English and Turkish editions of *Pro Git* by Scott Chacon, Ben Straub and contributors. The upstream texts are licensed under CC BY-NC-SA 3.0. This index publishes source pointers, section keys and hashes. Book text and model training examples are not included. Each row pairs the first heading in the same source file or a heading with the same explicit section anchor in both editions. Identical case-folded headings and ambiguous repeated titles are excluded. Ranks in the report follow index order. Source alignment is structural and has not been independently adjudicated. [Original book and license](https://git-scm.com/book/tr/v2) · [Evaluation code](https://github.com/rezanicgil/job-radar-evidence/blob/main/scripts/check_progit_retrieval.py) · [Ranks](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/progit-section-retrieval.json)
+
+The `turkish_technology_mentions` split contains references to 134 deduplicated Turkish job bullets on two boards. Reconstruct the normalized text using the earlier Roof Stacks and CRENNO section indexes and verify its digest. Thirty-four named technology mentions occur across 26 bullets under the frozen 60-name market vocabulary. Each mention records the name and half-open character offsets. For overlapping names the earliest match is retained, preferring the longest at the same start. Empty arrays indicate no tracked name. The reference is incomplete for knowledge phrases outside that vocabulary, so exact recall on tracked mentions can be measured, but overall precision cannot. The twelve postings come from two employers. [Case results](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/turkish-technology-mentions.json)
+
+The `turkish_mention_training` split contains 200 project-generated Turkish conditions using five templates and 40 technology names. The remaining 20 names in the vocabulary were withheld from these templates. A short adaptation experiment mixed these conditions with 400 English SkillSpan training sentences. Template wording was checked for exact overlap with the Turkish evaluation pointers. This subset is controlled augmentation. Its size measures generated examples and the names can also appear in pretraining or in English SkillSpan. [Training protocol](https://github.com/rezanicgil/job-radar-evidence/blob/main/scripts/train_turkish_mention_adaptation.py)
 
 The `bilingual_knowledge_spans` diagnostic has ten project-authored conditions in English and Turkish. Eight conditions paraphrase sourced job wording and two are negative controls. Each reference marks a knowledge phrase by its exact text and half-open Unicode character offsets. Each language has its own offsets. This small paired diagnostic examines transfer of an English-trained tagger. [Predicted spans by condition](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/bilingual-knowledge-spans.json)
 
