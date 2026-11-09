@@ -520,6 +520,22 @@ def check(page, origin):
     result=[json.loads(s) for s in event.value.path().read_text("utf8").splitlines()]
     assert [r["spans"] for r in result]==[[[2,8]],[]]
     assert all(r["packet_sha256"]==sha256(raw).hexdigest() and "text" not in r for r in result)
+    review.evaluate("localStorage.clear()")
+    review.reload()
+    expect(review.locator("#restore")).to_be_enabled()
+    def restore(rows):
+        review.locator("#restore").set_input_files(dict(name="review.jsonl",mimeType="application/x-ndjson",
+            buffer="\n".join(json.dumps(row) for row in rows).encode()))
+    restore([result[0],dict(result[1],spans=[[0,999]])])
+    expect(review.locator("#status")).to_contain_text("Invalid phrase offsets")
+    expect(review.locator("#progress")).to_contain_text("0 of 2")
+    restore(result)
+    expect(review.locator("#progress")).to_contain_text("2 of 2")
+    restore([dict(result[0],spans=[])])
+    expect(review.locator("#status")).to_contain_text("conflicts")
+    review.reload()
+    review.locator("#load").click()
+    expect(review.locator("#marks li")).to_contain_text("Kotlin")
     review.close()
 
 

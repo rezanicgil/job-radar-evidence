@@ -9,6 +9,7 @@ function progress(){
   const n=Object.keys(saved).length;
   el("progress").textContent=n+" of "+packet.length+" distinct bullets saved.";
   el("download").disabled=!n||dirty;
+  el("restore").disabled=dirty;
 }
 function draw(){
   el("marks").replaceChildren();
@@ -72,7 +73,8 @@ el("load").onclick=async()=>{
     if(version!==loadVersion)return;
     const expected=packet.filter(row=>row.sources.includes(url));
     available=expected.filter(row=>found.has(row.id)).map(row=>({...row,text:found.get(row.id)}));
-    el("status").textContent=available.length+" of "+expected.length+" indexed bullets matched the current posting.";
+    el("status").textContent=available.length+" of "+expected.length+" indexed bullets matched the current posting."+
+      (available.length<expected.length?" Changed or removed bullets are unavailable for review.":"");
     if(!available.length)return;
     el("bullet").replaceChildren(...available.map((row,i)=>new Option((i+1)+" · "+row.text.slice(0,90),i)));
     el("bullet").dataset.current="0";el("review").hidden=false;pick();
@@ -96,9 +98,44 @@ el("save").onclick=()=>{
   if(!row||(!marks.length&&!el("none").checked))return;
   saved[row.id]={format:"job-radar-knowledge-review-v1",packet_sha256:packetHash,id:row.id,spans:marks.map(s=>[...s])};
   dirty=false;
-  try{localStorage.setItem(storageKey(),JSON.stringify(saved));el("status").textContent="Completed bullet saved."}
-  catch{el("status").textContent="Saved in this tab. Download your decisions before closing."}
+  persist("Completed bullet saved.");
   progress();
+};
+function persist(message){
+  try{localStorage.setItem(storageKey(),JSON.stringify(saved));el("status").textContent=message}
+  catch{el("status").textContent=message+" Download your decisions before closing this tab."}
+}
+el("restore").onchange=async event=>{
+  const file=event.target.files[0];
+  event.target.value="";
+  if(!file)return;
+  try{
+    if(file.size>2*1024*1024)throw Error("Review files must be under 2 MiB.");
+    const lines=(await file.text()).trim().split(/\r?\n/u);
+    const restored={};
+    for(const line of lines){
+      const row=JSON.parse(line);
+      const bullet=packet.find(item=>item.id===row?.id);
+      if(!bullet||row.format!=="job-radar-knowledge-review-v1"||row.packet_sha256!==packetHash)
+        throw Error("This file does not match the current review packet.");
+      if(Object.hasOwn(restored,row.id))throw Error("The file contains a duplicate bullet.");
+      if(!Array.isArray(row.spans))throw Error("Missing phrase offsets.");
+      let previousEnd=0;
+      for(const span of row.spans){
+        if(!Array.isArray(span)||span.length!==2||!span.every(Number.isSafeInteger)||
+          span[0]<previousEnd||span[1]<=span[0]||span[1]>bullet.length)
+          throw Error("Invalid phrase offsets.");
+        previousEnd=span[1];
+      }
+      if(saved[row.id]&&JSON.stringify(saved[row.id].spans)!==JSON.stringify(row.spans))
+        throw Error("A decision conflicts with one already saved in this browser.");
+      restored[row.id]={format:row.format,packet_sha256:packetHash,id:row.id,spans:row.spans};
+    }
+    if(dirty)throw Error("Save your current selection before restoring a file.");
+    Object.assign(saved,restored);
+    if(available.length)pick();
+    progress();persist("Restored "+lines.length+" completed decisions.");
+  }catch(error){el("status").textContent="Import failed. "+(error instanceof SyntaxError?"Invalid JSONL.":error.message)}
 };
 el("download").onclick=()=>{
   const data=Object.values(saved).map(row=>JSON.stringify(row)).join("\n")+"\n";
