@@ -62,6 +62,18 @@ def check(page, origin):
     page.locator("#append").click()
     page.locator("#find").click()
     expect(page.locator("#results article").last.locator(".assessment")).to_have_value("skip")
+    page.locator("#area").select_option("Android")
+    direct=page.locator("#direct article").filter(has_text="Stilus IT Solutions")
+    direct.get_by_role("button",name="Review these conditions with my CV").click()
+    direct.get_by_role("button",name="Replace conditions").click()
+    page.locator("#find").click()
+    expect(cards).to_have_count(3)
+    expect(cards.last.locator(".assessment")).to_have_value("skip")
+    expect(cards.last).to_contain_text("Employer preference")
+    for card in cards.all()[:2]:
+        card.locator(".assessment").select_option("unverified")
+    expect(page.locator("#status")).to_contain_text("0 of 2 required")
+    expect(page.locator("#status")).to_contain_text("1 excluded")
     assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
 
 

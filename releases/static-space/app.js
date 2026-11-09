@@ -24,7 +24,7 @@ el("job").addEventListener("input",()=>{
   const present=new Set(conditionsFrom(el("job").value));
   for(const s of selectedPreferences)if(!present.has(s))selectedPreferences.delete(s);
 });
-function offerReviewedConditions(card,posting,conditions){
+function offerReviewedConditions(card,posting,conditions,preferences=[]){
   const button=add(card,"button","Review these conditions with my CV");
   button.type="button";
   const replace=add(card,"div","");
@@ -35,10 +35,12 @@ function offerReviewedConditions(card,posting,conditions){
   accept.type=cancel.type="button";
   cancel.onclick=()=>{replace.hidden=true;button.focus()};
   function usePosting(){
-    const text=conditions.join("\n");
+    const text=conditionsFrom([...conditions,...preferences].join("\n")).join("\n");
     replace.hidden=true;
     el("job").value=text;
     selectedPreferences.clear();
+    const required=new Set(conditionsFrom(conditions.join("\n")));
+    for(const line of conditionsFrom(preferences.join("\n")))if(!required.has(line))selectedPreferences.add(line);
     clearJobOrigin();
     jobOrigin.append("Selected requirements from ");
     add(jobOrigin,"a",posting.employer+" · "+posting.title).href=posting.source_url;
@@ -382,6 +384,7 @@ el("form").onsubmit=async event=>{
       const ranked=lines.map((line,j)=>({line,score:semantic?vec[i].reduce((s,v,k)=>s+v*vec[job.length+j][k],0):[...words(line.text)].filter(t=>terms.has(t)).length}))
         .filter(x=>semantic||x.score>0).sort((a,b)=>b.score-a.score).slice(0,3);
       const card=add(el("results"),"article","");add(card,"h3",condition);
+      if(selectedPreferences.has(condition))add(card,"small","Employer preference · excluded from required coverage by default");
       const visible=ranked.map(item=>item.line);
       for(const {line} of ranked)add(card,"p","Page "+line.page+" · "+line.text);
       if(!ranked.length)add(card,"p","No shared terms found. Review the CV directly.");
@@ -482,7 +485,7 @@ try{
         add(card,"p",row.location+" · Observed "+row.observed_on);
         if(row.minimum_technical?.length)add(card,"p","Selected minimum qualifications: "+row.minimum_technical.join("; "));
         if(row.preferred_technical?.length)add(card,"p","Selected preferences: "+row.preferred_technical.join("; "));
-        if(row.minimum_technical?.length)offerReviewedConditions(card,row,row.minimum_technical);
+        if(row.minimum_technical?.length)offerReviewedConditions(card,row,row.minimum_technical,row.preferred_technical);
       }
     }
     boardListings.replaceChildren();
@@ -498,7 +501,7 @@ try{
           if(p.qualification?.length){
             add(entry,"p","Selected qualifications: "+p.qualification.join(" "));
             if(p.preference?.length)add(entry,"p","Selected preferences: "+p.preference.join(" "));
-            offerReviewedConditions(entry,{employer:employerBoard.employer,title:p.title,source_url:p.url},p.qualification);
+            offerReviewedConditions(entry,{employer:employerBoard.employer,title:p.title,source_url:p.url},p.qualification,p.preference);
           }
         }
       }
