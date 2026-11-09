@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 import re
 from urllib.error import URLError
-from urllib.request import urlopen
+from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
 PATTERNS = {
@@ -23,11 +23,17 @@ PATTERNS = {
     "Financial software": r"quantitative developer|payments engineer|blockchain engineer",
     "Security": r"security engineer|penetration test|siber güvenlik|security analyst",
     "QA and testing": r"\bqa\b|test (?:automation|engineer)|quality assurance",
-    "Games": r"(?:game|gameplay|unity|unreal) (?:software )?(?:engineer|developer|programmer)|oyun geliştirici",
+    "Games": r"(?:game|gameplay(?: & UI)?|unity|unreal) (?:software )?(?:engineer|developer|programmer)|oyun geliştirici",
     "Robotics and controls": r"robotics|robotik|control systems",
     "Networking and systems": r"network engineer|systems programmer|kernel engineer|network software",
 }
 TR_LOCATION = re.compile(r"\b(?:turkey|türkiye|turkiye|istanbul|i̇stanbul|ankara|izmir|i̇zmir|bursa|kocaeli|antalya)\b", re.I)
+
+
+def in_turkiye(country, location):
+    if country:
+        return country.casefold() in {"tr", "turkey", "türkiye", "turkiye"}
+    return bool(TR_LOCATION.search(location or ""))
 
 
 def fetch(source):
@@ -37,7 +43,8 @@ def fetch(source):
            "greenhouse": f"https://boards-api.greenhouse.io/v1/boards/{slug}/jobs",
            "smartrecruiters": f"https://api.smartrecruiters.com/v1/companies/{slug}/postings?country=tr&limit=100"}[ats]
     try:
-        with urlopen(url, timeout=15) as response:
+        request = Request(url, headers={"User-Agent":"JobRadar/1.0 (+https://github.com/rezanicgil/job-radar-evidence)", "Accept":"application/json"})
+        with urlopen(request if ats == "ashby" else url, timeout=15) as response:
             payload = json.load(response)
         if ats == "smartrecruiters":
             rows = payload["content"]
@@ -60,6 +67,12 @@ def fetch(source):
                 title, link = row["title"], row["jobUrl"]
                 country = (row.get("address") or {}).get("postalAddress", {}).get("addressCountry")
                 location = row.get("location", "")
+                if not in_turkiye(country, location):
+                    for alternate in row.get("secondaryLocations") or []:
+                        address = (alternate.get("address") or {}).get("postalAddress") or {}
+                        if in_turkiye(address.get("addressCountry"), alternate.get("location")):
+                            country, location = address.get("addressCountry"), alternate.get("location")
+                            break
             elif ats == "smartrecruiters":
                 title = row["name"]
                 link = f"https://jobs.smartrecruiters.com/{slug}/{row['id']}"
@@ -67,11 +80,7 @@ def fetch(source):
             else:
                 title, link = row["title"], row["absolute_url"]
                 country, location = None, row["location"]["name"]
-            if country:
-                relevant = country.casefold() in {"tr", "turkey", "türkiye", "turkiye"}
-            else:
-                relevant = TR_LOCATION.search(location or "")
-            if relevant:
+            if in_turkiye(country, location):
                 jobs.append(dict(employer=source["name"], title=title, url=link, location=location,
                                  areas=[area for area, pattern in PATTERNS.items() if re.search(pattern,title,re.I)]))
         return dict(source=source["name"], url=url, status="ok", scanned=len(rows)), jobs

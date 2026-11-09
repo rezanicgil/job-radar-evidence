@@ -3,16 +3,26 @@
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from html import unescape
+from functools import lru_cache
 import json
 from pathlib import Path
 import re
 from urllib.error import URLError
 from urllib.parse import urlsplit
-from urllib.request import urlopen
+from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
 SKILLS = json.loads((ROOT / "releases/static-space/technologies.json").read_text(encoding="utf-8"))
 PATTERNS = {s:re.compile(r"(?<![\w+#])"+re.escape(s)+r"(?![\w+#])",re.I) for s in SKILLS}
+
+
+@lru_cache(maxsize=64)
+def ashby_descriptions(board):
+    request = Request(f"https://api.ashbyhq.com/posting-api/job-board/{board}",
+                      headers={"User-Agent":"JobRadar/1.0 (+https://github.com/rezanicgil/job-radar-evidence)", "Accept":"application/json"})
+    with urlopen(request, timeout=15) as response:
+        jobs = json.load(response)["jobs"]
+    return {row["jobUrl"]:row.get("descriptionPlain") or "" for row in jobs}
 
 
 def inspect(job):
@@ -25,17 +35,20 @@ def inspect(job):
         api = f"https://boards-api.greenhouse.io/v1/boards/{board}/jobs/{key}"
     elif url.hostname == "jobs.smartrecruiters.com":
         api = f"https://api.smartrecruiters.com/v1/companies/{board}/postings/{key}"
-    else:
+    elif url.hostname != "jobs.ashbyhq.com":
         return dict(**job,status="unsupported source")
     try:
-        with urlopen(api, timeout=15) as response:
-            j = json.load(response)
+        if url.hostname == "jobs.ashbyhq.com":
+            body = ashby_descriptions(board)[job["url"]]
+        else:
+            with urlopen(api, timeout=15) as response:
+                j = json.load(response)
         if url.hostname == "jobs.lever.co":
             body = " ".join([j.get("descriptionPlain") or "", *(s["content"] for s in j["lists"]),
                              j.get("additionalPlain") or ""])
         elif url.hostname == "job-boards.greenhouse.io":
             body = j["content"]
-        else:
+        elif url.hostname == "jobs.smartrecruiters.com":
             body = " ".join(s.get("text","") for s in j["jobAd"]["sections"].values())
         plain = unescape(re.sub("<[^>]+>", " ", unescape(body)))
         if not plain.strip():
