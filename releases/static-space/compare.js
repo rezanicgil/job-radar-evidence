@@ -44,7 +44,7 @@ function show({data,summary,file}){
       const item=add(list,"li",row.condition);
       add(item,"small",row.label==="partial"?"Partially supported":"Unverified");
       if(row.missing)add(item,"small","Wording to demonstrate: "+row.missing);
-      if(row.note)add(item,"small","Next CV edit: "+row.note);
+      if(row.next_edit||row.note)add(item,"small","Next CV edit: "+(row.next_edit||row.note));
     }
   }
 }

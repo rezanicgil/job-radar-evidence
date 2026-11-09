@@ -62,6 +62,7 @@ def check(page, origin):
     assert data["job"]["source"]=="manual" and data["job"]["employer"]=="Example Company"
     assert data["coverage"]==dict(required=2,supported=1,partial=1,unverified=0,excluded=0,percentage=50)
     row=data["conditions"][0]
+    assert row["next_edit"]==row["note"] and row["next_edit"] in exported
     assert row["missing"]=="36 months" and row["quotes"][0]["excerpt"]=="30 ay"
     assert row["quotes"][0]["page"]==1 and row["quotes"][0]["passage"] in exported
     assert data["cv"]["sha256"]==sha256(page.locator("#cv").input_value().encode()).hexdigest()
@@ -96,6 +97,7 @@ def check(page, origin):
     expect(page.locator("#status")).not_to_contain_text("coverage")
     page.locator("#job").fill("• C++ and Python\n1. C++  and Python\nC++ and Python")
     page.locator("#find").click()
+    expect(page.locator("#conditionPreview")).to_contain_text("1 required")
     expect(cards).to_have_count(1)
     expect(cards.first.locator("h3")).to_have_text("C++ and Python")
     page.get_by_text("Find conditions in a job posting").click()
@@ -112,6 +114,7 @@ def check(page, origin):
     direct.get_by_role("button",name="Review these conditions with my CV").click()
     direct.get_by_role("button",name="Replace conditions").click()
     page.locator("#find").click()
+    expect(page.locator("#conditionPreview")).to_contain_text("2 required · 1 optional")
     expect(cards).to_have_count(3)
     expect(cards.last.locator(".assessment")).to_have_value("skip")
     expect(cards.last).to_contain_text("Optional condition")

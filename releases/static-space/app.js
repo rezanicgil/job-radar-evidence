@@ -98,7 +98,16 @@ function offerReviewedConditions(card,posting,conditions,preferences=[]){
     }else usePosting();
   };
 }
+function previewConditions(){
+  const conditions=conditionsFrom(el("job").value);
+  const optional=conditions.filter(condition=>selectedPreferences.has(condition)).length;
+  el("conditionPreview").textContent=conditions.length?
+    (conditions.length-optional)+" required · "+optional+" optional · "+conditions.length+" distinct conditions":
+    "Add one requirement per line to see the review scope.";
+}
+previewConditions();
 function invalidateReview(){
+  previewConditions();
   reviewVersion++;
   downloadControls.hidden=true;
   reviewedSource=null;
@@ -499,6 +508,10 @@ function assessmentRows(){
             complete:Boolean(label)&&gap.validity.valid&&(!needsQuote||(quotes.length>0&&validQuotes))};
   });
 }
+function nextEdit(row){
+  if(row.label!=="partial"&&row.label!=="unverified")return "";
+  return row.note||(row.label==="partial"?"Clarify the part your evidence does not cover.":"Add a specific example if you have one.");
+}
 function exportReview(format){
   const rows=assessmentRows();
   if(!rows.length||rows.some(row=>!row.complete))return;
@@ -514,12 +527,12 @@ function exportReview(format){
   const data={format:"job-radar-review-v1",exported_at:new Date().toISOString(),cv:reviewedSource,
     job,method:el("method").value,
     encoder:retrievalModels[el("method").value]||null,
-    coverage:counts(rows.map(row=>row.label)),conditions:rows.map(({complete,...row})=>row)};
+    coverage:counts(rows.map(row=>row.label)),conditions:rows.map(({complete,...row})=>({...row,next_edit:nextEdit(row)||null}))};
   const body=format==="json"?JSON.stringify(data,null,2):["Job Radar Evidence",el("source").textContent,context,heading,...rows.map(row=>
     [row.condition,"Assessment: "+row.label,...row.quotes.map(q=>"Page "+q.page+" · "+q.passage+
       (q.excerpt?"\nHighlighted wording: "+q.excerpt:"")),row.duration,
      row.missing?"Requirement still to demonstrate: "+row.missing:"",
-     row.note?"Next CV edit: "+row.note:""].filter(Boolean).join("\n"))].join("\n\n");
+     nextEdit(row)?"Next CV edit: "+nextEdit(row):""].filter(Boolean).join("\n"))].join("\n\n");
   const url=URL.createObjectURL(new Blob([body+"\n"],{type:format==="json"?"application/json":"text/plain;charset=utf-8"}));
   const link=document.createElement("a");
   link.href=url;link.download="job-radar-review."+format;link.click();
@@ -553,8 +566,7 @@ function coverage(){
   if(gaps.length){
     add(status,"b","Conditions to revisit");
     const list=add(status,"ul","");
-    for(const row of gaps)add(list,"li",(row.missing||row.condition)+" — "+(row.note||
-      (row.label==="partial"?"Clarify the part your evidence does not cover.":"Add a specific example if you have one.")));
+    for(const row of gaps)add(list,"li",(row.missing||row.condition)+" — "+nextEdit(row));
   }
 }
 el("form").onsubmit=async event=>{
@@ -610,7 +622,7 @@ el("form").onsubmit=async event=>{
       const card=add(el("results"),"article","");add(card,"h3",condition);
       const wording=technologyWording(condition,vocabulary||[]);
       if(wording)add(card,"small",(wording.mode==="any"?"Alternative technologies · evidence for one listed option can meet this part: ":
-        "Combined technologies · look for evidence covering each listed item: ")+wording.items.join(", ")+".");
+        "Combined technologies · look for evidence covering each listed item: ")+wording.items.join(", ")+". Check which work the CV attributes to the applicant.");
       if(selectedPreferences.has(condition))add(card,"small","Optional condition · excluded from required coverage by default");
       const visible=ranked.map(item=>item.line);
       for(const {line,matches,excerpt} of ranked){

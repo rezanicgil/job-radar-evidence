@@ -32,6 +32,10 @@ configs:
     data_files:
       - split: validation
         path: technology_connectives.jsonl
+  - config_name: connective_actors
+    data_files:
+      - split: validation
+        path: connective_actors.jsonl
   - config_name: python_translation_index
     data_files:
       - split: train
@@ -81,6 +85,9 @@ The validation file begins with nine general challenge examples and ends with ni
 ## How to read a row
 
 In `technology_connectives`, each of 24 fictional passages has two versions of the same requirement. One asks for both named technologies and one accepts either. The six families cover messaging, embedded drivers, Android, cloud deployment, iOS and model training. Twelve passages demonstrate exactly one option. The reference label changes from partial to supported when the requirement changes from AND to OR in these cases. The published classifier produced the correct change on 0/12. The references are project-authored. [Predictions per pair](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/technology-connectives.json)
+
+In `connective_actors`, each of 18 project-authored fictional CV passages mentions both named technologies. The applicant demonstrates both, one or neither in six passages each. The study reuses the six technology pairs above. Across 36 AND and OR decisions, literal mentions incorrectly awarded full support in 18 of 18 cases where the reference was partial or unverified. The released classifier did so in 16/18. Splitting the requirement by technology and classifying who performed each action reduced this to 2/18, with 26/36 decisions correct overall. These controlled examples test attribution errors. Independent reviewers have yet to evaluate the labels. [Case-level predictions](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/connective-actors.json)
+
 
 The `turkish_section_index` configuration contains 96 source pointers from five technical postings on one employer's board. Section headings distinguish qualifications, communication skills and teamwork expectations. Two bullets begin with “Tercihen” and are labelled as preferences. Each row contains its source URL, line number, document fingerprint and whitespace-normalized line fingerprint. Several postings repeat the same wording. These examples were used to develop the parsing rules and represent section-based references rather than independent human judgments. [Before and after counts](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/turkish-board-sections.json)
 
