@@ -324,9 +324,11 @@ el("form").onsubmit=async event=>{
     el("status").textContent="Finding passages…";
     const semantic=el("method").value==="semantic";
     const vec=semantic?await vectors([...job,...lines.map(x=>x.text)]):null;
-    if(semantic && !vocabulary){
-      const response=await fetch("technologies.json");
-      if(response.ok)vocabulary=await response.json();
+    if(!vocabulary){
+      try{
+        const response=await fetch("technologies.json");
+        if(response.ok)vocabulary=await response.json();
+      }catch{/* Passage ranking is still available without the optional vocabulary. */}
     }
     if(version!==reviewVersion)return;
     el("source").textContent=(file?file.name:"Pasted CV")+" · "+job.length+" job condition"+(job.length===1?"":"s")+" · "+(semantic?"Semantic search":"Shared terms");
@@ -337,17 +339,21 @@ el("form").onsubmit=async event=>{
       const card=add(el("results"),"article","");add(card,"h3",condition);
       const visible=ranked.map(item=>item.line);
       for(const {line} of ranked)add(card,"p","Page "+line.page+" · "+line.text);
-      if(semantic){
-        const requested=(vocabulary||[]).filter(name=>hasTechnology(condition,name));
-        for(const name of requested){
-          if(visible.some(line=>hasTechnology(line.text,name)))continue;
-          const mention=lines.find(line=>hasTechnology(line.text,name));
-          if(!mention)continue;
-          add(card,"small",name+" mentioned on page "+mention.page+" · "+mention.text);
-          visible.push(mention);
+      if(!ranked.length)add(card,"p","No shared terms found. Review the CV directly.");
+      const requested=(vocabulary||[]).filter(name=>hasTechnology(condition,name));
+      const mentions=lines.filter(line=>!visible.includes(line) && requested.some(name=>hasTechnology(line.text,name)));
+      if(mentions.length){
+        const group=mentions.length===1?card:add(card,"details","");
+        if(group!==card){
+          group.className="technology-mentions";
+          add(group,"summary","Other CV passages mentioning "+requested.join(", ")+" ("+mentions.length+")");
+        }
+        for(const line of mentions){
+          const names=requested.filter(name=>hasTechnology(line.text,name));
+          add(group,"small",names.join(", ")+" mentioned on page "+line.page+" · "+line.text);
+          visible.push(line);
         }
       }
-      if(!ranked.length)add(card,"p","No shared terms found. Review the CV directly.");
       durationComparison(card,condition,lines);
       const select=add(add(card,"label","Assessment "),"select","");
       select.className="assessment";

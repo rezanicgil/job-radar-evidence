@@ -31,10 +31,16 @@ def main():
             cards=page.locator("#results article")
             if cards.count()!=len(targets):raise ValueError(page.locator("#status").inner_text())
             ranks={}
+            with_mentions={}
             for card,row in zip(cards.all(),targets,strict=True):
                 texts=[s.removeprefix("Page 1 · ") for s in card.locator(":scope > p").all_inner_texts() if s.startswith("Page 1 · ")]
                 ranks[row["family"]]=next((i for i,s in enumerate(texts,1) if s in row["cv_passage"]),None)
-            report["results"][method]=dict(first=list(ranks.values()).count(1),visible=sum(r is not None for r in ranks.values()),ranks=ranks)
+                mentions=card.locator(":scope > small, .technology-mentions small").all_text_contents()
+                excerpts=[s.split(" · ",1)[1] for s in mentions if " · " in s]
+                with_mentions[row["family"]]=any(s in row["cv_passage"] for s in texts+excerpts)
+            report["results"][method]=dict(first=list(ranks.values()).count(1),visible=sum(r is not None for r in ranks.values()),
+                                           reachable_with_named_mentions=sum(with_mentions.values()),ranks=ranks,
+                                           target_in_ranked_or_named_mentions=with_mentions)
             print(method,report["results"][method])
         browser.close()
     (ROOT/"reports/live-pooled-retrieval.json").write_text(json.dumps(report,indent=2)+"\n",encoding="utf-8")
