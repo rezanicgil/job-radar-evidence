@@ -74,6 +74,21 @@ def check(page, origin):
         card.locator(".assessment").select_option("unverified")
     expect(page.locator("#status")).to_contain_text("0 of 2 required")
     expect(page.locator("#status")).to_contain_text("1 excluded")
+    page.locator("#job").fill("")
+    page.locator("#postingLanguage").select_option("en")
+    page.locator("#posting").fill("Minimum qualifications: Know Java.\nNice to have:\nPublish an Android app.\nBenefits:\nTraining in Kotlin.")
+    page.locator("#suggest").click()
+    suggestions=page.locator("#candidates input")
+    expect(suggestions).to_have_count(2)
+    expect(suggestions.first).to_have_attribute("data-preference","false")
+    expect(suggestions.last).to_have_attribute("data-preference","true")
+    for suggestion in suggestions.all():
+        suggestion.check()
+    page.locator("#append").click()
+    page.locator("#find").click()
+    expect(cards.last.locator(".assessment")).to_have_value("skip")
+    cards.first.locator(".assessment").select_option("unverified")
+    expect(page.locator("#status")).to_contain_text("0 of 1 required")
     assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
 
 

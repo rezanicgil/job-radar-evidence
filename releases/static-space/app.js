@@ -98,6 +98,38 @@ function turkishCandidates(text){
   }
   return candidates;
 }
+function englishCandidates(text,model){
+  const candidates=new Map();
+  let section="unknown";
+  const preferred=/^(?:preferred (?:skills|qualifications|experience)|nice[- ]to[- ]haves?|bonus (?:points(?: if you)?|skills)|it['’]s a plus if you)$/i;
+  const required=/^(?:(?:(?:minimum|required|basic|essential|technical|expected|job) )?(?:skills|qualifications(?: & experience)?|requirements)|must[- ]haves?|what you(?:['’]ll| will) (?:need|bring)|what we['’]re looking for|the profile we['’]re looking for)$/i;
+  const other=/^(?:benefits(?: and perks)?|compensation & benefits|perks(?: and benefits)?|more about perks of working with us|what we offer|about (?:us|the company)|how (?:to apply|we work)|position overview)$/i;
+  const duties=/^(?:(?:key |job )?responsibilities|what you(?:['’]ll| will) do)$/i;
+  for(const raw of text.split(/\r?\n/)){
+    let line=raw.trim().replace(/^[•*–-]\s*/,"");
+    if(!line)continue;
+    const colon=line.indexOf(":");
+    const heading=(colon<0?line:line.slice(0,colon)).trim().replace(/\?$/,"");
+    const nextSection=preferred.test(heading)?"preferred":required.test(heading)?"required":other.test(heading)?"other":duties.test(heading)?"unknown":null;
+    if(nextSection){
+      section=nextSection;
+      line=colon<0?"":line.slice(colon+1).trim();
+      if(!line)continue;
+    }
+    if(line.endsWith(":")){section="unknown";continue}
+    if(section==="other")continue;
+    for(const sentence of line.split(/(?<=[.!?])\s+/)){
+      const optional=section==="preferred"||/^(?:preferred|optional|nice[- ]to[- ]have|bonus points)\s*[:–-]|\b(?:would be|is|are) (?:a plus|an asset|preferred|desirable|nice to have)\b/i.test(sentence);
+      if(section!=="required"&&!optional){
+        const terms=sentence.toLowerCase().match(/[\p{L}\p{N}_+#]+/gu)||[];
+        const value=terms.reduce((sum,term)=>sum+(Object.hasOwn(model.weights,term)?model.weights[term]:0),model.bias);
+        if(value<model.threshold)continue;
+      }
+      candidates.set(sentence,optional && candidates.get(sentence)!==false);
+    }
+  }
+  return candidates;
+}
 el("example").onclick=()=>{
   el("cv").value="C++ ile 30 ay boyunca motor kontrol yazılımı geliştirdim.\nPython ile test raporları hazırladım.";
   el("job").value="At least 36 months developing control software with C++.\nWrite test reports using Python.";
@@ -119,13 +151,7 @@ el("suggest").onclick=async()=>{
       sentenceModel=await response.json();
     }
     if(el("posting").value.trim()!==text||el("postingLanguage").value!==language)return;
-    const suggestions=language==="tr"?turkishCandidates(text):new Map();
-    if(language==="en")for(const sentence of new Set(text.split(/\n+|(?<=[.!?])\s+/).map(s=>s.trim()).filter(Boolean))){
-      const terms=sentence.toLowerCase().match(/[\p{L}\p{N}_+#]+/gu)||[];
-      const value=terms.reduce((sum,term)=>sum+(Object.hasOwn(sentenceModel.weights,term)?sentenceModel.weights[term]:0),sentenceModel.bias);
-      if(value<sentenceModel.threshold)continue;
-      suggestions.set(sentence,false);
-    }
+    const suggestions=language==="tr"?turkishCandidates(text):englishCandidates(text,sentenceModel);
     for(const [sentence,optional] of suggestions){
       const label=add(output,"label","");
       const input=add(label,"input","");input.type="checkbox";input.value=sentence;
