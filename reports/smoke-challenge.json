@@ -1,0 +1,85 @@
+{
+  "training": {
+    "base": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+    "dataset_sha256": "45c0b82f2a470a74fe3ecbf73634cdf4e3f4d7e6053095cfab72cb63073fb673",
+    "seed": 17,
+    "device": "cpu",
+    "steps": 3,
+    "losses": [
+      1.1012163162231445,
+      1.0941544771194458,
+      1.1031954288482666
+    ],
+    "encoder_max_update": 9.018927812576294e-05,
+    "checkpoint_reload_verified": true
+  },
+  "correct": 3,
+  "total": 9,
+  "false_support": 1,
+  "examples": [
+    {
+      "family": "ios-native",
+      "requirement": "Ship iOS features using SwiftUI.",
+      "cv_passage": "SwiftUI ile sipariş geçmişini geliştirip App Store sürümünde yayımladım.",
+      "label": "supported",
+      "prediction": "unverified"
+    },
+    {
+      "family": "ios-native",
+      "requirement": "Ship iOS features using SwiftUI.",
+      "cv_passage": "SwiftUI ile kişisel bir prototip hazırladım.",
+      "label": "partial",
+      "prediction": "unverified"
+    },
+    {
+      "family": "ios-native",
+      "requirement": "Ship iOS features using SwiftUI.",
+      "cv_passage": "I managed the office budget.",
+      "label": "unverified",
+      "prediction": "unverified"
+    },
+    {
+      "family": "android-ui",
+      "requirement": "Kotlin ve Jetpack Compose ile Android uygulaması geliştirme deneyimi.",
+      "cv_passage": "I built Kotlin Android screens with Jetpack Compose.",
+      "label": "supported",
+      "prediction": "partial"
+    },
+    {
+      "family": "android-ui",
+      "requirement": "Kotlin ve Jetpack Compose ile Android uygulaması geliştirme deneyimi.",
+      "cv_passage": "I used Kotlin on an Android app with XML layouts.",
+      "label": "partial",
+      "prediction": "partial"
+    },
+    {
+      "family": "android-ui",
+      "requirement": "Kotlin ve Jetpack Compose ile Android uygulaması geliştirme deneyimi.",
+      "cv_passage": "Developed billing reports with SQL.",
+      "label": "unverified",
+      "prediction": "supported"
+    },
+    {
+      "family": "firmware-debug",
+      "requirement": "Experience debugging firmware on physical microcontrollers.",
+      "cv_passage": "Kart üzerinde STM32 firmware hatalarını JTAG ile ayıkladım.",
+      "label": "supported",
+      "prediction": "unverified"
+    },
+    {
+      "family": "firmware-debug",
+      "requirement": "Experience debugging firmware on physical microcontrollers.",
+      "cv_passage": "I debugged microcontroller firmware exclusively in a simulator.",
+      "label": "partial",
+      "prediction": "unverified"
+    },
+    {
+      "family": "firmware-debug",
+      "requirement": "Experience debugging firmware on physical microcontrollers.",
+      "cv_passage": "Mobil uygulamanın ürün yol haritasını yönettim.",
+      "label": "unverified",
+      "prediction": "unverified"
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "base": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+  "seed": 17,
+  "train_sha256": "5fe9f5b776ec51e75865ade095290845ca8564a8df17311b073bcdd92eae7eb1",
+  "epochs": 5,
+  "cutoffs": [
+    0.3,
+    0.7
+  ],
+  "target_scores": {
+    "supported": 0.9,
+    "partial": 0.5,
+    "unverified": 0.1
+  },
+  "baseline_correct": 5,
+  "baseline_false_support": 1,
+  "correct": 5,
+  "false_support": 1,
+  "examples": [
+    {
+      "family": "ios-native",
+      "requirement": "Ship iOS features using SwiftUI.",
+      "cv_passage": "SwiftUI ile sipariş geçmişini geliştirip App Store sürümünde yayımladım.",
+      "label": "supported",
+      "cosine": 0.680418848991394,
+      "prediction": "partial"
+    },
+    {
+      "family": "ios-native",
+      "requirement": "Ship iOS features using SwiftUI.",
+      "cv_passage": "SwiftUI ile kişisel bir prototip hazırladım.",
+      "label": "partial",
+      "cosine": 0.588653564453125,
+      "prediction": "partial"
+    },
+    {
+      "family": "ios-native",
+      "requirement": "Ship iOS features using SwiftUI.",
+      "cv_passage": "I managed the office budget.",
+      "label": "unverified",
+      "cosine": -0.009299272671341896,
+      "prediction": "unverified"
+    },
+    {
+      "family": "android-ui",
+      "requirement": "Kotlin ve Jetpack Compose ile Android uygulaması geliştirme deneyimi.",
+      "cv_passage": "I built Kotlin Android screens with Jetpack Compose.",
+      "label": "supported",
+      "cosine": 0.8423042297363281,
+      "prediction": "supported"
+    },
+    {
+      "family": "android-ui",
+      "requirement": "Kotlin ve Jetpack Compose ile Android uygulaması geliştirme deneyimi.",
+      "cv_passage": "I used Kotlin on an Android app with XML layouts.",
+      "label": "partial",
+      "cosine": 0.6533585786819458,
+      "prediction": "partial"
+    },
+    {
+      "family": "android-ui",
+      "requirement": "Kotlin ve Jetpack Compose ile Android uygulaması geliştirme deneyimi.",
+      "cv_passage": "Developed billing reports with SQL.",
+      "label": "unverified",
+      "cosine": 0.12370742857456207,
+      "prediction": "unverified"
+    },
+    {
+      "family": "firmware-debug",
+      "requirement": "Experience debugging firmware on physical microcontrollers.",
+      "cv_passage": "Kart üzerinde STM32 firmware hatalarını JTAG ile ayıkladım.",
+      "label": "supported",
+      "cosine": 0.5421196222305298,
+      "prediction": "partial"
+    },
+    {
+      "family": "firmware-debug",
+      "requirement": "Experience debugging firmware on physical microcontrollers.",
+      "cv_passage": "I debugged microcontroller firmware exclusively in a simulator.",
+      "label": "partial",
+      "cosine": 0.8389323353767395,
+      "prediction": "supported"
+    },
+    {
+      "family": "firmware-debug",
+      "requirement": "Experience debugging firmware on physical microcontrollers.",
+      "cv_passage": "Mobil uygulamanın ürün yol haritasını yönettim.",
+      "label": "unverified",
+      "cosine": 0.4621354341506958,
+      "prediction": "partial"
+    }
+  ]
+}

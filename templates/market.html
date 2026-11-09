@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Job Radar | Türkiye market snapshot</title>
+<style>body{margin:0;background:#f6f5ef;color:#15352e;font:16px/1.5 system-ui}main{max-width:60rem;margin:auto;padding:2rem 1rem}a{color:#18513d}h1{font-size:clamp(2rem,5vw,4rem);line-height:1.1}select,button{font:inherit;padding:.5rem}details{border-top:1px solid #bfcac0;padding:.6rem 0}summary{cursor:pointer;display:grid;grid-template-columns:1.3fr 1fr 1fr;align-items:center;gap:.5rem}meter{width:100%}</style>
+<main><nav><a href="/">CV evidence review</a></nav><h1>Türkiye market snapshot</h1>
+<form><label>Role family <select name="area"><option value="">All tracked roles</option>{% for role in areas %}<option {% if role==area %}selected{% endif %}>{{ role }}</option>{% endfor %}</select></label> <button>Apply</button></form>
+<p>{{ date }} · {{ readable }} readable descriptions from {{ total }} selected postings.</p>
+<p>Each posting counts once per technology. Mentions include employer context, requirements and preferences. Open a technology to inspect its source postings.</p>
+{% for skill, jobs in skills %}<details><summary><strong>{{ skill }}</strong><meter min="0" max="{{ readable }}" value="{{ jobs|length }}"></meter><span>{{ jobs|length }}/{{ readable }} postings · {{ jobs|map(attribute='employer')|unique|list|length }} employers</span></summary>
+<ul>{% for p in jobs %}<li><a href="{{ p.url }}">{{ p.employer }} · {{ p.title }}</a></li>{% endfor %}</ul></details>
+{% else %}<p>No tracked mentions in this selection. Source coverage may be limited.</p>{% endfor %}</main></html>

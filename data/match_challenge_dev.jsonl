@@ -1,0 +1,9 @@
+{"family":"ios-native","requirement":"Ship iOS features using SwiftUI.","cv_passage":"SwiftUI ile sipariş geçmişini geliştirip App Store sürümünde yayımladım.","label":"supported"}
+{"family":"ios-native","requirement":"Ship iOS features using SwiftUI.","cv_passage":"SwiftUI ile kişisel bir prototip hazırladım.","label":"partial"}
+{"family":"ios-native","requirement":"Ship iOS features using SwiftUI.","cv_passage":"I managed the office budget.","label":"unverified"}
+{"family":"android-ui","requirement":"Kotlin ve Jetpack Compose ile Android uygulaması geliştirme deneyimi.","cv_passage":"I built Kotlin Android screens with Jetpack Compose.","label":"supported"}
+{"family":"android-ui","requirement":"Kotlin ve Jetpack Compose ile Android uygulaması geliştirme deneyimi.","cv_passage":"I used Kotlin on an Android app with XML layouts.","label":"partial"}
+{"family":"android-ui","requirement":"Kotlin ve Jetpack Compose ile Android uygulaması geliştirme deneyimi.","cv_passage":"Developed billing reports with SQL.","label":"unverified"}
+{"family":"firmware-debug","requirement":"Experience debugging firmware on physical microcontrollers.","cv_passage":"Kart üzerinde STM32 firmware hatalarını JTAG ile ayıkladım.","label":"supported"}
+{"family":"firmware-debug","requirement":"Experience debugging firmware on physical microcontrollers.","cv_passage":"I debugged microcontroller firmware exclusively in a simulator.","label":"partial"}
+{"family":"firmware-debug","requirement":"Experience debugging firmware on physical microcontrollers.","cv_passage":"Mobil uygulamanın ürün yol haritasını yönettim.","label":"unverified"}

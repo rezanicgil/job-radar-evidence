@@ -1,0 +1,8 @@
+runs/
+__pycache__/
+.venv/
+.env
+.env.*
+*.pdf
+*.docx
+research/blind_review_round*.jsonl

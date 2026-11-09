@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Job Radar | CV evidence review</title>
+<style>
+body{margin:0;background:#f6f5ef;color:#15352e;font:16px/1.5 system-ui}main{max-width:64rem;margin:auto;padding:2rem 1rem}
+h1{font-size:clamp(2.3rem,5vw,4rem);line-height:1.05;margin:1rem 0}form,article{background:white;padding:1.25rem;margin:1rem 0;border:1px solid #ccd6c9}label{display:block;font-weight:600;margin:.7rem 0}
+textarea{width:100%;box-sizing:border-box;padding:.7rem;font:inherit}button,select{font:inherit;padding:.6rem}button{background:#18513d;color:white;border:0;border-radius:.25rem}
+.inputs{display:grid;grid-template-columns:1fr 1fr;gap:1rem}@media(max-width:650px){.inputs{grid-template-columns:1fr}}
+</style><main><nav><a href="/market">Türkiye market snapshot</a></nav><h1>CV evidence review</h1>
+<form method="post" enctype="multipart/form-data"><div class="inputs"><section>
+<label for="cv">CV text</label><textarea id="cv" name="cv" rows="6">{{ cv }}</textarea>
+<label for="file">Or upload a text PDF or TXT</label><input type="file" id="file" name="file" accept=".txt,.pdf">
+</section><section><label for="posting">Job requirements · one per line</label><textarea id="posting" name="posting" rows="6">{{ posting }}</textarea>
+</section></div><p>The example is fictional. Uploaded files are processed on the server and removed after extraction.</p>
+<button>Find evidence</button></form>{% if error %}<p role="alert">{{ error }}</p>{% endif %}
+{% if matches %}<h2>Suggested CV passages</h2>
+<output id="coverage" aria-live="polite">Review the conditions to calculate coverage.</output>
+{% for statement, evidence in matches %}<article><h3>{{ statement }}</h3><ul>{% for page, text in evidence %}
+<li>Page {{ page }} · {{ text }}</li>{% endfor %}</ul><label>Assessment
+<select><option value="">Choose</option><option value="s">Required · supported</option><option value="p">Required · partial</option><option value="u">Required · unverified</option><option value="skip">Exclude from required coverage</option></select></label></article>{% endfor %}
+<script>
+const choices=[...document.querySelectorAll('select')];
+for(const choice of choices)choice.addEventListener('change',()=>{
+ const selected=choices.map(el=>el.value);
+ const n=selected.filter(v=>v && v!=='skip').length, s=selected.filter(v=>v==='s').length;
+ const pending=selected.filter(v=>!v).length;
+ document.querySelector('#coverage').textContent=pending ? pending+' conditions awaiting review.' : n ? 'Reviewer-confirmed coverage: '+s+'/'+n+' ('+Math.round(100*s/n)+'%).' : 'No required conditions selected.';
+});
+</script>{% endif %}</main></html>

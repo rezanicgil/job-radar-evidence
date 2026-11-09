@@ -1,0 +1,181 @@
+[
+  {
+    "name": "Agave Games",
+    "ats": "ashby",
+    "slug": "agavegames"
+  },
+  {
+    "name": "AppNation",
+    "ats": "lever",
+    "slug": "appnation"
+  },
+  {
+    "name": "AppSamurai",
+    "ats": "lever",
+    "slug": "appsamurai"
+  },
+  {
+    "name": "Bigger Games",
+    "ats": "ashby",
+    "slug": "biggergames"
+  },
+  {
+    "name": "Binance",
+    "ats": "lever",
+    "slug": "binance"
+  },
+  {
+    "name": "Bold Games",
+    "ats": "ashby",
+    "slug": "boldgames"
+  },
+  {
+    "name": "Bybit",
+    "ats": "greenhouse",
+    "slug": "bybit"
+  },
+  {
+    "name": "Çiçeksepeti",
+    "ats": "lever",
+    "slug": "ciceksepeti"
+  },
+  {
+    "name": "Codeway",
+    "ats": "ashby",
+    "slug": "codeway"
+  },
+  {
+    "name": "Commencis",
+    "ats": "lever",
+    "slug": "commencis"
+  },
+  {
+    "name": "Constructor Tech",
+    "ats": "greenhouse",
+    "slug": "constructortech"
+  },
+  {
+    "name": "Dataroid",
+    "ats": "lever",
+    "slug": "dataroid"
+  },
+  {
+    "name": "DoktorTakvimi",
+    "ats": "ashby",
+    "slug": "doktortakvimi"
+  },
+  {
+    "name": "Dream Games",
+    "ats": "lever",
+    "slug": "dreamgames"
+  },
+  {
+    "name": "Good Job Games",
+    "ats": "greenhouse",
+    "slug": "goodjobgames"
+  },
+  {
+    "name": "Grand Games",
+    "ats": "lever",
+    "slug": "grand"
+  },
+  {
+    "name": "Hilbert's AI",
+    "ats": "ashby",
+    "slug": "hilberts"
+  },
+  {
+    "name": "Insider One",
+    "ats": "lever",
+    "slug": "insiderone"
+  },
+  {
+    "name": "iyzico",
+    "ats": "lever",
+    "slug": "iyzico"
+  },
+  {
+    "name": "JumpCloud",
+    "ats": "lever",
+    "slug": "jumpcloud"
+  },
+  {
+    "name": "Loop Games",
+    "ats": "lever",
+    "slug": "loopgames"
+  },
+  {
+    "name": "Medsien",
+    "ats": "greenhouse",
+    "slug": "medsien"
+  },
+  {
+    "name": "Midas",
+    "ats": "lever",
+    "slug": "getmidas"
+  },
+  {
+    "name": "OKX",
+    "ats": "greenhouse",
+    "slug": "okx"
+  },
+  {
+    "name": "Peak",
+    "ats": "lever",
+    "slug": "peakgames"
+  },
+  {
+    "name": "Picus Security",
+    "ats": "lever",
+    "slug": "picus"
+  },
+  {
+    "name": "Sezzle",
+    "ats": "greenhouse",
+    "slug": "sezzle"
+  },
+  {
+    "name": "Spyke Games",
+    "ats": "lever",
+    "slug": "spyke-games"
+  },
+  {
+    "name": "Surpass Games",
+    "ats": "lever",
+    "slug": "surpassgames"
+  },
+  {
+    "name": "Trendyol",
+    "ats": "lever",
+    "slug": "trendyol"
+  },
+  {
+    "name": "Trendyol Go",
+    "ats": "lever",
+    "slug": "trendyol-go"
+  },
+  {
+    "name": "TrustLab",
+    "ats": "ashby",
+    "slug": "trustlab"
+  },
+  {
+    "name": "Udemy",
+    "ats": "greenhouse",
+    "slug": "udemy"
+  },
+  {
+    "name": "Voodoo",
+    "ats": "ashby",
+    "slug": "voodoo"
+  },
+  {
+    "name": "Zynga",
+    "ats": "greenhouse",
+    "slug": "zyngacareers"
+  },
+  {"name":"Bosch Group","ats":"smartrecruiters","slug":"BoschGroup"},
+  {"name":"Renesas Electronics","ats":"smartrecruiters","slug":"RenesasElectronics"},
+  {"name":"Delivery Hero","ats":"smartrecruiters","slug":"DeliveryHero"},
+  {"name":"Brandefense","ats":"smartrecruiters","slug":"BRANDEFENSE"}
+]

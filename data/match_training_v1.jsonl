@@ -1,0 +1,24 @@
+{"family":"restore","requirement":"Restore PostgreSQL backups during outages.","cv_passage":"Kesinti sırasında PostgreSQL yedeğini geri yükleyip servisi açtım.","label":"supported"}
+{"family":"restore","requirement":"Restore PostgreSQL backups during outages.","cv_passage":"PostgreSQL yedekleri aldım, geri yüklemeyi başka ekip yaptı.","label":"partial"}
+{"family":"restore","requirement":"Restore PostgreSQL backups during outages.","cv_passage":"I optimized spending on online ads.","label":"unverified"}
+{"family":"ci","requirement":"GitHub Actions ile otomatik test hattı kurma deneyimi.","cv_passage":"Built a GitHub Actions workflow running integration tests on every pull request.","label":"supported"}
+{"family":"ci","requirement":"GitHub Actions ile otomatik test hattı kurma deneyimi.","cv_passage":"Testleri kendi bilgisayarımda çalıştırdım ve GitHub Actions günlüklerini okudum.","label":"partial"}
+{"family":"ci","requirement":"GitHub Actions ile otomatik test hattı kurma deneyimi.","cv_passage":"Produced a quarterly customer survey.","label":"unverified"}
+{"family":"release","requirement":"Ship Flutter applications to both app stores.","cv_passage":"Flutter uygulamamı Google Play ve App Store'da yayımladım.","label":"supported"}
+{"family":"release","requirement":"Ship Flutter applications to both app stores.","cv_passage":"I released a Flutter app on Google Play only.","label":"partial"}
+{"family":"release","requirement":"Ship Flutter applications to both app stores.","cv_passage":"I designed the company logo.","label":"unverified"}
+{"family":"can","requirement":"CAN bus debugging on vehicle hardware.","cv_passage":"Araç üzerinde CAN mesajlarını analiz edip iletişim hatasını buldum.","label":"supported"}
+{"family":"can","requirement":"CAN bus debugging on vehicle hardware.","cv_passage":"Used a simulated CAN network during a lab exercise.","label":"partial"}
+{"family":"can","requirement":"CAN bus debugging on vehicle hardware.","cv_passage":"Hazırladığım çizimlerle katalog baskıya girdi.","label":"unverified"}
+{"family":"terraform","requirement":"Terraform ile AWS altyapısının yönetimi.","cv_passage":"Provisioned and maintained AWS networking resources using Terraform.","label":"supported"}
+{"family":"terraform","requirement":"Terraform ile AWS altyapısının yönetimi.","cv_passage":"Yerelde Terraform örneklerini denedim.","label":"partial"}
+{"family":"terraform","requirement":"Terraform ile AWS altyapısının yönetimi.","cv_passage":"I prepared release notes for translators.","label":"unverified"}
+{"family":"vision","requirement":"Train and deploy computer vision models.","cv_passage":"I trained a defect detection model and deployed it to a factory line.","label":"supported"}
+{"family":"vision","requirement":"Train and deploy computer vision models.","cv_passage":"Görüntü sınıflandırma modeli eğittim; dağıtımını yapmadım.","label":"partial"}
+{"family":"vision","requirement":"Train and deploy computer vision models.","cv_passage":"Müşteri destek çağrılarını yanıtladım.","label":"unverified"}
+{"family":"incident","requirement":"Lead production incident response as on-call engineer.","cv_passage":"Nöbetçi mühendis olarak ödeme kesintisinde müdahaleyi yönettim.","label":"supported"}
+{"family":"incident","requirement":"Lead production incident response as on-call engineer.","cv_passage":"I observed the incident bridge and took notes.","label":"partial"}
+{"family":"incident","requirement":"Lead production incident response as on-call engineer.","cv_passage":"Edited onboarding videos for new employees.","label":"unverified"}
+{"family":"playwright","requirement":"Playwright ile uçtan uca tarayıcı testleri yazma.","cv_passage":"I wrote Playwright end-to-end checkout tests for Chromium.","label":"supported"}
+{"family":"playwright","requirement":"Playwright ile uçtan uca tarayıcı testleri yazma.","cv_passage":"I ran the existing Playwright suite without authoring tests.","label":"partial"}
+{"family":"playwright","requirement":"Playwright ile uçtan uca tarayıcı testleri yazma.","cv_passage":"Stok tahmin raporlarını yayımladım.","label":"unverified"}

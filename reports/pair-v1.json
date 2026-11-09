@@ -1,0 +1,42 @@
+{
+  "base": "MoritzLaurer/multilingual-MiniLMv2-L6-mnli-xnli",
+  "revision": "0a71e92a985b6e1ad1828cf67ce9c459639c1dca",
+  "seed": 17,
+  "epochs": 6,
+  "batch_size": 6,
+  "learning_rate": 5e-05,
+  "sha256": {
+    "match_training_v1.jsonl": "5fe9f5b776ec51e75865ade095290845ca8564a8df17311b073bcdd92eae7eb1",
+    "match_challenge_dev.jsonl": "f0c8c3e9f3882c3bfd7e2a12dc3ab8a145f8ddfad6e981147cc43cd124dba6e0"
+  },
+  "head_only": {
+    "correct": 2,
+    "false_support": 2,
+    "predictions": [
+      "supported",
+      "unverified",
+      "partial",
+      "supported",
+      "unverified",
+      "partial",
+      "unverified",
+      "supported",
+      "supported"
+    ]
+  },
+  "adapted": {
+    "correct": 4,
+    "false_support": 2,
+    "predictions": [
+      "supported",
+      "unverified",
+      "unverified",
+      "supported",
+      "unverified",
+      "unverified",
+      "unverified",
+      "supported",
+      "supported"
+    ]
+  }
+}

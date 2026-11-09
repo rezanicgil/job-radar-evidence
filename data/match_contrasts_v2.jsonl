@@ -1,0 +1,30 @@
+{"family":"board-radio","requirement":"Test BLE radio behavior on a physical board.","cv_passage":"BLE bağlantısını fiziksel geliştirme kartında test ettim.","label":"supported"}
+{"family":"board-radio","requirement":"Test BLE radio behavior on a physical board.","cv_passage":"BLE bağlantısını yalnızca sanal geliştirme kartında test ettim.","label":"partial"}
+{"family":"board-radio","requirement":"Test BLE radio behavior on a physical board.","cv_passage":"Kart tedariki için fiyat teklifi aldım.","label":"unverified"}
+{"family":"etl-ownership","requirement":"Personally implement scheduled ETL jobs.","cv_passage":"I implemented our scheduled ETL jobs.","label":"supported"}
+{"family":"etl-ownership","requirement":"Personally implement scheduled ETL jobs.","cv_passage":"I monitored scheduled ETL jobs implemented by another team.","label":"partial"}
+{"family":"etl-ownership","requirement":"Personally implement scheduled ETL jobs.","cv_passage":"I booked rooms for onboarding.","label":"unverified"}
+{"family":"duration-csharp","requirement":"En az üç yıl C# geliştirme deneyimi.","cv_passage":"Developed C# services for 36 months.","label":"supported"}
+{"family":"duration-csharp","requirement":"En az üç yıl C# geliştirme deneyimi.","cv_passage":"Developed C# services for 18 months.","label":"partial"}
+{"family":"duration-csharp","requirement":"En az üç yıl C# geliştirme deneyimi.","cv_passage":"Managed a sales team for 36 months.","label":"unverified"}
+{"family":"migration","requirement":"Migrate MySQL in production with rollback planning.","cv_passage":"Canlı MySQL geçişini geri dönüş planıyla tamamladım.","label":"supported"}
+{"family":"migration","requirement":"Migrate MySQL in production with rollback planning.","cv_passage":"Test ortamında MySQL geçişini geri dönüş planıyla tamamladım.","label":"partial"}
+{"family":"migration","requirement":"Migrate MySQL in production with rollback planning.","cv_passage":"Takvim davetlerini düzenledim.","label":"unverified"}
+{"family":"oauth-audit","requirement":"Perform security reviews of OAuth integrations.","cv_passage":"Reviewed OAuth integrations and documented security findings.","label":"supported"}
+{"family":"oauth-audit","requirement":"Perform security reviews of OAuth integrations.","cv_passage":"Implemented OAuth integrations; security reviews were handled by our auditor.","label":"partial"}
+{"family":"oauth-audit","requirement":"Perform security reviews of OAuth integrations.","cv_passage":"Organized the customer conference.","label":"unverified"}
+{"family":"mobile-crashes","requirement":"Analyze crash reports from released mobile apps.","cv_passage":"Yayımlanmış mobil uygulamanın çökme raporlarını analiz ettim.","label":"supported"}
+{"family":"mobile-crashes","requirement":"Analyze crash reports from released mobile apps.","cv_passage":"Dahili test sürümünün çökme raporlarını analiz ettim.","label":"partial"}
+{"family":"mobile-crashes","requirement":"Analyze crash reports from released mobile apps.","cv_passage":"Mobil uygulama mağaza görsellerini hazırladım.","label":"unverified"}
+{"family":"accessibility","requirement":"Test keyboard navigation and screen reader support.","cv_passage":"Klavye gezintisini ve ekran okuyucu desteğini test ettim.","label":"supported"}
+{"family":"accessibility","requirement":"Test keyboard navigation and screen reader support.","cv_passage":"Klavye gezintisini test ettim; ekran okuyucu testi yapmadım.","label":"partial"}
+{"family":"accessibility","requirement":"Test keyboard navigation and screen reader support.","cv_passage":"Translated the product catalogue.","label":"unverified"}
+{"family":"terraform-years","requirement":"Two years of Terraform work on Azure.","cv_passage":"Azure üzerinde 28 ay Terraform kullandım.","label":"supported"}
+{"family":"terraform-years","requirement":"Two years of Terraform work on Azure.","cv_passage":"Azure üzerinde 8 ay Terraform kullandım.","label":"partial"}
+{"family":"terraform-years","requirement":"Two years of Terraform work on Azure.","cv_passage":"Bayi sözleşmelerini yönettim.","label":"unverified"}
+{"family":"game-release","requirement":"Publish a playable Unity game on Steam.","cv_passage":"Unity oyunumu Steam mağazasında yayımladım.","label":"supported"}
+{"family":"game-release","requirement":"Publish a playable Unity game on Steam.","cv_passage":"Unity oyunumu yalnızca özel bir test sunucusuna yükledim.","label":"partial"}
+{"family":"game-release","requirement":"Publish a playable Unity game on Steam.","cv_passage":"I edited the soundtrack for an advertisement.","label":"unverified"}
+{"family":"load-test","requirement":"Author and execute k6 load tests.","cv_passage":"I authored and executed k6 load tests.","label":"supported"}
+{"family":"load-test","requirement":"Author and execute k6 load tests.","cv_passage":"I executed existing k6 load tests written by a colleague.","label":"partial"}
+{"family":"load-test","requirement":"Author and execute k6 load tests.","cv_passage":"I managed supplier invoices.","label":"unverified"}
