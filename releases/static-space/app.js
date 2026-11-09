@@ -449,7 +449,7 @@ function statedDuration(text){
   const years=/^(year|yıl|sene)/iu.test(match[3]);
   return {phrase:match[0],bound,months:Math.round((value+(match[2]?0.5:0))*(years?12:1)*100)/100};
 }
-function durationComparison(card,condition,lines){
+function durationComparison(card,condition,lines,requested){
   const target=statedDuration(condition);
   if(!target)return;
   const matches=lines.map(line=>({line,duration:statedDuration(line.text)})).filter(x=>x.duration);
@@ -468,6 +468,16 @@ function durationComparison(card,condition,lines){
   picker.onchange=()=>{
     if(!picker.value){output.textContent="";return}
     const {line,duration}=matches[Number(picker.value)];
+    if(requested.length){
+      const clause=line.text.split(/[;!?]|\s+[—–]\s+|,?\s+(?:but|whereas|ancak|fakat)\s+/iu)
+        .find(part=>part.includes(duration.phrase));
+      const shared=requested.filter(name=>clause&&hasTechnology(clause,name));
+      if(!shared.length){
+        output.textContent="Page "+line.page+" · "+line.text+" | This duration is not linked to "+
+          requested.join(" / ")+" in the same clause. Check project dates and responsibilities before counting it.";
+        return;
+      }
+    }
     const gap=Math.round((duration.months-target.months)*100)/100;
     const targetStrict=target.bound==="more than";
     const measured=(duration.bound==="exact"?"":duration.bound+" ")+duration.months+" months";
@@ -481,7 +491,8 @@ function durationComparison(card,condition,lines){
       finding=sufficient?"the stated lower bound meets the minimum":
         "the stated lower bound does not establish whether the minimum is met";
     }
-    output.textContent="Page "+line.page+" · "+line.text+" | CV: "+measured+" · minimum: "+minimum+" · "+finding+".";
+    output.textContent="Page "+line.page+" · "+line.text+" | CV: "+measured+" · minimum: "+minimum+" · "+finding+"."+
+      (requested.length?" Confirm that the stated period covers the required work.":"");
   };
 }
 function addEvidencePicker(card,lines,suggestions,ranks){
@@ -761,7 +772,7 @@ el("form").onsubmit=async event=>{
           visible.push(line);
         }
       }
-      durationComparison(card,condition,lines);
+      durationComparison(card,condition,lines,requested);
       const select=add(add(card,"label","Assessment "),"select","");
       select.className="assessment";
       for(const [value,label] of [["","Choose"],["supported","Required · supported"],["partial","Required · partial"],["unverified","Required · unverified"],["optional-supported","Optional · supported"],["optional-partial","Optional · partial"],["optional-unverified","Optional · unverified"],["skip","Exclude from required coverage"]])select.add(new Option(label,value));

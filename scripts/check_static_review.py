@@ -288,6 +288,17 @@ def check(page, origin):
     cards.last.get_by_text("Compare stated durations").click()
     cards.last.get_by_label("CV passage",exact=True).select_option("0")
     expect(cards.last.locator(".duration-result")).to_contain_text("equals the boundary and does not exceed it")
+    page.locator("#job").fill("At least three years developing for Android with Kotlin")
+    page.locator("#cv").fill("Four years developing Python APIs; I used Kotlin for a prototype.\nKotlin ile iki yıl çalıştım.")
+    page.locator("#find").click()
+    cards.first.get_by_text("Compare stated durations").click()
+    select=cards.first.get_by_label("CV passage",exact=True)
+    select.select_option("0")
+    expect(cards.first.locator(".duration-result")).to_contain_text("not linked to Kotlin")
+    expect(cards.first.locator(".duration-result")).not_to_contain_text("above")
+    select.select_option("1")
+    expect(cards.first.locator(".duration-result")).to_contain_text("12 months below")
+    expect(cards.first.locator(".assessment")).to_have_value("")
     grouped=Path(__file__).resolve().parents[1]/"releases/match-pilot/technology_connectives.jsonl"
     cases={r["family"]:r for line in grouped.read_text(encoding="utf-8").splitlines() if (r:=json.loads(line))}
     ambiguous=["Use Kafka and RabbitMQ or a managed alternative.","Experience with Java, Kotlin or another language."]
