@@ -2,6 +2,7 @@
 
 import argparse
 from collections import Counter
+import hashlib
 import json
 from pathlib import Path
 
@@ -25,11 +26,13 @@ def indexed(path):
     return rows
 
 
-def review(path, packet):
+def review(path, packet, packet_hash):
     rows = indexed(path)
     if rows.keys() != packet.keys():
         raise ValueError(f"{path.name}: missing {sorted(packet.keys()-rows.keys())}, unexpected {sorted(rows.keys()-packet.keys())}")
     for key, row in rows.items():
+        if ("packet_sha256" in row or path.is_dir()) and row.get("packet_sha256") != packet_hash:
+            raise ValueError(f"{path.name} {key}: review belongs to a different packet version")
         if row.get("label") not in LABELS:
             raise ValueError(f"{path.name} {key}: unknown label")
         evidence = row.get("evidence")
@@ -44,14 +47,18 @@ def compare(packet_path, first_path, second_path):
     if first_path.samefile(second_path):
         raise ValueError("Supply two separate review files")
     packet = indexed(packet_path)
-    a, b = review(first_path,packet), review(second_path,packet)
+    packet_hash = hashlib.sha256(packet_path.read_bytes()).hexdigest()
+    a = review(first_path, packet, packet_hash)
+    b = review(second_path, packet, packet_hash)
     n = len(packet)
     a_counts = Counter(r["label"] for r in a.values())
     b_counts = Counter(r["label"] for r in b.values())
     disagreements = [dict(id=k,first=a[k],second=b[k]) for k in packet if a[k]["label"] != b[k]["label"]]
     observed = (n-len(disagreements))/n
     chance = sum(a_counts[l]*b_counts[l] for l in LABELS)/(n*n)
-    return dict(records=n,agreement=observed,kappa=None if chance == 1 else (observed-chance)/(1-chance),
+    verified_versions = all("packet_sha256" in row for rows in (a,b) for row in rows.values())
+    return dict(records=n,packet_sha256=packet_hash,all_review_versions_verified=verified_versions,
+                agreement=observed,kappa=None if chance == 1 else (observed-chance)/(1-chance),
                 first_label_counts=a_counts,second_label_counts=b_counts,disagreements=disagreements)
 
 
