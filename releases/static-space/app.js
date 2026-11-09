@@ -424,15 +424,25 @@ try{
     const skills=new Map();
     for(const p of records)for(const s of new Set(p.skills)){if(!skills.has(s))skills.set(s,[]);skills.get(s).push(p)}
     el("counts").replaceChildren();
-    for(const [s,ps] of [...skills].sort((a,b)=>b[1].length-a[1].length||a[0].localeCompare(b[0]))){
+    const byEmployer=el("basis").value==="employers";
+    const employers=new Set(records.map(p=>p.employer)).size;
+    const denominator=byEmployer?employers:records.length;
+    const measured=[...skills].map(([name,postings])=>{
+      const represented=new Set(postings.map(p=>p.employer)).size;
+      return {name,postings,represented,count:byEmployer?represented:postings.length};
+    });
+    measured.sort((a,b)=>b.count-a.count||a.name.localeCompare(b.name));
+    for(const {name,postings,represented,count} of measured){
       const d=add(el("counts"),"details","");
-      const share=Math.round(1000*ps.length/records.length)/10;
-      const summary=add(d,"summary",s+" · "+share+"% · "+ps.length+"/"+records.length+" postings · "+new Set(ps.map(p=>p.employer)).size+" employers");
-      const bar=add(summary,"progress","");bar.max=records.length;bar.value=ps.length;bar.setAttribute("aria-hidden","true");
-      for(const p of ps){const a=add(add(d,"p",""),"a",p.employer+" · "+p.title);if(p.url.startsWith("https://"))a.href=p.url}
+      const share=Math.round(1000*count/denominator)/10;
+      const postShare=postings.length+"/"+records.length+" postings";
+      const employerShare=represented+"/"+employers+" employers";
+      const summary=add(d,"summary",name+" · "+share+"% · "+(byEmployer?employerShare+" · "+postShare:postShare+" · "+employerShare));
+      const bar=add(summary,"progress","");bar.max=denominator;bar.value=count;bar.setAttribute("aria-hidden","true");
+      for(const p of postings){const a=add(add(d,"p",""),"a",p.employer+" · "+p.title);if(p.url.startsWith("https://"))a.href=p.url}
     }
     if(!skills.size)add(el("counts"),"p","No tracked mentions in this selection.");
-  }el("area").onchange=render;render();
+  }el("area").onchange=render;el("basis").onchange=render;render();
 }catch{el("scope").textContent="Market snapshot unavailable."}
 try{
   const history=await (await fetch("market-history.json")).json();
