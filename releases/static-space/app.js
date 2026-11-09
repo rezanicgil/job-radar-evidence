@@ -428,3 +428,26 @@ try{
     if(!skills.size)add(el("counts"),"p","No tracked mentions in this selection.");
   }el("area").onchange=render;render();
 }catch{el("scope").textContent="Market snapshot unavailable."}
+try{
+  const history=await (await fetch("market-history.json")).json();
+  const container=el("history");
+  add(container,"h2","Daily observations · all tracked roles");
+  add(container,"p",history.length===1?"One collection date is available.":"Each date uses the last collection that day in Türkiye. Source coverage can change between dates.");
+  const picker=add(add(container,"label","Technology "),"select","");
+  const technologies=[...new Set(history.flatMap(day=>Object.keys(day.mentions)))].sort();
+  for(const name of technologies)picker.add(new Option(name,name));
+  if(technologies.includes("Python"))picker.value="Python";
+  const days=add(container,"div","");
+  function showHistory(){
+    days.replaceChildren();
+    for(const day of [...history].reverse()){
+      const count=day.mentions[picker.value]||0;
+      const share=day.readable?(100*count/day.readable).toFixed(1)+"%":"Unavailable";
+      const row=add(days,"article","");
+      add(row,"strong",day.date+" · "+share+" · "+count+"/"+day.readable+" readable postings");
+      add(row,"p",day.employers+" employers represented · "+day.boards_ok+"/"+day.boards_total+" boards responded · "+day.readable+"/"+day.selected+" descriptions readable");
+      add(row,"a","Inspect source records").href="https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/"+encodeURIComponent(day.file);
+    }
+  }
+  picker.onchange=showHistory;showHistory();
+}catch{el("history").textContent="Daily observations unavailable."}

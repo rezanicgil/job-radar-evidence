@@ -5,6 +5,7 @@ import shutil
 import tempfile
 from pathlib import Path
 from market_inventory import ROOT, PATTERNS
+from market_history import daily_history
 
 
 def main():
@@ -33,6 +34,7 @@ def main():
     snapshot["areas"] = sorted(set(PATTERNS) | {r["area"] for r in reviews} |
                                {a for row in snapshot["direct"] for a in row["areas"]})
     (dest / "market.json").write_text(json.dumps(snapshot,ensure_ascii=False),encoding="utf-8")
+    (dest / "market-history.json").write_text(json.dumps(daily_history(ROOT / "reports"),ensure_ascii=False),encoding="utf-8")
     print(dest)
 
 
