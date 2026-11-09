@@ -43,6 +43,7 @@ def main():
     shutil.copyfile(ROOT / "data/match_employer_training.jsonl",destination / "employer_tr.jsonl")
     cases = [json.loads(s) for s in (ROOT/"data/requirement_switch_dev.jsonl").read_text(encoding="utf-8").splitlines()]
     shutil.copyfile(ROOT/"data/match_switch_training.jsonl",destination/"requirement_switch_train.jsonl")
+    shutil.copyfile(ROOT/"data/compound_evidence_dev.jsonl",destination/"compound_evidence.jsonl")
     switches = [dict(family=c["family"],cv_passage=c["cv_passage"],requirement=requirement,label=label)
                 for c in cases for label,requirement in c["requirements"].items()]
     (destination/"requirement_switch.jsonl").write_bytes(

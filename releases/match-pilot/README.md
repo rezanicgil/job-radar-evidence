@@ -30,6 +30,10 @@ configs:
         path: requirement_switch_train.jsonl
       - split: validation
         path: requirement_switch.jsonl
+  - config_name: compound_evidence
+    data_files:
+      - split: validation
+        path: compound_evidence.jsonl
 ---
 
 # Job Radar · Bilingual CV evidence pilot
@@ -39,6 +43,8 @@ This pilot contains 69 training pairs from 23 families and 18 development pairs 
 The validation file begins with nine general challenge examples and ends with nine examples about Docker, Terraform and Prometheus. A passage can name the right technology while describing event logistics rather than engineering work. The [experiment predictions](https://github.com/rezanicgil/job-radar-evidence/blob/dba6189/reports/pair-mentions-v3.json) show where the model confused the two. The [original 54-row release](https://huggingface.co/datasets/rezanicgil/job-radar-match-pilot/tree/cb96ff522186ae77a3b9f1bada3ee32842d91b15) remains available for earlier experiments.
 
 ## How to read a row
+
+The `compound_evidence` diagnostic contains 18 fictional passages across six requirements. Each requirement has two mandatory components with separate project-authored evidence labels. Full coverage requires both components to be supported; a mixture of supported and unverified components yields partial coverage. The released classifier matched 10 of 18 whole-condition labels directly and 9 of 18 after classifying components and combining them. Incorrect full-support decisions rose from seven to nine. Splitting conjunctions alone did not solve the evidence attribution errors in this sample. [Comparison](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/compound-evidence.json)
 
 The `requirement_switch` configuration contains 36 training pairs from 12 fictional passages and 24 validation pairs from eight other passages. Each passage is paired with three different requirements. The train and validation splits share no exact passage, requirement or family. A useful match score should change with the requirement even when the applicant's writing stays the same. One frozen-embedding classifier that saw only the CV got 23/30 correct on the source-grounded development split, but just 8/24 on this diagnostic. The analogous paired classifier scored 9/24 and failed to classify all three requirements correctly for any passage. These constructed cases test sensitivity to requirements. [Probe and results](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/requirement-signal.json)
 

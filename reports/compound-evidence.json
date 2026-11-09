@@ -1,0 +1,409 @@
+{
+  "dataset_sha256": "8a611d0e77946ff678b8a71e17163bf61082bbd6f0f325c9ef276df3f91d8ccd",
+  "results": {
+    "pair-mentions-v3": {
+      "direct": {
+        "total": 18,
+        "correct": 10,
+        "partial_found": 0,
+        "false_full": 7
+      },
+      "decomposed": {
+        "total": 18,
+        "correct": 9,
+        "partial_found": 1,
+        "false_full": 9
+      },
+      "components": {
+        "total": 36,
+        "correct": 23,
+        "partial_found": 0,
+        "false_full": 13
+      },
+      "cases": [
+        {
+          "family": "cert-rotation-check",
+          "target": "supported",
+          "direct": "supported",
+          "parts": [
+            "supported",
+            "supported"
+          ],
+          "combined": "supported"
+        },
+        {
+          "family": "cert-rotation-check",
+          "target": "partial",
+          "direct": "supported",
+          "parts": [
+            "supported",
+            "supported"
+          ],
+          "combined": "supported"
+        },
+        {
+          "family": "cert-rotation-check",
+          "target": "unverified",
+          "direct": "unverified",
+          "parts": [
+            "unverified",
+            "unverified"
+          ],
+          "combined": "unverified"
+        },
+        {
+          "family": "ios-symbols",
+          "target": "supported",
+          "direct": "supported",
+          "parts": [
+            "supported",
+            "supported"
+          ],
+          "combined": "supported"
+        },
+        {
+          "family": "ios-symbols",
+          "target": "partial",
+          "direct": "supported",
+          "parts": [
+            "supported",
+            "supported"
+          ],
+          "combined": "supported"
+        },
+        {
+          "family": "ios-symbols",
+          "target": "unverified",
+          "direct": "unverified",
+          "parts": [
+            "supported",
+            "supported"
+          ],
+          "combined": "supported"
+        },
+        {
+          "family": "board-bringup",
+          "target": "supported",
+          "direct": "supported",
+          "parts": [
+            "supported",
+            "supported"
+          ],
+          "combined": "supported"
+        },
+        {
+          "family": "board-bringup",
+          "target": "partial",
+          "direct": "supported",
+          "parts": [
+            "supported",
+            "supported"
+          ],
+          "combined": "supported"
+        },
+        {
+          "family": "board-bringup",
+          "target": "unverified",
+          "direct": "supported",
+          "parts": [
+            "supported",
+            "supported"
+          ],
+          "combined": "supported"
+        },
+        {
+          "family": "dataset-release-check",
+          "target": "supported",
+          "direct": "supported",
+          "parts": [
+            "supported",
+            "supported"
+          ],
+          "combined": "supported"
+        },
+        {
+          "family": "dataset-release-check",
+          "target": "partial",
+          "direct": "supported",
+          "parts": [
+            "supported",
+            "supported"
+          ],
+          "combined": "supported"
+        },
+        {
+          "family": "dataset-release-check",
+          "target": "unverified",
+          "direct": "unverified",
+          "parts": [
+            "supported",
+            "supported"
+          ],
+          "combined": "supported"
+        },
+        {
+          "family": "restore-monitor",
+          "target": "supported",
+          "direct": "supported",
+          "parts": [
+            "supported",
+            "supported"
+          ],
+          "combined": "supported"
+        },
+        {
+          "family": "restore-monitor",
+          "target": "partial",
+          "direct": "unverified",
+          "parts": [
+            "unverified",
+            "supported"
+          ],
+          "combined": "partial"
+        },
+        {
+          "family": "restore-monitor",
+          "target": "unverified",
+          "direct": "unverified",
+          "parts": [
+            "unverified",
+            "unverified"
+          ],
+          "combined": "unverified"
+        },
+        {
+          "family": "release-signoff",
+          "target": "supported",
+          "direct": "supported",
+          "parts": [
+            "supported",
+            "supported"
+          ],
+          "combined": "supported"
+        },
+        {
+          "family": "release-signoff",
+          "target": "partial",
+          "direct": "supported",
+          "parts": [
+            "supported",
+            "supported"
+          ],
+          "combined": "supported"
+        },
+        {
+          "family": "release-signoff",
+          "target": "unverified",
+          "direct": "supported",
+          "parts": [
+            "supported",
+            "supported"
+          ],
+          "combined": "supported"
+        }
+      ]
+    },
+    "pair-switch-tr": {
+      "direct": {
+        "total": 18,
+        "correct": 10,
+        "partial_found": 0,
+        "false_full": 6
+      },
+      "decomposed": {
+        "total": 18,
+        "correct": 8,
+        "partial_found": 0,
+        "false_full": 8
+      },
+      "components": {
+        "total": 36,
+        "correct": 23,
+        "partial_found": 0,
+        "false_full": 12
+      },
+      "cases": [
+        {
+          "family": "cert-rotation-check",
+          "target": "supported",
+          "direct": "supported",
+          "parts": [
+            "supported",
+            "supported"
+          ],
+          "combined": "supported"
+        },
+        {
+          "family": "cert-rotation-check",
+          "target": "partial",
+          "direct": "supported",
+          "parts": [
+            "supported",
+            "supported"
+          ],
+          "combined": "supported"
+        },
+        {
+          "family": "cert-rotation-check",
+          "target": "unverified",
+          "direct": "unverified",
+          "parts": [
+            "unverified",
+            "unverified"
+          ],
+          "combined": "unverified"
+        },
+        {
+          "family": "ios-symbols",
+          "target": "supported",
+          "direct": "supported",
+          "parts": [
+            "supported",
+            "supported"
+          ],
+          "combined": "supported"
+        },
+        {
+          "family": "ios-symbols",
+          "target": "partial",
+          "direct": "unverified",
+          "parts": [
+            "supported",
+            "supported"
+          ],
+          "combined": "supported"
+        },
+        {
+          "family": "ios-symbols",
+          "target": "unverified",
+          "direct": "unverified",
+          "parts": [
+            "supported",
+            "supported"
+          ],
+          "combined": "supported"
+        },
+        {
+          "family": "board-bringup",
+          "target": "supported",
+          "direct": "supported",
+          "parts": [
+            "supported",
+            "supported"
+          ],
+          "combined": "supported"
+        },
+        {
+          "family": "board-bringup",
+          "target": "partial",
+          "direct": "supported",
+          "parts": [
+            "supported",
+            "supported"
+          ],
+          "combined": "supported"
+        },
+        {
+          "family": "board-bringup",
+          "target": "unverified",
+          "direct": "supported",
+          "parts": [
+            "supported",
+            "supported"
+          ],
+          "combined": "supported"
+        },
+        {
+          "family": "dataset-release-check",
+          "target": "supported",
+          "direct": "supported",
+          "parts": [
+            "supported",
+            "supported"
+          ],
+          "combined": "supported"
+        },
+        {
+          "family": "dataset-release-check",
+          "target": "partial",
+          "direct": "supported",
+          "parts": [
+            "supported",
+            "supported"
+          ],
+          "combined": "supported"
+        },
+        {
+          "family": "dataset-release-check",
+          "target": "unverified",
+          "direct": "unverified",
+          "parts": [
+            "unverified",
+            "supported"
+          ],
+          "combined": "partial"
+        },
+        {
+          "family": "restore-monitor",
+          "target": "supported",
+          "direct": "supported",
+          "parts": [
+            "supported",
+            "supported"
+          ],
+          "combined": "supported"
+        },
+        {
+          "family": "restore-monitor",
+          "target": "partial",
+          "direct": "unverified",
+          "parts": [
+            "unverified",
+            "unverified"
+          ],
+          "combined": "unverified"
+        },
+        {
+          "family": "restore-monitor",
+          "target": "unverified",
+          "direct": "unverified",
+          "parts": [
+            "unverified",
+            "unverified"
+          ],
+          "combined": "unverified"
+        },
+        {
+          "family": "release-signoff",
+          "target": "supported",
+          "direct": "supported",
+          "parts": [
+            "supported",
+            "supported"
+          ],
+          "combined": "supported"
+        },
+        {
+          "family": "release-signoff",
+          "target": "partial",
+          "direct": "supported",
+          "parts": [
+            "supported",
+            "supported"
+          ],
+          "combined": "supported"
+        },
+        {
+          "family": "release-signoff",
+          "target": "unverified",
+          "direct": "supported",
+          "parts": [
+            "supported",
+            "supported"
+          ],
+          "combined": "supported"
+        }
+      ]
+    }
+  }
+}
