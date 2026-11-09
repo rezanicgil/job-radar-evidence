@@ -55,9 +55,19 @@ function pagePassages(page,isPdf){
 }
 function coverage(){
   const values=[...el("results").querySelectorAll("select")].map(s=>s.value);
-  if(values.includes("")){el("status").textContent=values.filter(v=>!v).length+" conditions awaiting review.";return}
+  const status=el("status");
+  status.replaceChildren();
+  if(values.includes("")){
+    const completed=values.filter(Boolean).length;
+    add(status,"strong",Math.round(100*completed/values.length)+"% reviewed");
+    add(status,"span",completed+" of "+values.length+" conditions reviewed. Assess each condition below to see required coverage.");
+    return;
+  }
   const n=values.filter(v=>v!=="skip").length,s=values.filter(v=>v==="supported").length;
-  el("status").textContent=n?"Reviewer-confirmed coverage: "+s+"/"+n+" ("+Math.round(100*s/n)+"%).":"No required conditions selected.";
+  if(!n){status.textContent="No required conditions selected.";return}
+  add(status,"strong",Math.round(100*s/n)+"% coverage");
+  add(status,"span",s+" of "+n+" required conditions fully supported by your CV, as reviewed.");
+  add(status,"span",values.filter(v=>v==="partial").length+" partial · "+values.filter(v=>v==="unverified").length+" unverified · "+(values.length-n)+" excluded");
 }
 el("form").onsubmit=async event=>{
   event.preventDefault();el("find").disabled=true;el("results").replaceChildren();
@@ -144,7 +154,10 @@ try{
     for(const p of records)for(const s of new Set(p.skills)){if(!skills.has(s))skills.set(s,[]);skills.get(s).push(p)}
     el("counts").replaceChildren();
     for(const [s,ps] of [...skills].sort((a,b)=>b[1].length-a[1].length||a[0].localeCompare(b[0]))){
-      const d=add(el("counts"),"details","");add(d,"summary",s+" · "+ps.length+"/"+records.length+" postings · "+new Set(ps.map(p=>p.employer)).size+" employers");
+      const d=add(el("counts"),"details","");
+      const share=Math.round(1000*ps.length/records.length)/10;
+      const summary=add(d,"summary",s+" · "+share+"% · "+ps.length+"/"+records.length+" postings · "+new Set(ps.map(p=>p.employer)).size+" employers");
+      const bar=add(summary,"progress","");bar.max=records.length;bar.value=ps.length;bar.setAttribute("aria-hidden","true");
       for(const p of ps){const a=add(add(d,"p",""),"a",p.employer+" · "+p.title);if(p.url.startsWith("https://"))a.href=p.url}
     }
     if(!skills.size)add(el("counts"),"p","No tracked mentions in this selection.");

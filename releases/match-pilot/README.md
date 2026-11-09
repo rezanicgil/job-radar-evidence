@@ -22,6 +22,13 @@ The validation file begins with nine general challenge examples and ends with ni
 
 ## How to read a row
 
+| Split | Pairs | Requirement families | Supported / partial / unverified |
+| --- | ---: | ---: | --- |
+| Train | 69 | 23 | 23 / 23 / 23 |
+| Validation | 18 | 6 | 6 / 6 / 6 |
+
+For the requirement “Package and run a backend service with Docker”, listing Docker in a skills section receives a partial label. Describing personally building an image and running a service supports the condition. Booking a room for Docker training receives an unverified label.
+
 `family` identifies related cases. `requirement` describes an employer's condition. `cv_passage` contains the fictional applicant's statement. `label` is the author's judgment of the passage. Supported means the passage establishes the condition, partial means it establishes a relevant component, and unverified means the condition has no supporting evidence in that passage.
 
 ## Provenance and evaluation
@@ -29,5 +36,11 @@ The validation file begins with nine general challenge examples and ends with ni
 The project assistant authored the examples and initial labels during dataset development. The pilot covers English, Turkish and cross-language matching. The data has no independent human adjudication. Developers have inspected validation outcomes during model development. The balanced distribution was intentional and does not estimate real-world class frequencies.
 
 Keep related CVs, translations, rephrasings and templates together when creating new evaluation sets. The scores of models trained on this pilot are unsuitable for estimating an applicant's likelihood of getting hired. Use an independently reviewed external set for product decisions.
+
+### What the current classifier misses
+
+The mentions-v3 checkpoint recovered 4/6 supported examples (66.7%), 0/6 partial examples (0%) and 5/6 unverified examples (83.3%). Overall accuracy was 9/18 (50%). Each class percentage measures recall against the synthetic author labels. [Per-example predictions](https://github.com/rezanicgil/job-radar-evidence/blob/dba6189/reports/pair-mentions-v3.json)
+
+The next collection batch contains 12 unlabeled fictional passages paired with requirements adapted from three source postings. They are available for review outside these splits. Further collection should sample independent employers and requirements across software specialties, include all four Turkish/English language directions, and prioritize passages that share a technology name while differing in responsibility or deployment experience. [Review candidates](https://github.com/rezanicgil/job-radar-evidence/blob/a7f1a6d/research/source_grounded_candidates.jsonl)
 
 This release contains no user CV uploads or republished employer postings. Apache-2.0 applies to these original synthetic records. When reporting a label issue, include the family, the passage and the wording that supports your correction.
