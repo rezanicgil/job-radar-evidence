@@ -35,7 +35,7 @@ def workable_descriptions(board):
     return {row["shortcode"]:row.get("description") or "" for row in jobs}
 
 
-def inspect(job):
+def inspect(job, *, retry_timeout=True):
     url = urlsplit(job["url"])
     board, *rest = url.path.strip("/").split("/")
     key = rest[-1]
@@ -71,6 +71,8 @@ def inspect(job):
             return dict(**job,status="empty description")
         return dict(**job,status="readable",skills=[s for s,p in PATTERNS.items() if p.search(plain)])
     except (URLError, TimeoutError, ValueError, KeyError) as exc:
+        if retry_timeout and isinstance(getattr(exc,"reason",exc),TimeoutError):
+            return inspect(job,retry_timeout=False)
         return dict(**job,status=str(exc))
 
 
