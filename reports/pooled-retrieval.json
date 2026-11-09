@@ -1,0 +1,906 @@
+{
+  "source_sha256": "63c7e8c11f8924892e40537fd89c24f5503d4b8f50c94eac1ff5e91b019fe08f",
+  "base": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+  "queries": 10,
+  "pool": 30,
+  "rrf_k": 60,
+  "interpretation": "Rank of the authored positive. Other-family relevance is unjudged.",
+  "results": {
+    "bm25": {
+      "summary": {
+        "first": 1,
+        "in_first_three": 4,
+        "mrr": 0.35333333333333333
+      },
+      "cases": {
+        "engine-years": {
+          "target_rank": null,
+          "top_three": [
+            {
+              "family": "engine-years",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "engine-duration",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "small-project",
+              "label_for_own_family": "supported"
+            }
+          ]
+        },
+        "cloud-runtime": {
+          "target_rank": 1,
+          "top_three": [
+            {
+              "family": "cloud-runtime",
+              "label_for_own_family": "supported"
+            },
+            {
+              "family": "cloud-runtime",
+              "label_for_own_family": "unverified"
+            },
+            {
+              "family": "cloud-runtime",
+              "label_for_own_family": "partial"
+            }
+          ]
+        },
+        "mobile-game": {
+          "target_rank": 4,
+          "top_three": [
+            {
+              "family": "mobile-game",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "engine-duration",
+              "label_for_own_family": "supported"
+            },
+            {
+              "family": "mobile-game",
+              "label_for_own_family": "unverified"
+            }
+          ]
+        },
+        "database-stores": {
+          "target_rank": 2,
+          "top_three": [
+            {
+              "family": "mobile-game",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "database-stores",
+              "label_for_own_family": "supported"
+            },
+            {
+              "family": "engine-years",
+              "label_for_own_family": "supported"
+            }
+          ]
+        },
+        "small-project": {
+          "target_rank": 5,
+          "top_three": [
+            {
+              "family": "small-project",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "engine-duration",
+              "label_for_own_family": "unverified"
+            },
+            {
+              "family": "small-project",
+              "label_for_own_family": "unverified"
+            }
+          ]
+        },
+        "kafka-use": {
+          "target_rank": 4,
+          "top_three": [
+            {
+              "family": "outbox-pattern",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "kafka-use",
+              "label_for_own_family": "unverified"
+            },
+            {
+              "family": "kafka-use",
+              "label_for_own_family": "partial"
+            }
+          ]
+        },
+        "outbox-pattern": {
+          "target_rank": 2,
+          "top_three": [
+            {
+              "family": "outbox-pattern",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "outbox-pattern",
+              "label_for_own_family": "supported"
+            },
+            {
+              "family": "small-project",
+              "label_for_own_family": "supported"
+            }
+          ]
+        },
+        "batch-pipelines": {
+          "target_rank": 4,
+          "top_three": [
+            {
+              "family": "batch-pipelines",
+              "label_for_own_family": "unverified"
+            },
+            {
+              "family": "batch-pipelines",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "mobile-game",
+              "label_for_own_family": "partial"
+            }
+          ]
+        },
+        "contract-operations": {
+          "target_rank": 2,
+          "top_three": [
+            {
+              "family": "mobile-game",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "contract-operations",
+              "label_for_own_family": "supported"
+            },
+            {
+              "family": "contract-operations",
+              "label_for_own_family": "unverified"
+            }
+          ]
+        },
+        "engine-duration": {
+          "target_rank": 12,
+          "top_three": [
+            {
+              "family": "engine-duration",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "engine-years",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "contract-operations",
+              "label_for_own_family": "partial"
+            }
+          ]
+        }
+      }
+    },
+    "semantic": {
+      "summary": {
+        "first": 5,
+        "in_first_three": 9,
+        "mrr": 0.675
+      },
+      "cases": {
+        "engine-years": {
+          "target_rank": 3,
+          "top_three": [
+            {
+              "family": "engine-years",
+              "label_for_own_family": "unverified"
+            },
+            {
+              "family": "engine-years",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "engine-years",
+              "label_for_own_family": "supported"
+            }
+          ]
+        },
+        "cloud-runtime": {
+          "target_rank": 1,
+          "top_three": [
+            {
+              "family": "cloud-runtime",
+              "label_for_own_family": "supported"
+            },
+            {
+              "family": "cloud-runtime",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "cloud-runtime",
+              "label_for_own_family": "unverified"
+            }
+          ]
+        },
+        "mobile-game": {
+          "target_rank": 1,
+          "top_three": [
+            {
+              "family": "mobile-game",
+              "label_for_own_family": "supported"
+            },
+            {
+              "family": "mobile-game",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "engine-years",
+              "label_for_own_family": "partial"
+            }
+          ]
+        },
+        "database-stores": {
+          "target_rank": 3,
+          "top_three": [
+            {
+              "family": "database-stores",
+              "label_for_own_family": "unverified"
+            },
+            {
+              "family": "database-stores",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "database-stores",
+              "label_for_own_family": "supported"
+            }
+          ]
+        },
+        "small-project": {
+          "target_rank": 1,
+          "top_three": [
+            {
+              "family": "small-project",
+              "label_for_own_family": "supported"
+            },
+            {
+              "family": "small-project",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "small-project",
+              "label_for_own_family": "unverified"
+            }
+          ]
+        },
+        "kafka-use": {
+          "target_rank": 4,
+          "top_three": [
+            {
+              "family": "kafka-use",
+              "label_for_own_family": "unverified"
+            },
+            {
+              "family": "kafka-use",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "outbox-pattern",
+              "label_for_own_family": "partial"
+            }
+          ]
+        },
+        "outbox-pattern": {
+          "target_rank": 1,
+          "top_three": [
+            {
+              "family": "outbox-pattern",
+              "label_for_own_family": "supported"
+            },
+            {
+              "family": "outbox-pattern",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "batch-pipelines",
+              "label_for_own_family": "supported"
+            }
+          ]
+        },
+        "batch-pipelines": {
+          "target_rank": 2,
+          "top_three": [
+            {
+              "family": "batch-pipelines",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "batch-pipelines",
+              "label_for_own_family": "supported"
+            },
+            {
+              "family": "batch-pipelines",
+              "label_for_own_family": "unverified"
+            }
+          ]
+        },
+        "contract-operations": {
+          "target_rank": 1,
+          "top_three": [
+            {
+              "family": "contract-operations",
+              "label_for_own_family": "supported"
+            },
+            {
+              "family": "contract-operations",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "contract-operations",
+              "label_for_own_family": "unverified"
+            }
+          ]
+        },
+        "engine-duration": {
+          "target_rank": 3,
+          "top_three": [
+            {
+              "family": "engine-years",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "engine-duration",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "engine-duration",
+              "label_for_own_family": "supported"
+            }
+          ]
+        }
+      }
+    },
+    "semantic_bm25": {
+      "summary": {
+        "first": 3,
+        "in_first_three": 7,
+        "mrr": 0.5426190476190477
+      },
+      "cases": {
+        "engine-years": {
+          "target_rank": 7,
+          "top_three": [
+            {
+              "family": "engine-years",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "engine-duration",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "small-project",
+              "label_for_own_family": "supported"
+            }
+          ]
+        },
+        "cloud-runtime": {
+          "target_rank": 1,
+          "top_three": [
+            {
+              "family": "cloud-runtime",
+              "label_for_own_family": "supported"
+            },
+            {
+              "family": "cloud-runtime",
+              "label_for_own_family": "unverified"
+            },
+            {
+              "family": "cloud-runtime",
+              "label_for_own_family": "partial"
+            }
+          ]
+        },
+        "mobile-game": {
+          "target_rank": 2,
+          "top_three": [
+            {
+              "family": "mobile-game",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "mobile-game",
+              "label_for_own_family": "supported"
+            },
+            {
+              "family": "engine-duration",
+              "label_for_own_family": "supported"
+            }
+          ]
+        },
+        "database-stores": {
+          "target_rank": 1,
+          "top_three": [
+            {
+              "family": "database-stores",
+              "label_for_own_family": "supported"
+            },
+            {
+              "family": "mobile-game",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "kafka-use",
+              "label_for_own_family": "supported"
+            }
+          ]
+        },
+        "small-project": {
+          "target_rank": 2,
+          "top_three": [
+            {
+              "family": "small-project",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "small-project",
+              "label_for_own_family": "supported"
+            },
+            {
+              "family": "small-project",
+              "label_for_own_family": "unverified"
+            }
+          ]
+        },
+        "kafka-use": {
+          "target_rank": 4,
+          "top_three": [
+            {
+              "family": "kafka-use",
+              "label_for_own_family": "unverified"
+            },
+            {
+              "family": "outbox-pattern",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "kafka-use",
+              "label_for_own_family": "partial"
+            }
+          ]
+        },
+        "outbox-pattern": {
+          "target_rank": 2,
+          "top_three": [
+            {
+              "family": "outbox-pattern",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "outbox-pattern",
+              "label_for_own_family": "supported"
+            },
+            {
+              "family": "small-project",
+              "label_for_own_family": "supported"
+            }
+          ]
+        },
+        "batch-pipelines": {
+          "target_rank": 3,
+          "top_three": [
+            {
+              "family": "batch-pipelines",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "batch-pipelines",
+              "label_for_own_family": "unverified"
+            },
+            {
+              "family": "batch-pipelines",
+              "label_for_own_family": "supported"
+            }
+          ]
+        },
+        "contract-operations": {
+          "target_rank": 1,
+          "top_three": [
+            {
+              "family": "contract-operations",
+              "label_for_own_family": "supported"
+            },
+            {
+              "family": "contract-operations",
+              "label_for_own_family": "unverified"
+            },
+            {
+              "family": "contract-operations",
+              "label_for_own_family": "partial"
+            }
+          ]
+        },
+        "engine-duration": {
+          "target_rank": 5,
+          "top_three": [
+            {
+              "family": "engine-duration",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "engine-years",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "mobile-game",
+              "label_for_own_family": "supported"
+            }
+          ]
+        }
+      }
+    },
+    "fine_tuned": {
+      "summary": {
+        "first": 5,
+        "in_first_three": 9,
+        "mrr": 0.675
+      },
+      "cases": {
+        "engine-years": {
+          "target_rank": 3,
+          "top_three": [
+            {
+              "family": "engine-years",
+              "label_for_own_family": "unverified"
+            },
+            {
+              "family": "engine-years",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "engine-years",
+              "label_for_own_family": "supported"
+            }
+          ]
+        },
+        "cloud-runtime": {
+          "target_rank": 1,
+          "top_three": [
+            {
+              "family": "cloud-runtime",
+              "label_for_own_family": "supported"
+            },
+            {
+              "family": "cloud-runtime",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "cloud-runtime",
+              "label_for_own_family": "unverified"
+            }
+          ]
+        },
+        "mobile-game": {
+          "target_rank": 1,
+          "top_three": [
+            {
+              "family": "mobile-game",
+              "label_for_own_family": "supported"
+            },
+            {
+              "family": "mobile-game",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "engine-years",
+              "label_for_own_family": "partial"
+            }
+          ]
+        },
+        "database-stores": {
+          "target_rank": 3,
+          "top_three": [
+            {
+              "family": "database-stores",
+              "label_for_own_family": "unverified"
+            },
+            {
+              "family": "database-stores",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "database-stores",
+              "label_for_own_family": "supported"
+            }
+          ]
+        },
+        "small-project": {
+          "target_rank": 1,
+          "top_three": [
+            {
+              "family": "small-project",
+              "label_for_own_family": "supported"
+            },
+            {
+              "family": "small-project",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "small-project",
+              "label_for_own_family": "unverified"
+            }
+          ]
+        },
+        "kafka-use": {
+          "target_rank": 4,
+          "top_three": [
+            {
+              "family": "kafka-use",
+              "label_for_own_family": "unverified"
+            },
+            {
+              "family": "kafka-use",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "outbox-pattern",
+              "label_for_own_family": "partial"
+            }
+          ]
+        },
+        "outbox-pattern": {
+          "target_rank": 1,
+          "top_three": [
+            {
+              "family": "outbox-pattern",
+              "label_for_own_family": "supported"
+            },
+            {
+              "family": "outbox-pattern",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "batch-pipelines",
+              "label_for_own_family": "supported"
+            }
+          ]
+        },
+        "batch-pipelines": {
+          "target_rank": 2,
+          "top_three": [
+            {
+              "family": "batch-pipelines",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "batch-pipelines",
+              "label_for_own_family": "supported"
+            },
+            {
+              "family": "batch-pipelines",
+              "label_for_own_family": "unverified"
+            }
+          ]
+        },
+        "contract-operations": {
+          "target_rank": 1,
+          "top_three": [
+            {
+              "family": "contract-operations",
+              "label_for_own_family": "supported"
+            },
+            {
+              "family": "contract-operations",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "contract-operations",
+              "label_for_own_family": "unverified"
+            }
+          ]
+        },
+        "engine-duration": {
+          "target_rank": 3,
+          "top_three": [
+            {
+              "family": "engine-years",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "engine-duration",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "engine-duration",
+              "label_for_own_family": "supported"
+            }
+          ]
+        }
+      }
+    },
+    "fine_tuned_bm25": {
+      "summary": {
+        "first": 3,
+        "in_first_three": 7,
+        "mrr": 0.5426190476190477
+      },
+      "cases": {
+        "engine-years": {
+          "target_rank": 7,
+          "top_three": [
+            {
+              "family": "engine-years",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "engine-duration",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "small-project",
+              "label_for_own_family": "supported"
+            }
+          ]
+        },
+        "cloud-runtime": {
+          "target_rank": 1,
+          "top_three": [
+            {
+              "family": "cloud-runtime",
+              "label_for_own_family": "supported"
+            },
+            {
+              "family": "cloud-runtime",
+              "label_for_own_family": "unverified"
+            },
+            {
+              "family": "cloud-runtime",
+              "label_for_own_family": "partial"
+            }
+          ]
+        },
+        "mobile-game": {
+          "target_rank": 2,
+          "top_three": [
+            {
+              "family": "mobile-game",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "mobile-game",
+              "label_for_own_family": "supported"
+            },
+            {
+              "family": "engine-duration",
+              "label_for_own_family": "supported"
+            }
+          ]
+        },
+        "database-stores": {
+          "target_rank": 1,
+          "top_three": [
+            {
+              "family": "database-stores",
+              "label_for_own_family": "supported"
+            },
+            {
+              "family": "mobile-game",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "kafka-use",
+              "label_for_own_family": "supported"
+            }
+          ]
+        },
+        "small-project": {
+          "target_rank": 2,
+          "top_three": [
+            {
+              "family": "small-project",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "small-project",
+              "label_for_own_family": "supported"
+            },
+            {
+              "family": "small-project",
+              "label_for_own_family": "unverified"
+            }
+          ]
+        },
+        "kafka-use": {
+          "target_rank": 4,
+          "top_three": [
+            {
+              "family": "kafka-use",
+              "label_for_own_family": "unverified"
+            },
+            {
+              "family": "outbox-pattern",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "kafka-use",
+              "label_for_own_family": "partial"
+            }
+          ]
+        },
+        "outbox-pattern": {
+          "target_rank": 2,
+          "top_three": [
+            {
+              "family": "outbox-pattern",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "outbox-pattern",
+              "label_for_own_family": "supported"
+            },
+            {
+              "family": "small-project",
+              "label_for_own_family": "supported"
+            }
+          ]
+        },
+        "batch-pipelines": {
+          "target_rank": 3,
+          "top_three": [
+            {
+              "family": "batch-pipelines",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "batch-pipelines",
+              "label_for_own_family": "unverified"
+            },
+            {
+              "family": "batch-pipelines",
+              "label_for_own_family": "supported"
+            }
+          ]
+        },
+        "contract-operations": {
+          "target_rank": 1,
+          "top_three": [
+            {
+              "family": "contract-operations",
+              "label_for_own_family": "supported"
+            },
+            {
+              "family": "contract-operations",
+              "label_for_own_family": "unverified"
+            },
+            {
+              "family": "contract-operations",
+              "label_for_own_family": "partial"
+            }
+          ]
+        },
+        "engine-duration": {
+          "target_rank": 5,
+          "top_three": [
+            {
+              "family": "engine-duration",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "engine-years",
+              "label_for_own_family": "partial"
+            },
+            {
+              "family": "mobile-game",
+              "label_for_own_family": "supported"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

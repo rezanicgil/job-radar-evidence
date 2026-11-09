@@ -1,0 +1,39 @@
+{
+  "host": "https://rezanicgil-job-radar-evidence.static.hf.space/",
+  "source_sha256": "63c7e8c11f8924892e40537fd89c24f5503d4b8f50c94eac1ff5e91b019fe08f",
+  "results": {
+    "terms": {
+      "first": 2,
+      "visible": 3,
+      "ranks": {
+        "engine-years": null,
+        "cloud-runtime": 1,
+        "mobile-game": null,
+        "database-stores": 2,
+        "small-project": null,
+        "kafka-use": null,
+        "outbox-pattern": null,
+        "batch-pipelines": null,
+        "contract-operations": 1,
+        "engine-duration": null
+      }
+    },
+    "semantic": {
+      "first": 4,
+      "visible": 9,
+      "ranks": {
+        "engine-years": 3,
+        "cloud-runtime": 1,
+        "mobile-game": 1,
+        "database-stores": 3,
+        "small-project": 1,
+        "kafka-use": null,
+        "outbox-pattern": 1,
+        "batch-pipelines": 3,
+        "contract-operations": 2,
+        "engine-duration": 3
+      }
+    }
+  },
+  "app_sha256": "7637b1d3ef17d3e58f7ddd4ccdeb408bbbb875ffbc19b6932034271d1d37776d"
+}
