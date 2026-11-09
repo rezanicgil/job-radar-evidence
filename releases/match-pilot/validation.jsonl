@@ -1,0 +1,18 @@
+{"family": "ios-native", "requirement": "Ship iOS features using SwiftUI.", "cv_passage": "SwiftUI ile sipariş geçmişini geliştirip App Store sürümünde yayımladım.", "label": "supported"}
+{"family": "ios-native", "requirement": "Ship iOS features using SwiftUI.", "cv_passage": "SwiftUI ile kişisel bir prototip hazırladım.", "label": "partial"}
+{"family": "ios-native", "requirement": "Ship iOS features using SwiftUI.", "cv_passage": "I managed the office budget.", "label": "unverified"}
+{"family": "android-ui", "requirement": "Kotlin ve Jetpack Compose ile Android uygulaması geliştirme deneyimi.", "cv_passage": "I built Kotlin Android screens with Jetpack Compose.", "label": "supported"}
+{"family": "android-ui", "requirement": "Kotlin ve Jetpack Compose ile Android uygulaması geliştirme deneyimi.", "cv_passage": "I used Kotlin on an Android app with XML layouts.", "label": "partial"}
+{"family": "android-ui", "requirement": "Kotlin ve Jetpack Compose ile Android uygulaması geliştirme deneyimi.", "cv_passage": "Developed billing reports with SQL.", "label": "unverified"}
+{"family": "firmware-debug", "requirement": "Experience debugging firmware on physical microcontrollers.", "cv_passage": "Kart üzerinde STM32 firmware hatalarını JTAG ile ayıkladım.", "label": "supported"}
+{"family": "firmware-debug", "requirement": "Experience debugging firmware on physical microcontrollers.", "cv_passage": "I debugged microcontroller firmware exclusively in a simulator.", "label": "partial"}
+{"family": "firmware-debug", "requirement": "Experience debugging firmware on physical microcontrollers.", "cv_passage": "Mobil uygulamanın ürün yol haritasını yönettim.", "label": "unverified"}
+{"family": "container-service", "requirement": "Package and run a backend service with Docker.", "cv_passage": "Docker ile sipariş servisi için imaj oluşturdum ve servisi konteynerde çalıştırdım.", "label": "supported"}
+{"family": "container-service", "requirement": "Package and run a backend service with Docker.", "cv_passage": "Teknik beceriler: Docker, Git, SQL.", "label": "partial"}
+{"family": "container-service", "requirement": "Package and run a backend service with Docker.", "cv_passage": "Docker eğitimine katılacak ekip için toplantı odasını ayırdım.", "label": "unverified"}
+{"family": "infra-module", "requirement": "Provision cloud resources using Terraform.", "cv_passage": "Wrote Terraform modules to provision our cloud networks.", "label": "supported"}
+{"family": "infra-module", "requirement": "Provision cloud resources using Terraform.", "cv_passage": "Tools: Terraform, AWS.", "label": "partial"}
+{"family": "infra-module", "requirement": "Provision cloud resources using Terraform.", "cv_passage": "Prepared attendee badges for a Terraform meetup.", "label": "unverified"}
+{"family": "metrics-alert", "requirement": "Üretim servisi için Prometheus alarmı kurmak.", "cv_passage": "Üretimde ödeme servisinin hata oranı için Prometheus alarmı kurdum.", "label": "supported"}
+{"family": "metrics-alert", "requirement": "Üretim servisi için Prometheus alarmı kurmak.", "cv_passage": "İzleme araçları: Prometheus ve Grafana.", "label": "partial"}
+{"family": "metrics-alert", "requirement": "Üretim servisi için Prometheus alarmı kurmak.", "cv_passage": "Prometheus toplantısına katılanların seyahatlerini ayarladım.", "label": "unverified"}

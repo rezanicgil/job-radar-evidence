@@ -52,3 +52,18 @@
 {"family": "load-test", "requirement": "Author and execute k6 load tests.", "cv_passage": "I authored and executed k6 load tests.", "label": "supported"}
 {"family": "load-test", "requirement": "Author and execute k6 load tests.", "cv_passage": "I executed existing k6 load tests written by a colleague.", "label": "partial"}
 {"family": "load-test", "requirement": "Author and execute k6 load tests.", "cv_passage": "I managed supplier invoices.", "label": "unverified"}
+{"family": "android-compose", "requirement": "Jetpack Compose ile bir Android ekranı geliştirmek.", "cv_passage": "Implemented the Android checkout screen using Jetpack Compose.", "label": "supported"}
+{"family": "android-compose", "requirement": "Jetpack Compose ile bir Android ekranı geliştirmek.", "cv_passage": "Mobile skills: Kotlin and Jetpack Compose.", "label": "partial"}
+{"family": "android-compose", "requirement": "Jetpack Compose ile bir Android ekranı geliştirmek.", "cv_passage": "Booked interview slots for Jetpack Compose instructors.", "label": "unverified"}
+{"family": "firmware-flash", "requirement": "Flash and verify firmware on a physical STM32 board.", "cv_passage": "STM32 kartına firmware yükledim ve kart üzerinde sürümü doğruladım.", "label": "supported"}
+{"family": "firmware-flash", "requirement": "Flash and verify firmware on a physical STM32 board.", "cv_passage": "Araçlar: STM32, C, Git.", "label": "partial"}
+{"family": "firmware-flash", "requirement": "Flash and verify firmware on a physical STM32 board.", "cv_passage": "STM32 kartlarının satın alma faturalarını arşivledim.", "label": "unverified"}
+{"family": "swift-release", "requirement": "SwiftUI ile geliştirilen bir iOS özelliğini yayımlamak.", "cv_passage": "Shipped the SwiftUI order history screen in our iOS app.", "label": "supported"}
+{"family": "swift-release", "requirement": "SwiftUI ile geliştirilen bir iOS özelliğini yayımlamak.", "cv_passage": "Skills include SwiftUI and Swift.", "label": "partial"}
+{"family": "swift-release", "requirement": "SwiftUI ile geliştirilen bir iOS özelliğini yayımlamak.", "cv_passage": "Scheduled a SwiftUI talk for conference guests.", "label": "unverified"}
+{"family": "queue-retry", "requirement": "Implement retries for failed Kafka messages.", "cv_passage": "Başarısız Kafka mesajları için yeniden deneme akışını yazdım.", "label": "supported"}
+{"family": "queue-retry", "requirement": "Implement retries for failed Kafka messages.", "cv_passage": "Mesajlaşma araçları: Kafka.", "label": "partial"}
+{"family": "queue-retry", "requirement": "Implement retries for failed Kafka messages.", "cv_passage": "Kafka konferansının yemek siparişini verdim.", "label": "unverified"}
+{"family": "cache-expiry", "requirement": "Redis üzerinde süreli önbellek kurmak.", "cv_passage": "Implemented a Redis cache with expiring keys for product lookups.", "label": "supported"}
+{"family": "cache-expiry", "requirement": "Redis üzerinde süreli önbellek kurmak.", "cv_passage": "Technologies: Redis, PostgreSQL.", "label": "partial"}
+{"family": "cache-expiry", "requirement": "Redis üzerinde süreli önbellek kurmak.", "cv_passage": "Handled catering for a Redis user group.", "label": "unverified"}
