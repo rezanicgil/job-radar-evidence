@@ -1,0 +1,589 @@
+{
+  "source_sha256": "06b677e5f5d27207fca9ef40953da7e02ade8aeb288f2a3ae79fcfbc651c4d0a",
+  "checkpoints": {
+    "base": {
+      "repo": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+      "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42"
+    },
+    "fine_tuned": {
+      "repo": "rezanicgil/python-tr-en-retriever",
+      "revision": "813078062d92ba7d57487fd97b14af3acd620522"
+    },
+    "attribution": {
+      "repo": "rezanicgil/job-radar-clause-attribution",
+      "revision": "c818969bb437370febedbfe2f5a80adac976d331"
+    }
+  },
+  "methods": {
+    "base": {
+      "en-tr": {
+        "target_first": 0,
+        "target_last": 3,
+        "total": 5,
+        "cases": {
+          "coding-assistant": {
+            "order": [
+              "other_actor",
+              "adjacent_or_future",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "pipeline": {
+            "order": [
+              "adjacent_or_future",
+              "other_actor",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "review-flow": {
+            "order": [
+              "other_actor",
+              "target",
+              "adjacent_or_future"
+            ],
+            "target_rank": 2
+          },
+          "toolchain": {
+            "order": [
+              "other_actor",
+              "adjacent_or_future",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "version-history": {
+            "order": [
+              "adjacent_or_future",
+              "target",
+              "other_actor"
+            ],
+            "target_rank": 2
+          }
+        }
+      },
+      "tr-en": {
+        "target_first": 2,
+        "target_last": 1,
+        "total": 5,
+        "cases": {
+          "coding-assistant": {
+            "order": [
+              "adjacent_or_future",
+              "target",
+              "other_actor"
+            ],
+            "target_rank": 2
+          },
+          "pipeline": {
+            "order": [
+              "adjacent_or_future",
+              "target",
+              "other_actor"
+            ],
+            "target_rank": 2
+          },
+          "review-flow": {
+            "order": [
+              "other_actor",
+              "adjacent_or_future",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "toolchain": {
+            "order": [
+              "target",
+              "adjacent_or_future",
+              "other_actor"
+            ],
+            "target_rank": 1
+          },
+          "version-history": {
+            "order": [
+              "target",
+              "other_actor",
+              "adjacent_or_future"
+            ],
+            "target_rank": 1
+          }
+        }
+      },
+      "en-en": {
+        "target_first": 0,
+        "target_last": 2,
+        "total": 5,
+        "cases": {
+          "coding-assistant": {
+            "order": [
+              "adjacent_or_future",
+              "target",
+              "other_actor"
+            ],
+            "target_rank": 2
+          },
+          "pipeline": {
+            "order": [
+              "adjacent_or_future",
+              "target",
+              "other_actor"
+            ],
+            "target_rank": 2
+          },
+          "review-flow": {
+            "order": [
+              "adjacent_or_future",
+              "other_actor",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "toolchain": {
+            "order": [
+              "adjacent_or_future",
+              "other_actor",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "version-history": {
+            "order": [
+              "adjacent_or_future",
+              "target",
+              "other_actor"
+            ],
+            "target_rank": 2
+          }
+        }
+      },
+      "tr-tr": {
+        "target_first": 1,
+        "target_last": 2,
+        "total": 5,
+        "cases": {
+          "coding-assistant": {
+            "order": [
+              "other_actor",
+              "adjacent_or_future",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "pipeline": {
+            "order": [
+              "other_actor",
+              "adjacent_or_future",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "review-flow": {
+            "order": [
+              "other_actor",
+              "target",
+              "adjacent_or_future"
+            ],
+            "target_rank": 2
+          },
+          "toolchain": {
+            "order": [
+              "other_actor",
+              "target",
+              "adjacent_or_future"
+            ],
+            "target_rank": 2
+          },
+          "version-history": {
+            "order": [
+              "target",
+              "adjacent_or_future",
+              "other_actor"
+            ],
+            "target_rank": 1
+          }
+        }
+      }
+    },
+    "fine_tuned": {
+      "en-tr": {
+        "target_first": 0,
+        "target_last": 3,
+        "total": 5,
+        "cases": {
+          "coding-assistant": {
+            "order": [
+              "other_actor",
+              "adjacent_or_future",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "pipeline": {
+            "order": [
+              "adjacent_or_future",
+              "other_actor",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "review-flow": {
+            "order": [
+              "other_actor",
+              "target",
+              "adjacent_or_future"
+            ],
+            "target_rank": 2
+          },
+          "toolchain": {
+            "order": [
+              "other_actor",
+              "adjacent_or_future",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "version-history": {
+            "order": [
+              "adjacent_or_future",
+              "target",
+              "other_actor"
+            ],
+            "target_rank": 2
+          }
+        }
+      },
+      "tr-en": {
+        "target_first": 2,
+        "target_last": 1,
+        "total": 5,
+        "cases": {
+          "coding-assistant": {
+            "order": [
+              "adjacent_or_future",
+              "target",
+              "other_actor"
+            ],
+            "target_rank": 2
+          },
+          "pipeline": {
+            "order": [
+              "adjacent_or_future",
+              "target",
+              "other_actor"
+            ],
+            "target_rank": 2
+          },
+          "review-flow": {
+            "order": [
+              "adjacent_or_future",
+              "other_actor",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "toolchain": {
+            "order": [
+              "target",
+              "adjacent_or_future",
+              "other_actor"
+            ],
+            "target_rank": 1
+          },
+          "version-history": {
+            "order": [
+              "target",
+              "other_actor",
+              "adjacent_or_future"
+            ],
+            "target_rank": 1
+          }
+        }
+      },
+      "en-en": {
+        "target_first": 0,
+        "target_last": 2,
+        "total": 5,
+        "cases": {
+          "coding-assistant": {
+            "order": [
+              "adjacent_or_future",
+              "target",
+              "other_actor"
+            ],
+            "target_rank": 2
+          },
+          "pipeline": {
+            "order": [
+              "adjacent_or_future",
+              "target",
+              "other_actor"
+            ],
+            "target_rank": 2
+          },
+          "review-flow": {
+            "order": [
+              "adjacent_or_future",
+              "other_actor",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "toolchain": {
+            "order": [
+              "adjacent_or_future",
+              "other_actor",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "version-history": {
+            "order": [
+              "adjacent_or_future",
+              "target",
+              "other_actor"
+            ],
+            "target_rank": 2
+          }
+        }
+      },
+      "tr-tr": {
+        "target_first": 0,
+        "target_last": 2,
+        "total": 5,
+        "cases": {
+          "coding-assistant": {
+            "order": [
+              "other_actor",
+              "adjacent_or_future",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "pipeline": {
+            "order": [
+              "other_actor",
+              "adjacent_or_future",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "review-flow": {
+            "order": [
+              "other_actor",
+              "target",
+              "adjacent_or_future"
+            ],
+            "target_rank": 2
+          },
+          "toolchain": {
+            "order": [
+              "other_actor",
+              "target",
+              "adjacent_or_future"
+            ],
+            "target_rank": 2
+          },
+          "version-history": {
+            "order": [
+              "adjacent_or_future",
+              "target",
+              "other_actor"
+            ],
+            "target_rank": 2
+          }
+        }
+      }
+    },
+    "attribution": {
+      "en-tr": {
+        "target_first": 2,
+        "target_last": 0,
+        "total": 5,
+        "cases": {
+          "coding-assistant": {
+            "order": [
+              "target",
+              "other_actor",
+              "adjacent_or_future"
+            ],
+            "target_rank": 1
+          },
+          "pipeline": {
+            "order": [
+              "adjacent_or_future",
+              "target",
+              "other_actor"
+            ],
+            "target_rank": 2
+          },
+          "review-flow": {
+            "order": [
+              "other_actor",
+              "target",
+              "adjacent_or_future"
+            ],
+            "target_rank": 2
+          },
+          "toolchain": {
+            "order": [
+              "target",
+              "adjacent_or_future",
+              "other_actor"
+            ],
+            "target_rank": 1
+          },
+          "version-history": {
+            "order": [
+              "other_actor",
+              "target",
+              "adjacent_or_future"
+            ],
+            "target_rank": 2
+          }
+        }
+      },
+      "tr-en": {
+        "target_first": 0,
+        "target_last": 3,
+        "total": 5,
+        "cases": {
+          "coding-assistant": {
+            "order": [
+              "other_actor",
+              "target",
+              "adjacent_or_future"
+            ],
+            "target_rank": 2
+          },
+          "pipeline": {
+            "order": [
+              "other_actor",
+              "target",
+              "adjacent_or_future"
+            ],
+            "target_rank": 2
+          },
+          "review-flow": {
+            "order": [
+              "adjacent_or_future",
+              "other_actor",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "toolchain": {
+            "order": [
+              "adjacent_or_future",
+              "other_actor",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "version-history": {
+            "order": [
+              "adjacent_or_future",
+              "other_actor",
+              "target"
+            ],
+            "target_rank": 3
+          }
+        }
+      },
+      "en-en": {
+        "target_first": 1,
+        "target_last": 1,
+        "total": 5,
+        "cases": {
+          "coding-assistant": {
+            "order": [
+              "target",
+              "other_actor",
+              "adjacent_or_future"
+            ],
+            "target_rank": 1
+          },
+          "pipeline": {
+            "order": [
+              "other_actor",
+              "target",
+              "adjacent_or_future"
+            ],
+            "target_rank": 2
+          },
+          "review-flow": {
+            "order": [
+              "other_actor",
+              "target",
+              "adjacent_or_future"
+            ],
+            "target_rank": 2
+          },
+          "toolchain": {
+            "order": [
+              "adjacent_or_future",
+              "other_actor",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "version-history": {
+            "order": [
+              "other_actor",
+              "target",
+              "adjacent_or_future"
+            ],
+            "target_rank": 2
+          }
+        }
+      },
+      "tr-tr": {
+        "target_first": 2,
+        "target_last": 2,
+        "total": 5,
+        "cases": {
+          "coding-assistant": {
+            "order": [
+              "adjacent_or_future",
+              "other_actor",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "pipeline": {
+            "order": [
+              "adjacent_or_future",
+              "other_actor",
+              "target"
+            ],
+            "target_rank": 3
+          },
+          "review-flow": {
+            "order": [
+              "target",
+              "other_actor",
+              "adjacent_or_future"
+            ],
+            "target_rank": 1
+          },
+          "toolchain": {
+            "order": [
+              "target",
+              "other_actor",
+              "adjacent_or_future"
+            ],
+            "target_rank": 1
+          },
+          "version-history": {
+            "order": [
+              "adjacent_or_future",
+              "target",
+              "other_actor"
+            ],
+            "target_rank": 2
+          }
+        }
+      }
+    }
+  }
+}

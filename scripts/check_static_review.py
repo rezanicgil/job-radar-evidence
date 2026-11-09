@@ -430,6 +430,23 @@ def check(page, origin):
     packet=Path(__file__).resolve().parents[1]/"research/source_grounded_candidates.jsonl"
     assert row["packet_sha256"]==sha256(packet.read_bytes()).hexdigest()
 
+    page.goto(urljoin(origin,"annotate.html?packet=git"))
+    expect(page.locator("#packetTitle")).to_have_text("Cross-language Git evidence")
+    expect(page.locator("#progress")).to_contain_text("of 30 · 0 saved")
+    packet_bytes=page.request.get(urljoin(origin,"git-review-packet.jsonl")).body()
+    blind_rows=[json.loads(s) for s in packet_bytes.splitlines()]
+    assert len(blind_rows)==len({r["id"] for r in blind_rows})==30
+    assert all(set(r)=={"id","requirement","cv_passage"} for r in blind_rows)
+    page.locator("input[value=unverified]").check()
+    page.locator("#save").click()
+    with page.expect_download() as event:
+        page.locator("#export").click()
+    assert event.value.suggested_filename=="job-radar-git-review-1-of-30.jsonl"
+    answer=json.loads(event.value.path().read_text(encoding="utf8"))
+    assert answer["packet_sha256"]==sha256(packet_bytes).hexdigest()
+    page.goto(urljoin(origin,"annotate.html"))
+    expect(page.locator("#progress")).to_contain_text("of 12 · 1 saved")
+
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)

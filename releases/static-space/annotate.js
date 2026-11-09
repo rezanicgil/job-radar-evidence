@@ -1,7 +1,9 @@
 const el=id=>document.getElementById(id);
 const radios=[...document.querySelectorAll("input[name=label]")];
 const labels=new Set(radios.map(r=>r.value));
-const response=await fetch("review-packet.jsonl");
+const gitPacket=new URLSearchParams(location.search).get("packet")==="git";
+el("packetTitle").textContent=gitPacket?"Cross-language Git evidence":"Source-grounded CV evidence";
+const response=await fetch(gitPacket?"git-review-packet.jsonl":"review-packet.jsonl");
 if(!response.ok)throw Error(el("progress").textContent="Examples are unavailable. Reload to retry.");
 const bytes=await response.arrayBuffer();
 const hash=[...new Uint8Array(await crypto.subtle.digest("SHA-256",bytes))].map(n=>n.toString(16).padStart(2,"0")).join("");
@@ -63,7 +65,7 @@ el("save").onclick=()=>{
 el("export").onclick=()=>{
   const body=[...decisions.values()].map(answer=>JSON.stringify(answer)).join("\n")+"\n";
   const url=URL.createObjectURL(new Blob([body],{type:"application/x-ndjson"}));
-  const a=document.createElement("a");a.href=url;a.download="job-radar-review-"+decisions.size+"-of-"+rows.length+".jsonl";a.click();
+  const a=document.createElement("a");a.href=url;a.download=(gitPacket?"job-radar-git-review-":"job-radar-review-")+decisions.size+"-of-"+rows.length+".jsonl";a.click();
   setTimeout(()=>URL.revokeObjectURL(url),1000);
 };
 render();

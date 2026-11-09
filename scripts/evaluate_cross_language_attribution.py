@@ -1,4 +1,5 @@
 """Rank three fictional passages for each sourced condition in both language directions."""
+import argparse
 from hashlib import sha256
 import json
 from train_clause_attribution import clauses, encode, AutoModelForSequenceClassification
@@ -9,7 +10,11 @@ from evaluate_pooled_retrieval import BASE, REVISION, ROOT, embeddings, AutoMode
 
 def main():
     torch.set_num_threads(4)
-    dataset=ROOT/"releases/match-pilot/cross_language_attribution.jsonl"
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--dataset",choices=["cross_language_attribution","git_evidence_transfer"],default="cross_language_attribution")
+    name=parser.parse_args().dataset
+    dataset=ROOT/"releases/match-pilot"/(name+".jsonl")
+    output=ROOT/"reports"/(name.replace("_","-")+".json")
     rows=[json.loads(line) for line in dataset.read_text(encoding="utf8").splitlines()]
     families=sorted({r["family"] for r in rows})
     report=dict(source_sha256=sha256(dataset.read_bytes()).hexdigest(),checkpoints={},methods={})
@@ -44,7 +49,7 @@ def main():
             ranks=[v["target_rank"] for v in cases.values()]
             views[job+"-"+cv]=dict(target_first=ranks.count(1),target_last=ranks.count(3),total=len(ranks),cases=cases)
         report["methods"][name]=views
-    (ROOT/"reports/cross-language-attribution.json").write_text(json.dumps(report,indent=2)+"\n","utf8")
+    output.write_text(json.dumps(report,indent=2)+"\n","utf8")
     for name,views in report["methods"].items():
         print(name,{lang:(row["target_first"],row["target_last"]) for lang,row in views.items()})
 

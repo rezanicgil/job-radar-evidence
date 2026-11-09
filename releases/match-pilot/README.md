@@ -40,6 +40,10 @@ configs:
     data_files:
       - split: validation
         path: technology_connectives.jsonl
+  - config_name: git_evidence_transfer
+    data_files:
+      - split: validation
+        path: git_evidence_transfer.jsonl
   - config_name: cross_language_attribution
     data_files:
       - split: validation
@@ -101,6 +105,8 @@ The validation file begins with nine general challenge examples and ends with ni
 ## How to read a row
 
 In `technology_connectives`, each of 24 fictional passages has two versions of the same requirement. One asks for both named technologies and one accepts either. The six families cover messaging, embedded drivers, Android, cloud deployment, iOS and model training. Twelve passages demonstrate exactly one option. The reference label changes from partial to supported when the requirement changes from AND to OR in these cases. The published classifier produced the correct change on 0/12. The references are project-authored. [Predictions per pair](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/technology-connectives.json)
+
+The `git_evidence_transfer` split contains five paraphrased conditions from five postings at three employers and three project-authored fictional passages per condition. Each passage has an English and Turkish version. Compare the target with work done by another actor and with adjacent or future work within the same family. These labels describe a ranking target, not the strength of every partially relevant passage. [Blind review packet](https://rezanicgil-job-radar-evidence.static.hf.space/annotate.html?packet=git) · [Frozen model results](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/git-evidence-transfer.json)
 
 The `cross_language_attribution` split pairs four employer-sourced, paraphrased conditions with three fictional CV passages each. Both languages are supplied for every text. Each family has one author-designated supporting passage, one describing another person's work and one describing adjacent work or future intent. Evaluate the three passages within their family. Translations are repeated views of the same case. [Per-language rankings](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/cross-language-attribution.json)
 

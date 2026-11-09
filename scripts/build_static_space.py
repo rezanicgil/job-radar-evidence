@@ -1,5 +1,6 @@
 """Stage the free Hugging Face Static Space with its dated market snapshot."""
 
+from hashlib import sha256
 import json
 import shutil
 import tempfile
@@ -15,6 +16,16 @@ def main():
     shutil.copytree(ROOT / "releases/static-space",dest,dirs_exist_ok=True)
     shutil.copyfile(ROOT / "LICENSE",dest / "LICENSE")
     shutil.copyfile(ROOT / "research/source_grounded_candidates.jsonl",dest / "review-packet.jsonl")
+    git_cases=[]
+    for line in (ROOT/"releases/match-pilot/git_evidence_transfer.jsonl").read_text(encoding="utf8").splitlines():
+        row=json.loads(line)
+        for job,cv in [("en","tr"),("tr","en")]:
+            pair=dict(requirement=row["requirement_"+job],cv_passage=row["cv_"+cv])
+            case_id=sha256(json.dumps(pair,sort_keys=True,ensure_ascii=False).encode()).hexdigest()[:16]
+            git_cases.append(dict(id=case_id,**pair))
+    assert len({r["id"] for r in git_cases})==len(git_cases)
+    (dest/"git-review-packet.jsonl").write_bytes("".join(json.dumps(r,ensure_ascii=False)+"\n"
+        for r in sorted(git_cases,key=lambda r:r["id"])).encode())
     shutil.copyfile(ROOT / "reports/source-pairs-dev.json",dest / "model-examples.json")
     shutil.copyfile(ROOT / "reports/language-switch.json",dest / "model-languages.json")
     history=daily_history(ROOT/"reports")
