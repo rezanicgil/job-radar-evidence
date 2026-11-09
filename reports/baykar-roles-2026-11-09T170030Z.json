@@ -1,0 +1,233 @@
+{
+  "employer": "Baykar",
+  "board_url": "https://kariyer.baykartech.com/tr/open-positions/",
+  "collected_at": "2026-11-09T17:00:30.924862+00:00",
+  "review_failures": [],
+  "scanned": 320,
+  "source_types": {
+    "2027 Yaz Dönemi Staj": 136,
+    "İş": 184
+  },
+  "location_status": "Not provided by listing feed",
+  "postings": [
+    {
+      "id": 356,
+      "title": "Gömülü Yazılım Geliştirme Mühendisi",
+      "category": "Gömülü Yazılım Teknolojileri",
+      "areas": [
+        "Embedded and firmware",
+        "Software engineering (general)"
+      ],
+      "url": "https://kariyer.baykartech.com/tr/acik-pozisyonlar/detay/gomulu-yazilim-gelistirme-muhendisi",
+      "qualification": [
+        "Proficiency in C/C++ programming.",
+        "Understand ARM architecture."
+      ],
+      "preference": [
+        "Additional scripting experience with at least one of Python, MATLAB or R."
+      ]
+    },
+    {
+      "id": 406,
+      "title": "Nesne Tabanlı Yazılım Mühendisi",
+      "category": "İnsan Makine Etkileşimli Yazılım Teknolojileri",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "url": "https://kariyer.baykartech.com/tr/acik-pozisyonlar/detay/nesne-tabanli-yazilim-muhendisi",
+      "qualification": [
+        "Strong command of at least one object-oriented language such as C++, C# or Java.",
+        "Practical experience using Git for version control."
+      ],
+      "preference": [
+        "Experience with relational databases such as PostgreSQL or MySQL."
+      ]
+    },
+    {
+      "id": 408,
+      "title": "Yazılım Test ve Otomasyon Mühendisliği (Gömülü Yazılım Teknolojileri)",
+      "category": "Gömülü Yazılım Teknolojileri",
+      "areas": [
+        "Embedded and firmware",
+        "QA and testing",
+        "Software engineering (general)"
+      ],
+      "url": "https://kariyer.baykartech.com/tr/acik-pozisyonlar/detay/yazilim-test-ve-otomasyon-muhendisligi-gomulu-yazi",
+      "qualification": [
+        "Build applications in at least one of C, C++, C# or Python.",
+        "Experience with software testing tools and methods, such as Selenium or Winium."
+      ],
+      "preference": [
+        "Two years of testing and automation experience."
+      ]
+    },
+    {
+      "id": 420,
+      "title": "Servo Sistemleri Kontrol ve Yazılım Mühendisi",
+      "category": "Kontrol, Güdüm ve Seyrüsefer Teknolojileri",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "url": "https://kariyer.baykartech.com/tr/acik-pozisyonlar/detay/servo-sistemleri-kontrol-ve-yazilim-muhendisi"
+    },
+    {
+      "id": 454,
+      "title": "Yapay Zeka Mühendisi",
+      "category": "Yapay Zeka Yazılım Teknolojileri",
+      "areas": [
+        "Data and AI"
+      ],
+      "url": "https://kariyer.baykartech.com/tr/acik-pozisyonlar/detay/yapay-zeka-muhendisi"
+    },
+    {
+      "id": 464,
+      "title": "Yazılım Mühendisi (Computer Vision / ML)",
+      "category": "Haritalama",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "url": "https://kariyer.baykartech.com/tr/acik-pozisyonlar/detay/yazilim-muhendisi-computer-vision-ml"
+    },
+    {
+      "id": 466,
+      "title": "Nesne Tabanlı Yazılım Test Mühendisi",
+      "category": "İnsan Makine Etkileşimli Yazılım Teknolojileri",
+      "areas": [
+        "QA and testing",
+        "Software engineering (general)"
+      ],
+      "url": "https://kariyer.baykartech.com/tr/acik-pozisyonlar/detay/nesne-tabanli-yazilim-test-muhendisi"
+    },
+    {
+      "id": 563,
+      "title": "Yazılım Test Uzmanı",
+      "category": "Dijital Sistem Yazılım Teknolojileri",
+      "areas": [
+        "QA and testing",
+        "Software engineering (general)"
+      ],
+      "url": "https://kariyer.baykartech.com/tr/acik-pozisyonlar/detay/yazilim-test-uzmani"
+    },
+    {
+      "id": 959,
+      "title": "Yazılım Proje Mühendisi",
+      "category": "İnsan Makine Etkileşimli Yazılım Teknolojileri",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "url": "https://kariyer.baykartech.com/tr/acik-pozisyonlar/detay/yazilim-proje-muhendisi"
+    },
+    {
+      "id": 1458,
+      "title": "DevOps / Sistem Güvenilirliği Mühendisi (SRE)",
+      "category": "Ağ, Bilişim ve Bilgi Güvenliği Sistemleri",
+      "areas": [
+        "Platform and reliability"
+      ],
+      "url": "https://kariyer.baykartech.com/tr/acik-pozisyonlar/detay/devops-sistem-guvenilirligi-muhendisi-sre"
+    },
+    {
+      "id": 1586,
+      "title": "Bilimsel Yazılım Geliştirme Mühendisi",
+      "category": "Uçuş Bilimleri",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "url": "https://kariyer.baykartech.com/tr/acik-pozisyonlar/detay/bilimsel-yazilim-gelistirme-muhendisi"
+    },
+    {
+      "id": 1849,
+      "title": "Hafif Platformlar Arayüz Geliştirme Yazılım Mühendisi",
+      "category": "Hafif Platformlar",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "url": "https://kariyer.baykartech.com/tr/acik-pozisyonlar/detay/hafif-platformlar-arayuz-gelistirme-yazilim-muhend"
+    },
+    {
+      "id": 1971,
+      "title": "Full Stack Yazılım Mühendisi",
+      "category": "Haritalama",
+      "areas": [
+        "Full stack",
+        "Software engineering (general)"
+      ],
+      "url": "https://kariyer.baykartech.com/tr/acik-pozisyonlar/detay/full-stack-yazilim-muhendisi"
+    },
+    {
+      "id": 2214,
+      "title": "Hafif Platformlar Gömülü Yazılım Geliştirme Mühendisi",
+      "category": "Hafif Platformlar",
+      "areas": [
+        "Embedded and firmware",
+        "Software engineering (general)"
+      ],
+      "url": "https://kariyer.baykartech.com/tr/acik-pozisyonlar/detay/hafif-platformlar-gomulu-yazilim-gelistirme-muhend"
+    },
+    {
+      "id": 2377,
+      "title": "Arka Uç Yazılım Uzmanı",
+      "category": "Dijital Sistem Yazılım Teknolojileri",
+      "areas": [
+        "Backend",
+        "Software engineering (general)"
+      ],
+      "url": "https://kariyer.baykartech.com/tr/acik-pozisyonlar/detay/arka-uc-yazilim-uzmani"
+    },
+    {
+      "id": 2791,
+      "title": "Ön Yüz Yazılım Uzmanı (ABBGS)",
+      "category": "Ağ, Bilişim ve Bilgi Güvenliği Sistemleri",
+      "areas": [
+        "Frontend",
+        "Software engineering (general)"
+      ],
+      "url": "https://kariyer.baykartech.com/tr/acik-pozisyonlar/detay/on-yuz-yazilim-uzmani-abbgs"
+    },
+    {
+      "id": 2803,
+      "title": "Uzman PLC ve Robotik Otomasyon Mühendisi",
+      "category": "Entegrasyon",
+      "areas": [
+        "Robotics and controls"
+      ],
+      "url": "https://kariyer.baykartech.com/tr/acik-pozisyonlar/detay/uzman-plc-ve-robotik-otomasyon-muhendisi"
+    },
+    {
+      "id": 2811,
+      "title": "Yazılım Geliştirme Ar-Ge Mühendisi",
+      "category": "K2",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "url": "https://kariyer.baykartech.com/tr/acik-pozisyonlar/detay/yazilim-gelistirme-ar-ge-muhendisi"
+    },
+    {
+      "id": 3149,
+      "title": "Full Stack Ağ ve Uygulama Geliştiricisi",
+      "category": "Ağ, Bilişim ve Bilgi Güvenliği Sistemleri",
+      "areas": [
+        "Full stack"
+      ],
+      "url": "https://kariyer.baykartech.com/tr/acik-pozisyonlar/detay/full-stack-ag-ve-uygulama-gelistiricisi"
+    },
+    {
+      "id": 3313,
+      "title": "Sistem ve Platform Yazılım Geliştirme Mühendisi",
+      "category": "Yapay Zeka Yazılım Teknolojileri",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "url": "https://kariyer.baykartech.com/tr/acik-pozisyonlar/detay/sistem-ve-platform-yazilim-gelistirme-muhendisi"
+    },
+    {
+      "id": 3452,
+      "title": "Yeni Nesil Motor Teknolojileri Yazılım Mühendisi",
+      "category": "Motor Teknolojileri",
+      "areas": [
+        "Software engineering (general)"
+      ],
+      "url": "https://kariyer.baykartech.com/tr/acik-pozisyonlar/detay/yeni-nesil-motor-teknolojileri-yazilim-muhendisi"
+    }
+  ]
+}

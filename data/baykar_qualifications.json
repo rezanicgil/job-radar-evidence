@@ -1,0 +1,74 @@
+[
+  {
+    "id": 356,
+    "url": "https://kariyer.baykartech.com/tr/acik-pozisyonlar/detay/gomulu-yazilim-gelistirme-muhendisi",
+    "section": "Genel Nitelikler",
+    "bullet": 1,
+    "sha256": "6dbf4e6179bbc18c0d9b64de35e26a731f6aade9e99b11f2affe83d88a95eae6",
+    "condition": "Proficiency in C/C++ programming."
+  },
+  {
+    "id": 356,
+    "url": "https://kariyer.baykartech.com/tr/acik-pozisyonlar/detay/gomulu-yazilim-gelistirme-muhendisi",
+    "section": "Genel Nitelikler",
+    "bullet": 3,
+    "sha256": "d32effe0aaf55ad5c75cd675c87e810eb9a59eabdac30b352bda99c4e2902317",
+    "condition": "Understand ARM architecture."
+  },
+  {
+    "id": 356,
+    "url": "https://kariyer.baykartech.com/tr/acik-pozisyonlar/detay/gomulu-yazilim-gelistirme-muhendisi",
+    "section": "Tercih Nedeni Olabilecek Ek Nitelikler",
+    "bullet": 2,
+    "sha256": "eb439b1b84b2db78dace489e484441afe9b4b058c9709ccc5d8ce07db7f9e21f",
+    "condition": "Additional scripting experience with at least one of Python, MATLAB or R."
+  },
+  {
+    "id": 406,
+    "url": "https://kariyer.baykartech.com/tr/acik-pozisyonlar/detay/nesne-tabanli-yazilim-muhendisi",
+    "section": "Genel Nitelikler",
+    "bullet": 3,
+    "sha256": "0ea3ba1eedba7f84a2cd803ee6268a1094f8635c2eb70797a8e7b522af1f64b4",
+    "condition": "Strong command of at least one object-oriented language such as C++, C# or Java."
+  },
+  {
+    "id": 406,
+    "url": "https://kariyer.baykartech.com/tr/acik-pozisyonlar/detay/nesne-tabanli-yazilim-muhendisi",
+    "section": "Genel Nitelikler",
+    "bullet": 5,
+    "sha256": "f33712195a077f5a4a82a21cc6459b77626e015d676b1877eb1d750e00ad392a",
+    "condition": "Practical experience using Git for version control."
+  },
+  {
+    "id": 406,
+    "url": "https://kariyer.baykartech.com/tr/acik-pozisyonlar/detay/nesne-tabanli-yazilim-muhendisi",
+    "section": "Tercih Nedeni Olabilecek Ek Nitelikler",
+    "bullet": 2,
+    "sha256": "24273d87c8735da0ca9ce6a67c5147017938d51531b0c917868a25b2f5889671",
+    "condition": "Experience with relational databases such as PostgreSQL or MySQL."
+  },
+  {
+    "id": 408,
+    "url": "https://kariyer.baykartech.com/tr/acik-pozisyonlar/detay/yazilim-test-ve-otomasyon-muhendisligi-gomulu-yazi",
+    "section": "Genel Nitelikler",
+    "bullet": 2,
+    "sha256": "c01eb52f65e17e0ce2d955362bb924090d5e14b34d6164339a237282f85bf1b7",
+    "condition": "Build applications in at least one of C, C++, C# or Python."
+  },
+  {
+    "id": 408,
+    "url": "https://kariyer.baykartech.com/tr/acik-pozisyonlar/detay/yazilim-test-ve-otomasyon-muhendisligi-gomulu-yazi",
+    "section": "Genel Nitelikler",
+    "bullet": 3,
+    "sha256": "7d275a37b880919b543723a9dcb821bb9219bf3d4f7e3ba6b0bdc498040a0d9f",
+    "condition": "Experience with software testing tools and methods, such as Selenium or Winium."
+  },
+  {
+    "id": 408,
+    "url": "https://kariyer.baykartech.com/tr/acik-pozisyonlar/detay/yazilim-test-ve-otomasyon-muhendisligi-gomulu-yazi",
+    "section": "Tercih Nedeni Olabilecek Ek Nitelikler",
+    "bullet": 1,
+    "sha256": "ece1f1ab4f31d33c8e8a1cce09cb1d56930d354dbf86633b32f6589c77fb3b53",
+    "condition": "Two years of testing and automation experience."
+  }
+]

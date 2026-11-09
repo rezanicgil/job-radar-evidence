@@ -458,7 +458,15 @@ try{
         const panel=add(boardListings,"details","");
         add(panel,"summary",employerBoard.employer+" · "+positions.length+" employment listings · location unconfirmed");
         add(panel,"p","Listed on "+employerBoard.collected_at.slice(0,10)+". The board omits job locations. These listings are outside the Türkiye technology percentages.");
-        for(const p of positions)add(add(panel,"p",""),"a",p.title).href=p.url;
+        for(const p of positions){
+          const entry=add(panel,"div","");
+          add(add(entry,"p",""),"a",p.title).href=p.url;
+          if(p.qualification?.length){
+            add(entry,"p","Selected qualifications: "+p.qualification.join(" "));
+            if(p.preference?.length)add(entry,"p","Selected preferences: "+p.preference.join(" "));
+            offerReviewedConditions(entry,{employer:employerBoard.employer,title:p.title,source_url:p.url},p.qualification);
+          }
+        }
       }
     }
     el("scope").textContent=market.collected_at.slice(0,10)+" · "+records.length+" readable descriptions of "+group.length+" selected postings. Counts include mentions in preferences and company context.";

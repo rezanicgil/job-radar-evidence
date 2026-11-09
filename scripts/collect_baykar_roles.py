@@ -2,10 +2,13 @@
 
 from collections import Counter
 from datetime import datetime, timezone
+from hashlib import sha256
+from html import unescape
 import json
 import re
 from urllib.parse import quote, urlsplit
 from urllib.request import Request, urlopen
+from urllib.error import URLError
 
 from market_inventory import ROOT, PATTERNS
 
@@ -20,6 +23,33 @@ EXTRA={
     "QA and testing": r"yazılım.*test|test.*yazılım",
     "Data and AI": r"yapay zek[aâ]|makine öğren|veri mühendisi",
 }
+
+def reviewed_qualifications(postings):
+    specs=json.loads((ROOT/"data/baykar_qualifications.json").read_text(encoding="utf-8"))
+    failures=[]
+    for job in postings:
+        chosen=[s for s in specs if s["id"]==job["id"] and s["url"]==job["url"]]
+        if not chosen:
+            continue
+        try:
+            with urlopen(Request(job["url"],headers={"User-Agent":"JobRadar/1.0"}),timeout=20) as response:
+                page=response.read().decode("utf-8")
+        except (URLError,TimeoutError,UnicodeError) as exc:
+            failures.append(dict(id=job["id"],reason=type(exc).__name__))
+            continue
+        sections={}
+        for heading,listing in re.findall(r'(Genel Nitelikler|Tercih Nedeni Olabilecek Ek Nitelikler)[: ]*(?:</[^>]+>\s*)+<ul[^>]*>(.*?)</ul>',page,re.I|re.S):
+            sections[heading]=[" ".join(unescape(re.sub("<[^>]*>","",item)).split())
+                               for item in re.findall("<li[^>]*>(.*?)</li>",listing,re.S)]
+        for spec in chosen:
+            items=sections.get(spec["section"],[])
+            i=spec["bullet"]-1
+            if not 0<=i<len(items) or sha256(items[i].encode()).hexdigest()!=spec["sha256"]:
+                failures.append(dict(id=job["id"],section=spec["section"],bullet=i+1,reason="Source changed"))
+                continue
+            bucket="qualification" if spec["section"]=="Genel Nitelikler" else "preference"
+            job.setdefault(bucket,[]).append(spec["condition"])
+    return failures
 
 
 def main():
@@ -56,7 +86,8 @@ def main():
         url=page["next"]
     if len(seen)!=total:raise ValueError("Incomplete board inventory")
     now=datetime.now(timezone.utc)
-    report=dict(employer="Baykar",board_url=BOARD+"/tr/open-positions/",collected_at=now.isoformat(),
+    failures=reviewed_qualifications(selected)
+    report=dict(employer="Baykar",board_url=BOARD+"/tr/open-positions/",collected_at=now.isoformat(),review_failures=failures,
                 scanned=total,source_types=types,location_status="Not provided by listing feed",
                 postings=sorted(selected,key=lambda r:r["id"]))
     path=ROOT/"reports"/f"baykar-roles-{now:%Y-%m-%dT%H%M%SZ}.json"
