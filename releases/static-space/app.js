@@ -10,6 +10,43 @@ downloadReview.textContent="Download review (.txt)";
 downloadReview.hidden=true;
 el("status").after(downloadReview);
 let reviewVersion=0;
+const jobOrigin=document.createElement("p");
+el("job").parentElement.before(jobOrigin);
+function clearJobOrigin(){jobOrigin.replaceChildren()}
+el("job").addEventListener("input",clearJobOrigin);
+function offerReviewedConditions(card,posting,conditions){
+  const button=add(card,"button","Review these conditions with my CV");
+  button.type="button";
+  const replace=add(card,"div","");
+  replace.hidden=true;
+  add(replace,"p","Replacing the job conditions will clear the current review. Your CV stays in the form.");
+  const accept=add(replace,"button","Replace conditions");
+  const cancel=add(replace,"button","Keep current review");
+  accept.type=cancel.type="button";
+  cancel.onclick=()=>{replace.hidden=true;button.focus()};
+  function usePosting(){
+    const text=conditions.join("\n");
+    replace.hidden=true;
+    el("job").value=text;
+    clearJobOrigin();
+    jobOrigin.append("Selected requirements from ");
+    add(jobOrigin,"a",posting.employer+" · "+posting.title).href=posting.source_url;
+    jobOrigin.append(". Coverage applies only to the conditions below.");
+    el("posting").value="";
+    el("candidates").replaceChildren();
+    el("append").hidden=true;
+    invalidateReview();
+    location.hash="review";
+    if(el("cv").value.trim()||el("file").files.length)el("find").focus();
+    else el("cv").focus();
+  }
+  accept.onclick=usePosting;
+  button.onclick=()=>{
+    if(el("job").value.trim()||el("posting").value.trim()){
+      replace.hidden=false;cancel.focus();
+    }else usePosting();
+  };
+}
 function invalidateReview(){
   reviewVersion++;
   downloadReview.hidden=true;
@@ -71,6 +108,7 @@ el("append").onclick=()=>{
   const combined=new Set([...(fields.value===fields.defaultValue?[]:prior),...selected]);
   if(combined.size>50){el("status").textContent="Select up to 50 conditions.";return}
   fields.value=[...combined].join("\n");
+  clearJobOrigin();
   invalidateReview();
 };
 function hasTechnology(text,name){
@@ -204,7 +242,9 @@ downloadReview.onclick=()=>{
   const rows=assessmentRows();
   if(!rows.length||rows.some(row=>!row.complete))return;
   const heading=[...el("status").children].map(child=>child.textContent).join("\n")||el("status").textContent;
-  const body=["Job Radar Evidence",el("source").textContent,heading,...rows.map(row=>
+  const origin=jobOrigin.querySelector("a");
+  const context=origin?"Selected requirements from "+origin.textContent+"\n"+origin.href+"\nCoverage applies only to the selected conditions.":"";
+  const body=["Job Radar Evidence",el("source").textContent,context,heading,...rows.map(row=>
     [row.condition,"Assessment: "+row.label,...row.quotes,row.duration,
      row.note?"Next CV edit: "+row.note:""].filter(Boolean).join("\n"))].join("\n\n");
   const url=URL.createObjectURL(new Blob([body+"\n"],{type:"text/plain;charset=utf-8"}));
@@ -320,6 +360,7 @@ try{
         link.href=review.source_url;
         add(card,"p",review.required_skills.join(review.skill_relation==="all_of"?" + ":" or "));
         add(card,"blockquote",review.requirement_evidence);
+        offerReviewedConditions(card,review,[review.requirement_evidence]);
       }
     }
     const direct=el("direct");
@@ -334,6 +375,7 @@ try{
         add(card,"p",row.location+" · Observed "+row.observed_on);
         if(row.minimum_technical?.length)add(card,"p","Selected minimum qualifications: "+row.minimum_technical.join("; "));
         if(row.preferred_technical?.length)add(card,"p","Selected preferences: "+row.preferred_technical.join("; "));
+        if(row.minimum_technical?.length)offerReviewedConditions(card,row,row.minimum_technical);
       }
     }
     el("scope").textContent=market.collected_at.slice(0,10)+" · "+records.length+" readable descriptions of "+group.length+" selected postings. Counts include mentions in preferences and company context.";
