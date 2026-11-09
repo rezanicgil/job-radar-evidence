@@ -3,6 +3,7 @@
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from html import unescape
+from hashlib import sha256
 from functools import lru_cache
 import json
 from pathlib import Path
@@ -90,7 +91,8 @@ def inspect(job, *, retry_timeout=True):
         plain = unescape(re.sub("<[^>]+>", " ", unescape(body)))
         if not plain.strip():
             return dict(**job,status="empty description")
-        return dict(**job,status="readable",skills=[s for s,p in PATTERNS.items() if p.search(plain)])
+        return dict(**job,status="readable",description_sha256=sha256(" ".join(plain.split()).encode()).hexdigest(),
+                    skills=[s for s,p in PATTERNS.items() if p.search(plain)])
     except (URLError, TimeoutError, ValueError, KeyError) as exc:
         if retry_timeout and isinstance(getattr(exc,"reason",exc),TimeoutError):
             return inspect(job,retry_timeout=False)

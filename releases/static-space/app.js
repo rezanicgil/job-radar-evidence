@@ -809,6 +809,7 @@ try{
         for(const p of items){
           const a=add(add(links,"li",""),"a",p.title);
           if(p.url.startsWith("https://"))a.href=p.url;
+          if(p.location_scope==="listed_alternative")add(a.parentElement,"small","Türkiye listed as an alternative location");
           const review=reviewByUrl.get(p.url);
           if(review)offerReviewedConditions(a.parentElement,{...review,employer:p.employer,title:p.title},
             reviewedConditions(review),review.preferred_technical);
@@ -871,6 +872,12 @@ try{
       }
     }
     el("scope").textContent=market.collected_at.slice(0,10)+" · "+records.length+" readable descriptions of "+group.length+" selected postings. Counts include mentions in preferences and company context.";
+    if(records.length&&records.every(p=>p.description_sha256)){
+      const unique=new Set(records.map(p=>JSON.stringify([p.employer,p.description_sha256]))).size;
+      el("scope").textContent+=" These postings contain "+unique+" distinct descriptions when counted within employers.";
+    }
+    const alternatives=records.filter(p=>p.location_scope==="listed_alternative").length;
+    if(alternatives)el("scope").textContent+=" "+alternatives+" postings explicitly list Türkiye as an alternative location.";
     const redraw=()=>drawTechnologies(records);
     el("basis").onchange=redraw;
     el("mentionScope").onchange=()=>{showAll=false;redraw()};

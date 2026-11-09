@@ -18,7 +18,7 @@ PATTERNS = {
     "Backend": r"back.?end|arka uç",
     "Frontend": r"front.?end|ön yüz",
     "Full stack": r"full.?stack",
-    "Software engineering (general)": r"software (?:developer|engineer|architect)|yazılım (?:geliştirici|mühendis|mimarı)|uygulama entegrasyon mühendisi|\b(?:java|python|c\+\+|kotlin|swift) (?:engineer|developer)\b",
+    "Software engineering (general)": r"software (?:developer|engineer|architect)|yazılım (?:geliştirici|mühendis|mimarı)|uygulama entegrasyon mühendisi|\b(?:java|python|c\+\+|kotlin|swift) (?:engineer|developer)\b|(?<!\w)\.net developer\b",
     "Data and AI": r"data (?:engineer|scien|analyst|architect)|machine learning|yapay zeka|veri mühendis|\bml engineer|\bai (?:engineer|researcher)|image processing engineer|data analytics & digitalization engineer|data & ai chapter lead engineer",
     "Platform and reliability": r"dev(?:sec)?ops|platform engineer|cloud engineer|infrastructure engineer|(?:site|database) reliability|\bsre\b|bt altyapı mühendisi|veritabanı yöneticisi",
     "Financial software": r"quantitative developer|payments engineer|blockchain (?:ops |security )?engineer",
@@ -72,6 +72,7 @@ def fetch(source, *, retry_timeout=True):
             rows = payload if ats == "lever" else payload["jobs"]
         jobs = []
         for row in rows:
+            alternate_location=False
             if ats == "workable":
                 title = row["title"]
                 link = f"https://apply.workable.com/{slug}/j/{row['shortcode']}/"
@@ -86,6 +87,12 @@ def fetch(source, *, retry_timeout=True):
             elif ats == "lever":
                 title, link = row["text"], row["hostedUrl"]
                 country, location = row.get("country"), row["categories"].get("location", "")
+                if not in_turkiye(country, location):
+                    for place in row["categories"].get("allLocations") or []:
+                        if place!=location and in_turkiye(None,place):
+                            country,location="TR",place
+                            alternate_location=True
+                            break
             elif ats == "ashby":
                 if row.get("isListed") is False:
                     continue
@@ -96,6 +103,7 @@ def fetch(source, *, retry_timeout=True):
                     for alternate in row.get("secondaryLocations") or []:
                         address = (alternate.get("address") or {}).get("postalAddress") or {}
                         if in_turkiye(address.get("addressCountry"), alternate.get("location")):
+                            alternate_location=True
                             country, location = address.get("addressCountry"), alternate.get("location")
                             break
             elif ats == "smartrecruiters":
@@ -107,7 +115,7 @@ def fetch(source, *, retry_timeout=True):
                 country, location = None, row["location"]["name"]
             if in_turkiye(country, location):
                 jobs.append(dict(employer=source["name"], title=title, url=link, location=location,
-                                 areas=title_areas(title)))
+                                 areas=title_areas(title),**({"location_scope":"listed_alternative"} if alternate_location else {})))
         return dict(source=source["name"], url=url, status="ok", scanned=len(rows)), jobs
     except (URLError, TimeoutError, ValueError, KeyError, TypeError) as exc:
         if retry_timeout and isinstance(getattr(exc,"reason",exc),TimeoutError):

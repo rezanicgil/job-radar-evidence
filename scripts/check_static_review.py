@@ -264,6 +264,12 @@ def check(page, origin):
     page.locator("#area").select_option("")
     snapshot=page.request.get(urljoin(origin,"market.json")).json()
     records=[r for r in snapshot["postings"] if r["status"]=="readable"]
+    if records and all(r.get("description_sha256") for r in records):
+        distinct=len({(r["employer"],r["description_sha256"]) for r in records})
+        expect(page.locator("#scope")).to_contain_text(f"{distinct} distinct descriptions")
+    alternatives=sum(r.get("location_scope")=="listed_alternative" for r in records)
+    if alternatives:
+        expect(page.locator("#scope")).to_contain_text(f"{alternatives} postings explicitly list Türkiye")
     users=[r for r in records if "React Native" in r["skills"]]
     page.locator("#skillSearch").fill("React Native")
     chart=page.locator("#counts details")

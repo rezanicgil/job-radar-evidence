@@ -185,5 +185,8 @@
   {"name":"Roof Stacks","ats":"lever","slug":"roofstacks"},
   {"name":"ING","ats":"workday","slug":"ing.wd3/ICSGBLCOR"},
   {"name":"Mastercard","ats":"workday","slug":"mastercard.wd1/CorporateCareers"},
-  {"name":"Analog Devices","ats":"workday","slug":"analogdevices.wd1/External"}
+  {"name":"Analog Devices","ats":"workday","slug":"analogdevices.wd1/External"},
+  {"name":"Yassir","ats":"lever","slug":"Yassir"},
+  {"name":"CRENNO","ats":"smartrecruiters","slug":"CRENNO"},
+  {"name":"Lucida AI","ats":"workable","slug":"lucida-ai"}
 ]

@@ -25,6 +25,8 @@ def daily_rows(day, folder):
         postings.append(dict(date=day["date"], collected_at=day["collected_at"],
                              employer=job["employer"], title=job["title"], location=job["location"],
                              url=job["url"], areas=job["areas"],
+                             location_scope=job.get("location_scope"),
+                             description_sha256=measured.get("description_sha256"),
                              source_requisition=measured.get("source_requisition"),
                              source_listed_date=measured.get("source_listed_date"),
                              sections=measured.get("sections"),
