@@ -1,0 +1,12 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Model results · Job Radar</title>
+<style>
+*{box-sizing:border-box}body{background:#f5f4ed;color:#17382f;font:1rem/1.55 system-ui;margin:0}main{max-width:50rem;margin:auto;padding:1.25rem}a{color:#135b48}article{background:white;border:1px solid #bccdc4;border-radius:.65rem;padding:1.2rem;margin:1rem 0}h1{line-height:1.1}h2{font-size:1.15rem}p{overflow-wrap:anywhere}label{display:block;margin:.75rem 0}select{max-width:100%;font:inherit;padding:.4rem}strong{font-variant-numeric:tabular-nums}
+</style><main><a href="index.html">← Job Radar</a><h1>Model results</h1>
+<p>Inspect recorded predictions from the fine-tuned research classifier. Each job requirement has three fictional CV passages with project-authored labels.</p>
+<p id="score" role="status">Loading results…</p>
+<label>Show <select id="filter"><option value="all">All examples</option><option value="false">Incorrect full support</option><option value="partial">Missed partial evidence</option><option value="correct">Correct predictions</option></select></label>
+<label>Job requirement <select id="family"></select></label>
+<section id="examples" aria-live="polite"></section>
+<p><a id="model" href="https://huggingface.co/rezanicgil/job-radar-evidence-mentions-v3">Download the research classifier</a> · <a href="https://huggingface.co/datasets/rezanicgil/job-radar-match-pilot">Inspect the dataset</a></p>
+</main><script type="module" src="model.js"></script></html>

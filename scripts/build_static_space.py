@@ -15,6 +15,7 @@ def main():
     shutil.copytree(ROOT / "releases/static-space",dest,dirs_exist_ok=True)
     shutil.copyfile(ROOT / "LICENSE",dest / "LICENSE")
     shutil.copyfile(ROOT / "research/source_grounded_candidates.jsonl",dest / "review-packet.jsonl")
+    shutil.copyfile(ROOT / "reports/source-pairs-dev.json",dest / "model-examples.json")
     snapshot = json.loads(max((ROOT / "reports").glob("skill-mentions-*.json")).read_text(encoding="utf-8"))
     inventory = json.loads((ROOT / "reports" / snapshot["inventory"]).read_text(encoding="utf-8"))
     snapshot["boards"] = [{"employer":source["source"], "available":source["status"] == "ok"}
