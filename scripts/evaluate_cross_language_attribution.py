@@ -12,9 +12,10 @@ def main():
     dataset=ROOT/"releases/match-pilot/cross_language_attribution.jsonl"
     rows=[json.loads(line) for line in dataset.read_text(encoding="utf8").splitlines()]
     families=sorted({r["family"] for r in rows})
-    report=dict(source_sha256=sha256(dataset.read_bytes()).hexdigest(),methods={})
-    for name,checkpoint,revision in [("base",BASE,REVISION),("fine_tuned",ROOT/"runs/python-tr-retriever",None),
-                                     ("attribution",ROOT/"runs/pair-clause-attribution",None)]:
+    report=dict(source_sha256=sha256(dataset.read_bytes()).hexdigest(),checkpoints={},methods={})
+    for name,checkpoint,revision in [("base",BASE,REVISION),("fine_tuned","rezanicgil/python-tr-en-retriever","813078062d92ba7d57487fd97b14af3acd620522"),
+                                     ("attribution","rezanicgil/job-radar-clause-attribution","c818969bb437370febedbfe2f5a80adac976d331")]:
+        report["checkpoints"][name]=dict(repo=checkpoint,revision=revision)
         loader=AutoModelForSequenceClassification if name=="attribution" else AutoModel
         model=loader.from_pretrained(checkpoint,revision=revision).eval()
         tokenizer=AutoTokenizer.from_pretrained(checkpoint,revision=revision)
