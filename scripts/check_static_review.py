@@ -38,10 +38,19 @@ def check(page, origin):
     expect(report).to_be_hidden()
     editor.locator(".excerpt").fill("30 ay")
     expect(report).to_be_visible()
+    page.locator("#jobDetails summary").click()
+    page.locator("#jobEmployer").fill("Example Company")
+    page.locator("#jobTitle").fill("Embedded Engineer")
+    page.locator("#jobUrl").fill("javascript:alert(1)")
+    report.click()
+    expect(page.locator("#jobUrl")).to_be_focused()
+    expect(page.locator("#jobUrlError")).to_contain_text("HTTPS")
+    page.locator("#jobUrl").fill("https://example.org/jobs/embedded")
     with page.expect_download() as event:
         report.click()
     exported=event.value.path().read_text(encoding="utf-8")
     assert "1 of 2 required conditions" in exported and "Page 1" in exported
+    assert "Example Company · Embedded Engineer" in exported and "https://example.org/jobs/embedded" in exported
     assert "Conditions to revisit" in exported and "Document the duration" in exported
     assert "Requirement still to demonstrate: 36 months" in exported
     assert "Highlighted wording: 30 ay" in exported and "motor kontrol yazılımı geliştirdim" in exported
@@ -50,6 +59,7 @@ def check(page, origin):
         data_button.click()
     data=json.loads(event.value.path().read_text(encoding="utf-8"))
     assert data["format"]=="job-radar-review-v1"
+    assert data["job"]["source"]=="manual" and data["job"]["employer"]=="Example Company"
     assert data["coverage"]==dict(required=2,supported=1,partial=1,unverified=0,excluded=0,percentage=50)
     row=data["conditions"][0]
     assert row["missing"]=="36 months" and row["quotes"][0]["excerpt"]=="30 ay"
@@ -70,6 +80,7 @@ def check(page, origin):
     select_report("#second","second.json",second)
     expect(comparison.locator("#message")).to_contain_text("same CV input")
     expect(comparison.locator(".metric")).to_have_text(["50% coverage","100% coverage"])
+    expect(comparison.get_by_role("link",name="Open source posting").first).to_have_attribute("href","https://example.org/jobs/embedded")
     comparison.get_by_text("Conditions to revisit (1)").click()
     expect(comparison.locator("li")).to_contain_text("36 months")
     select_report("#second","another-cv.json",dict(second,cv=dict(second["cv"],sha256="0"*64)))

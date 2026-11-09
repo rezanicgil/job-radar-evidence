@@ -1,4 +1,5 @@
 import {counts} from "./review-counts.js";
+import {sourceUrl} from "./job-source.js";
 const inputs=[document.getElementById("first"),document.getElementById("second")];
 const result=document.getElementById("comparison");
 const message=document.getElementById("message");
@@ -26,6 +27,11 @@ async function read(file){
 function show({data,summary,file}){
   const card=add(result,"article","");
   add(card,"h2",data.job?.title||file.name);
+  const url=sourceUrl(data.job?.url);
+  if(url){
+    const link=add(card,"a","Open source posting");
+    link.href=url;link.referrerPolicy="no-referrer";
+  }
   add(card,"strong",summary.percentage===null?"No required conditions":summary.percentage+"% coverage").className="metric";
   add(card,"p",summary.supported+" of "+summary.required+" required conditions fully supported.");
   add(card,"p",summary.partial+" partial · "+summary.unverified+" unverified · "+summary.excluded+" excluded");

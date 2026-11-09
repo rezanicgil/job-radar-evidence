@@ -1,4 +1,5 @@
 import {counts} from "./review-counts.js";
+import {sourceUrl} from "./job-source.js";
 const el=id=>document.getElementById(id);
 const add=(parent,tag,text)=>{const node=document.createElement(tag);node.textContent=text;parent.append(node);return node};
 const words=text=>new Set(text.toLocaleLowerCase().match(/[\p{L}\p{N}+#]+/gu)||[]);
@@ -40,7 +41,18 @@ let reviewedSource;
 let reviewVersion=0;
 const jobOrigin=document.createElement("p");
 el("job").parentElement.before(jobOrigin);
-function clearJobOrigin(){jobOrigin.replaceChildren()}
+function clearJobOrigin(){jobOrigin.replaceChildren();el("jobDetails").hidden=false}
+function resetManualSource(){
+  for(const id of ["jobEmployer","jobTitle","jobUrl"])el(id).value="";
+  validateSource();
+}
+function validateSource(){
+  const invalid=el("jobUrl").value.trim()&&!sourceUrl(el("jobUrl").value);
+  el("jobUrl").setAttribute("aria-invalid",String(Boolean(invalid)));
+  el("jobUrlError").textContent=invalid?"Enter a full HTTP or HTTPS posting URL, or clear the field.":"";
+  return !invalid;
+}
+el("jobUrl").oninput=validateSource;
 el("job").addEventListener("input",()=>{
   clearJobOrigin();
   const present=new Set(conditionsFrom(el("job").value));
@@ -64,6 +76,8 @@ function offerReviewedConditions(card,posting,conditions,preferences=[]){
     const required=new Set(conditionsFrom(conditions.join("\n")));
     for(const line of conditionsFrom(preferences.join("\n")))if(!required.has(line))selectedPreferences.add(line);
     clearJobOrigin();
+    resetManualSource();
+    el("jobDetails").hidden=true;
     jobOrigin.append("Selected requirements from ");
     add(jobOrigin,"a",posting.employer+" · "+posting.title).href=posting.source_url;
     jobOrigin.append(". Coverage applies only to the conditions below.");
@@ -184,6 +198,7 @@ function englishCandidates(text,model){
   return candidates;
 }
 el("example").onclick=()=>{
+  clearJobOrigin();resetManualSource();
   el("cv").value="C++ ile 30 ay boyunca motor kontrol yazılımı geliştirdim.\nPython ile test raporları hazırladım.";
   el("job").value="At least 36 months developing control software with C++.\nWrite test reports using Python.";
   invalidateReview();
@@ -454,9 +469,15 @@ function exportReview(format){
   if(!rows.length||rows.some(row=>!row.complete))return;
   const heading=el("status").innerText;
   const origin=jobOrigin.querySelector("a");
-  const context=origin?"Selected requirements from "+origin.textContent+"\n"+origin.href+"\nCoverage applies only to the selected conditions.":"";
+  if(!origin&&!validateSource()){el("jobDetails").open=true;el("jobUrl").focus();return}
+  const employer=el("jobEmployer").value.trim(),role=el("jobTitle").value.trim();
+  const title=[employer,role].filter(Boolean).join(" · ");
+  const urlValue=sourceUrl(el("jobUrl").value);
+  const job=origin?{title:origin.textContent,url:origin.href,source:"market"}:
+    title||urlValue?{title:title||null,employer:employer||null,role:role||null,url:urlValue,source:"manual"}:null;
+  const context=job?[job.title,job.url,"Coverage applies only to the selected conditions."].filter(Boolean).join("\n"):"";
   const data={format:"job-radar-review-v1",exported_at:new Date().toISOString(),cv:reviewedSource,
-    job:origin?{title:origin.textContent,url:origin.href}:null,method:el("method").value,
+    job,method:el("method").value,
     encoder:retrievalModels[el("method").value]||null,
     coverage:counts(rows.map(row=>row.label)),conditions:rows.map(({complete,...row})=>row)};
   const body=format==="json"?JSON.stringify(data,null,2):["Job Radar Evidence",el("source").textContent,context,heading,...rows.map(row=>
