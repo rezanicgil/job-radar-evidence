@@ -1,0 +1,811 @@
+{
+  "host": "https://rezanicgil-job-radar-evidence.static.hf.space/",
+  "app_js_sha256": "b7a7eb2c321f36d8e1fb12d1aace0b1d8d383a299a28e8e3f7f27e6a78ceff7e",
+  "source_files": [
+    "match_training_v1.jsonl",
+    "match_contrasts_v2.jsonl",
+    "match_challenge_dev.jsonl"
+  ],
+  "counts": {
+    "terms": {
+      "orders": 42,
+      "supported_first": 23,
+      "supported_visible": 38
+    },
+    "semantic": {
+      "orders": 42,
+      "supported_first": 34,
+      "supported_visible": 42
+    }
+  },
+  "results": [
+    {
+      "family": "restore",
+      "reverse": false,
+      "method": "terms",
+      "ranked": [
+        "supported",
+        "partial"
+      ]
+    },
+    {
+      "family": "restore",
+      "reverse": false,
+      "method": "semantic",
+      "ranked": [
+        "partial",
+        "supported",
+        "unverified"
+      ]
+    },
+    {
+      "family": "restore",
+      "reverse": true,
+      "method": "terms",
+      "ranked": [
+        "partial",
+        "supported"
+      ]
+    },
+    {
+      "family": "restore",
+      "reverse": true,
+      "method": "semantic",
+      "ranked": [
+        "partial",
+        "supported",
+        "unverified"
+      ]
+    },
+    {
+      "family": "ci",
+      "reverse": false,
+      "method": "terms",
+      "ranked": [
+        "supported",
+        "partial"
+      ]
+    },
+    {
+      "family": "ci",
+      "reverse": false,
+      "method": "semantic",
+      "ranked": [
+        "supported",
+        "partial",
+        "unverified"
+      ]
+    },
+    {
+      "family": "ci",
+      "reverse": true,
+      "method": "terms",
+      "ranked": [
+        "partial",
+        "supported"
+      ]
+    },
+    {
+      "family": "ci",
+      "reverse": true,
+      "method": "semantic",
+      "ranked": [
+        "supported",
+        "partial",
+        "unverified"
+      ]
+    },
+    {
+      "family": "release",
+      "reverse": false,
+      "method": "terms",
+      "ranked": [
+        "supported",
+        "partial"
+      ]
+    },
+    {
+      "family": "release",
+      "reverse": false,
+      "method": "semantic",
+      "ranked": [
+        "supported",
+        "partial",
+        "unverified"
+      ]
+    },
+    {
+      "family": "release",
+      "reverse": true,
+      "method": "terms",
+      "ranked": [
+        "partial",
+        "supported"
+      ]
+    },
+    {
+      "family": "release",
+      "reverse": true,
+      "method": "semantic",
+      "ranked": [
+        "supported",
+        "partial",
+        "unverified"
+      ]
+    },
+    {
+      "family": "can",
+      "reverse": false,
+      "method": "terms",
+      "ranked": [
+        "supported",
+        "partial"
+      ]
+    },
+    {
+      "family": "can",
+      "reverse": false,
+      "method": "semantic",
+      "ranked": [
+        "supported",
+        "partial",
+        "unverified"
+      ]
+    },
+    {
+      "family": "can",
+      "reverse": true,
+      "method": "terms",
+      "ranked": [
+        "partial",
+        "supported"
+      ]
+    },
+    {
+      "family": "can",
+      "reverse": true,
+      "method": "semantic",
+      "ranked": [
+        "supported",
+        "partial",
+        "unverified"
+      ]
+    },
+    {
+      "family": "terraform",
+      "reverse": false,
+      "method": "terms",
+      "ranked": [
+        "supported",
+        "partial"
+      ]
+    },
+    {
+      "family": "terraform",
+      "reverse": false,
+      "method": "semantic",
+      "ranked": [
+        "supported",
+        "partial",
+        "unverified"
+      ]
+    },
+    {
+      "family": "terraform",
+      "reverse": true,
+      "method": "terms",
+      "ranked": [
+        "supported",
+        "partial"
+      ]
+    },
+    {
+      "family": "terraform",
+      "reverse": true,
+      "method": "semantic",
+      "ranked": [
+        "supported",
+        "partial",
+        "unverified"
+      ]
+    },
+    {
+      "family": "vision",
+      "reverse": false,
+      "method": "terms",
+      "ranked": [
+        "supported"
+      ]
+    },
+    {
+      "family": "vision",
+      "reverse": false,
+      "method": "semantic",
+      "ranked": [
+        "supported",
+        "partial",
+        "unverified"
+      ]
+    },
+    {
+      "family": "vision",
+      "reverse": true,
+      "method": "terms",
+      "ranked": [
+        "supported"
+      ]
+    },
+    {
+      "family": "vision",
+      "reverse": true,
+      "method": "semantic",
+      "ranked": [
+        "supported",
+        "partial",
+        "unverified"
+      ]
+    },
+    {
+      "family": "incident",
+      "reverse": false,
+      "method": "terms",
+      "ranked": [
+        "partial"
+      ]
+    },
+    {
+      "family": "incident",
+      "reverse": false,
+      "method": "semantic",
+      "ranked": [
+        "supported",
+        "partial",
+        "unverified"
+      ]
+    },
+    {
+      "family": "incident",
+      "reverse": true,
+      "method": "terms",
+      "ranked": [
+        "partial"
+      ]
+    },
+    {
+      "family": "incident",
+      "reverse": true,
+      "method": "semantic",
+      "ranked": [
+        "supported",
+        "partial",
+        "unverified"
+      ]
+    },
+    {
+      "family": "playwright",
+      "reverse": false,
+      "method": "terms",
+      "ranked": [
+        "partial",
+        "supported"
+      ]
+    },
+    {
+      "family": "playwright",
+      "reverse": false,
+      "method": "semantic",
+      "ranked": [
+        "partial",
+        "supported",
+        "unverified"
+      ]
+    },
+    {
+      "family": "playwright",
+      "reverse": true,
+      "method": "terms",
+      "ranked": [
+        "supported",
+        "partial"
+      ]
+    },
+    {
+      "family": "playwright",
+      "reverse": true,
+      "method": "semantic",
+      "ranked": [
+        "partial",
+        "supported",
+        "unverified"
+      ]
+    },
+    {
+      "family": "board-radio",
+      "reverse": false,
+      "method": "terms",
+      "ranked": [
+        "supported",
+        "partial"
+      ]
+    },
+    {
+      "family": "board-radio",
+      "reverse": false,
+      "method": "semantic",
+      "ranked": [
+        "supported",
+        "partial",
+        "unverified"
+      ]
+    },
+    {
+      "family": "board-radio",
+      "reverse": true,
+      "method": "terms",
+      "ranked": [
+        "partial",
+        "supported"
+      ]
+    },
+    {
+      "family": "board-radio",
+      "reverse": true,
+      "method": "semantic",
+      "ranked": [
+        "supported",
+        "partial",
+        "unverified"
+      ]
+    },
+    {
+      "family": "etl-ownership",
+      "reverse": false,
+      "method": "terms",
+      "ranked": [
+        "supported",
+        "partial"
+      ]
+    },
+    {
+      "family": "etl-ownership",
+      "reverse": false,
+      "method": "semantic",
+      "ranked": [
+        "supported",
+        "partial",
+        "unverified"
+      ]
+    },
+    {
+      "family": "etl-ownership",
+      "reverse": true,
+      "method": "terms",
+      "ranked": [
+        "partial",
+        "supported"
+      ]
+    },
+    {
+      "family": "etl-ownership",
+      "reverse": true,
+      "method": "semantic",
+      "ranked": [
+        "supported",
+        "partial",
+        "unverified"
+      ]
+    },
+    {
+      "family": "duration-csharp",
+      "reverse": false,
+      "method": "terms",
+      "ranked": [
+        "partial",
+        "supported"
+      ]
+    },
+    {
+      "family": "duration-csharp",
+      "reverse": false,
+      "method": "semantic",
+      "ranked": [
+        "supported",
+        "partial",
+        "unverified"
+      ]
+    },
+    {
+      "family": "duration-csharp",
+      "reverse": true,
+      "method": "terms",
+      "ranked": [
+        "supported",
+        "partial"
+      ]
+    },
+    {
+      "family": "duration-csharp",
+      "reverse": true,
+      "method": "semantic",
+      "ranked": [
+        "supported",
+        "partial",
+        "unverified"
+      ]
+    },
+    {
+      "family": "migration",
+      "reverse": false,
+      "method": "terms",
+      "ranked": [
+        "supported",
+        "partial"
+      ]
+    },
+    {
+      "family": "migration",
+      "reverse": false,
+      "method": "semantic",
+      "ranked": [
+        "supported",
+        "partial",
+        "unverified"
+      ]
+    },
+    {
+      "family": "migration",
+      "reverse": true,
+      "method": "terms",
+      "ranked": [
+        "partial",
+        "supported"
+      ]
+    },
+    {
+      "family": "migration",
+      "reverse": true,
+      "method": "semantic",
+      "ranked": [
+        "supported",
+        "partial",
+        "unverified"
+      ]
+    },
+    {
+      "family": "oauth-audit",
+      "reverse": false,
+      "method": "terms",
+      "ranked": [
+        "partial",
+        "supported"
+      ]
+    },
+    {
+      "family": "oauth-audit",
+      "reverse": false,
+      "method": "semantic",
+      "ranked": [
+        "supported",
+        "partial",
+        "unverified"
+      ]
+    },
+    {
+      "family": "oauth-audit",
+      "reverse": true,
+      "method": "terms",
+      "ranked": [
+        "partial",
+        "supported"
+      ]
+    },
+    {
+      "family": "oauth-audit",
+      "reverse": true,
+      "method": "semantic",
+      "ranked": [
+        "supported",
+        "partial",
+        "unverified"
+      ]
+    },
+    {
+      "family": "mobile-crashes",
+      "reverse": false,
+      "method": "terms",
+      "ranked": []
+    },
+    {
+      "family": "mobile-crashes",
+      "reverse": false,
+      "method": "semantic",
+      "ranked": [
+        "supported",
+        "partial",
+        "unverified"
+      ]
+    },
+    {
+      "family": "mobile-crashes",
+      "reverse": true,
+      "method": "terms",
+      "ranked": []
+    },
+    {
+      "family": "mobile-crashes",
+      "reverse": true,
+      "method": "semantic",
+      "ranked": [
+        "supported",
+        "partial",
+        "unverified"
+      ]
+    },
+    {
+      "family": "accessibility",
+      "reverse": false,
+      "method": "terms",
+      "ranked": [
+        "partial",
+        "supported"
+      ]
+    },
+    {
+      "family": "accessibility",
+      "reverse": false,
+      "method": "semantic",
+      "ranked": [
+        "supported",
+        "partial",
+        "unverified"
+      ]
+    },
+    {
+      "family": "accessibility",
+      "reverse": true,
+      "method": "terms",
+      "ranked": [
+        "supported",
+        "partial"
+      ]
+    },
+    {
+      "family": "accessibility",
+      "reverse": true,
+      "method": "semantic",
+      "ranked": [
+        "supported",
+        "partial",
+        "unverified"
+      ]
+    },
+    {
+      "family": "terraform-years",
+      "reverse": false,
+      "method": "terms",
+      "ranked": [
+        "supported",
+        "partial"
+      ]
+    },
+    {
+      "family": "terraform-years",
+      "reverse": false,
+      "method": "semantic",
+      "ranked": [
+        "partial",
+        "supported",
+        "unverified"
+      ]
+    },
+    {
+      "family": "terraform-years",
+      "reverse": true,
+      "method": "terms",
+      "ranked": [
+        "partial",
+        "supported"
+      ]
+    },
+    {
+      "family": "terraform-years",
+      "reverse": true,
+      "method": "semantic",
+      "ranked": [
+        "partial",
+        "supported",
+        "unverified"
+      ]
+    },
+    {
+      "family": "game-release",
+      "reverse": false,
+      "method": "terms",
+      "ranked": [
+        "supported",
+        "partial"
+      ]
+    },
+    {
+      "family": "game-release",
+      "reverse": false,
+      "method": "semantic",
+      "ranked": [
+        "supported",
+        "partial",
+        "unverified"
+      ]
+    },
+    {
+      "family": "game-release",
+      "reverse": true,
+      "method": "terms",
+      "ranked": [
+        "supported",
+        "partial"
+      ]
+    },
+    {
+      "family": "game-release",
+      "reverse": true,
+      "method": "semantic",
+      "ranked": [
+        "supported",
+        "partial",
+        "unverified"
+      ]
+    },
+    {
+      "family": "load-test",
+      "reverse": false,
+      "method": "terms",
+      "ranked": [
+        "supported",
+        "partial"
+      ]
+    },
+    {
+      "family": "load-test",
+      "reverse": false,
+      "method": "semantic",
+      "ranked": [
+        "supported",
+        "partial",
+        "unverified"
+      ]
+    },
+    {
+      "family": "load-test",
+      "reverse": true,
+      "method": "terms",
+      "ranked": [
+        "supported",
+        "partial"
+      ]
+    },
+    {
+      "family": "load-test",
+      "reverse": true,
+      "method": "semantic",
+      "ranked": [
+        "supported",
+        "partial",
+        "unverified"
+      ]
+    },
+    {
+      "family": "ios-native",
+      "reverse": false,
+      "method": "terms",
+      "ranked": [
+        "partial",
+        "supported"
+      ]
+    },
+    {
+      "family": "ios-native",
+      "reverse": false,
+      "method": "semantic",
+      "ranked": [
+        "supported",
+        "partial",
+        "unverified"
+      ]
+    },
+    {
+      "family": "ios-native",
+      "reverse": true,
+      "method": "terms",
+      "ranked": [
+        "supported",
+        "partial"
+      ]
+    },
+    {
+      "family": "ios-native",
+      "reverse": true,
+      "method": "semantic",
+      "ranked": [
+        "supported",
+        "partial",
+        "unverified"
+      ]
+    },
+    {
+      "family": "android-ui",
+      "reverse": false,
+      "method": "terms",
+      "ranked": [
+        "supported",
+        "partial"
+      ]
+    },
+    {
+      "family": "android-ui",
+      "reverse": false,
+      "method": "semantic",
+      "ranked": [
+        "supported",
+        "partial",
+        "unverified"
+      ]
+    },
+    {
+      "family": "android-ui",
+      "reverse": true,
+      "method": "terms",
+      "ranked": [
+        "supported",
+        "partial"
+      ]
+    },
+    {
+      "family": "android-ui",
+      "reverse": true,
+      "method": "semantic",
+      "ranked": [
+        "supported",
+        "partial",
+        "unverified"
+      ]
+    },
+    {
+      "family": "firmware-debug",
+      "reverse": false,
+      "method": "terms",
+      "ranked": [
+        "partial",
+        "supported"
+      ]
+    },
+    {
+      "family": "firmware-debug",
+      "reverse": false,
+      "method": "semantic",
+      "ranked": [
+        "partial",
+        "supported",
+        "unverified"
+      ]
+    },
+    {
+      "family": "firmware-debug",
+      "reverse": true,
+      "method": "terms",
+      "ranked": [
+        "supported",
+        "partial"
+      ]
+    },
+    {
+      "family": "firmware-debug",
+      "reverse": true,
+      "method": "semantic",
+      "ranked": [
+        "partial",
+        "supported",
+        "unverified"
+      ]
+    }
+  ]
+}
