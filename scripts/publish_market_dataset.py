@@ -35,10 +35,17 @@ def daily_rows(day, folder):
     counts = Counter(skill for p in readable for skill in set(p["technologies"]))
     employers = {p["employer"] for p in readable}
     assert len(readable)==day["readable"] and len(employers)==day["employers"] and counts==day["mentions"]
-    technologies = [dict(date=day["date"], technology=skill, postings_mentioning=counts[skill],
-                         readable_postings=len(readable), employers_mentioning=len({
-                             p["employer"] for p in readable if skill in p["technologies"]}),
-                         represented_employers=len(employers)) for skill in day["vocabulary"]]
+    employer_totals = Counter(p["employer"] for p in readable)
+    technologies = []
+    for skill in day["vocabulary"]:
+        mentioning = Counter(p["employer"] for p in readable if skill in p["technologies"])
+        top = min(mentioning, key=lambda employer: (-mentioning[employer], employer), default=None)
+        technologies.append(dict(date=day["date"], technology=skill, postings_mentioning=counts[skill],
+                                 readable_postings=len(readable), employers_mentioning=len(mentioning),
+                                 represented_employers=len(employers), top_employer=top,
+                                 top_employer_mentions=mentioning[top] if top else None,
+                                 other_employer_mentions=counts[skill]-mentioning[top] if top else None,
+                                 other_employer_postings=len(readable)-employer_totals[top] if top else None))
     return postings, technologies
 
 

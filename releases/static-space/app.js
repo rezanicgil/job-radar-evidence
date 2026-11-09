@@ -709,7 +709,9 @@ try{
       return sections.length?[{...row,sections,skills:sections.flatMap(s=>s.skills)}]:[];
     });
     const byEmployer=el("basis").value==="employers";
-    const employers=new Set(records.map(p=>p.employer)).size;
+    const employerTotals=new Map();
+    for(const p of records)employerTotals.set(p.employer,(employerTotals.get(p.employer)||0)+1);
+    const employers=employerTotals.size;
     const skills=new Map();
     for(const p of records)for(const s of new Set(p.skills)){
       if(!skills.has(s))skills.set(s,[]);
@@ -734,7 +736,7 @@ try{
         "Showing "+visible.length+" of "+measured.length+" mentioned technologies.");
     const sectionName=scope==="preferences"?"preference":"qualification";
     el("skillCount").textContent=(scope==="all"?"":records.length+" of "+readable.length+
-      " readable postings have a recognized Lever "+sectionName+" heading. Percentages use these "+records.length+" postings. ")+description;
+      " readable postings have a recognized Lever "+sectionName+" heading. Shares use these postings and their "+employers+" represented employers. ")+description;
     el("allSkills").hidden=!records.length||Boolean(query)||measured.length<=8;
     el("allSkills").textContent=showAll?"Show top 8":"Show all "+measured.length+" technologies";
     if(!records.length)return;
@@ -749,9 +751,19 @@ try{
         const bar=add(share,"progress","");bar.max=total;bar.value=count;bar.setAttribute("aria-hidden","true");
         add(share,"small",count+"/"+total+" "+label);
       }
+      const ranked=[...grouped].sort((a,b)=>b[1].length-a[1].length||(a[0]<b[0]?-1:a[0]>b[0]?1:0));
+      if(ranked.length){
+        const [employer,items]=ranked[0];
+        if(ranked.length===1)add(summary,"small","All mentions from "+employer).className="concentration";
+        const others=records.length-employerTotals.get(employer);
+        const otherMentions=postings.length-items.length;
+        const outside=others?(Math.round(1000*otherMentions/others)/10)+"% ("+otherMentions+"/"+others+" postings)":"no postings remain";
+        add(d,"p",employer+" accounts for "+items.length+" of "+postings.length+" postings mentioning "+name+
+          ". With that employer excluded: "+outside+".");
+      }
       if(!postings.length)add(d,"p","No mentions in the selected readable descriptions.");
       const list=add(d,"div","");list.className="employer-list";
-      for(const [employer,items] of [...grouped].sort((a,b)=>b[1].length-a[1].length||a[0].localeCompare(b[0]))){
+      for(const [employer,items] of ranked){
         add(list,"b",employer+" · "+items.length);
         const links=add(list,"ul","");
         for(const p of items){

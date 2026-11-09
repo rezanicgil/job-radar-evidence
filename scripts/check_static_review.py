@@ -221,6 +221,12 @@ def check(page, origin):
     expect(chart.locator("summary")).to_contain_text(f"{len({r['employer'] for r in users})}/{len(employers)} employers")
     chart.locator("summary").click()
     expect(chart.locator("li a")).to_have_count(len(users))
+    contributors={r["employer"] for r in users}
+    if len(contributors)==1:
+        employer=contributors.pop()
+        expect(chart.locator("summary")).to_contain_text("All mentions from "+employer)
+        outside=sum(r["employer"]!=employer for r in records)
+        expect(chart).to_contain_text(f"0% (0/{outside} postings)" if outside else "no postings remain")
     page.locator("#mentionScope").select_option("preferences")
     preference_rows=[p for p in records if any(s["kind"]=="preferences" for s in p.get("sections") or [])]
     expect(page.locator("#skillCount")).to_contain_text(f"{len(preference_rows)} of {len(records)} readable postings")
