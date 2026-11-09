@@ -3,6 +3,7 @@
 from hashlib import sha256
 import argparse
 import json
+from pathlib import Path
 import random
 import re
 from zipfile import ZipFile
@@ -20,6 +21,7 @@ SOURCE = "caa8b1e08b8534a1e1344a82889fc6c820768a91"
 
 def corpus():
     path = ROOT/"runs/python-tr.zip"
+    path.parent.mkdir(parents=True,exist_ok=True)
     if not path.exists():
         response = requests.get(f"https://codeload.github.com/python/python-docs-tr/zip/{SOURCE}",timeout=60)
         response.raise_for_status()
@@ -85,7 +87,10 @@ def evaluate(model,tokenizer,heldout):
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--export",action="store_true",help="Export text pairs locally and update the public source index")
+    parser.add_argument("--output-dir",type=Path,help="Save a new checkpoint and its metrics here instead of the default research paths")
     args=parser.parse_args()
+    if args.output_dir and (args.export or args.output_dir.exists() and any(args.output_dir.iterdir())):
+        parser.error("--output-dir requires a new or empty directory and cannot be combined with --export")
     groups=corpus()
     if args.export:
         for split,rows in groups.items():
@@ -99,6 +104,14 @@ def main():
                     public.write(json.dumps(record)+"\n")
                     local.write(json.dumps(dict(**record,en=en,tr=tr),ensure_ascii=False)+"\n")
         return
+    for split, rows in groups.items():
+        path=ROOT/"releases/match-pilot"/f"python-translation-index-{split}.jsonl"
+        expected=[(r["document"],r["en_sha256"],r["tr_sha256"])
+                  for line in path.read_text("utf8").splitlines() if (r:=json.loads(line))]
+        actual=[(document,sha256(en.encode()).hexdigest(),sha256(tr.encode()).hexdigest())
+                for document,en,tr in rows]
+        if actual!=expected:
+            raise ValueError(f"Reconstructed {split} pairs differ from the published index")
     tokenizer=AutoTokenizer.from_pretrained(BASE,revision=REVISION)
     model=AutoModel.from_pretrained(BASE,revision=REVISION)
     torch.manual_seed(17)
@@ -130,9 +143,11 @@ def main():
         loss.backward()
         optimizer.step()
     result["after"]=evaluate(model,tokenizer,heldout)
-    model.save_pretrained(ROOT/"runs/python-tr-retriever")
-    tokenizer.save_pretrained(ROOT/"runs/python-tr-retriever")
-    (ROOT/"reports/translation-retrieval.json").write_text(json.dumps(result,indent=2)+"\n",encoding="utf-8")
+    destination=args.output_dir or ROOT/"runs/python-tr-retriever"
+    model.save_pretrained(destination)
+    tokenizer.save_pretrained(destination)
+    report_path=destination/"training-report.json" if args.output_dir else ROOT/"reports/translation-retrieval.json"
+    report_path.write_text(json.dumps(result,indent=2)+"\n",encoding="utf-8")
     print(json.dumps({k:v for k,v in result.items() if k!="documents"}))
 
 
