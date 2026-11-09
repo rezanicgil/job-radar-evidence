@@ -1,0 +1,12 @@
+{"component":"Configure certificate expiry alerts.","applicant":"I configured certificate expiry alerts.","other":"Another person configured certificate expiry alerts."}
+{"component":"Rotate certificates on production gateways.","applicant":"I rotated certificates on production gateways.","other":"Another person rotated certificates on production gateways."}
+{"component":"iOS çökme kayıtlarını sembolleştirmek.","applicant":"iOS çökme kayıtlarını ben sembolleştirdim.","other":"iOS çökme kayıtlarını başka biri sembolleştirdi."}
+{"component":"İlgili çökme hatasını yayımlanan bir iOS sürümünde gidermek.","applicant":"Çökme hatasını düzelttim ve düzeltmem bir iOS sürümünde yayımlandı.","other":"Çökme hatasını başka biri düzeltti ve düzeltmesi bir iOS sürümünde yayımlandı."}
+{"component":"Load firmware on a physical board.","applicant":"I loaded firmware on a physical board.","other":"Another person loaded firmware on a physical board."}
+{"component":"Verify UART output on the physical board.","applicant":"I verified the UART output on the physical board.","other":"Another person verified the UART output on the physical board."}
+{"component":"Veri setindeki kişisel tanımlayıcıları temizlemek.","applicant":"Veri setinden kişisel tanımlayıcıları ben kaldırdım.","other":"Veri setinden kişisel tanımlayıcıları başka biri kaldırdı."}
+{"component":"Sürümlü bir veri setini yayımlamak.","applicant":"Sürümlü bir veri setini ben yayımladım.","other":"Sürümlü bir veri setini başka biri yayımladı."}
+{"component":"Configure database backups.","applicant":"I configured database backups.","other":"Another person configured database backups."}
+{"component":"Verify a database restore.","applicant":"I verified a database restore.","other":"Another person verified a database restore."}
+{"component":"Mobil uygulama derlemesini imzalamak.","applicant":"Mobil uygulama derlemesini ben imzaladım.","other":"Mobil uygulama derlemesini başka biri imzaladı."}
+{"component":"Mobil uygulama sürümünü mağazaya göndermek.","applicant":"Mobil uygulama sürümünü mağazaya ben gönderdim.","other":"Mobil uygulama sürümünü mağazaya başka biri gönderdi."}

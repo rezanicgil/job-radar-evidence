@@ -1,0 +1,366 @@
+{
+  "base": "MoritzLaurer/multilingual-MiniLMv2-L6-mnli-xnli",
+  "revision": "0a71e92a985b6e1ad1828cf67ce9c459639c1dca",
+  "dev_sha256": "a39df6dc4fb6041edb2a29e766401bcdfa82cc89fe2d63f6aa3481b2dd4a6ca5",
+  "prompts_sha256": "d08a33b6648ab71f3d3371ab3ea061fa1029cd758083b14a669bceb3be3d18f2",
+  "metrics": {
+    "raw": {
+      "correct_applicant": 14,
+      "false_applicant": 12
+    },
+    "applicant": {
+      "correct_applicant": 15,
+      "false_applicant": 11
+    },
+    "inferred": {
+      "correct_applicant": 4,
+      "false_applicant": 1
+    }
+  },
+  "actual_by_inferred": {
+    "applicant": {
+      "applicant": 4,
+      "other": 0,
+      "not_stated": 3,
+      "ambiguous": 11
+    },
+    "other": {
+      "applicant": 0,
+      "other": 0,
+      "not_stated": 1,
+      "ambiguous": 5
+    },
+    "not_stated": {
+      "applicant": 1,
+      "other": 0,
+      "not_stated": 6,
+      "ambiguous": 5
+    }
+  },
+  "cases": [
+    {
+      "family": "cert-rotation-check",
+      "component": "Configure certificate expiry alerts.",
+      "actual": "applicant",
+      "raw": "entailment",
+      "applicant": "entailment",
+      "other": "neutral",
+      "inferred": "applicant"
+    },
+    {
+      "family": "cert-rotation-check",
+      "component": "Rotate certificates on production gateways.",
+      "actual": "applicant",
+      "raw": "entailment",
+      "applicant": "entailment",
+      "other": "neutral",
+      "inferred": "applicant"
+    },
+    {
+      "family": "cert-rotation-check",
+      "component": "Configure certificate expiry alerts.",
+      "actual": "other",
+      "raw": "entailment",
+      "applicant": "entailment",
+      "other": "entailment",
+      "inferred": "ambiguous"
+    },
+    {
+      "family": "cert-rotation-check",
+      "component": "Rotate certificates on production gateways.",
+      "actual": "applicant",
+      "raw": "entailment",
+      "applicant": "entailment",
+      "other": "entailment",
+      "inferred": "ambiguous"
+    },
+    {
+      "family": "cert-rotation-check",
+      "component": "Configure certificate expiry alerts.",
+      "actual": "not_stated",
+      "raw": "neutral",
+      "applicant": "neutral",
+      "other": "neutral",
+      "inferred": "not_stated"
+    },
+    {
+      "family": "cert-rotation-check",
+      "component": "Rotate certificates on production gateways.",
+      "actual": "not_stated",
+      "raw": "neutral",
+      "applicant": "neutral",
+      "other": "neutral",
+      "inferred": "not_stated"
+    },
+    {
+      "family": "ios-symbols",
+      "component": "iOS çökme kayıtlarını sembolleştirmek.",
+      "actual": "applicant",
+      "raw": "entailment",
+      "applicant": "entailment",
+      "other": "neutral",
+      "inferred": "applicant"
+    },
+    {
+      "family": "ios-symbols",
+      "component": "İlgili çökme hatasını yayımlanan bir iOS sürümünde gidermek.",
+      "actual": "applicant",
+      "raw": "entailment",
+      "applicant": "entailment",
+      "other": "entailment",
+      "inferred": "ambiguous"
+    },
+    {
+      "family": "ios-symbols",
+      "component": "iOS çökme kayıtlarını sembolleştirmek.",
+      "actual": "applicant",
+      "raw": "entailment",
+      "applicant": "entailment",
+      "other": "entailment",
+      "inferred": "ambiguous"
+    },
+    {
+      "family": "ios-symbols",
+      "component": "İlgili çökme hatasını yayımlanan bir iOS sürümünde gidermek.",
+      "actual": "other",
+      "raw": "entailment",
+      "applicant": "entailment",
+      "other": "entailment",
+      "inferred": "ambiguous"
+    },
+    {
+      "family": "ios-symbols",
+      "component": "iOS çökme kayıtlarını sembolleştirmek.",
+      "actual": "not_stated",
+      "raw": "entailment",
+      "applicant": "entailment",
+      "other": "entailment",
+      "inferred": "ambiguous"
+    },
+    {
+      "family": "ios-symbols",
+      "component": "İlgili çökme hatasını yayımlanan bir iOS sürümünde gidermek.",
+      "actual": "not_stated",
+      "raw": "entailment",
+      "applicant": "entailment",
+      "other": "entailment",
+      "inferred": "ambiguous"
+    },
+    {
+      "family": "board-bringup",
+      "component": "Load firmware on a physical board.",
+      "actual": "applicant",
+      "raw": "neutral",
+      "applicant": "neutral",
+      "other": "neutral",
+      "inferred": "not_stated"
+    },
+    {
+      "family": "board-bringup",
+      "component": "Verify UART output on the physical board.",
+      "actual": "applicant",
+      "raw": "neutral",
+      "applicant": "entailment",
+      "other": "neutral",
+      "inferred": "applicant"
+    },
+    {
+      "family": "board-bringup",
+      "component": "Load firmware on a physical board.",
+      "actual": "other",
+      "raw": "entailment",
+      "applicant": "entailment",
+      "other": "entailment",
+      "inferred": "ambiguous"
+    },
+    {
+      "family": "board-bringup",
+      "component": "Verify UART output on the physical board.",
+      "actual": "applicant",
+      "raw": "entailment",
+      "applicant": "entailment",
+      "other": "entailment",
+      "inferred": "ambiguous"
+    },
+    {
+      "family": "board-bringup",
+      "component": "Load firmware on a physical board.",
+      "actual": "not_stated",
+      "raw": "entailment",
+      "applicant": "entailment",
+      "other": "neutral",
+      "inferred": "applicant"
+    },
+    {
+      "family": "board-bringup",
+      "component": "Verify UART output on the physical board.",
+      "actual": "not_stated",
+      "raw": "entailment",
+      "applicant": "neutral",
+      "other": "neutral",
+      "inferred": "not_stated"
+    },
+    {
+      "family": "dataset-release-check",
+      "component": "Veri setindeki kişisel tanımlayıcıları temizlemek.",
+      "actual": "applicant",
+      "raw": "entailment",
+      "applicant": "entailment",
+      "other": "entailment",
+      "inferred": "ambiguous"
+    },
+    {
+      "family": "dataset-release-check",
+      "component": "Sürümlü bir veri setini yayımlamak.",
+      "actual": "applicant",
+      "raw": "entailment",
+      "applicant": "entailment",
+      "other": "entailment",
+      "inferred": "ambiguous"
+    },
+    {
+      "family": "dataset-release-check",
+      "component": "Veri setindeki kişisel tanımlayıcıları temizlemek.",
+      "actual": "applicant",
+      "raw": "neutral",
+      "applicant": "contradiction",
+      "other": "contradiction",
+      "inferred": "not_stated"
+    },
+    {
+      "family": "dataset-release-check",
+      "component": "Sürümlü bir veri setini yayımlamak.",
+      "actual": "other",
+      "raw": "entailment",
+      "applicant": "entailment",
+      "other": "entailment",
+      "inferred": "ambiguous"
+    },
+    {
+      "family": "dataset-release-check",
+      "component": "Veri setindeki kişisel tanımlayıcıları temizlemek.",
+      "actual": "not_stated",
+      "raw": "neutral",
+      "applicant": "contradiction",
+      "other": "contradiction",
+      "inferred": "not_stated"
+    },
+    {
+      "family": "dataset-release-check",
+      "component": "Sürümlü bir veri setini yayımlamak.",
+      "actual": "not_stated",
+      "raw": "entailment",
+      "applicant": "entailment",
+      "other": "entailment",
+      "inferred": "ambiguous"
+    },
+    {
+      "family": "restore-monitor",
+      "component": "Configure database backups.",
+      "actual": "applicant",
+      "raw": "entailment",
+      "applicant": "entailment",
+      "other": "entailment",
+      "inferred": "ambiguous"
+    },
+    {
+      "family": "restore-monitor",
+      "component": "Verify a database restore.",
+      "actual": "applicant",
+      "raw": "entailment",
+      "applicant": "entailment",
+      "other": "entailment",
+      "inferred": "ambiguous"
+    },
+    {
+      "family": "restore-monitor",
+      "component": "Configure database backups.",
+      "actual": "other",
+      "raw": "neutral",
+      "applicant": "neutral",
+      "other": "neutral",
+      "inferred": "not_stated"
+    },
+    {
+      "family": "restore-monitor",
+      "component": "Verify a database restore.",
+      "actual": "applicant",
+      "raw": "neutral",
+      "applicant": "neutral",
+      "other": "neutral",
+      "inferred": "not_stated"
+    },
+    {
+      "family": "restore-monitor",
+      "component": "Configure database backups.",
+      "actual": "not_stated",
+      "raw": "neutral",
+      "applicant": "neutral",
+      "other": "neutral",
+      "inferred": "not_stated"
+    },
+    {
+      "family": "restore-monitor",
+      "component": "Verify a database restore.",
+      "actual": "not_stated",
+      "raw": "neutral",
+      "applicant": "contradiction",
+      "other": "neutral",
+      "inferred": "not_stated"
+    },
+    {
+      "family": "release-signoff",
+      "component": "Mobil uygulama derlemesini imzalamak.",
+      "actual": "applicant",
+      "raw": "entailment",
+      "applicant": "entailment",
+      "other": "entailment",
+      "inferred": "ambiguous"
+    },
+    {
+      "family": "release-signoff",
+      "component": "Mobil uygulama sürümünü mağazaya göndermek.",
+      "actual": "applicant",
+      "raw": "entailment",
+      "applicant": "entailment",
+      "other": "entailment",
+      "inferred": "ambiguous"
+    },
+    {
+      "family": "release-signoff",
+      "component": "Mobil uygulama derlemesini imzalamak.",
+      "actual": "applicant",
+      "raw": "entailment",
+      "applicant": "entailment",
+      "other": "entailment",
+      "inferred": "ambiguous"
+    },
+    {
+      "family": "release-signoff",
+      "component": "Mobil uygulama sürümünü mağazaya göndermek.",
+      "actual": "other",
+      "raw": "entailment",
+      "applicant": "entailment",
+      "other": "entailment",
+      "inferred": "ambiguous"
+    },
+    {
+      "family": "release-signoff",
+      "component": "Mobil uygulama derlemesini imzalamak.",
+      "actual": "not_stated",
+      "raw": "entailment",
+      "applicant": "entailment",
+      "other": "entailment",
+      "inferred": "ambiguous"
+    },
+    {
+      "family": "release-signoff",
+      "component": "Mobil uygulama sürümünü mağazaya göndermek.",
+      "actual": "not_stated",
+      "raw": "entailment",
+      "applicant": "entailment",
+      "other": "entailment",
+      "inferred": "ambiguous"
+    }
+  ]
+}
