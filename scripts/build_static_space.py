@@ -16,6 +16,7 @@ def main():
     shutil.copyfile(ROOT / "LICENSE",dest / "LICENSE")
     shutil.copyfile(ROOT / "research/source_grounded_candidates.jsonl",dest / "review-packet.jsonl")
     shutil.copyfile(ROOT / "reports/source-pairs-dev.json",dest / "model-examples.json")
+    shutil.copyfile(ROOT / "reports/language-switch.json",dest / "model-languages.json")
     snapshot = json.loads(max((ROOT / "reports").glob("skill-mentions-*.json")).read_text(encoding="utf-8"))
     inventory = json.loads((ROOT / "reports" / snapshot["inventory"]).read_text(encoding="utf-8"))
     snapshot["boards"] = [{"employer":source["source"], "available":source["status"] == "ok"}
