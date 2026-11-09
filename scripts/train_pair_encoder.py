@@ -19,15 +19,15 @@ def encode(rows, tokenizer):
                      padding=True, truncation=True, max_length=128, return_tensors="pt")
 
 
-def run(training, dev, tokenizer, adapt, version):
+def run(training, dev, tokenizer, adapt, version, labels=LABELS, positive_label="supported"):
     torch.manual_seed(17)
     order = list(range(len(training)))
     shuffle = random.Random(17)
     model = AutoModelForSequenceClassification.from_pretrained(BASE, revision=REVISION)
     # The upstream NLI categories differ from the evidence-strength labels.
     model._init_weights(model.classifier.out_proj)
-    model.config.id2label = dict(enumerate(LABELS))
-    model.config.label2id = {v:k for k,v in enumerate(LABELS)}
+    model.config.id2label = dict(enumerate(labels))
+    model.config.label2id = {v:k for k,v in enumerate(labels)}
     model.base_model.requires_grad_(False)
     model.base_model.encoder.layer[-1].requires_grad_(adapt)
     optimizer = torch.optim.AdamW((p for p in model.parameters() if p.requires_grad), lr=5e-5)
@@ -36,7 +36,7 @@ def run(training, dev, tokenizer, adapt, version):
         shuffle.shuffle(order)
         for start in range(0,len(order),6):
             batch = [training[i] for i in order[start:start+6]]
-            targets = torch.tensor([LABELS.index(r["label"]) for r in batch])
+            targets = torch.tensor([labels.index(r["label"]) for r in batch])
             optimizer.zero_grad()
             loss = model(**encode(batch, tokenizer),labels=targets).loss
             loss.backward()
@@ -48,9 +48,9 @@ def run(training, dev, tokenizer, adapt, version):
         tokenizer.save_pretrained(dest)
         model = AutoModelForSequenceClassification.from_pretrained(dest).eval()
     with torch.inference_mode():
-        predictions = [LABELS[i] for i in model(**encode(dev, tokenizer)).logits.argmax(1).tolist()]
+        predictions = [labels[i] for i in model(**encode(dev, tokenizer)).logits.argmax(1).tolist()]
     pairs = list(zip(predictions,[r["label"] for r in dev],strict=True))
-    return dict(correct=sum(a==b for a,b in pairs), false_support=sum(a=="supported" and a!=b for a,b in pairs),
+    return dict(correct=sum(a==b for a,b in pairs), false_support=sum(a==positive_label and a!=b for a,b in pairs),
                 predictions=predictions)
 
 

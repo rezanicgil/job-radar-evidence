@@ -45,6 +45,7 @@ def main():
     shutil.copyfile(ROOT/"data/match_switch_training.jsonl",destination/"requirement_switch_train.jsonl")
     shutil.copyfile(ROOT/"data/compound_evidence_dev.jsonl",destination/"compound_evidence.jsonl")
     shutil.copyfile(ROOT/"data/actor_evidence_dev.jsonl",destination/"actor_evidence.jsonl")
+    shutil.copyfile(ROOT/"data/actor_evidence_train.jsonl",destination/"actor_evidence_train.jsonl")
     switches = [dict(family=c["family"],cv_passage=c["cv_passage"],requirement=requirement,label=label)
                 for c in cases for label,requirement in c["requirements"].items()]
     (destination/"requirement_switch.jsonl").write_bytes(

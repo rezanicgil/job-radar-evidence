@@ -4,7 +4,7 @@ language:
   - en
 license: apache-2.0
 size_categories:
-  - n<1K
+  - 1K<n<10K
 configs:
   - config_name: default
     data_files:
@@ -36,19 +36,25 @@ configs:
         path: compound_evidence.jsonl
   - config_name: actor_evidence
     data_files:
+      - split: train
+        path: actor_evidence_train.jsonl
       - split: validation
         path: actor_evidence.jsonl
 ---
 
 # Job Radar · Bilingual CV evidence pilot
 
-This pilot contains 69 training pairs from 23 families and 18 development pairs from six other families. Each family presents one job requirement and three fictional CV passages with different evidence labels. The training split contains 23 examples per label and the validation split contains six per label.
+The default configuration contains 69 training pairs from 23 families and 18 development pairs from six other families. Each default family presents one job requirement and three fictional CV passages with different evidence labels. The default training split contains 23 examples per label and its validation split contains six per label. The optional configurations include controlled augmentation and additional annotations of existing passages; summing their row counts would overstate the number of independent examples.
 
 The validation file begins with nine general challenge examples and ends with nine examples about Docker, Terraform and Prometheus. A passage can name the right technology while describing event logistics rather than engineering work. The [experiment predictions](https://github.com/rezanicgil/job-radar-evidence/blob/dba6189/reports/pair-mentions-v3.json) show where the model confused the two. The [original 54-row release](https://huggingface.co/datasets/rezanicgil/job-radar-match-pilot/tree/cb96ff522186ae77a3b9f1bada3ee32842d91b15) remains available for earlier experiments.
 
 ## How to read a row
 
 The `actor_evidence` view annotates the same 18 compound cases at component level. Its 36 rows identify who performed the required action: `applicant`, `other`, or `not_stated`. These are project-authored judgments. Nonempty quotes come directly from the fictional passage, with zero-based Unicode character offsets and an exclusive end. When no one is described performing the required action, the quote and offsets are null. Do not pool these rows with the compound cases as independent observations. The released classifier marked five of six actions attributed to someone else as fully supported for the applicant. [Error breakdown](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/actor-evidence.json)
+
+The actor training split adds 144 synthetic component queries over 48 passages from eight other scenario families. In each passage the applicant and a colleague perform different actions. Each of three target actions rotates between applicant, colleague and unstated, with 48 records per class. Family, passage and component text are disjoint from actor validation. [Training and validation confusion matrices](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/actor-swaps.json)
+
+The actor classifier identified 8/18 applicant actions and 10/12 unstated actions on validation. Of six actions performed by others, it assigned two to the applicant and four to unstated. It recovered none of the 48 other-actor training actions either. This checkpoint should not be used to assign applicant credit.
 
 The `compound_evidence` diagnostic contains 18 fictional passages across six requirements. Each requirement has two mandatory components with separate project-authored evidence labels. Full coverage requires both components to be supported; a mixture of supported and unverified components yields partial coverage. The released classifier matched 10 of 18 whole-condition labels directly and 9 of 18 after classifying components and combining them. Incorrect full-support decisions rose from seven to nine. Splitting conjunctions alone did not solve the evidence attribution errors in this sample. [Comparison](https://github.com/rezanicgil/job-radar-evidence/blob/main/reports/compound-evidence.json)
 
