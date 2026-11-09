@@ -1,0 +1,67 @@
+{
+  "base": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+  "seed": 17,
+  "epochs": 4,
+  "margin": 0.15,
+  "family_batch": 3,
+  "training_families": 18,
+  "development_families": 3,
+  "sha256": {
+    "match_training_v1.jsonl": "5fe9f5b776ec51e75865ade095290845ca8564a8df17311b073bcdd92eae7eb1",
+    "match_contrasts_v2.jsonl": "85b908fc98aac0b16b1258a176d76ca9c08140defedc59cf7a4c68301d56afe7",
+    "match_challenge_dev.jsonl": "f0c8c3e9f3882c3bfd7e2a12dc3ab8a145f8ddfad6e981147cc43cd124dba6e0"
+  },
+  "before": {
+    "ios-native": {
+      "scores": {
+        "supported": 0.6046737432479858,
+        "partial": 0.5299709439277649,
+        "unverified": -0.07254695892333984
+      },
+      "supported_first": true
+    },
+    "android-ui": {
+      "scores": {
+        "supported": 0.8099894523620605,
+        "partial": 0.5900920033454895,
+        "unverified": 0.06544142961502075
+      },
+      "supported_first": true
+    },
+    "firmware-debug": {
+      "scores": {
+        "supported": 0.4145737886428833,
+        "partial": 0.7855929136276245,
+        "unverified": 0.3095892369747162
+      },
+      "supported_first": false
+    }
+  },
+  "after": {
+    "ios-native": {
+      "scores": {
+        "supported": 0.6061690449714661,
+        "partial": 0.526113748550415,
+        "unverified": -0.08571221679449081
+      },
+      "supported_first": true
+    },
+    "android-ui": {
+      "scores": {
+        "supported": 0.8054219484329224,
+        "partial": 0.5883738994598389,
+        "unverified": 0.043904706835746765
+      },
+      "supported_first": true
+    },
+    "firmware-debug": {
+      "scores": {
+        "supported": 0.41597408056259155,
+        "partial": 0.7739205956459045,
+        "unverified": 0.3026745915412903
+      },
+      "supported_first": false
+    }
+  }
+}
