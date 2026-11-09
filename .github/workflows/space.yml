@@ -1,0 +1,26 @@
+name: Space container
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build the staged Space
+        run: |
+          stage="$(python scripts/build_space.py)"
+          docker build --tag job-radar-space "$stage"
+      - name: Review a fictional CV
+        run: |
+          docker run --detach --name radar --publish 127.0.0.1:7860:7860 job-radar-space
+          trap 'docker logs radar; docker rm --force radar' EXIT
+          curl --silent --show-error --fail --retry 20 --retry-connrefused --retry-delay 2 http://127.0.0.1:7860/ > /dev/null
+          curl --silent --show-error --fail -F 'cv=Deployed billing software using Docker.' -F 'posting=Production Docker experience required.' http://127.0.0.1:7860/ > "$RUNNER_TEMP/review.html"
+          grep -F '<li>Page 1 · Deployed billing software using Docker.</li>' "$RUNNER_TEMP/review.html"
+          curl --silent --show-error --fail 'http://127.0.0.1:7860/market?area=Android' > "$RUNNER_TEMP/market.html"
+          grep -F 'Jetpack Compose' "$RUNNER_TEMP/market.html"
