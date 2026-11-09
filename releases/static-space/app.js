@@ -23,11 +23,14 @@ function conditionsFrom(text){
     .replace(/^(?:[•*–-]|\d{1,2}[.)])\s+/u,"").replace(/\s+/gu," ").trim());
   return [...new Set(lines.filter(Boolean))];
 }
-const downloadReview=document.createElement("button");
+const downloadControls=document.createElement("div");
+const downloadReview=add(downloadControls,"button","Download review (.txt)");
 downloadReview.type="button";
-downloadReview.textContent="Download review (.txt)";
-downloadReview.hidden=true;
-el("status").after(downloadReview);
+const downloadData=add(downloadControls,"button","Download review (.json)");
+downloadData.type="button";
+downloadControls.hidden=true;
+el("status").after(downloadControls);
+let reviewedSource;
 let reviewVersion=0;
 const jobOrigin=document.createElement("p");
 el("job").parentElement.before(jobOrigin);
@@ -75,7 +78,8 @@ function offerReviewedConditions(card,posting,conditions,preferences=[]){
 }
 function invalidateReview(){
   reviewVersion++;
-  downloadReview.hidden=true;
+  downloadControls.hidden=true;
+  reviewedSource=null;
   el("example").hidden=Boolean(el("cv").value||el("job").value||el("file").files.length||el("posting").value);
   const hasReview=el("results").children.length||el("find").disabled;
   el("source").textContent="";
@@ -323,6 +327,8 @@ function addEvidencePicker(card,lines,suggestions){
     input.type="checkbox";
     input.className="evidence";
     input.value="Page "+line.page+" · "+line.text;
+    input.dataset.page=line.page;
+    input.dataset.passage=line.text;
     label.append(" "+input.value);
     input.onchange=()=>{
       choice.querySelector(".quote-editor")?.remove();
@@ -385,7 +391,7 @@ function assessmentRows(){
     const quotes=chosen.map(input=>{
       const field=input.closest("div").querySelector(".excerpt");
       const excerpt=field?.value.trim();
-      return excerpt?input.value+"\nHighlighted wording: "+excerpt:input.value;
+      return {page:Number(input.dataset.page),passage:input.dataset.passage,excerpt:excerpt||null};
     });
     const validQuotes=chosen.every(input=>input.closest("div").querySelector(".excerpt")?.validity.valid!==false);
     const needsQuote=label==="partial"||label==="supported";
@@ -397,25 +403,38 @@ function assessmentRows(){
             complete:Boolean(label)&&gap.validity.valid&&(!needsQuote||(quotes.length>0&&validQuotes))};
   });
 }
-downloadReview.onclick=()=>{
+function counts(values){
+  const required=values.filter(v=>v!=="skip").length;
+  const supported=values.filter(v=>v==="supported").length;
+  return {required,supported,partial:values.filter(v=>v==="partial").length,
+          unverified:values.filter(v=>v==="unverified").length,excluded:values.length-required,
+          percentage:required?Math.round(100*supported/required):null};
+}
+function exportReview(format){
   const rows=assessmentRows();
   if(!rows.length||rows.some(row=>!row.complete))return;
   const heading=el("status").innerText;
   const origin=jobOrigin.querySelector("a");
   const context=origin?"Selected requirements from "+origin.textContent+"\n"+origin.href+"\nCoverage applies only to the selected conditions.":"";
-  const body=["Job Radar Evidence",el("source").textContent,context,heading,...rows.map(row=>
-    [row.condition,"Assessment: "+row.label,...row.quotes,row.duration,
+  const data={format:"job-radar-review-v1",exported_at:new Date().toISOString(),cv:reviewedSource,
+    job:origin?{title:origin.textContent,url:origin.href}:null,method:el("method").value,
+    coverage:counts(rows.map(row=>row.label)),conditions:rows.map(({complete,...row})=>row)};
+  const body=format==="json"?JSON.stringify(data,null,2):["Job Radar Evidence",el("source").textContent,context,heading,...rows.map(row=>
+    [row.condition,"Assessment: "+row.label,...row.quotes.map(q=>"Page "+q.page+" · "+q.passage+
+      (q.excerpt?"\nHighlighted wording: "+q.excerpt:"")),row.duration,
      row.missing?"Requirement still to demonstrate: "+row.missing:"",
      row.note?"Next CV edit: "+row.note:""].filter(Boolean).join("\n"))].join("\n\n");
-  const url=URL.createObjectURL(new Blob([body+"\n"],{type:"text/plain;charset=utf-8"}));
+  const url=URL.createObjectURL(new Blob([body+"\n"],{type:format==="json"?"application/json":"text/plain;charset=utf-8"}));
   const link=document.createElement("a");
-  link.href=url;link.download="job-radar-review.txt";link.click();
+  link.href=url;link.download="job-radar-review."+format;link.click();
   setTimeout(()=>URL.revokeObjectURL(url),1000);
-};
+}
+downloadReview.onclick=()=>exportReview("txt");
+downloadData.onclick=()=>exportReview("json");
 function coverage(){
   const rows=assessmentRows();
   const values=rows.map(row=>row.complete?row.label:"");
-  downloadReview.hidden=!values.length||values.includes("");
+  downloadControls.hidden=!values.length||values.includes("");
   const status=el("status");
   status.replaceChildren();
   if(values.includes("")){
@@ -424,12 +443,13 @@ function coverage(){
     add(status,"span",completed+" of "+values.length+" conditions reviewed. Choose an assessment and attach evidence for supported or partial conditions.");
     return;
   }
-  const n=values.filter(v=>v!=="skip").length,s=values.filter(v=>v==="supported").length;
+  const summary=counts(values);
+  const {required:n,supported:s}=summary;
   if(!n){status.textContent="No required conditions selected.";return}
-  add(status,"strong",Math.round(100*s/n)+"% coverage");
+  add(status,"strong",summary.percentage+"% coverage");
   add(status,"span",s+" of "+n+" required conditions fully supported by your CV, as reviewed.");
   for(const [label,title] of [["partial","Partially supported"],["unverified","Unverified"]]){
-    const count=values.filter(value=>value===label).length;
+    const count=summary[label];
     add(status,"span",title+" · "+count+"/"+n+" ("+Math.round(100*count/n)+"%)");
   }
   add(status,"span",(values.length-n)+" excluded from coverage");
@@ -443,14 +463,19 @@ function coverage(){
 }
 el("form").onsubmit=async event=>{
   event.preventDefault();el("find").disabled=true;el("results").replaceChildren();
-  downloadReview.hidden=true;
+  downloadControls.hidden=true;
+  reviewedSource=null;
   const version=++reviewVersion;
   const file=el("file").files[0];
   el("source").textContent="";
   el("status").textContent="Reading CV…";
   try{
     const pages=await readPages(file);
+    const bytes=file?await file.arrayBuffer():new TextEncoder().encode(pages[0]);
+    const digest=globalThis.crypto?.subtle?await crypto.subtle.digest("SHA-256",bytes):null;
     if(version!==reviewVersion)return;
+    reviewedSource={name:file?.name||null,kind:file?"file":"text",
+      sha256:digest?Array.from(new Uint8Array(digest),b=>b.toString(16).padStart(2,"0")).join(""):null};
     const isPdf=/\.pdf$/i.test(file?.name || "");
     const lines=pages.flatMap((p,i)=>pagePassages(p,isPdf).map(text=>({text,page:i+1})));
     const job=conditionsFrom(el("job").value);

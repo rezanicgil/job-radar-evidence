@@ -2,7 +2,7 @@
 
 [Try the public Hugging Face Space](https://huggingface.co/spaces/rezanicgil/job-radar-evidence) · [Browse the published dataset](https://huggingface.co/datasets/rezanicgil/job-radar-match-pilot)
 
-Job Radar helps an applicant answer “Which requirements can I demonstrate in my CV, and what could I clarify before applying?” Open a PDF or TXT in the browser, select conditions from a Turkish or English posting, and attach CV passages to your assessment. The downloadable report preserves page references, selected wording and notes for your next CV edit.
+Job Radar helps an applicant answer “Which requirements can I demonstrate in my CV, and what could I clarify before applying?” Open a PDF or TXT in the browser, select conditions from a Turkish or English posting, and attach CV passages to your assessment. Download the review as text or as JSON. Both formats preserve page references, selected wording and notes. The JSON also records the coverage denominator and a fingerprint of the CV input so a later comparison can detect a changed CV.
 
 ## Example
 

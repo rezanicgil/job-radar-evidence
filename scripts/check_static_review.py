@@ -1,6 +1,7 @@
 """Exercise evidence selection, coverage, export and invalidation in the staged Space."""
 
 import argparse
+from hashlib import sha256
 import json
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
@@ -43,12 +44,23 @@ def check(page, origin):
     assert "Conditions to revisit" in exported and "Document the duration" in exported
     assert "Requirement still to demonstrate: 36 months" in exported
     assert "Highlighted wording: 30 ay" in exported and "motor kontrol yazılımı geliştirdim" in exported
+    data_button=page.get_by_role("button",name="Download review (.json)")
+    with page.expect_download() as event:
+        data_button.click()
+    data=json.loads(event.value.path().read_text(encoding="utf-8"))
+    assert data["format"]=="job-radar-review-v1"
+    assert data["coverage"]==dict(required=2,supported=1,partial=1,unverified=0,excluded=0,percentage=50)
+    row=data["conditions"][0]
+    assert row["missing"]=="36 months" and row["quotes"][0]["excerpt"]=="30 ay"
+    assert row["quotes"][0]["page"]==1 and row["quotes"][0]["passage"] in exported
+    assert data["cv"]["sha256"]==sha256(page.locator("#cv").input_value().encode()).hexdigest()
     cards.first.locator(".assessment").select_option("skip")
     expect(page.locator("#status")).to_contain_text("100% coverage")
     expect(page.locator("#status")).to_contain_text("1 of 1 required")
     page.locator("#cv").fill("A different applicant.")
     expect(cards).to_have_count(0)
     expect(report).to_be_hidden()
+    expect(data_button).to_be_hidden()
     expect(page.locator("#status")).not_to_contain_text("coverage")
     page.locator("#job").fill("• C++ and Python\n1. C++  and Python\nC++ and Python")
     page.locator("#find").click()

@@ -13,6 +13,15 @@ from review_cv import read_passages
 
 
 def evidence_rows(report):
+    if report.lstrip().startswith("{"):
+        data=json.loads(report)
+        if data.get("format")!="job-radar-review-v1":
+            raise ValueError("Unknown JSON review format")
+        rows=[(row["condition"],row["label"],[(q["page"],q["passage"]) for q in row["quotes"]])
+              for row in data["conditions"]]
+        if not rows:
+            raise ValueError("The JSON review has no conditions")
+        return rows
     sections=list(re.finditer(r"^([^\n]+)\nAssessment: (supported|partial|unverified|skip)$",report,re.M))
     rows=[]
     for i,section in enumerate(sections):
@@ -41,7 +50,14 @@ def compare(cv,report,candidate):
             record[name+"_best_rank"]=min(ranks,default=None)
             record[name+"_all_ranks"]=ranks
     eligible=[r for r in results if r["selected_quotes"] and not r["unmatched_quotes"]]
-    return dict(cv_sha256=hashlib.sha256(cv.read_bytes()).hexdigest(),passages=len(passages),
+    current_hash=hashlib.sha256(cv.read_bytes()).hexdigest()
+    if report.lstrip().startswith("{"):
+        prior_hash=json.loads(report)["cv"].get("sha256")
+    else:
+        match=re.search(r"^CV SHA256: ([a-f0-9]{64})$",report,re.M)
+        prior_hash=match[1] if match else None
+    return dict(cv_sha256=current_hash,review_cv_sha256=prior_hash,
+                same_cv_input=current_hash==prior_hash if prior_hash else None,passages=len(passages),
                 conditions=len(rows),fully_reproducible_conditions=len(eligible),
                 summary={name:{f"top{k}":sum(r[name+"_best_rank"]<=k for r in eligible) for k in (1,3)}
                          for name in ("base","adapted")},results=results)
