@@ -117,6 +117,8 @@ The mentions-v3 checkpoint recovered 4/6 supported examples (66.7%), 0/6 partial
 
 The next collection batch contains 12 unlabeled fictional passages paired with requirements adapted from three source postings. They are available for review outside these splits. Further collection should sample independent employers and requirements across software specialties, include all four Turkish/English language directions, and prioritize passages that share a technology name while differing in responsibility or deployment experience. [Review candidates](https://github.com/rezanicgil/job-radar-evidence/blob/a7f1a6d/research/source_grounded_candidates.jsonl)
 
+Reviewers can save one decision or a full packet in the [blind review form](https://rezanicgil-job-radar-evidence.static.hf.space/annotate.html). Once two people have independently reviewed shared examples, the local comparison tool can evaluate the frozen classifier against each set of decisions and identify disputed labels. Results on agreed cases carry their own denominator. [Command and interpretation](https://github.com/rezanicgil/job-radar-evidence/blob/main/research/methodology.md)
+
 ### Duration augmentation
 
 The separate `duration_weak` training configuration contains 768 programmatically labeled pairs derived from eight technology names, three thresholds, four durations, technical versus administrative work, and four language directions. The same passage can support a two-year requirement and partially support a five-year requirement. These are 128 distinct CV strings and 48 distinct requirements with substantial template reuse. Treat the 768 rows as controlled augmentation, not independent observations. Administrative examples account for half of the rows.

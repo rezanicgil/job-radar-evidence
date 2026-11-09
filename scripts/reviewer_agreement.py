@@ -5,6 +5,7 @@ from collections import Counter
 import hashlib
 import json
 from pathlib import Path
+import runpy
 
 LABELS = ("supported", "partial", "unverified")
 
@@ -43,7 +44,30 @@ def review(path, packet, packet_hash, allow_partial=False):
     return rows
 
 
-def compare(packet_path, first_path, second_path, allow_partial=False):
+def model_comparison(packet, first, second, *, offline=False):
+    # Use the same pinned weights, tokenizer, label order and truncation as the public CLI.
+    release=runpy.run_path(str(Path(__file__).resolve().parents[1]/"releases/mentions-v3/predict.py"))
+    model,tokenizer=release["load_research_model"](offline)
+    shared=[key for key in packet if key in first and key in second]
+    cases=[]
+    for key in shared:
+        row=packet[key]
+        output=release["predict"](row["cv_passage"],row["requirement"],model,tokenizer)
+        cases.append(dict(id=key,predicted=output["prediction"],first=first[key]["label"],
+                          second=second[key]["label"],truncated=output["truncated"]))
+    consensus=[r for r in cases if r["first"]==r["second"]]
+    counts={}
+    for reviewer in ("first","second"):
+        counts[reviewer]={label:dict(total=sum(r[reviewer]==label for r in cases),
+                                     matched=sum(r[reviewer]==r["predicted"]==label for r in cases))
+                          for label in LABELS}
+    return dict(model=release["REPO"],revision=release["REV"],overlap=len(cases),
+                per_reviewer=counts,agreed_records=len(consensus),
+                matched_agreed=sum(r["predicted"]==r["first"] for r in consensus),
+                disputed_records=len(cases)-len(consensus),cases=cases)
+
+
+def compare(packet_path, first_path, second_path, allow_partial=False, *, score_model=False, offline=False):
     if first_path.samefile(second_path):
         raise ValueError("Supply two separate review files")
     packet = indexed(packet_path)
@@ -73,11 +97,14 @@ def compare(packet_path, first_path, second_path, allow_partial=False):
     observed = (n-len(disagreements))/n
     chance = sum(a_counts[l]*b_counts[l] for l in LABELS)/(n*n)
     verified_versions = all("packet_sha256" in row for rows in (a,b) for row in rows.values())
-    return dict(records=n,packet_records=len(packet),first_reviewed=len(a),second_reviewed=len(b),
+    result=dict(records=n,packet_records=len(packet),first_reviewed=len(a),second_reviewed=len(b),
                 packet_sha256=packet_hash,all_review_versions_verified=verified_versions,
                 agreement=observed,kappa=None if chance == 1 else (observed-chance)/(1-chance),
                 first_label_counts=a_counts,second_label_counts=b_counts,disagreements=disagreements,
                 same_label_different_excerpt=different_quotes)
+    if score_model:
+        result["model_comparison"]=model_comparison(packet,a,b,offline=offline)
+    return result
 
 
 if __name__ == "__main__":
@@ -85,8 +112,11 @@ if __name__ == "__main__":
     for arg in ("packet","first","second"):
         parser.add_argument(arg,type=Path)
     parser.add_argument("--allow-partial",action="store_true",help="Compare only the examples both reviewers assessed")
+    parser.add_argument("--score-model",action="store_true",help="Compare the released classifier to both reviewers on shared cases")
+    parser.add_argument("--offline",action="store_true",help="Use only cached model files for --score-model")
     args = parser.parse_args()
     try:
-        print(json.dumps(compare(args.packet,args.first,args.second,args.allow_partial),ensure_ascii=False,indent=2))
+        print(json.dumps(compare(args.packet,args.first,args.second,args.allow_partial,
+                                 score_model=args.score_model,offline=args.offline),ensure_ascii=False,indent=2))
     except (ValueError,OSError) as exc:
         parser.exit(2,f"{exc}\n")

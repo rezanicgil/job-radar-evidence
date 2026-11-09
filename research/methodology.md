@@ -14,6 +14,14 @@ Reviewers each save private JSONL rows with an `id`, `label` and verbatim `evide
 
 The web form also exports a single saved decision. Share the example link so another reviewer can assess the same passage independently. Add `--allow-partial` to compare incomplete files. The report shows how many examples each reviewer assessed and how many they have in common. Agreement uses only the overlap. Report the count alongside the proportion because people who stop early may review a different mix of cases.
 
+After both reviewers have saved their own decisions, add `--score-model` to run the pinned public evidence classifier on their shared cases. For example:
+
+```console
+python scripts/reviewer_agreement.py research/source_grounded_candidates.jsonl runs/reviewer-a.jsonl runs/reviewer-b.jsonl --allow-partial --score-model
+```
+
+The output reports matched and reviewed counts for each label against each reviewer. It also counts matches among cases where both assigned the same label. A disagreement retains both decisions and both excerpts for adjudication. Report the disputed count alongside the agreed-case result since selecting only agreed cases can omit difficult examples. When the agreed count is zero, an agreed-case accuracy is undefined. The model identifier, pinned revision and truncation flag are included. Add `--offline` to use already downloaded weights. Keep individual review files and their detailed outputs local unless their authors choose to share them.
+
 ## Comparisons and selection
 
 For an external whole-document check, use two ranking directions. For a given CV, compare jobs with different source labels and ask whether the higher-labelled job receives a higher score. For a given job, repeat the comparison across CVs. Give a score tie half credit. Average within each eligible group first, then across groups, so a frequently repeated CV does not dominate the result. Report each pair of label levels separately. ConFit also examines retrieval from both sides of the résumé–job matching problem. [ConFit](https://arxiv.org/abs/2401.16349)
