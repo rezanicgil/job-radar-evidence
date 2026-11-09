@@ -20,7 +20,7 @@ dataset_info:
   - config_name: technologies
     features:
       - name: date
-        dtype: string
+        dtype: date32
       - name: technology
         dtype: string
       - name: postings_mentioning
@@ -44,7 +44,7 @@ dataset_info:
       - name: other_employer_postings
         dtype: int64
       - name: compared_with_date
-        dtype: string
+        dtype: date32
       - name: new_board
         dtype: int64
       - name: recovered_board
@@ -87,7 +87,7 @@ On November 10 at 00:00 Türkiye time the panel was collected again, about seven
 from datasets import load_dataset
 
 jobs = load_dataset("rezanicgil/turkiye-software-job-market", "postings", split="observations")
-day = jobs.filter(lambda r: r["date"] == "2026-11-09" and r["description_status"] == "readable")
+day = jobs.filter(lambda r: str(r["date"])[:10] == "2026-11-09" and r["description_status"] == "readable")
 matches = day.filter(lambda r: "Python" in r["technologies"])
 print(f"{len(matches)}/{len(day)} postings ({len(matches) / len(day):.1%})")
 print(len(set(matches["employer"])), "of", len(set(day["employer"])), "employers")
