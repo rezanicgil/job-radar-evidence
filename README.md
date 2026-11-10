@@ -4,6 +4,8 @@
 
 Job Radar helps an applicant answer “Which requirements can I demonstrate in my CV, and what could I clarify before applying?” Open a PDF or TXT in the browser, select conditions from a Turkish or English posting, and attach CV passages to your assessment. Download the review as text or as JSON. Both formats preserve page references, selected wording and notes. The JSON also records the coverage denominator and a fingerprint of the CV input so a later comparison can detect a changed CV.
 
+[Read the November 10 qualification brief by role and employer](reports/qualification-brief-2026-11-10T075056415797Z.md)
+
 [Portfolio walkthrough: review a real backend requirement, then reproduce a model result](research/portfolio.md)
 
 ## Example
