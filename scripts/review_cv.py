@@ -35,6 +35,16 @@ SECTION_TITLE = re.compile(
 )
 
 
+# Keep only known multiword names across uppercase PDF line breaks; a new
+# bullet, heading or TXT line must still start a new passage.
+WRAPPED_NAMES = (("GitHub", "Actions"), ("Jetpack", "Compose"), ("React", "Native"),
+                 ("Android", "SDK"), ("Unreal", "Engine"), ("Amazon", "SQS"))
+
+def wraps_name(previous, following):
+    return any(re.search(r"(?<!\w)"+left+r"$", previous, re.I) and
+               re.match(right+r"(?!\w)", following, re.I) for left,right in WRAPPED_NAMES)
+
+
 def cv_page_chunks(page, is_pdf):
     current = ""
     for raw in page.splitlines():
@@ -47,7 +57,7 @@ def cv_page_chunks(page, is_pdf):
         content = re.sub(r"^(?:[•▪●]\s*|[-–]\s+)", "", line)
         if not content:
             continue
-        if is_pdf and current and content == line and content[0].islower() and current[-1] not in ".!?:":
+        if is_pdf and current and content == line and (content[0].islower() or wraps_name(current,content)) and current[-1] not in ".!?:":
             current += " " + content
         else:
             if current:

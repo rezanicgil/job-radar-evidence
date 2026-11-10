@@ -400,6 +400,10 @@ async function readPages(file){
   return pages;
 }
 const sectionTitle=/^(?:(?:professional |work |relevant )?experience|(?:technical )?skills|(?:professional )?summary|education|projects|certifications|languages|iş deneyimi|deneyim|eğitim|projeler|teknik beceriler|yetenekler|özet|diller)\s*:?$/iu;
+const wrappedNames=[["GitHub","Actions"],["Jetpack","Compose"],["React","Native"],["Android","SDK"],["Unreal","Engine"],["Amazon","SQS"]];
+function wrapsName(previous,following){
+  return wrappedNames.some(([a,b])=>new RegExp("(?<![\\p{L}\\p{N}_])"+a+"$","iu").test(previous)&&new RegExp("^"+b+"(?![\\p{L}\\p{N}_])","iu").test(following));
+}
 function pagePassages(page,isPdf){
   const chunks=[];
   let previous="";
@@ -413,7 +417,7 @@ function pagePassages(page,isPdf){
     const bullet=/^[•▪●]|^[-–]\s/.test(line);
     const content=line.replace(/^[•▪●]\s*|^[-–]\s+/,"");
     // A PDF line break before lowercase text commonly wraps the same sentence.
-    const wraps=isPdf && !bullet && /^\p{Ll}/u.test(content) && !/[.!?:]$/.test(previous);
+    const wraps=isPdf && !bullet && (/^\p{Ll}/u.test(content)||wrapsName(previous,content)) && !/[.!?:]$/.test(previous);
     if(!wraps)flush();
     previous=previous ? previous+" "+content : content;
   }
