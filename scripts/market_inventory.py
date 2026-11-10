@@ -5,6 +5,7 @@ from datetime import datetime, timedelta, timezone
 import json
 from pathlib import Path
 import re
+import unicodedata
 from urllib.error import URLError
 from urllib.request import Request, urlopen
 import workday_board
@@ -29,6 +30,25 @@ PATTERNS = {
     "Networking and systems": r"network engineer|systems programmer|kernel engineer|network software",
 }
 TR_LOCATION = re.compile(r"\b(?:turkey|türkiye|turkiye|istanbul|i̇stanbul|ankara|izmir|i̇zmir|bursa|kocaeli|antalya)\b", re.I)
+
+
+# New province-only matches must occupy the entire location after removing work-mode
+# qualifiers. Do not treat arbitrary words inside an address as a Turkish province.
+# Reference: https://www.icisleri.gov.tr/valilikler
+def location_key(value):
+    return "".join(c for c in unicodedata.normalize("NFKD",value.casefold().replace("ı","i"))
+                   if not unicodedata.combining(c)).strip()
+
+PROVINCE_NAMES = """Adana Adıyaman Afyonkarahisar Ağrı Aksaray Amasya Ankara Antalya Ardahan Artvin Aydın
+Balıkesir Bartın Batman Bayburt Bilecik Bingöl Bitlis Bolu Burdur Bursa Çanakkale Çankırı Çorum Denizli
+Diyarbakır Düzce Edirne Elazığ Erzincan Erzurum Eskişehir Gaziantep Giresun Gümüşhane Hakkari Hatay
+Iğdır Isparta İstanbul İzmir Kahramanmaraş Karabük Karaman Kars Kastamonu Kayseri Kırıkkale Kırklareli
+Kırşehir Kilis Kocaeli Konya Kütahya Malatya Manisa Mardin Mersin Muğla Muş Nevşehir Niğde Ordu
+Osmaniye Rize Sakarya Samsun Siirt Sinop Sivas Şanlıurfa Şırnak Tekirdağ Tokat Trabzon Tunceli Uşak
+Van Yalova Yozgat Zonguldak""".split()
+# Van is also a US place name; require an explicit country for that spelling.
+LOCAL_PROVINCES={location_key(p) for p in PROVINCE_NAMES} - {"van"}
+WORK_MODE=re.compile(r"(?<!\w)(?:hybrid|remote|on[- ]?site|hibrit|uzaktan|ofisten)(?!\w)")
 
 
 def observation_date(timestamp):
@@ -56,8 +76,12 @@ def posting_areas(employer,title,url):
 
 def in_turkiye(country, location):
     if country:
-        return country.casefold() in {"tr", "turkey", "türkiye", "turkiye"}
-    return bool(TR_LOCATION.search(location or ""))
+        return location_key(country) in {"tr", "tur", "turkey", "turkiye"}
+    text=location or ""
+    if TR_LOCATION.search(text):
+        return True
+    city=WORK_MODE.sub("",location_key(text)).strip(" ,/|()–—-")
+    return city in LOCAL_PROVINCES
 
 
 def fetch(source, *, retry_timeout=True):
