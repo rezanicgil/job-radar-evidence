@@ -1,3 +1,4 @@
+import {durationConstraintNote} from "./duration-constraints.js";
 import {counts} from "./review-counts.js";
 import {sourceUrl} from "./job-source.js";
 import {technologyWording,hasTechnology,skillsListMention,reviewVocabulary} from "./technology-wording.js";
@@ -448,15 +449,6 @@ function statedDuration(text){
   const bound=strict?"more than":inclusive?"at least":"exact";
   const years=/^(year|yıl|sene)/iu.test(match[3]);
   return {phrase:match[0],bound,months:Math.round((value+(match[2]?0.5:0))*(years?12:1)*100)/100};
-}
-function durationConstraintNote(text){
-  if(!/experience|deneyim|tecrübe/iu.test(text))return null;
-  const amount=String.raw`(?:\d+(?:[.,]\d+)?|one|two|three|four|five|six|ten|bir|iki|üç|dört|beş|altı|on)`;
-  const unit=String.raw`(?:years?|months?|yıl(?:lık)?|sene|ay(?:lık)?)`;
-  const range=new RegExp(String.raw`(?<![\p{L}\d])${amount}\s*(?:[-–—]|to|ile|ila)\s*${amount}\s+${unit}(?!\p{L})`,"iu").exec(text);
-  if(range)return "Experience range · "+range[0]+". The higher endpoint is not the minimum. Check which experience counts, including any internship wording.";
-  const upper=new RegExp(String.raw`(?<![\p{L}\d])(?:(?:up to|at most|no more than|en fazla)\s+${amount}\s+${unit}|${amount}\s+(?:yıla|aya|seneye)\s+kadar)(?!\p{L})`,"iu").exec(text);
-  return upper?"Upper limit · "+upper[0]+". Do not treat this as a minimum. Check whether the condition is required or preferred.":null;
 }
 function durationComparison(card,condition,lines,requested){
   const note=durationConstraintNote(condition);
