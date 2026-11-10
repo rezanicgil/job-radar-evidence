@@ -1,0 +1,22 @@
+{
+  "model": "rezanicgil/job-radar-clause-attribution",
+  "revision": "c818969bb437370febedbfe2f5a80adac976d331",
+  "direct_unique_first": 1,
+  "families": {
+    "network-python": {
+      "direct": 0.08524816483259201,
+      "other_actor": 0.08693806827068329,
+      "adjacent": 0.08335143327713013
+    },
+    "network-config": {
+      "direct": 0.509321928024292,
+      "other_actor": 0.5089156031608582,
+      "adjacent": 0.08392772823572159
+    },
+    "network-monitor": {
+      "direct": 0.08493073284626007,
+      "other_actor": 0.0836678296327591,
+      "adjacent": 0.08506891876459122
+    }
+  }
+}
