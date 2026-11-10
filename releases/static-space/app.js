@@ -987,10 +987,20 @@ try{
     if(openings.length){
       add(direct,"h2","Direct employer observations");
       add(direct,"p","Shown separately from the technology mention counts.");
+      const today=new Intl.DateTimeFormat("en-CA",{timeZone:"Europe/Istanbul",year:"numeric",month:"2-digit",day:"2-digit"}).formatToParts(new Date());
+      const day=["year","month","day"].map(k=>today.find(p=>p.type===k).value).join("-");
+      let archive;
       for(const row of openings){
-        const card=add(direct,"article","");
+        const elapsed=row.application_deadline && row.application_deadline<day;
+        if(elapsed && !archive){
+          archive=add(direct,"details","");
+          add(archive,"summary","Past advertised deadlines");
+          add(archive,"p","These are historical observations. Check the employer page for a renewed opening.");
+        }
+        const card=add(elapsed?archive:direct,"article","");
         add(card,"a",row.employer+" · "+row.title).href=row.source_url;
         add(card,"p",row.location+" · Observed "+row.observed_on);
+        if(row.application_deadline)add(card,"small",(elapsed?"Advertised deadline passed · ":"Application deadline · ")+row.application_deadline);
         if(row.minimum_technical?.length)add(card,"p","Selected minimum qualifications: "+row.minimum_technical.join("; "));
         if(row.preferred_technical?.length)add(card,"p","Selected preferences: "+row.preferred_technical.join("; "));
         if(row.minimum_technical?.length)offerReviewedConditions(card,row,row.minimum_technical,row.preferred_technical);

@@ -122,3 +122,5 @@ The `sections` field contains recognized qualification and preference headings f
 The last collected snapshot on each Türkiye calendar day supplies the records. Collection dates record when the job board was observed. They do not establish publication dates, hiring outcomes or total demand in Türkiye. The release contains factual listing metadata and project-generated classifications. The descriptions remain on the linked employer websites. [Collection code and dated source files](https://github.com/rezanicgil/job-radar-evidence)
 
 The **section_technologies** configuration separates mentions under recognized qualification and preference headings. Use postings_mentioning / measured_postings or employers_mentioning / measured_employers. If the denominator is zero, the share is unavailable. An unrecognized or absent heading is not evidence of zero demand. A qualification section may list examples or alternatives; these counts do not establish that every mention is mandatory.
+
+Direct employer observations include an optional `application_deadline` in YYYY-MM-DD format. Null means no deadline was recorded; it is not evidence that applications are still open.

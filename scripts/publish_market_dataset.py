@@ -93,7 +93,7 @@ def main():
     files = {s.rfilename for s in info.siblings}
     operations = [CommitOperationAdd("README.md", ROOT/"releases/market-dataset/README.md")]
     direct=[json.loads(line) for line in (ROOT/"data/reviewed_employer_postings.jsonl").read_text(encoding="utf8").splitlines()]
-    direct=[dict(sector=None,minimum_technical=[],preferred_technical=[]) | row for row in direct]
+    direct=[dict(sector=None,application_deadline=None,minimum_technical=[],preferred_technical=[]) | row for row in direct]
     keys={(r["observed_on"],r["source_url"],r["title"],r["location"]) for r in direct}
     if len(keys)!=len(direct):
         raise ValueError("Repeated direct employer observation")
