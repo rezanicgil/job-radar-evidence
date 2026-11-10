@@ -145,6 +145,9 @@ def rank_passages(passages, requirements, encoder="base"):
             sentence = next((item for item in ranked if len(item[1].split()) >= 6
                              and item[1].endswith((".", "!", "?"))
                              and any(pattern.search(item[1]) for pattern in terms)), None)
+            if sentence is None and not any(pattern.search(text) for _, text in selected for pattern in terms):
+                # Skill-list evidence is still reviewable, even without a final period.
+                sentence = next((item for item in ranked if any(pattern.search(item[1]) for pattern in terms)), None)
             if sentence is not None and sentence not in selected:
                 selected[-1] = sentence
         results.append(selected)
