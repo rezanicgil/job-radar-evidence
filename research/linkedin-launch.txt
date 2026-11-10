@@ -1,18 +1,14 @@
-If a job asks for 36 months of C++ experience and my CV documents 30, I want to see exactly where I fall short.
+A job asks for three years of C++. Your CV documents two and a half. What would a single “match score” tell you to change?
 
-I built Job Radar Evidence so applicants can compare a Turkish or English CV with a job posting. In the public example, the candidate documents 30 months of control software work and meets a second requirement for Python test reporting. The report shows one of two requirements fully supported, links both decisions to the CV, and records the six-month gap. The CV is processed in the browser.
+I built Job Radar Evidence to give applicants something they can act on. Pick a requirement from a Turkish or English job posting, see the relevant passages from your CV, and decide what the evidence supports. Your CV stays in your browser.
 
-I trained a multilingual retriever on 1,027 English–Turkish Python documentation pairs. On 721 held-out pairs it found the Turkish translation first for 674 English queries, up from 669. I then tested both models on ten job conditions against 30 fictional CV passages. All ten target passages kept their original ranks. That result is why the demo lets applicants inspect and choose the passages themselves.
+In the demo, a fictional candidate documents 30 of the 36 months requested for C++ and fully demonstrates Python test reporting. The report shows 1 of 2 selected requirements supported (50%) and identifies the six months that still need evidence. That percentage describes the CV, not the candidate’s chances of getting hired.
 
-The Türkiye market dataset is also public. In the November 9, 2026 sample, React Native appeared in 12 of 141 technical postings, all from one employer. You can inspect the postings behind each count and compare how widely a technology appears across employers.
+I fine-tuned a multilingual retriever on 1,027 English–Turkish documentation pairs. It found five more correct translations at rank one on 721 held-out pairs, but on a separate check with ten job conditions, none of the target CV passages moved up. That’s why applicants see the source passages and make the final call.
 
-If you work in software engineering, I'd welcome an independent judgment on one fictional CV passage. The review takes a label and the words you used to make your decision.
+The project also tracks software jobs in Türkiye. On November 10, 2026, all 152 selected technical postings had readable descriptions; only 65 had qualification headings we could measure. You can inspect the denominator before interpreting a technology percentage.
 
-Try the demo
-https://huggingface.co/spaces/rezanicgil/job-radar-evidence
+Try the bilingual demo: https://huggingface.co/spaces/rezanicgil/job-radar-evidence
+Explore the code and evaluation: https://github.com/rezanicgil/job-radar-evidence
 
-Review one Android example
-https://rezanicgil-job-radar-evidence.static.hf.space/annotate.html?case=source-pilot-android-1
-
-Inspect the model, datasets and experiments
-https://github.com/rezanicgil/job-radar-evidence/blob/main/research/portfolio.md
+I’d especially like feedback on one question: when a tool appears in a CV’s skills list but not in a project description, what evidence would you want to see? You can review a fictional example here: https://rezanicgil-job-radar-evidence.static.hf.space/annotate.html?case=source-pilot-android-1
