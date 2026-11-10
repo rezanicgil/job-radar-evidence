@@ -24,3 +24,10 @@ export function hasTechnology(text,name){
   const tokens=text.toLowerCase().match(/[\p{L}\p{N}_+#]+/gu)||[];
   return (" "+tokens.join(" ")+" ").includes(" "+name.toLowerCase()+" ");
 }
+
+export function skillsListMention(text){
+  const match=/^(?:technical skills|skills|technologies|system design & data|languages & backend|cloud & delivery|ai & tools|teknik beceriler|beceriler|teknolojiler)\s*:\s*(.+)$/iu.exec(text.trim());
+  if(!match)return false;
+  const items=match[1].replace(/[,;.]$/u,"").split(/[,;]/u).map(s=>s.trim());
+  return items.length>=2 && items.every(s=>s.length>0 && s.split(/\s+/u).length<=3);
+}

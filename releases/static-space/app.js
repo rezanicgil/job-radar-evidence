@@ -1,6 +1,6 @@
 import {counts} from "./review-counts.js";
 import {sourceUrl} from "./job-source.js";
-import {technologyWording,hasTechnology} from "./technology-wording.js";
+import {technologyWording,hasTechnology,skillsListMention} from "./technology-wording.js";
 const el=id=>document.getElementById(id);
 const add=(parent,tag,text)=>{const node=document.createElement(tag);node.textContent=text;parent.append(node);return node};
 const words=text=>new Set(text.toLocaleLowerCase().match(/[\p{L}\p{N}+#]+/gu)||[]);
@@ -748,9 +748,15 @@ el("form").onsubmit=async event=>{
       if(wording)add(card,"small",(wording.mode==="any"?"Alternative technologies · evidence for one listed option can meet this part: ":
         "Combined technologies · look for evidence covering each listed item: ")+wording.items.join(", ")+". Check which work the CV attributes to the applicant.");
       if(selectedPreferences.has(condition))add(card,"small","Optional condition · excluded from required coverage by default");
+      const requested=(vocabulary||[]).filter(name=>hasTechnology(condition,name));
+      const explainList=(parent,line)=>{
+        if(skillsListMention(line.text) && requested.some(name=>hasTechnology(line.text,name)))
+          add(parent,"small","Skills list mention · Look for a project or work example before marking hands-on experience as supported.");
+      };
       const visible=ranked.map(item=>item.line);
       for(const {line,matches,excerpt} of ranked){
         add(card,"p","Page "+line.page+" · "+line.text);
+        explainList(card,line);
         if(excerpt)add(card,"small","Highest-scoring excerpt · "+excerpt);
         for(const {concept} of matches){
           const link=add(add(card,"small","Matched terminology · "),"a",concept.en+" / "+concept.tr);
@@ -758,7 +764,6 @@ el("form").onsubmit=async event=>{
         }
       }
       if(!ranked.length)add(card,"p","No shared terms found. Review the CV directly.");
-      const requested=(vocabulary||[]).filter(name=>hasTechnology(condition,name));
       const mentions=lines.filter(line=>!visible.includes(line) && requested.some(name=>hasTechnology(line.text,name)));
       if(mentions.length){
         const group=mentions.length===1?card:add(card,"details","");
@@ -769,6 +774,7 @@ el("form").onsubmit=async event=>{
         for(const line of mentions){
           const names=requested.filter(name=>hasTechnology(line.text,name));
           add(group,"small",names.join(", ")+" mentioned on page "+line.page+" · "+line.text);
+          explainList(group,line);
           visible.push(line);
         }
       }
