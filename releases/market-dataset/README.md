@@ -12,6 +12,10 @@ configs:
     data_files:
       - split: observations
         path: technologies/*.jsonl
+  - config_name: section_technologies
+    data_files:
+      - split: observations
+        path: sections/*.jsonl
   - config_name: direct_employer_observations
     data_files:
       - split: observations
@@ -116,3 +120,5 @@ For selected Workday postings, `source_requisition` and `source_listed_date` pre
 The `sections` field contains recognized qualification and preference headings from structured Lever descriptions and the reviewed Lucida AI (Workable) and CRENNO (SmartRecruiters) layouts, along with the technology names found under each heading. An explicitly marked preference within a CRENNO qualification list is grouped under its preference phrase. A null value means the posting was not measured by this parser. An empty list means it found no recognized heading. For a section-specific percentage, count each posting once and use only postings with that section type as the denominator. A qualification may list alternatives or give examples. Its heading alone cannot establish that every technology mentioned is mandatory.
 
 The last collected snapshot on each Türkiye calendar day supplies the records. Collection dates record when the job board was observed. They do not establish publication dates, hiring outcomes or total demand in Türkiye. The release contains factual listing metadata and project-generated classifications. The descriptions remain on the linked employer websites. [Collection code and dated source files](https://github.com/rezanicgil/job-radar-evidence)
+
+The **section_technologies** configuration separates mentions under recognized qualification and preference headings. Use postings_mentioning / measured_postings or employers_mentioning / measured_employers. If the denominator is zero, the share is unavailable. An unrecognized or absent heading is not evidence of zero demand. A qualification section may list examples or alternatives; these counts do not establish that every mention is mandatory.

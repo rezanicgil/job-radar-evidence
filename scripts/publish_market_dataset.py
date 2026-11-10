@@ -64,6 +64,24 @@ def daily_rows(day, folder):
     return postings, technologies
 
 
+def section_rows(day, postings):
+    """Count each posting once per section kind; missing sections are not negatives."""
+    readable = [p for p in postings if p["description_status"] == "readable"]
+    for kind in ("qualifications", "preferences"):
+        measured = []
+        for p in readable:
+            sections = [s for s in p["sections"] or [] if s["kind"] == kind]
+            if sections:
+                measured.append((p["employer"], {skill for s in sections for skill in s["skills"]}))
+        for skill in day["vocabulary"]:
+            matching = [employer for employer, skills in measured if skill in skills]
+            yield dict(date=day["date"], section_kind=kind, technology=skill,
+                       readable_postings=len(readable), measured_postings=len(measured),
+                       postings_mentioning=len(matching),
+                       measured_employers=len({e for e,_ in measured}),
+                       employers_mentioning=len(set(matching)))
+
+
 def main():
     folder = ROOT/"reports"
     history = daily_history(folder)
@@ -89,6 +107,7 @@ def main():
                     raise ValueError(f"Published snapshot for {day['date']} is newer")
         postings, technologies = daily_rows(day,folder)
         operations.extend([CommitOperationAdd(name,encode_rows(postings)),
+                           CommitOperationAdd(f"sections/{day['date']}.jsonl",encode_rows(section_rows(day,postings))),
                            CommitOperationAdd(f"technologies/{day['date']}.jsonl",encode_rows(technologies))])
     print(api.create_commit(repo_id=REPO,repo_type="dataset",parent_commit=info.sha,
                             operations=operations,commit_message="Publish daily market observations").oid)
