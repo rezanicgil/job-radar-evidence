@@ -5,6 +5,7 @@ WORKDIR /home/app
 COPY requirements.txt .
 RUN pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cpu torch==2.7.0 && pip install --no-cache-dir -r requirements.txt
 COPY --chown=app:app scripts/ scripts/
+COPY --chown=app:app data/reviewed_title_inclusions.jsonl data/reviewed_title_inclusions.jsonl
 COPY --chown=app:app releases/static-space/technologies.json releases/static-space/technologies.json
 COPY --chown=app:app templates/ templates/
 COPY --chown=app:app reports/ reports/
