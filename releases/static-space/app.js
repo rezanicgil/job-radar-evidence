@@ -1,3 +1,4 @@
+import {nextEdit as suggestEdit} from "./review-advice.js";
 import {durationConstraintNote} from "./duration-constraints.js";
 import {counts} from "./review-counts.js";
 import {sourceUrl} from "./job-source.js";
@@ -591,8 +592,8 @@ function assessmentRows(){
     const gap=card.querySelector(".job-gap");
     const missing=gap.disabled?"":gap.value.trim();
     const advice=note.disabled?"":note.value.trim();
-    const preference_review=optional?{label:decision,quotes,missing,note:advice,next_edit:nextEdit({label:decision,note:advice})||null}:null;
     const condition=card.querySelector("h3").textContent;
+    const preference_review=optional?{label:decision,quotes,missing,note:advice,next_edit:nextEdit({condition,label:decision,quotes,missing,note:advice})||null}:null;
     return {condition,label,quotes:optional?[]:quotes,preference_review,
             posting_reference:postingReferences.get(condition)||null,
             missing:optional?"":missing,note:optional?"":advice,duration:card.querySelector(".duration-result")?.textContent||"",
@@ -603,10 +604,7 @@ function referenceText(source){
   return "Posting line "+source.line+(source.heading?" · "+source.heading:"")+
     (source.suggested_type?" · suggested "+source.suggested_type:" · manually selected")+" · added as "+source.selected_type;
 }
-function nextEdit(row){
-  if(row.label!=="partial"&&row.label!=="unverified")return "";
-  return row.note||(row.label==="partial"?"Clarify the part your evidence does not cover.":"Add a specific example if you have one.");
-}
+const nextEdit=row=>suggestEdit(row,vocabulary||[]);
 function exportReview(format){
   const rows=assessmentRows();
   if(!rows.length||rows.some(row=>!row.complete))return;
@@ -627,7 +625,7 @@ function exportReview(format){
     [row.condition,row.posting_reference?referenceText(row.posting_reference)+"\nSource wording: "+row.posting_reference.source_text:"",row.preference_review?"Optional assessment: "+row.preference_review.label:"Assessment: "+row.label,...(row.preference_review?.quotes||row.quotes).map(q=>"Page "+q.page+" · "+q.passage+
       (q.search_rank?"\nSearch rank: "+q.search_rank:"")+(q.excerpt?"\nHighlighted wording: "+q.excerpt:"")),row.duration,
      (row.preference_review?.missing||row.missing)?"Requirement still to demonstrate: "+(row.preference_review?.missing||row.missing):"",
-     nextEdit(row.preference_review||row)?"Next CV edit: "+nextEdit(row.preference_review||row):""].filter(Boolean).join("\n"))].join("\n\n");
+     (row.preference_review?.next_edit||nextEdit(row))?"Next CV edit: "+(row.preference_review?.next_edit||nextEdit(row)):""].filter(Boolean).join("\n"))].join("\n\n");
   const url=URL.createObjectURL(new Blob([body+"\n"],{type:format==="json"?"application/json":"text/plain;charset=utf-8"}));
   const link=document.createElement("a");
   link.href=url;link.download="job-radar-review."+format;link.click();
