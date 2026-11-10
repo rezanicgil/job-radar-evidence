@@ -23,3 +23,14 @@ Explore which time expressions informed the [duration classifier](https://huggin
 **Reserved for independent review:** 35 validation and 23 test mentions. Their labels and scopes are deliberately null. Employers do not cross partitions. No score against these unlabeled splits is reported. Exact normalization and a near-duplicate check do not rule out translated or paraphrased duplicates.
 
 This sample does not estimate national job demand or applicant eligibility. [Collection, split design and training code](https://github.com/rezanicgil/job-radar-evidence) · [Try the browser demo](https://rezanicgil-job-radar-evidence.static.hf.space/duration-lab.html).
+
+## Reproduce the classification head
+
+The 75 frozen training embeddings are available in train-features.safetensors, aligned to train.jsonl by file hash and row order. The held-out partitions are excluded. These vectors describe public job posting contexts, not personal CVs. They support retraining the linear head only; the source texts are still needed to change or retrain the encoder.
+
+Download the dataset repository and run the following in its directory:
+~~~sh
+python -m pip install torch==2.7.0 safetensors==0.5.3
+python reproduce.py
+~~~
+This writes reproduced-head.safetensors. On the reference CPU environment its weight and bias tensors are exactly equal to the [released head](https://huggingface.co/rezanicgil/job-radar-duration-context/blob/ed338d59d26219b6574245aaf9488cda4dc3c5e9/head.safetensors). Different hardware or numerical libraries can produce small numerical differences.
