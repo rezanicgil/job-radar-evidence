@@ -1,0 +1,8 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Duration Lab · Job Radar</title>
+<style>body{max-width:42rem;margin:3rem auto;padding:1rem;font:18px/1.55 system-ui;color:#17383a}textarea,select,button{font:inherit;max-width:100%;padding:.5rem}textarea{width:95%}button{background:#07595a;color:white;border:0;border-radius:.4rem}output{display:block;background:#edf5f3;padding:1rem;margin:1rem 0}</style>
+<a href="index.html">Job Radar</a><h1>What does this duration describe?</h1>
+<p>Mark one time expression with square brackets in an English or Turkish job sentence.</p>
+<label>Try an example <select id="examples"><option>English · Work experience</option><option>Türkçe · Leave benefit</option><option>English · Company history</option></select></label><p><label>Job sentence<textarea id="sentence" rows="3" maxlength="2000">We require [three years] of backend experience.</textarea></label></p>
+<button id="go">Classify duration</button><output aria-live="polite" id="result">Ready. The first run downloads the multilingual encoder.</output>
+<p>Your sentence is processed in your browser. This research demo uses the released classification head with a quantized browser encoder; results can differ from Python. Company history can be mistaken for candidate experience.</p><a href="https://huggingface.co/rezanicgil/job-radar-duration-context">Model and evaluation</a> · <a href="https://huggingface.co/rezanicgil/job-radar-duration-context/discussions">Share feedback</a>
+<script type="module" src="duration-lab.js"></script></html>
