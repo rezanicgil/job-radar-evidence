@@ -1,0 +1,226 @@
+{
+  "parent": "ed338d59d26219b6574245aaf9488cda4dc3c5e9",
+  "training_sha256": "b462d5beb5405302851c2c19cf20efec082cf76d3e48205ce89436f626cb4875",
+  "epochs": 3,
+  "seed": 42,
+  "summary": {
+    "external": [
+      11,
+      18
+    ],
+    "en": [
+      6,
+      8
+    ],
+    "tr": [
+      8,
+      8
+    ]
+  },
+  "cases": [
+    {
+      "slice": "external",
+      "case": "954",
+      "actual": false,
+      "predicted": false
+    },
+    {
+      "slice": "external",
+      "case": "1073",
+      "actual": true,
+      "predicted": true
+    },
+    {
+      "slice": "external",
+      "case": "1402",
+      "actual": true,
+      "predicted": true
+    },
+    {
+      "slice": "external",
+      "case": "1915",
+      "actual": true,
+      "predicted": false
+    },
+    {
+      "slice": "external",
+      "case": "2205",
+      "actual": true,
+      "predicted": true
+    },
+    {
+      "slice": "external",
+      "case": "2895",
+      "actual": false,
+      "predicted": true
+    },
+    {
+      "slice": "external",
+      "case": "3556",
+      "actual": true,
+      "predicted": true
+    },
+    {
+      "slice": "external",
+      "case": "3835",
+      "actual": false,
+      "predicted": true
+    },
+    {
+      "slice": "external",
+      "case": "4409",
+      "actual": true,
+      "predicted": false
+    },
+    {
+      "slice": "external",
+      "case": "5509",
+      "actual": true,
+      "predicted": true
+    },
+    {
+      "slice": "external",
+      "case": "6046",
+      "actual": true,
+      "predicted": true
+    },
+    {
+      "slice": "external",
+      "case": "6503",
+      "actual": true,
+      "predicted": true
+    },
+    {
+      "slice": "external",
+      "case": "6908",
+      "actual": true,
+      "predicted": true
+    },
+    {
+      "slice": "external",
+      "case": "7390",
+      "actual": true,
+      "predicted": false
+    },
+    {
+      "slice": "external",
+      "case": "7703",
+      "actual": false,
+      "predicted": false
+    },
+    {
+      "slice": "external",
+      "case": "8028",
+      "actual": true,
+      "predicted": false
+    },
+    {
+      "slice": "external",
+      "case": "8391",
+      "actual": false,
+      "predicted": true
+    },
+    {
+      "slice": "external",
+      "case": "8979",
+      "actual": false,
+      "predicted": false
+    },
+    {
+      "slice": "en",
+      "case": "android",
+      "actual": true,
+      "predicted": true
+    },
+    {
+      "slice": "en",
+      "case": "android",
+      "actual": false,
+      "predicted": false
+    },
+    {
+      "slice": "tr",
+      "case": "android",
+      "actual": true,
+      "predicted": true
+    },
+    {
+      "slice": "tr",
+      "case": "android",
+      "actual": false,
+      "predicted": false
+    },
+    {
+      "slice": "en",
+      "case": "network",
+      "actual": true,
+      "predicted": false
+    },
+    {
+      "slice": "en",
+      "case": "network",
+      "actual": false,
+      "predicted": false
+    },
+    {
+      "slice": "tr",
+      "case": "network",
+      "actual": true,
+      "predicted": true
+    },
+    {
+      "slice": "tr",
+      "case": "network",
+      "actual": false,
+      "predicted": false
+    },
+    {
+      "slice": "en",
+      "case": "data",
+      "actual": true,
+      "predicted": false
+    },
+    {
+      "slice": "en",
+      "case": "data",
+      "actual": false,
+      "predicted": false
+    },
+    {
+      "slice": "tr",
+      "case": "data",
+      "actual": true,
+      "predicted": true
+    },
+    {
+      "slice": "tr",
+      "case": "data",
+      "actual": false,
+      "predicted": false
+    },
+    {
+      "slice": "en",
+      "case": "firmware",
+      "actual": true,
+      "predicted": true
+    },
+    {
+      "slice": "en",
+      "case": "firmware",
+      "actual": false,
+      "predicted": false
+    },
+    {
+      "slice": "tr",
+      "case": "firmware",
+      "actual": true,
+      "predicted": true
+    },
+    {
+      "slice": "tr",
+      "case": "firmware",
+      "actual": false,
+      "predicted": false
+    }
+  ]
+}
