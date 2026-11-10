@@ -1,0 +1,24 @@
+{
+  "source": "tabiya/job_ner_dataset",
+  "revision": "189792d21b7d1484fd73b067b09df57e7ffc456f",
+  "attribution": "Green, Maynard and Lin (2022); Hugging Face conversion by Tabiya. CC BY 4.0.",
+  "splits": {
+    "train": {
+      "source_rows": 9634,
+      "kept_sentences": 9630,
+      "experience_spans": 239
+    },
+    "test": {
+      "source_rows": 336,
+      "kept_sentences": 319,
+      "experience_spans": 9
+    }
+  },
+  "unique_training_phrases": 204,
+  "test_exact_span": {
+    "gold": 9,
+    "predicted": 76,
+    "correct": 4
+  },
+  "f1": 0.09411764705882353
+}
