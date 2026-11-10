@@ -1,4 +1,4 @@
-import {hasTechnology} from "./technology-wording.js";
+import {hasTechnology,reviewVocabulary} from "./technology-wording.js";
 import {counts} from "./review-counts.js";
 import {sourceUrl} from "./job-source.js";
 const inputs=[document.getElementById("first"),document.getElementById("second")];
@@ -136,7 +136,7 @@ function showSharedTechnologies(first,second,names){
     });
   }
 }
-const technologyNames=fetch("technologies.json").then(response=>response.ok?response.json():[]).catch(()=>[]);
+const technologyNames=fetch("technologies.json").then(response=>response.ok?response.json():[]).catch(()=>[]).then(reviewVocabulary);
 async function compare(){
   const request=++version;
   result.replaceChildren();

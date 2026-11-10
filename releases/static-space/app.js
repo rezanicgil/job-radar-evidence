@@ -1,6 +1,6 @@
 import {counts} from "./review-counts.js";
 import {sourceUrl} from "./job-source.js";
-import {technologyWording,hasTechnology,skillsListMention} from "./technology-wording.js";
+import {technologyWording,hasTechnology,skillsListMention,reviewVocabulary} from "./technology-wording.js";
 const el=id=>document.getElementById(id);
 const add=(parent,tag,text)=>{const node=document.createElement(tag);node.textContent=text;parent.append(node);return node};
 const words=text=>new Set(text.toLocaleLowerCase().match(/[\p{L}\p{N}+#]+/gu)||[]);
@@ -724,7 +724,7 @@ el("form").onsubmit=async event=>{
     if(!vocabulary){
       try{
         const response=await fetch("technologies.json");
-        if(response.ok)vocabulary=await response.json();
+        if(response.ok)vocabulary=reviewVocabulary(await response.json());
       }catch{/* Passage ranking is still available without the optional vocabulary. */}
     }
     if(version!==reviewVersion)return;

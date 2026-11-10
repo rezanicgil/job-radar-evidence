@@ -20,9 +20,15 @@ export function technologyWording(condition,vocabulary){
   return {mode:[...modes][0],items};
 }
 
+export const reviewVocabulary=names=>[...new Set([...names,"Node.js",".NET","CI/CD","RabbitMQ"])];
+const technologyPatterns=new Map();
 export function hasTechnology(text,name){
-  const tokens=text.toLowerCase().match(/[\p{L}\p{N}_+#]+/gu)||[];
-  return (" "+tokens.join(" ")+" ").includes(" "+name.toLowerCase()+" ");
+  if(!name.trim())return false;
+  if(!technologyPatterns.has(name)){
+    const literal=name.trim().split(/\s+/u).map(x=>x.replace(/[.*+?^\x24{}()|[\]\\]/g,"\\$&")).join("\\s+");
+    technologyPatterns.set(name,new RegExp("(?<![\\p{L}\\p{N}_+#])"+literal+"(?![\\p{L}\\p{N}_+#])","iu"));
+  }
+  return technologyPatterns.get(name).test(text.normalize("NFC"));
 }
 
 export function skillsListMention(text){
