@@ -19,7 +19,7 @@ PATTERNS = {s:re.compile(r"(?<![\w+#])"+re.escape(s)+r"(?![\w+#])",re.I) for s i
 HEADINGS = {
     "qualifications": {"requirements","job requirements","qualifications","expected qualifications",
                        "qualifications & experience","what we're looking for","what you will need",
-                       "what you'll bring","about your experience","aranan nitelikler","genel nitelikler"},
+                       "what you'll bring","about your experience","aranan nitelikler","genel nitelikler","qualities we are looking for"},
     "preferences": {"nice to have","nice-to-have","nice to haves","preferred qualifications",
                     "preferred skills","bonus points","tercih edilen nitelikler","tercihen"},
 }
@@ -128,6 +128,12 @@ def inspect(job, *, retry_timeout=True):
             sections=j["jobAd"]["sections"]
             if board=="CRENNO":
                 job=dict(job,sections=crenno_sections(sections.get("qualifications",{}).get("text","")))
+            else:
+                # SmartRecruiters has a dedicated qualifications field; never substitute
+                # the job description or additionalInformation when it is missing.
+                q=sections.get("qualifications") or {}
+                if q.get("text","").strip():
+                    job=dict(job,sections=headed_sections([dict(text="Qualifications",content=q["text"])]))
             body = " ".join(s.get("text","") for s in sections.values())
         plain = unescape(re.sub("<[^>]+>", " ", unescape(body)))
         if not plain.strip():
