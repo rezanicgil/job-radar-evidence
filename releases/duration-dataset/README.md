@@ -34,3 +34,7 @@ python -m pip install torch==2.7.0 safetensors==0.5.3
 python reproduce.py
 ~~~
 This writes reproduced-head.safetensors. On the reference CPU environment its weight and bias tensors are exactly equal to the [released head](https://huggingface.co/rezanicgil/job-radar-duration-context/blob/ed338d59d26219b6574245aaf9488cda4dc3c5e9/head.safetensors). Different hardware or numerical libraries can produce small numerical differences.
+
+## Reproduce the reported evaluation
+
+Run `python evaluate.py` in the same directory. It refits the head for each of 19 employers, scoring only that employer in its fold. It reports an ID-level prediction for all 75 training records. No validation or test labels are used. The published result is 60/60 correct prior-experience mentions and 11/15 correct other durations: balanced accuracy is the mean of these two recall rates (86.7%). Two recent-action windows, one program length and one starting window were incorrectly called prior experience. Reproducing these predictions verifies the computation, not the underlying draft annotations.
