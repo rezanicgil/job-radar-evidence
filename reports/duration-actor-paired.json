@@ -1,0 +1,267 @@
+{
+  "upstream": "tabiya/job_ner_dataset",
+  "source_revision": "189792d21b7d1484fd73b067b09df57e7ffc456f",
+  "training_sha256": "b462d5beb5405302851c2c19cf20efec082cf76d3e48205ce89436f626cb4875",
+  "added": [
+    {
+      "language": "en",
+      "applicant": "We seek someone who has maintained payment gateways for [three years].",
+      "employer": "Our company has maintained payment gateways for [three years].",
+      "source": "authored_training_pair"
+    },
+    {
+      "language": "en",
+      "applicant": "Applicants must have spent [18 months] reviewing mobile crash reports.",
+      "employer": "Our engineers have spent [18 months] reviewing mobile crash reports.",
+      "source": "authored_training_pair"
+    },
+    {
+      "language": "en",
+      "applicant": "Bring [two years] building sensor drivers to the team.",
+      "employer": "Our laboratory has spent [two years] building sensor drivers.",
+      "source": "authored_training_pair"
+    },
+    {
+      "language": "en",
+      "applicant": "The person we hire will have managed access policies for [four years].",
+      "employer": "Our operations group has managed access policies for [four years].",
+      "source": "authored_training_pair"
+    },
+    {
+      "language": "tr",
+      "applicant": "\u00d6deme ge\u00e7itlerinin bak\u0131m\u0131n\u0131 [\u00fc\u00e7 y\u0131l] yapm\u0131\u015f birini ar\u0131yoruz.",
+      "employer": "\u015eirketimiz \u00f6deme ge\u00e7itlerinin bak\u0131m\u0131n\u0131 [\u00fc\u00e7 y\u0131l] boyunca yapt\u0131.",
+      "source": "authored_training_pair"
+    },
+    {
+      "language": "tr",
+      "applicant": "Adaylar\u0131n mobil \u00e7\u00f6kme raporlar\u0131n\u0131 [18 ay] incelemi\u015f olmas\u0131 gerekiyor.",
+      "employer": "M\u00fchendislerimiz mobil \u00e7\u00f6kme raporlar\u0131n\u0131 [18 ay] boyunca inceledi.",
+      "source": "authored_training_pair"
+    },
+    {
+      "language": "tr",
+      "applicant": "Sens\u00f6r s\u00fcr\u00fcc\u00fcleri geli\u015ftirmede [iki y\u0131l] \u00e7al\u0131\u015fm\u0131\u015f olman\u0131z bekleniyor.",
+      "employer": "Laboratuvar\u0131m\u0131z sens\u00f6r s\u00fcr\u00fcc\u00fcleri geli\u015ftirmede [iki y\u0131l] \u00e7al\u0131\u015ft\u0131.",
+      "source": "authored_training_pair"
+    },
+    {
+      "language": "tr",
+      "applicant": "\u0130\u015fe alaca\u011f\u0131m\u0131z ki\u015fi eri\u015fim politikalar\u0131n\u0131 [d\u00f6rt y\u0131l] y\u00f6netmi\u015f olmal\u0131.",
+      "employer": "Operasyon grubumuz eri\u015fim politikalar\u0131n\u0131 [d\u00f6rt y\u0131l] y\u00f6netti.",
+      "source": "authored_training_pair"
+    }
+  ],
+  "summary": {
+    "external": 12,
+    "en": 4,
+    "tr": 8
+  },
+  "cases": [
+    {
+      "slice": "external",
+      "case": "954",
+      "expected": false,
+      "predicted": false
+    },
+    {
+      "slice": "external",
+      "case": "1073",
+      "expected": true,
+      "predicted": true
+    },
+    {
+      "slice": "external",
+      "case": "1402",
+      "expected": true,
+      "predicted": true
+    },
+    {
+      "slice": "external",
+      "case": "1915",
+      "expected": true,
+      "predicted": false
+    },
+    {
+      "slice": "external",
+      "case": "2205",
+      "expected": true,
+      "predicted": true
+    },
+    {
+      "slice": "external",
+      "case": "2895",
+      "expected": false,
+      "predicted": true
+    },
+    {
+      "slice": "external",
+      "case": "3556",
+      "expected": true,
+      "predicted": true
+    },
+    {
+      "slice": "external",
+      "case": "3835",
+      "expected": false,
+      "predicted": true
+    },
+    {
+      "slice": "external",
+      "case": "4409",
+      "expected": true,
+      "predicted": false
+    },
+    {
+      "slice": "external",
+      "case": "5509",
+      "expected": true,
+      "predicted": true
+    },
+    {
+      "slice": "external",
+      "case": "6046",
+      "expected": true,
+      "predicted": true
+    },
+    {
+      "slice": "external",
+      "case": "6503",
+      "expected": true,
+      "predicted": true
+    },
+    {
+      "slice": "external",
+      "case": "6908",
+      "expected": true,
+      "predicted": true
+    },
+    {
+      "slice": "external",
+      "case": "7390",
+      "expected": true,
+      "predicted": false
+    },
+    {
+      "slice": "external",
+      "case": "7703",
+      "expected": false,
+      "predicted": false
+    },
+    {
+      "slice": "external",
+      "case": "8028",
+      "expected": true,
+      "predicted": false
+    },
+    {
+      "slice": "external",
+      "case": "8391",
+      "expected": false,
+      "predicted": false
+    },
+    {
+      "slice": "external",
+      "case": "8979",
+      "expected": false,
+      "predicted": false
+    },
+    {
+      "slice": "en",
+      "case": "android",
+      "expected": true,
+      "predicted": false
+    },
+    {
+      "slice": "en",
+      "case": "android",
+      "expected": false,
+      "predicted": false
+    },
+    {
+      "slice": "tr",
+      "case": "android",
+      "expected": true,
+      "predicted": true
+    },
+    {
+      "slice": "tr",
+      "case": "android",
+      "expected": false,
+      "predicted": false
+    },
+    {
+      "slice": "en",
+      "case": "network",
+      "expected": true,
+      "predicted": false
+    },
+    {
+      "slice": "en",
+      "case": "network",
+      "expected": false,
+      "predicted": false
+    },
+    {
+      "slice": "tr",
+      "case": "network",
+      "expected": true,
+      "predicted": true
+    },
+    {
+      "slice": "tr",
+      "case": "network",
+      "expected": false,
+      "predicted": false
+    },
+    {
+      "slice": "en",
+      "case": "data",
+      "expected": true,
+      "predicted": false
+    },
+    {
+      "slice": "en",
+      "case": "data",
+      "expected": false,
+      "predicted": false
+    },
+    {
+      "slice": "tr",
+      "case": "data",
+      "expected": true,
+      "predicted": true
+    },
+    {
+      "slice": "tr",
+      "case": "data",
+      "expected": false,
+      "predicted": false
+    },
+    {
+      "slice": "en",
+      "case": "firmware",
+      "expected": true,
+      "predicted": false
+    },
+    {
+      "slice": "en",
+      "case": "firmware",
+      "expected": false,
+      "predicted": false
+    },
+    {
+      "slice": "tr",
+      "case": "firmware",
+      "expected": true,
+      "predicted": true
+    },
+    {
+      "slice": "tr",
+      "case": "firmware",
+      "expected": false,
+      "predicted": false
+    }
+  ],
+  "limitations": "Selected after prior diagnostic failures. Reused diagnostic is not an independent test. Upstream employer identity is not available for all rows."
+}
