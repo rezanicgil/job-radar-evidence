@@ -1,0 +1,19 @@
+{
+  "collected_utc": "20261110T062948Z",
+  "inventory": "inventory-2026-11-09T220412828356Z.json",
+  "boards_requested": 20,
+  "failed_boards": {},
+  "inventory_urls": 87,
+  "urls_with_mentions": 64,
+  "employers_with_mentions": 19,
+  "section_passages": 76,
+  "unique_normalized_texts": 69,
+  "duration_mentions": 78,
+  "passages_by_host": {
+    "jobs.lever.co": 33,
+    "jobs.ashbyhq.com": 12,
+    "job-boards.greenhouse.io": 31
+  },
+  "reviewed_labels": 0,
+  "sha256": "5db045390b052e084a5d1aefae2b1916f3bdd3a728f0c37444edcaaaf92853bf"
+}

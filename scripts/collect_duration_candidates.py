@@ -15,15 +15,25 @@ DURATION=re.compile(r"(?<!\w)(?:\d+(?:\s*[-–]\s*\d+)?\+?|one|two|three|four|fi
 
 def collect(item):
     slug,allowed=item
-    response=requests.get(f"https://api.lever.co/v0/postings/{slug}",params={"mode":"json"},timeout=25)
+    provider,board=slug.split(':',1)
+    api={"lever":f"https://api.lever.co/v0/postings/{board}",
+         "greenhouse":f"https://boards-api.greenhouse.io/v1/boards/{board}/jobs",
+         "ashby":f"https://api.ashbyhq.com/posting-api/job-board/{board}"}[provider]
+    params={"lever":{"mode":"json"},"greenhouse":{"content":"true"},"ashby":{}}[provider]
+    response=requests.get(api,params=params,timeout=25)
     response.raise_for_status()
+    payload=response.json()
     rows=[]
-    for post in response.json():
-        url=post['hostedUrl'].rstrip('/')
+    for post in (payload if provider=="lever" else payload["jobs"]):
+        url=post[{"lever":"hostedUrl","greenhouse":"absolute_url","ashby":"jobUrl"}[provider]].split("?")[0].rstrip("/")
         if url not in allowed: continue
         job=allowed[url]
-        sections=[(s['text'],s['content']) for s in post.get('lists',[])]
-        sections.extend((key,post.get(key,'')) for key in ('descriptionPlain','additionalPlain'))
+        if provider=="lever":
+            sections=[(s['text'],s['content']) for s in post.get('lists',[])]
+            sections.extend((key,post.get(key,'')) for key in ('descriptionPlain','additionalPlain'))
+        else:
+            body=unescape(post.get("content","")) if provider=="greenhouse" else post.get("descriptionHtml","")
+            sections=[("description",body)]
         for heading,body in sections:
             plain=unescape(re.sub('<[^>]+>',' ',re.sub(r'</(?:li|p|div)>|<br\s*/?>','\n',body or '',flags=re.I)))
             for line in re.split(r'\n|(?<=[.!?])\s+',plain):
@@ -39,8 +49,9 @@ def main():
     inv=json.loads(args.inventory.read_text('utf8'))
     groups={}
     for j in inv['jobs']:
-        m=re.fullmatch(r'https://jobs\.lever\.co/([^/]+)/[^/?]+/?',j['url'])
-        if m and j['areas']:groups.setdefault(m[1],{})[j['url'].rstrip('/')]=j
+        for provider,host in (("lever","jobs.lever.co"),("greenhouse","job-boards.greenhouse.io"),("ashby","jobs.ashbyhq.com")):
+            m=re.fullmatch("https://"+re.escape(host)+r"/([^/]+)/(?:jobs/)?[^/?]+/?",j['url'])
+            if m and j['areas']: groups.setdefault(provider+":"+m[1],{})[j['url'].rstrip('/')]=j
     date=datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
     dest=ROOT/'data/raw'/('duration-'+date);dest.mkdir(parents=True)
     failures={};rows={}
@@ -56,7 +67,7 @@ def main():
                 inventory_urls=sum(map(len,groups.values())),urls_with_mentions=len({r['source'] for r in out}),
                 employers_with_mentions=len({r['employer'] for r in out}),section_passages=len(out),
                 unique_normalized_texts=len({r['text'].casefold() for r in out}),duration_mentions=sum(len(r['mentions']) for r in out),
-                reviewed_labels=0,sha256=sha256((dest/'candidates.jsonl').read_bytes()).hexdigest())
+                passages_by_host=dict(Counter(r["source"].split("/")[2] for r in out)),reviewed_labels=0,sha256=sha256((dest/'candidates.jsonl').read_bytes()).hexdigest())
     (dest/'summary.json').write_text(json.dumps(report,indent=2)+'\n','utf8');print(dest);print(report)
 
 if __name__=='__main__': main()
