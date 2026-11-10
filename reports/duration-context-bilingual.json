@@ -1,0 +1,68 @@
+{
+  "model_revision": "ed338d59d26219b6574245aaf9488cda4dc3c5e9",
+  "design": "Four authored bilingual scenarios; no normalized exact overlap with the 75 training examples. Diagnostic, not a population estimate.",
+  "summary": {
+    "en": {
+      "experience_correct": 2,
+      "other_correct": 4,
+      "pairs_both_correct": 2,
+      "pairs": 4
+    },
+    "tr": {
+      "experience_correct": 4,
+      "other_correct": 4,
+      "pairs_both_correct": 4,
+      "pairs": 4
+    }
+  },
+  "cases": [
+    {
+      "family": "android",
+      "lang": "en",
+      "experience": "prior experience",
+      "other": "other duration"
+    },
+    {
+      "family": "android",
+      "lang": "tr",
+      "experience": "prior experience",
+      "other": "other duration"
+    },
+    {
+      "family": "network",
+      "lang": "en",
+      "experience": "other duration",
+      "other": "other duration"
+    },
+    {
+      "family": "network",
+      "lang": "tr",
+      "experience": "prior experience",
+      "other": "other duration"
+    },
+    {
+      "family": "data",
+      "lang": "en",
+      "experience": "other duration",
+      "other": "other duration"
+    },
+    {
+      "family": "data",
+      "lang": "tr",
+      "experience": "prior experience",
+      "other": "other duration"
+    },
+    {
+      "family": "firmware",
+      "lang": "en",
+      "experience": "prior experience",
+      "other": "other duration"
+    },
+    {
+      "family": "firmware",
+      "lang": "tr",
+      "experience": "prior experience",
+      "other": "other duration"
+    }
+  ]
+}
