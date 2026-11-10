@@ -1,0 +1,34 @@
+{
+  "previous": {
+    "postings": 64,
+    "employers": 19,
+    "unique_texts": 69,
+    "passages": 76,
+    "mentions": 78
+  },
+  "workday": {
+    "collected_utc": "20261110T070847Z",
+    "inventory": "inventory-2026-11-09T220412828356Z.json",
+    "attempted": 42,
+    "readable": 42,
+    "failures": {},
+    "urls_with_mentions": 39,
+    "passages": 82,
+    "unique_texts": 45,
+    "mentions": 107,
+    "passages_by_employer": {
+      "ING": 49,
+      "Analog Devices": 6,
+      "Accenture": 27
+    },
+    "sha256": "ad640c0d6fb66f919e807c2bf1e8457841e00763fedbaabaeadf552a677785d2",
+    "reviewed_labels": 0
+  },
+  "combined": {
+    "postings": 103,
+    "employers": 22,
+    "unique_texts": 114,
+    "passages": 158,
+    "mentions": 185
+  }
+}

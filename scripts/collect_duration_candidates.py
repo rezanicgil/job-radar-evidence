@@ -13,6 +13,18 @@ import requests
 ROOT=Path(__file__).resolve().parents[1]
 DURATION=re.compile(r"(?<!\w)(?:\d+(?:\s*[-–]\s*\d+)?\+?|one|two|three|four|five|six|bir|iki|üç|dört|beş|altı)\s*[- ]?\s*(?:years?|months?|weeks?|days?|yıl(?:lık)?|sene|ay(?:lık)?|hafta|gün)\b",re.I)
 
+def extract_passages(job,url,sections):
+    rows=[]
+    for heading,body in sections:
+        plain=unescape(re.sub('<[^>]+>',' ',re.sub(r'</(?:li|p|div)>|<br\s*/?>','\n',body or '',flags=re.I)))
+        for line in re.split(r'\n|(?<=[.!?])\s+',plain):
+            line=' '.join(line.split())
+            matches=list(DURATION.finditer(line))
+            if matches:
+                rows.append(dict(employer=job['employer'],title=job['title'],areas=job['areas'],source=url,section=heading,text=line,
+                                 mentions=[dict(text=m.group(),start=m.start(),end=m.end()) for m in matches],review_status="unlabeled"))
+    return rows
+
 def collect(item):
     slug,allowed=item
     provider,board=slug.split(':',1)
@@ -34,14 +46,7 @@ def collect(item):
         else:
             body=unescape(post.get("content","")) if provider=="greenhouse" else post.get("descriptionHtml","")
             sections=[("description",body)]
-        for heading,body in sections:
-            plain=unescape(re.sub('<[^>]+>',' ',re.sub(r'</(?:li|p|div)>|<br\s*/?>','\n',body or '',flags=re.I)))
-            for line in re.split(r'\n|(?<=[.!?])\s+',plain):
-                line=' '.join(line.split())
-                matches=list(DURATION.finditer(line))
-                if matches:
-                    rows.append(dict(employer=job['employer'],title=job['title'],areas=job['areas'],source=url,section=heading,text=line,
-                                     mentions=[dict(text=m.group(),start=m.start(),end=m.end()) for m in matches],review_status="unlabeled"))
+        rows.extend(extract_passages(job,url,sections))
     return rows
 
 def main():
