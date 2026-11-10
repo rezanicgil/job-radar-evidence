@@ -40,6 +40,20 @@ def title_areas(title):
     return [area for area, pattern in PATTERNS.items() if re.search(pattern, normalized, re.I)]
 
 
+REVIEWED_TITLES = {
+    (r["employer"], r["title"], r["source_url"]): r
+    for r in (json.loads(line) for line in (ROOT/"data/reviewed_title_inclusions.jsonl").read_text("utf8").splitlines())
+}
+
+
+def posting_areas(employer,title,url):
+    areas=title_areas(title)
+    review=REVIEWED_TITLES.get((employer,title,url))
+    if review:
+        return list(dict.fromkeys([*areas,*review["areas"]]))
+    return areas
+
+
 def in_turkiye(country, location):
     if country:
         return country.casefold() in {"tr", "turkey", "türkiye", "turkiye"}
@@ -60,7 +74,7 @@ def fetch(source, *, retry_timeout=True):
             jobs=workday_board.listing_rows(slug,in_turkiye)
             for job in jobs:
                 job["employer"]=source["name"]
-                job["areas"]=title_areas(job["title"])
+                job["areas"]=posting_areas(source["name"],job["title"],job["url"])
             return dict(source=source["name"],url=url,status="ok",scanned=len(jobs)),jobs
         request = Request(url, headers={"User-Agent":"JobRadar/1.0 (+https://github.com/rezanicgil/job-radar-evidence)", "Accept":"application/json"})
         with urlopen(request if ats in {"ashby","workable","bamboohr"} else url, timeout=15) as response:
@@ -132,7 +146,7 @@ def fetch(source, *, retry_timeout=True):
                 country, location = None, row["location"]["name"]
             if in_turkiye(country, location):
                 jobs.append(dict(employer=source["name"], title=title, url=link, location=location,
-                                 areas=title_areas(title),**({"location_scope":"listed_alternative"} if alternate_location else {})))
+                                 areas=posting_areas(source["name"],title,link),**({"location_scope":"listed_alternative"} if alternate_location else {})))
         return dict(source=source["name"], url=url, status="ok", scanned=len(rows)), jobs
     except (URLError, TimeoutError, ValueError, KeyError, TypeError) as exc:
         if retry_timeout and isinstance(getattr(exc,"reason",exc),TimeoutError):
