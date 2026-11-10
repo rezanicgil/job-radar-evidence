@@ -1,0 +1,273 @@
+{
+  "upstream": "tabiya/job_ner_dataset",
+  "source_revision": "189792d21b7d1484fd73b067b09df57e7ffc456f",
+  "training_sha256": "b462d5beb5405302851c2c19cf20efec082cf76d3e48205ce89436f626cb4875",
+  "added": [
+    {
+      "row_index": 18,
+      "term": "fifty years",
+      "max_word_similarity": 0.207,
+      "draft_kind": "employer_history"
+    },
+    {
+      "row_index": 1982,
+      "term": "twenty years",
+      "max_word_similarity": 0.182,
+      "draft_kind": "employer_history"
+    },
+    {
+      "row_index": 2136,
+      "term": "50 years",
+      "max_word_similarity": 0.308,
+      "draft_kind": "employer_history"
+    },
+    {
+      "row_index": 2546,
+      "term": "five years",
+      "max_word_similarity": 0.264,
+      "draft_kind": "employer_history"
+    },
+    {
+      "row_index": 5552,
+      "term": "30 years",
+      "max_word_similarity": 0.264,
+      "draft_kind": "employer_history"
+    },
+    {
+      "row_index": 6094,
+      "term": "75 years",
+      "max_word_similarity": 0.276,
+      "draft_kind": "employer_history"
+    },
+    {
+      "row_index": 6173,
+      "term": "30 years",
+      "max_word_similarity": 0.333,
+      "draft_kind": "employer_history"
+    },
+    {
+      "row_index": 6912,
+      "term": "100 years",
+      "max_word_similarity": 0.179,
+      "draft_kind": "employer_history"
+    },
+    {
+      "row_index": 7070,
+      "term": "60 years",
+      "max_word_similarity": 0.25,
+      "draft_kind": "employer_history"
+    }
+  ],
+  "summary": {
+    "external": 9,
+    "en": 4,
+    "tr": 7
+  },
+  "cases": [
+    {
+      "slice": "external",
+      "case": "954",
+      "expected": false,
+      "predicted": false
+    },
+    {
+      "slice": "external",
+      "case": "1073",
+      "expected": true,
+      "predicted": false
+    },
+    {
+      "slice": "external",
+      "case": "1402",
+      "expected": true,
+      "predicted": false
+    },
+    {
+      "slice": "external",
+      "case": "1915",
+      "expected": true,
+      "predicted": false
+    },
+    {
+      "slice": "external",
+      "case": "2205",
+      "expected": true,
+      "predicted": true
+    },
+    {
+      "slice": "external",
+      "case": "2895",
+      "expected": false,
+      "predicted": false
+    },
+    {
+      "slice": "external",
+      "case": "3556",
+      "expected": true,
+      "predicted": false
+    },
+    {
+      "slice": "external",
+      "case": "3835",
+      "expected": false,
+      "predicted": false
+    },
+    {
+      "slice": "external",
+      "case": "4409",
+      "expected": true,
+      "predicted": false
+    },
+    {
+      "slice": "external",
+      "case": "5509",
+      "expected": true,
+      "predicted": false
+    },
+    {
+      "slice": "external",
+      "case": "6046",
+      "expected": true,
+      "predicted": false
+    },
+    {
+      "slice": "external",
+      "case": "6503",
+      "expected": true,
+      "predicted": true
+    },
+    {
+      "slice": "external",
+      "case": "6908",
+      "expected": true,
+      "predicted": true
+    },
+    {
+      "slice": "external",
+      "case": "7390",
+      "expected": true,
+      "predicted": false
+    },
+    {
+      "slice": "external",
+      "case": "7703",
+      "expected": false,
+      "predicted": false
+    },
+    {
+      "slice": "external",
+      "case": "8028",
+      "expected": true,
+      "predicted": false
+    },
+    {
+      "slice": "external",
+      "case": "8391",
+      "expected": false,
+      "predicted": false
+    },
+    {
+      "slice": "external",
+      "case": "8979",
+      "expected": false,
+      "predicted": false
+    },
+    {
+      "slice": "en",
+      "case": "android",
+      "expected": true,
+      "predicted": false
+    },
+    {
+      "slice": "en",
+      "case": "android",
+      "expected": false,
+      "predicted": false
+    },
+    {
+      "slice": "tr",
+      "case": "android",
+      "expected": true,
+      "predicted": true
+    },
+    {
+      "slice": "tr",
+      "case": "android",
+      "expected": false,
+      "predicted": false
+    },
+    {
+      "slice": "en",
+      "case": "network",
+      "expected": true,
+      "predicted": false
+    },
+    {
+      "slice": "en",
+      "case": "network",
+      "expected": false,
+      "predicted": false
+    },
+    {
+      "slice": "tr",
+      "case": "network",
+      "expected": true,
+      "predicted": false
+    },
+    {
+      "slice": "tr",
+      "case": "network",
+      "expected": false,
+      "predicted": false
+    },
+    {
+      "slice": "en",
+      "case": "data",
+      "expected": true,
+      "predicted": false
+    },
+    {
+      "slice": "en",
+      "case": "data",
+      "expected": false,
+      "predicted": false
+    },
+    {
+      "slice": "tr",
+      "case": "data",
+      "expected": true,
+      "predicted": true
+    },
+    {
+      "slice": "tr",
+      "case": "data",
+      "expected": false,
+      "predicted": false
+    },
+    {
+      "slice": "en",
+      "case": "firmware",
+      "expected": true,
+      "predicted": false
+    },
+    {
+      "slice": "en",
+      "case": "firmware",
+      "expected": false,
+      "predicted": false
+    },
+    {
+      "slice": "tr",
+      "case": "firmware",
+      "expected": true,
+      "predicted": true
+    },
+    {
+      "slice": "tr",
+      "case": "firmware",
+      "expected": false,
+      "predicted": false
+    }
+  ],
+  "limitations": "Selected after prior diagnostic failures. Reused diagnostic is not an independent test. Upstream employer identity is not available for all rows."
+}
