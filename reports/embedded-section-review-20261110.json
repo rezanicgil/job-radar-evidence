@@ -1,0 +1,315 @@
+{
+  "checked_at": "2026-11-10T07:54:01.262203+00:00",
+  "source_snapshot": "skill-mentions-2026-11-10T075056415797Z.json",
+  "scope": "Targeted re-fetch; not a full market refresh.",
+  "postings": [
+    {
+      "employer": "Analog Devices",
+      "title": "Engineer, Firmware Engineering",
+      "url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External/job/Turkey-Istanbul-Bilisim-Vadisi/Engineer--Firmware-Engineering_R268143",
+      "location": "Turkey, Istanbul, Bilisim Vadisi",
+      "areas": [
+        "Embedded and firmware"
+      ],
+      "sections": [
+        {
+          "kind": "qualifications",
+          "heading": "Skills / Qualifications",
+          "skills": [
+            "C++",
+            "Git",
+            "I2C",
+            "SPI",
+            "UART"
+          ]
+        },
+        {
+          "kind": "preferences",
+          "heading": "Nice To Have",
+          "skills": [
+            "FreeRTOS",
+            "Linux",
+            "Zephyr"
+          ]
+        }
+      ],
+      "source_requisition": "R268143",
+      "source_listed_date": "2026-11-02",
+      "status": "readable",
+      "description_sha256": "9f91ca204857f6715a1c9ffca6f6291b3d4146df16bee9ed1298743a47dd109c",
+      "skills": [
+        "C++",
+        "FreeRTOS",
+        "Linux",
+        "Git",
+        "Zephyr",
+        "I2C",
+        "SPI",
+        "UART"
+      ]
+    },
+    {
+      "employer": "Analog Devices",
+      "title": "Staff Embedded Software Engineer, Digital Healthcare",
+      "url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External/job/Turkey-Istanbul-Bilisim-Vadisi/Staff-Embedded-Software-Engineer--Digital-Healthcare_R265906",
+      "location": "Turkey, Istanbul, Bilisim Vadisi",
+      "areas": [
+        "Embedded and firmware",
+        "Software engineering (general)"
+      ],
+      "sections": [
+        {
+          "kind": "qualifications",
+          "heading": "Must Have Skills",
+          "skills": []
+        },
+        {
+          "kind": "preferences",
+          "heading": "Preferred Education and Experience",
+          "skills": []
+        }
+      ],
+      "source_requisition": "R265906",
+      "source_listed_date": "2026-09-15",
+      "status": "readable",
+      "description_sha256": "d96f27a8c0bf42d3e62217ff25a177eb92ba537cb5881d07ab4a6e032f7161e1",
+      "skills": []
+    },
+    {
+      "employer": "Analog Devices",
+      "title": "Senior Embedded Software Engineer",
+      "url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External/job/Turkey-Istanbul-Bilisim-Vadisi/Senior-Embedded-Software-Engineer_R265610-1",
+      "location": "Turkey, Istanbul, Bilisim Vadisi",
+      "areas": [
+        "Embedded and firmware",
+        "Software engineering (general)"
+      ],
+      "sections": [
+        {
+          "kind": "qualifications",
+          "heading": "Qualifications",
+          "skills": [
+            "C++"
+          ]
+        },
+        {
+          "kind": "preferences",
+          "heading": "Preferred Skills",
+          "skills": [
+            "Linux",
+            "RTOS",
+            "I2C",
+            "SPI"
+          ]
+        }
+      ],
+      "source_requisition": "R265610",
+      "source_listed_date": "2026-08-31",
+      "status": "readable",
+      "description_sha256": "ff5d30d3f360aa62e67070d7358270e137137004705dc046863f9d4ec4f9c774",
+      "skills": [
+        "C++",
+        "Linux",
+        "RTOS",
+        "I2C",
+        "SPI"
+      ]
+    },
+    {
+      "employer": "Accenture",
+      "title": "Senior Embedded Software Engineer – Bootloader, Communication & Security (Automotive, SoC)",
+      "url": "https://accenture.wd103.myworkdayjobs.com/en-US/AccentureCareers/job/Istanbul/Senior-Embedded-Software-Engineer---Bootloader--Communication---Security--Automotive--SoC-_R00336589",
+      "location": "Türkiye",
+      "areas": [
+        "Embedded and firmware",
+        "Software engineering (general)"
+      ],
+      "sections": [
+        {
+          "kind": "qualifications",
+          "heading": "Core Requirements:",
+          "skills": [
+            "C++",
+            "RTOS"
+          ]
+        },
+        {
+          "kind": "preferences",
+          "heading": "Preferred Qualifications (Nice to Have):",
+          "skills": [
+            "Linux",
+            "QNX"
+          ]
+        }
+      ],
+      "source_requisition": "R00336589",
+      "source_listed_date": "2026-06-15",
+      "status": "readable",
+      "description_sha256": "7899c7232fdff80b2a70a2495bac738434f04fa862ef8908af10dab801d99d9d",
+      "skills": [
+        "C++",
+        "Linux",
+        "RTOS",
+        "QNX",
+        "AUTOSAR"
+      ]
+    },
+    {
+      "employer": "Accenture",
+      "title": "Senior Embedded Software Engineer – Embedded Linux (Automotive, SoC)",
+      "url": "https://accenture.wd103.myworkdayjobs.com/en-US/AccentureCareers/job/Istanbul/Senior-Embedded-Software-Engineer---Embedded-Linux--Automotive--SoC-_R00336588-1",
+      "location": "Türkiye",
+      "areas": [
+        "Embedded and firmware",
+        "Software engineering (general)"
+      ],
+      "sections": [
+        {
+          "kind": "qualifications",
+          "heading": "Core Requirements:",
+          "skills": [
+            "C++",
+            "Linux",
+            "Yocto",
+            "BitBake",
+            "U-Boot"
+          ]
+        },
+        {
+          "kind": "preferences",
+          "heading": "Preferred Qualifications (Nice to Have):",
+          "skills": [
+            "Linux",
+            "Yocto",
+            "QNX",
+            "AOSP"
+          ]
+        }
+      ],
+      "source_requisition": "R00336588",
+      "source_listed_date": "2026-06-15",
+      "status": "readable",
+      "description_sha256": "1915fcbfcbb9b9901b0ad9d100aad3e9dfd2d4f47b54d4d19f1c531b1fd8b611",
+      "skills": [
+        "C++",
+        "Linux",
+        "Yocto",
+        "BitBake",
+        "U-Boot",
+        "QNX",
+        "AUTOSAR",
+        "AOSP"
+      ]
+    },
+    {
+      "employer": "Accenture",
+      "title": "Senior Embedded Software Engineer – QNX OS & Hypervisor (Automotive, SoC)",
+      "url": "https://accenture.wd103.myworkdayjobs.com/en-US/AccentureCareers/job/Istanbul/Senior-Embedded-Software-Engineer---QNX-OS---Hypervisor--Automotive--SoC-_R00336587-1",
+      "location": "Türkiye",
+      "areas": [
+        "Embedded and firmware",
+        "Software engineering (general)"
+      ],
+      "sections": [
+        {
+          "kind": "qualifications",
+          "heading": "Core Requirements:",
+          "skills": [
+            "C++",
+            "QNX"
+          ]
+        },
+        {
+          "kind": "preferences",
+          "heading": "Preferred Qualifications (Nice to Have):",
+          "skills": [
+            "Linux",
+            "Yocto",
+            "QNX"
+          ]
+        }
+      ],
+      "source_requisition": "R00336587",
+      "source_listed_date": "2026-06-15",
+      "status": "readable",
+      "description_sha256": "a197715164d5a3a730797a3cd62bfdcca449d7bc31f0d4ca11b0bdb1dceb71d0",
+      "skills": [
+        "C++",
+        "Linux",
+        "Yocto",
+        "QNX",
+        "AUTOSAR"
+      ]
+    },
+    {
+      "employer": "Accenture",
+      "title": "Senior Embedded Software Engineer - Classic AUTOSAR (Automotive, MCU)",
+      "url": "https://accenture.wd103.myworkdayjobs.com/en-US/AccentureCareers/job/Istanbul/Senior-Embedded-Software-Engineer---Classic-AUTOSAR--Automotive--MCU-_R00336586-1",
+      "location": "Türkiye",
+      "areas": [
+        "Embedded and firmware",
+        "Software engineering (general)"
+      ],
+      "sections": [
+        {
+          "kind": "qualifications",
+          "heading": "Core Requirements:",
+          "skills": [
+            "C++",
+            "RTOS",
+            "AUTOSAR"
+          ]
+        },
+        {
+          "kind": "preferences",
+          "heading": "Preferred Qualifications (Nice to Have):",
+          "skills": [
+            "Python"
+          ]
+        }
+      ],
+      "source_requisition": "R00336586",
+      "source_listed_date": "2026-06-15",
+      "status": "readable",
+      "description_sha256": "a50e4347f255a52c1f434b379745ad3531392ae6510af2e506376cf20486d677",
+      "skills": [
+        "Python",
+        "C++",
+        "RTOS",
+        "AUTOSAR"
+      ]
+    },
+    {
+      "employer": "Accenture",
+      "title": "Senior Embedded Engineer",
+      "url": "https://accenture.wd103.myworkdayjobs.com/en-US/AccentureCareers/job/Istanbul/Senior-Embedded-Engineer_R00286019-1",
+      "location": "Türkiye",
+      "areas": [
+        "Embedded and firmware"
+      ],
+      "sections": [
+        {
+          "kind": "qualifications",
+          "heading": "Required Qualifications:",
+          "skills": [
+            "Python",
+            "C++",
+            "Linux",
+            "Git"
+          ]
+        }
+      ],
+      "source_requisition": "R00286019",
+      "source_listed_date": "2025-11-26",
+      "status": "readable",
+      "description_sha256": "0d70d857941d1e01dea1f12f5644a0817be72a210e64ef2ac278fc9ef415713a",
+      "skills": [
+        "Python",
+        "C++",
+        "Linux",
+        "Git",
+        "RTOS"
+      ]
+    }
+  ]
+}

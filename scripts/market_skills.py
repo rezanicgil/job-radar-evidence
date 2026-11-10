@@ -38,6 +38,30 @@ def headed_sections(lists):
     return sections
 
 
+def workday_sections(body):
+    """Only associate a standalone heading with its immediately following list."""
+    kinds = {"skills / qualifications":"qualifications", "qualifications":"qualifications",
+             "core requirements":"qualifications", "required qualifications":"qualifications",
+             "must have skills":"qualifications", "nice to have":"preferences",
+             "preferred skills":"preferences", "preferred education and experience":"preferences",
+             "preferred qualifications (nice to have)":"preferences"}
+    found=[]
+    # Consume list contents as one block so paragraphs inside it cannot act as headings.
+    blocks = re.finditer(r"<(p|h[1-6]|ul|ol)\b[^>]*>(.*?)</\1\s*>",body,re.I|re.S)
+    prev=None
+    for block in blocks:
+        tag,content=block.group(1).lower(),block.group(2)
+        plain=" ".join(unescape(re.sub("<[^>]+>"," ",content)).split())
+        if tag in {"ul","ol"}:
+            if prev and not body[prev[2]:block.start()].strip() and plain:
+                found.append(dict(kind=prev[0],heading=prev[1],skills=[s for s,p in PATTERNS.items() if p.search(plain)]))
+            prev=None
+        else:
+            kind=kinds.get(plain.rstrip(":").casefold())
+            prev=(kind,plain,block.end()) if kind else None
+    return found
+
+
 def lucida_sections(description):
     lists=[dict(text=heading.strip(),content=items)
            for heading,items in re.findall(r"<h3>([^<]*)</h3>\s*<ul>(.*?)</ul>",description,re.S|re.I)]
@@ -103,6 +127,7 @@ def inspect(job, *, retry_timeout=True):
         if url.hostname.endswith(".myworkdayjobs.com"):
             info=workday_board.posting_info(url)
             body=info["jobDescription"]
+            job=dict(job,sections=workday_sections(body))
             job=dict(job,source_requisition=info.get("jobReqId"),source_listed_date=info.get("startDate"))
         elif url.hostname == "apply.workable.com":
             body = workable_descriptions(board)[key]
