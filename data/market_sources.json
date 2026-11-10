@@ -190,5 +190,6 @@
   {"name":"CRENNO","ats":"smartrecruiters","slug":"CRENNO"},
   {"name":"Lucida AI","ats":"workable","slug":"lucida-ai"},
   {"name":"Accenture","ats":"workday","slug":"accenture.wd103/AccentureCareers"},
-  {"name":"PlusMinusOne","ats":"bamboohr","slug":"plusminusone"}
+  {"name":"PlusMinusOne","ats":"bamboohr","slug":"plusminusone"},
+  {"name":"NewMind AI","ats":"workable","slug":"newmindai"}
 ]

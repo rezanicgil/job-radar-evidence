@@ -1,0 +1,109 @@
+{
+  "observed_utc": "2026-11-10T07:32:08.180715+00:00",
+  "scope": "Source onboarding sample only; not a full market snapshot.",
+  "source": {
+    "source": "NewMind AI",
+    "url": "https://www.workable.com/api/accounts/newmindai?details=true",
+    "status": "ok",
+    "scanned": 7
+  },
+  "located_postings": 7,
+  "tracked": [
+    {
+      "employer": "NewMind AI",
+      "title": "AI Engineer",
+      "url": "https://apply.workable.com/newmindai/j/78E4D93DCA/",
+      "location": "Mecidiyeköy, İstanbul, Turkey",
+      "areas": [
+        "Data and AI"
+      ],
+      "status": "readable",
+      "description_sha256": "3b415711ea901c9c50ea1ef0341a3bbf37231cccabb0a77fdc6e44bf6e2b31ea",
+      "skills": [
+        "Python",
+        "SQL",
+        "PyTorch"
+      ]
+    },
+    {
+      "employer": "NewMind AI",
+      "title": "Backend Developer",
+      "url": "https://apply.workable.com/newmindai/j/7E86986DCA/",
+      "location": "Maslak, Sarıyer, Turkey",
+      "areas": [
+        "Backend"
+      ],
+      "status": "readable",
+      "description_sha256": "f96758bb790b4ff63b665c24b1578a1d79fc223ba05127b7aefc0c4eeead486b",
+      "skills": [
+        "TypeScript",
+        "SQL",
+        "PostgreSQL",
+        "Docker",
+        "Kubernetes",
+        "Kafka",
+        "Redis"
+      ]
+    },
+    {
+      "employer": "NewMind AI",
+      "title": "Full Stack Developer",
+      "url": "https://apply.workable.com/newmindai/j/97C5AC6C8F/",
+      "location": "Şişli, İstanbul, Turkey",
+      "areas": [
+        "Full stack"
+      ],
+      "status": "readable",
+      "description_sha256": "34ab45da53a792c4fef73950c6a240a8d0d83323dc9506969bc01546cf09c0c7",
+      "skills": [
+        "TypeScript",
+        "SQL",
+        "PostgreSQL",
+        "Docker",
+        "Kubernetes",
+        "Kafka",
+        "Redis"
+      ]
+    },
+    {
+      "employer": "NewMind AI",
+      "title": "Senior Backend Developer",
+      "url": "https://apply.workable.com/newmindai/j/C1A86EEA77/",
+      "location": "Maslak, Sarıyer, Turkey",
+      "areas": [
+        "Backend"
+      ],
+      "status": "readable",
+      "description_sha256": "4ae28b512d638af63d40d7cfa8689739c8bf32afe552a04b7efbb53f65ce4d45",
+      "skills": [
+        "TypeScript",
+        "SQL",
+        "PostgreSQL",
+        "Docker",
+        "Kubernetes",
+        "Kafka",
+        "Redis"
+      ]
+    },
+    {
+      "employer": "NewMind AI",
+      "title": "Senior Full Stack Developer",
+      "url": "https://apply.workable.com/newmindai/j/D1CB493466/",
+      "location": "Şişli, İstanbul, Turkey",
+      "areas": [
+        "Full stack"
+      ],
+      "status": "readable",
+      "description_sha256": "25872e9f8c01fa534dc86e5fa7c48507978da6b80fe328266b3da0cad46392c7",
+      "skills": [
+        "TypeScript",
+        "SQL",
+        "PostgreSQL",
+        "Docker",
+        "Kubernetes",
+        "Kafka",
+        "Redis"
+      ]
+    }
+  ]
+}
