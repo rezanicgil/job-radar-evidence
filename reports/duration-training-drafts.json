@@ -1,0 +1,13 @@
+{
+  "passages": 62,
+  "mentions": 64,
+  "kind_counts": {
+    "prior_experience": 60,
+    "recency_window": 2,
+    "work_schedule": 1,
+    "leave_benefit": 1
+  },
+  "compensation_context": 7,
+  "human_verified": 0,
+  "sha256": "7ac2c938542008e5c7942f527935456caa9df107c5b18d5665cd0be19b829880"
+}
