@@ -1,0 +1,61 @@
+{
+  "metric": "Mean probability of B or I at first subtoken of marked duration words; strict paired comparison",
+  "cases": [
+    {
+      "family": "android",
+      "language": "en",
+      "experience": 0.30527475476264954,
+      "unrelated": 0.30528178811073303,
+      "correct_order": false
+    },
+    {
+      "family": "android",
+      "language": "tr",
+      "experience": 0.3054797053337097,
+      "unrelated": 0.3052517771720886,
+      "correct_order": true
+    },
+    {
+      "family": "network",
+      "language": "en",
+      "experience": 0.30571573972702026,
+      "unrelated": 0.3062191605567932,
+      "correct_order": false
+    },
+    {
+      "family": "network",
+      "language": "tr",
+      "experience": 0.30608931183815,
+      "unrelated": 0.30651015043258667,
+      "correct_order": false
+    },
+    {
+      "family": "data",
+      "language": "en",
+      "experience": 0.3063257932662964,
+      "unrelated": 0.3069148361682892,
+      "correct_order": false
+    },
+    {
+      "family": "data",
+      "language": "tr",
+      "experience": 0.306296169757843,
+      "unrelated": 0.30951714515686035,
+      "correct_order": false
+    },
+    {
+      "family": "firmware",
+      "language": "en",
+      "experience": 0.30378371477127075,
+      "unrelated": 0.3045589029788971,
+      "correct_order": false
+    },
+    {
+      "family": "firmware",
+      "language": "tr",
+      "experience": 0.3054502010345459,
+      "unrelated": 0.30908507108688354,
+      "correct_order": false
+    }
+  ]
+}
