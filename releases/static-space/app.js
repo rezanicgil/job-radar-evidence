@@ -881,6 +881,8 @@ try{
     const sectionName=scope==="preferences"?"preference":"qualification";
     el("skillCount").textContent=(scope==="all"?"":records.length+" of "+readable.length+
       " readable postings have a measured "+sectionName+" heading. Shares use these postings and their "+employers+" represented employers. ")+description;
+    const resolution=records.length?"At this sample size, one posting represents "+(100/records.length).toFixed(1)+" percentage points of posting share; one employer represents "+(100/employers).toFixed(1)+" points of employer share.":"";
+    if(resolution)el("skillCount").textContent+=" "+resolution;
     el("allSkills").hidden=!records.length||Boolean(query)||measured.length<=8;
     el("allSkills").textContent=showAll?"Show top 8":"Show all "+measured.length+" technologies";
     const exportButton=el("marketExport");
@@ -897,6 +899,7 @@ try{
         "Readable postings in role selection: "+readable.length,
         "Postings in measured text scope: "+records.length,
         "Employers represented in measured text scope: "+employers,
+        resolution,
         "Market dataset: https://huggingface.co/datasets/rezanicgil/turkiye-software-job-market",
         "A mention can occur in company context or a preference. The percentages describe this employer panel.",
       ];
