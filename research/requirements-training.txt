@@ -6,3 +6,4 @@ huggingface-hub==0.32.4
 safetensors==0.5.3
 polib==1.2.0
 requests==2.32.3
+pyarrow==26.0.1

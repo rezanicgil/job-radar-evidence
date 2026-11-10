@@ -1,0 +1,18 @@
+{
+  "dataset_revision": "189792d21b7d1484fd73b067b09df57e7ffc456f",
+  "base": "MoritzLaurer/multilingual-MiniLMv2-L6-mnli-xnli",
+  "base_revision": "0a71e92a985b6e1ad1828cf67ce9c459639c1dca",
+  "seed": 42,
+  "epochs": 3,
+  "positive_sentences": 217,
+  "sampled_negative_sentences": 434,
+  "test_sentences": 319,
+  "exact_spans": {
+    "tp": 0,
+    "fp": 0,
+    "fn": 9,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0
+  }
+}
