@@ -1,0 +1,69 @@
+{
+  "base": 64,
+  "added": 11,
+  "total": 75,
+  "counts": {
+    "prior_experience": 60,
+    "recency_window": 2,
+    "work_schedule": 3,
+    "leave_benefit": 6,
+    "commitment_length": 1,
+    "program_length": 1,
+    "start_window": 1,
+    "benefit_eligibility": 1
+  },
+  "decisions": [
+    {
+      "id": "880da3dae07226fefc72eb64796234a37edf04ee9376121f7491e79c4c9af848:70",
+      "reasons": [
+        "held-out employer"
+      ]
+    },
+    {
+      "id": "40a4023e10681ca3897ed0dc9cc8c56aa84dde61c52a4a5a837e58b3899d8665:27",
+      "reasons": []
+    },
+    {
+      "id": "40a4023e10681ca3897ed0dc9cc8c56aa84dde61c52a4a5a837e58b3899d8665:60",
+      "reasons": []
+    },
+    {
+      "id": "ffdbfb2ea2dffd924dfc87b4803938cae23a61e84bcfcf093c2d90032f0f7a8e:26",
+      "reasons": []
+    },
+    {
+      "id": "36b7bb4aade642d0af91421b3747ce7b7fda22f4ea914fab7452fa72a5a5aab3:17",
+      "reasons": []
+    },
+    {
+      "id": "2d8e008ae049db536a658395e4902d04ff4aef4a772463c559bd36b6a3ca9c2b:9",
+      "reasons": []
+    },
+    {
+      "id": "5deb79676917cfa65173799a99f4978e96e3ffe8f9ab8f605aa0823c29859471:41",
+      "reasons": []
+    },
+    {
+      "id": "c7e8c896dbe6c941314095f3d8cb0890bc1d8cf7eeedecffdf2e005e4b49829c:0",
+      "reasons": []
+    },
+    {
+      "id": "7fa7edf72c5d1adde8e8118a3279b785864b2942c3ab44febad1aa61eb2467e6:50",
+      "reasons": []
+    },
+    {
+      "id": "9a0bc9d0bd37a28c380feeb065733e754bf1b4cbab6b0bcdfe1d17a15c3b3a25:57",
+      "reasons": []
+    },
+    {
+      "id": "439974bae215c7d950b29ee0169670a58b5014295e0a628789848971c0518445:49",
+      "reasons": []
+    },
+    {
+      "id": "4338d9e019f3c449dcfb1edb13129501be4828ba1f2a4b7ed78052a936d4a134:47",
+      "reasons": []
+    }
+  ],
+  "human_verified": 0,
+  "sha256": "b462d5beb5405302851c2c19cf20efec082cf76d3e48205ce89436f626cb4875"
+}
