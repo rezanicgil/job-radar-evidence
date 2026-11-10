@@ -1,0 +1,126 @@
+{
+  "model_revision": "ed338d59d26219b6574245aaf9488cda4dc3c5e9",
+  "source": "tabiya/job_ner_dataset",
+  "source_revision": "189792d21b7d1484fd73b067b09df57e7ffc456f",
+  "annotation": "Assistant-reviewed English challenge slice from the upstream training partition; this released head was not trained on that corpus. Not representative of Turkish jobs.",
+  "summary": {
+    "prior experience": {
+      "total": 12,
+      "correct": 8
+    },
+    "other duration": {
+      "total": 6,
+      "correct": 4
+    }
+  },
+  "cases": [
+    {
+      "row_index": 954,
+      "expected": "other duration",
+      "scope": "licence tenure",
+      "predicted": "other duration"
+    },
+    {
+      "row_index": 1073,
+      "expected": "prior experience",
+      "scope": "work history",
+      "predicted": "prior experience"
+    },
+    {
+      "row_index": 1402,
+      "expected": "prior experience",
+      "scope": "work history",
+      "predicted": "prior experience"
+    },
+    {
+      "row_index": 1915,
+      "expected": "prior experience",
+      "scope": "work history",
+      "predicted": "other duration"
+    },
+    {
+      "row_index": 2205,
+      "expected": "prior experience",
+      "scope": "work history",
+      "predicted": "prior experience"
+    },
+    {
+      "row_index": 2895,
+      "expected": "other duration",
+      "scope": "CV history coverage",
+      "predicted": "other duration"
+    },
+    {
+      "row_index": 3556,
+      "expected": "prior experience",
+      "scope": "work history",
+      "predicted": "prior experience"
+    },
+    {
+      "row_index": 3835,
+      "expected": "other duration",
+      "scope": "company history",
+      "predicted": "prior experience"
+    },
+    {
+      "row_index": 4409,
+      "expected": "prior experience",
+      "scope": "work history",
+      "predicted": "other duration"
+    },
+    {
+      "row_index": 5509,
+      "expected": "prior experience",
+      "scope": "work history",
+      "predicted": "prior experience"
+    },
+    {
+      "row_index": 6046,
+      "expected": "prior experience",
+      "scope": "work history",
+      "predicted": "prior experience"
+    },
+    {
+      "row_index": 6503,
+      "expected": "prior experience",
+      "scope": "work history",
+      "predicted": "prior experience"
+    },
+    {
+      "row_index": 6908,
+      "expected": "prior experience",
+      "scope": "work history",
+      "predicted": "prior experience"
+    },
+    {
+      "row_index": 7390,
+      "expected": "prior experience",
+      "scope": "work history",
+      "predicted": "other duration"
+    },
+    {
+      "row_index": 7703,
+      "expected": "other duration",
+      "scope": "contract term",
+      "predicted": "other duration"
+    },
+    {
+      "row_index": 8028,
+      "expected": "prior experience",
+      "scope": "work history",
+      "predicted": "other duration"
+    },
+    {
+      "row_index": 8391,
+      "expected": "other duration",
+      "scope": "company history",
+      "predicted": "prior experience"
+    },
+    {
+      "row_index": 8979,
+      "expected": "other duration",
+      "scope": "benefit eligibility",
+      "predicted": "other duration"
+    }
+  ]
+}
