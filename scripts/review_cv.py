@@ -8,10 +8,16 @@ import sys
 from threading import Lock
 
 import torch
-from market_skills import PATTERNS
+from market_skills import PATTERNS as MARKET_PATTERNS
 from transformers import AutoModel, AutoTokenizer
 from train_smoke import BASE, REVISION
 
+# CV evidence vocabulary is broader than the versioned market denominator.
+REVIEW_PATTERNS = {**MARKET_PATTERNS, **{
+    name: re.compile(r"(?<![\w+#])"+re.escape(name)+r"(?![\w+#])", re.I)
+    for name in ("Node.js", ".NET", "CI/CD", "RabbitMQ", "ORM", "Prisma", "TypeORM",
+                 "Mongoose", "Sequelize", "GORM", "gRPC")
+}}
 _MODEL_LOAD_LOCK = Lock()
 ENCODERS = {
     "base": (BASE, REVISION),
@@ -150,7 +156,7 @@ def rank_passages(passages, requirements, encoder="base"):
         selected = ranked[:3]
         # Reserve one suggestion for a full CV sentence naming the requested technology.
         # This surfaces negative statements too; reviewers still decide support.
-        terms = [pattern for pattern in PATTERNS.values() if pattern.search(requirement)]
+        terms = [pattern for pattern in REVIEW_PATTERNS.values() if pattern.search(requirement)]
         if terms and selected:
             sentence = next((item for item in ranked if len(item[1].split()) >= 6
                              and item[1].endswith((".", "!", "?"))

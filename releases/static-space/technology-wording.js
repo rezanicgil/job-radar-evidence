@@ -20,7 +20,7 @@ export function technologyWording(condition,vocabulary){
   return {mode:[...modes][0],items};
 }
 
-export const reviewVocabulary=names=>[...new Set([...names,"Node.js",".NET","CI/CD","RabbitMQ"])];
+export const reviewVocabulary=names=>[...new Set([...names,"Node.js",".NET","CI/CD","RabbitMQ","ORM","Prisma","TypeORM","Mongoose","Sequelize","GORM","gRPC"])];
 const technologyPatterns=new Map();
 export function hasTechnology(text,name){
   if(!name.trim())return false;
