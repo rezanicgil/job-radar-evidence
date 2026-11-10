@@ -974,7 +974,7 @@ try{
         const card=add(evidence,"article","");
         const link=add(card,"a",review.employer+" · "+review.title);
         link.href=review.source_url;
-        if(review.skill_relation==="examples")add(card,"p","Example languages · "+review.example_skills.join(", ")+". Other programming languages can qualify.");
+        if(review.skill_relation==="examples")add(card,"p",(review.example_label||"Example languages")+" · "+review.example_skills.join(", ")+". "+(review.example_note||"Other programming languages can qualify."));
         else add(card,"p",review.required_skills.join(review.skill_relation==="all_of"?" + ":" or "));
         for(const condition of reviewedConditions(review))add(card,"blockquote",condition);
         if(review.preferred_technical?.length)add(card,"p","Selected preferences: "+review.preferred_technical.join(" "));
