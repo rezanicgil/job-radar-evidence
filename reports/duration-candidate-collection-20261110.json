@@ -1,0 +1,14 @@
+{
+  "collected_utc": "20261110T062620Z",
+  "inventory": "inventory-2026-11-09T220412828356Z.json",
+  "boards_requested": 13,
+  "failed_boards": {},
+  "inventory_urls": 47,
+  "urls_with_mentions": 32,
+  "employers_with_mentions": 13,
+  "section_passages": 33,
+  "unique_normalized_texts": 32,
+  "duration_mentions": 33,
+  "reviewed_labels": 0,
+  "sha256": "69ef3179eb6d0ac6fb87a7ad8fe63bdee8e8d7767ebe1bc61ee24e9036bf35c6"
+}
