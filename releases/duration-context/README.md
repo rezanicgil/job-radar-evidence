@@ -1,6 +1,7 @@
 ---
 license: apache-2.0
 language: [en, tr]
+datasets: [rezanicgil/job-radar-duration-evidence]
 base_model: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
 tags: [job-postings, duration, research]
 ---
@@ -18,6 +19,8 @@ python predict.py "We require [three years] of backend experience." "Taşınma i
 ~~~
 
 The first run also downloads the pinned multilingual MiniLM encoder. Only the linear classification head was trained. Ten words on either side of the marked duration are retained, the duration itself is masked, and normalized mean-pooled embeddings feed a class-balanced logistic classifier. No remote custom model code is required by Transformers.
+
+[Browse the source-linked duration evidence index](https://huggingface.co/datasets/rezanicgil/job-radar-duration-evidence).
 
 **Data and evaluation.** 75 assistant-labelled duration mentions, including 60 prior-experience cases and 15 others. In 19 leave-one-employer-out folds within this draft training corpus, 60/60 experience mentions and 11/15 other durations were classified correctly (86.7% balanced accuracy; context-word baseline 80%). Published weights were then fitted on all 75 examples. The evaluation is not independent human validation, a Turkish-specific accuracy estimate, or a measure of CV matching quality. The four misclassified examples concerned program length, recent deployments, and starting availability. No hiring probability is produced.
 
